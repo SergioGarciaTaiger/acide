@@ -103,7 +103,7 @@ public class AcideMenuConfiguration {
 
 		for (AcideMenuItemInformation menuElement : _menuItemList)
 			fileContent += menuElement.getName() + " = "
-					+ menuElement.getIsDisplayed() + "\n";
+					+ menuElement.getIsDisplayed() + System.lineSeparator();
 
 		// Saves its content
 		AcideFileManager.getInstance().write(fileName, fileContent);
@@ -118,7 +118,7 @@ public class AcideMenuConfiguration {
 	 * @return the new menu item list with the loaded values from the menu
 	 *         configuration file given as a parameter.
 	 * 
-	 * @throws when
+	 * @throws Exception when
 	 *             any problem occurs during the process.
 	 */
 	public ArrayList<AcideMenuItemInformation> loadMenuConfigurationFile(
@@ -137,7 +137,7 @@ public class AcideMenuConfiguration {
 			fileContent = AcideFileManager.getInstance().load(DEFAULT_PATH);
 
 		// Split the file content by lines
-		String[] menuItems = fileContent.split("\n");
+		String[] menuItems = fileContent.split(System.lineSeparator());
 
 		// For each one of the lines, builds the menu item information
 		// and adds it to the menu item list.

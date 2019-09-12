@@ -33,9 +33,9 @@ true
 345
 344
 English
-.\configuration\menu\lastModified.menuConfig
+./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-.\configuration\toolbar\des.toolbarConfig
+./configuration/toolbar/des.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel
