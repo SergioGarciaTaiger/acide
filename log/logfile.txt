@@ -1,0 +1,63 @@
+12 sep 2019 12:22:45,163 [main] INFO  LogAcide - Using your system's LookAndFeel
+12 sep 2019 12:22:47,256 [AWT-EventQueue-0] INFO  LogAcide - Initiating application...
+12 sep 2019 12:22:47,256 [AWT-EventQueue-0] INFO  LogAcide - Loading the ACIDE - A Configurable IDE - Workbench Configuration
+12 sep 2019 12:22:47,350 [AWT-EventQueue-0] INFO  LogAcide - Unable to load the console configuration.
+12 sep 2019 12:23:40,160 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+12 sep 2019 12:23:40,160 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Lexicon Assigner Configuration
+12 sep 2019 12:23:40,311 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Tool Bar Configuration
+12 sep 2019 12:23:40,316 [AWT-EventQueue-0] ERROR LogAcide - .\configuration\toolbar\des.toolbarConfig (No such file or directory)
+12 sep 2019 12:23:45,614 [AWT-EventQueue-0] ERROR LogAcide - Error in file format which contains the Tool Bar Configuration. Loading the Default Tool Bar Configuration...
+12 sep 2019 12:23:45,614 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Menu Configuration
+12 sep 2019 12:23:45,615 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Language Configuration
+12 sep 2019 12:23:45,615 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Explorer Configuration
+12 sep 2019 12:23:45,627 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Main Window...
+12 sep 2019 12:23:45,637 [AWT-EventQueue-0] INFO  LogAcide - Initializing ACIDE - A Configurable IDE - Menu...
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] ERROR LogAcide - Error reading  .\configuration\menu\lastModified.menuConfig
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] ERROR LogAcide - Error reading  .configuration/menu/allOn.menuConfig
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] INFO  LogAcide - Error in loading last menu configuration. Default configuration will be loaded (all options on)
+null
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] ERROR LogAcide - Error reading  .\configuration\menu\lastModified.menuConfig
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] ERROR LogAcide - Error reading  .configuration/menu/allOn.menuConfig
+12 sep 2019 12:23:45,638 [AWT-EventQueue-0] ERROR LogAcide - 
+12 sep 2019 12:23:47,785 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu Configuration loaded: ./configuration/menu/defaultAllOn.xml
+12 sep 2019 12:23:47,920 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,922 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,923 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,924 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,924 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,925 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,926 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,927 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,928 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,929 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,929 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,930 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,931 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,931 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/menu/lastModified.menuConfig
+12 sep 2019 12:23:47,932 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Menu created
+12 sep 2019 12:23:47,939 [AWT-EventQueue-0] INFO  LogAcide - Menu Listeners established
+12 sep 2019 12:23:47,941 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the working directory
+12 sep 2019 12:23:47,963 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+12 sep 2019 12:23:47,968 [AWT-EventQueue-0] INFO  LogAcide - Generating the tree of the database directory
+12 sep 2019 12:23:47,974 [AWT-EventQueue-0] INFO  LogAcide - Tree of the working directory generated
+12 sep 2019 12:23:47,996 [AWT-EventQueue-0] INFO  LogAcide - Creating exit of text... 
+12 sep 2019 12:23:48,008 [AWT-EventQueue-0] INFO  LogAcide - Creating the syntax...
+12 sep 2019 12:23:48,008 [AWT-EventQueue-0] INFO  LogAcide - Created syntax
+12 sep 2019 12:23:48,021 [AWT-EventQueue-0] INFO  LogAcide - Exit of created text 
+12 sep 2019 12:23:48,097 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
+12 sep 2019 12:23:48,105 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+12 sep 2019 12:23:48,106 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+12 sep 2019 12:23:48,106 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+12 sep 2019 12:23:48,109 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+12 sep 2019 12:23:48,109 [AWT-EventQueue-0] INFO  LogAcide - Initializing the ACIDE - A Configurable IDE - Tool Bar...
+12 sep 2019 12:23:48,110 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+12 sep 2019 12:23:48,111 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Tool Bar created
+12 sep 2019 12:23:48,115 [AWT-EventQueue-0] INFO  LogAcide - ACIDE - A Configurable IDE - Main Window created
+12 sep 2019 12:23:48,116 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Console Configuration
+12 sep 2019 12:23:48,119 [AWT-EventQueue-0] ERROR LogAcide - 
+12 sep 2019 12:23:48,133 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Files Configuration
+12 sep 2019 12:23:48,133 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Recent Projects Configuration
+12 sep 2019 12:23:48,133 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - File Editor Configuration
+12 sep 2019 12:23:48,198 [AWT-EventQueue-0] INFO  LogAcide - Loading ACIDE - A Configurable IDE - Main Window Configuration
+12 sep 2019 12:23:52,292 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: .\configuration\project\default.acideProject
+12 sep 2019 12:23:52,392 [AWT-EventQueue-0] INFO  LogAcide - Unable to kill .exe. Exit code: 1n

@@ -1,0 +1,32 @@
+//------------------------------//
+//  ACIDE 0.15 RELEASE NOTES    //
+//        26/04/2014            //
+//------------------------------//
+
+  
+* Enhancements and fixed bugs:
+  o Changed location of the "play" button (Send File Content to Console).
+  o Consoles can be configured now with absolute and relative paths on Linux Operative Systems.
+  o Asserted Database implemented. It can be found in the menu bar through View -> Asserted Database.
+  o Refresh button added on the Asserted Database.
+  o Clear button added on the Asserted Database.
+  o Filter added on the Asserted Database. If it is checked, it shows the rules related to the selected node in the debug panel.
+  o Fixed some bugs on the Console Configuration Window.
+  o DES and SendSignalCtrlC executables are located now in bin folder.
+  o Wait cursor is shown now when files are added to the project.
+  o Language configuration files has been pulled out from the source code to an external folder.
+  o Debug Panel functionality added.
+  o Now is possible to select a line by clicking on the left side numbered panel. Multi-selection is also allowed.
+  o Change Case menu functionality has been improved.
+  o RA Nodes in the Database Panel have been implemented.
+  o Improved functionality and fixed bugs related to Views in the Database Panel.
+  o Dataview window of a table/view now allows to select and copy/paste multiple rows. 
+  o Several bugs fixed but presumably others added.
+  
+
+
+IMPORTANT CAVEATS / KNOWN BUGS:
+  o Ctrl+Mouse Wheel for resizing font display may take long time.
+  o Opening medium-sized text files may take long time due to lexical analysis. No progress indicators are provided. Only when all editor windows are processed they are displayed.
+  o It’s possible that the Database panel shows wrong information like reports of the queries.
+  o As an alpha version, there are expected many bugs and incomplete functionalities. Please report them to fernan@sip.ucm.es
