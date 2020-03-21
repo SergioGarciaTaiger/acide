@@ -4,6 +4,5 @@
 *log
 Acide.jar
 .DS_Store
-.idea/vsc.xml
-.idea/workspace.xml
+.idea/*
 *.class
