@@ -6,3 +6,4 @@ Acide.jar
 .DS_Store
 .idea/*
 *.class
+*ant
