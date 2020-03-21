@@ -120,7 +120,7 @@ public class AcideConsoleProcess extends Thread {
 					File shellFile = new File(shellPath);
 					_process = Runtime.getRuntime().exec(shellFile.getCanonicalPath() + ' ' + shellParameters, null, shellDirectoryFile);
 
-				}else if(os.indexOf("Mac")>=0 && os.indexOf("X")>=0){
+				}else if(os.indexOf("Mac")>=0 || os.indexOf("X")>=0){
 					File shellFile = new File(shellPath);
 					_process = Runtime.getRuntime().exec(shellFile.getCanonicalPath());
 				} else {

@@ -207,10 +207,12 @@ public class AcideResourceManager {
 			if(name.contains("shellPath")){
 				String os = System.getProperty("os.name");
 				
-				if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0 || os.indexOf("Mac")>=0)
-					value=value.replace(".exe", "");
-				else
-					if(!value.contains(".")&&!value.contains(".exe")) value=value+".exe";
+				if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0 || os.indexOf("Mac")>=0) {
+					value = value.replace(".exe", "");
+				}else {
+					if (!value.contains(".") && !value.contains(".exe"))
+						value = value + ".exe";
+				}
 				
 			}
 			
