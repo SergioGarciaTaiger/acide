@@ -1,0 +1,35 @@
+// buttonConfiguration dir
+name = dir
+action = dir
+hintText = Current directory contents
+icon = 
+parameterType = NONE
+isExecutedInSytemShell = false
+
+// buttonConfiguration cd
+name = cd
+action = cd
+hintText = Current directory
+icon = 
+parameterType = NONE
+isExecutedInSytemShell = false
+
+// buttonConfiguration cd <dir>
+name = cd <dir>
+action = cd
+hintText = Change directory
+icon = 
+parameterType = DIRECTORY
+isExecutedInSytemShell = false
+
+// buttonConfiguration type <file>
+name = type <file>
+action = type
+hintText = Asks for a file to be displayed
+icon = 
+parameterType = FILE
+isExecutedInSytemShell = false
+
+// End Of Console Panel Tool Bar Button Configuration
+
+// End Of External Applications Tool Bar Button Configuration
