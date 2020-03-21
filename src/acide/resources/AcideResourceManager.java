@@ -140,7 +140,7 @@ public class AcideResourceManager {
 		String os = System.getProperty("os.name");
 		boolean isShellPath = name.contains("shellPath");
 
-		if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0) {
+		if (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0 || os.indexOf("Mac")>=0) {
 			value = value.replace("\\", File.separator);
 			if (isShellPath)
 				value = value.replace(".exe", "");
@@ -179,7 +179,7 @@ public class AcideResourceManager {
 		String os = System.getProperty("os.name");
 		boolean isShellPath = name.contains("shellPath") ;
 					
-		if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0)
+		if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0 || os.indexOf("Mac")>=0)
 		{
 			value = value.replace("\\", File.separator);
 			if(isShellPath) value= value.replace(".exe", "");
@@ -207,7 +207,7 @@ public class AcideResourceManager {
 			if(name.contains("shellPath")){
 				String os = System.getProperty("os.name");
 				
-				if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0)
+				if(os.indexOf("nix")>=0 || os.indexOf("nux")>=0 || os.indexOf("Mac")>=0)
 					value=value.replace(".exe", "");
 				else
 					if(!value.contains(".")&&!value.contains(".exe")) value=value+".exe";

@@ -1,17 +1,17 @@
-
-.\configuration\project\default.acideProject
-
-
+xd jaja saludos
+/Users/sergiogarciarodriguez/dev/Acide
+/Users/sergiogarciarodriguez/dev/Acide/des
+./des
 false
+/
 
-
-
-
-.\des.exe
-.\
+/Users/sergiogarciarodriguez/dev/Acide
+./des
+/Users/sergiogarciarodriguez/dev/Acide/des
+/Users/sergiogarciarodriguez/dev/Acide
 /q
-true
-
+false
+sh des
 -16777216
 -1
 Monospaced
@@ -23,19 +23,19 @@ true
 true
 true
 true
-1380
-744
--8
--8
-188
+800
+600
+440
+204
 150
-977
-345
-344
+150
+500
+350
+350
 English
 ./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-./configuration/toolbar/des.toolbarConfig
+./configuration/toolbar/default.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel

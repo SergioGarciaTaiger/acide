@@ -1,4 +1,4 @@
-*out
+*out*
 *META-INF
 *bin
 *log
@@ -6,3 +6,4 @@ Acide.jar
 .DS_Store
 .idea/vsc.xml
 .idea/workspace.xml
+*.class

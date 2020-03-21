@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2013  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -250,6 +250,10 @@ public class AcideProjectConfiguration {
 	 * List of panels shown on the main window
 	 */
 	private ArrayList<String> _panelList;
+	/**
+	 * Int that points the position of the next parameter of configuration.
+	 */
+	private int _position;
 
 	/**
 	 * Creates a new project configuration.
@@ -323,258 +327,148 @@ public class AcideProjectConfiguration {
 								.getString("s959"));
 			}
 
-			int initialPosition = 0;
-			int finalPosition = 0;
+			_position = 0;
 
 			// Avoids errors in the conversions
 			fileContent = fileContent.replaceAll("\r\n", "\n");
 			
 			// Gets the project name 1
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_name = fileContent.substring(initialPosition, finalPosition);
+			_name = getProperty(fileContent);
 
 			// Gets the project path 2
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_path = fileContent.substring(initialPosition, finalPosition);
+			_path = getProperty(fileContent);
 
 			// Gets the compiler path 3
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_compilerPath = fileContent.substring(initialPosition,
-					finalPosition);
+			_compilerPath = getProperty(fileContent);
 
 			// Gets the compiler arguments 4
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_compilerArguments = fileContent.substring(initialPosition,
-					finalPosition);
+			_compilerArguments = getProperty(fileContent);
 
 			// Gets the compile all files 5
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_compileAllFiles = Boolean.parseBoolean(fileContent.substring(
-					initialPosition, finalPosition));
+			_compileAllFiles = Boolean.parseBoolean(getProperty(fileContent));
 
 			// Gets the file separator 6
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_fileSeparator = fileContent.substring(initialPosition,
-					finalPosition);
+			_fileSeparator = getProperty(fileContent);
 
-			// Gets the file extension 7 
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_fileExtension = fileContent.substring(initialPosition,
-					finalPosition);
+			// Gets the file extension 7
+			_fileExtension = getProperty(fileContent);
 
 			// Gets the executable path 8
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_executablePath = fileContent.substring(initialPosition,
-					finalPosition);
+			_executablePath = getProperty(fileContent);
 
 			// Gets the executable arguments 9
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_executableArguments = fileContent.substring(initialPosition,
-					finalPosition);
+			_executableArguments = getProperty(fileContent);
 
-			// Gets the console panel shell path 10 
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelShellPath = fileContent.substring(initialPosition,
-					finalPosition);
+			// Gets the console panel shell path 10
+			_consolePanelShellPath = getProperty(fileContent);
 
 			// Gets the console panel shell directory 11
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelShellDirectory = fileContent.substring(
-					initialPosition, finalPosition);
+			_consolePanelShellDirectory = getProperty(fileContent);
 
 			// Gets the console panel exit command 12
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelExitCommand = fileContent.substring(initialPosition,
-					finalPosition);
+			_consolePanelExitCommand = getProperty(fileContent);
 
 			// Gets the console panel is echo command 13
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelIsEchoCommand = Boolean.parseBoolean(fileContent
-					.substring(initialPosition, finalPosition));
+			_consolePanelIsEchoCommand = Boolean.parseBoolean(getProperty(fileContent));
 			
 			// Gets the console panel parameters 14
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelParameters = fileContent.substring(initialPosition,
-					finalPosition);
+			_consolePanelParameters = getProperty(fileContent);
 
-			// Gets the console panel foreground color 15
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
+			// Gets the console panel foreground color 15			
 			_consolePanelForegroundColor = new Color(
-					Integer.parseInt(fileContent.substring(initialPosition,
-							finalPosition)));
+					Integer.parseInt(getProperty(fileContent)));
 
-			// Gets the console panel background color 16
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
+			// Gets the console panel background color 16		
 			_consolePanelBackgroundColor = new Color(
-					Integer.parseInt(fileContent.substring(initialPosition,
-							finalPosition)));
+					Integer.parseInt(getProperty(fileContent)));
 
-			// Gets the console panel font name 17
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelFontName = fileContent.substring(initialPosition,
-					finalPosition);
+			// Gets the console panel font name 17			
+			_consolePanelFontName = getProperty(fileContent);
 
-			// Gets the console panel font style 18
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelFontStyle = Integer.parseInt(fileContent.substring(
-					initialPosition, finalPosition));
+			// Gets the console panel font style 18			
+			_consolePanelFontStyle = Integer.parseInt(getProperty(fileContent));
 
-			// Gets the console panel font size 19
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelFontSize = Integer.parseInt(fileContent.substring(
-					initialPosition, finalPosition));
+			// Gets the console panel font size 19			
+			_consolePanelFontSize = Integer.parseInt(getProperty(fileContent));
 
-			// Gets the console panel buffer size 20
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_consolePanelBufferSize = Integer.parseInt(fileContent.substring(
-					initialPosition, finalPosition));
+			// Gets the console panel buffer size 20			
+			_consolePanelBufferSize = Integer.parseInt(getProperty(fileContent));
 
-			// Gets the is explorer panel showed flag 21
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_isExplorerPanelShowed = Boolean.parseBoolean(fileContent
-					.substring(initialPosition, finalPosition));
+			// Gets the is explorer panel showed flag 21			
+			_isExplorerPanelShowed = Boolean.parseBoolean(getProperty(fileContent));
 
-			// Gets the is console panel showed flag 22
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_isConsolePanelShowed = Boolean.parseBoolean(fileContent.substring(
-					initialPosition, finalPosition));
+			// Gets the is console panel showed flag 22			
+			_isConsolePanelShowed = Boolean.parseBoolean(getProperty(fileContent));
 			
-			// Gets the is data base panel showed flag 23
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_isDataBasePanelShowed = Boolean.parseBoolean(fileContent.substring(
-					initialPosition, finalPosition));
-			
+			// Gets the is data base panel showed flag 23			
+			_isDataBasePanelShowed = Boolean.parseBoolean(getProperty(fileContent));
+
 			// gets the is graph panel showed flag 24
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_isGraphPanelShowed = Boolean.parseBoolean(fileContent.substring(
-					initialPosition, finalPosition));
+			_isGraphPanelShowed = Boolean.parseBoolean(getProperty(fileContent));
 
 			// gets the is debug panel showed flag 26
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_isDebugPanelShowed = Boolean.parseBoolean(fileContent.substring(
-					initialPosition, finalPosition));
+			_isDebugPanelShowed = Boolean.parseBoolean(getProperty(fileContent));
 			
 			// Gets the ACIDE - A Configurable IDE main window width 27
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_width = Integer.parseInt(fileContent.substring(initialPosition,
-					finalPosition));
+			_width = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the ACIDE - A Configurable IDE main window height 28
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_height = Integer.parseInt(fileContent.substring(initialPosition,
-					finalPosition));
+			_height = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the ACIDE - A Configurable IDE main window x coordinate 29
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_xCoordinate = Integer.parseInt(fileContent.substring(
-					initialPosition, finalPosition));
+			_xCoordinate = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the ACIDE - A Configurable IDE main window y coordinate 30
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_yCoordinate = Integer.parseInt(fileContent.substring(
-					initialPosition, finalPosition));
+			_yCoordinate = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the ACIDE - A Configurable IDE main window vertical split 31
 			// pane divider location
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_verticalFilesSplitPaneDividerLocation = Integer.parseInt(fileContent
-					.substring(initialPosition, finalPosition));
-			
+			_verticalFilesSplitPaneDividerLocation = Integer.parseInt(getProperty(fileContent));
+
 			// Gets the ACIDE - A Configurable IDE main window vertical split 32
-			// pane divider location
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_verticalDataBaseSplitPaneDividerLocation = Integer.parseInt(fileContent
-					.substring(initialPosition, finalPosition));
+			// pane divider location	
+			_verticalDataBaseSplitPaneDividerLocation = Integer.parseInt(getProperty(fileContent));
 			
 			// Gets the ACIDE - A Configurable IDE main window vertical split 33
 			// pane divider location
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_verticalGraphSplitPaneDividerLocation = Integer.parseInt(fileContent
-					.substring(initialPosition, finalPosition));
+			_verticalGraphSplitPaneDividerLocation = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the ACIDE - A Configurable IDE main window horizontal split 34
 			// pane divider location
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_horizontalSplitPaneDividerLocation = Integer.parseInt(fileContent
-					.substring(initialPosition, finalPosition));
+			
+			_horizontalSplitPaneDividerLocation = Integer.parseInt(getProperty(fileContent));
 			
 			// Gets the ACIDE - A Configurable IDE main window horizontal split 35
 			// pane divider location
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_horizontalGraphSplitPaneDividerLocation = Integer.parseInt(fileContent
-					.substring(initialPosition, finalPosition));
+			
+			_horizontalGraphSplitPaneDividerLocation = Integer.parseInt(getProperty(fileContent));
 
 			// Gets the language configuration 36
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_languageConfiguration = fileContent.substring(initialPosition,
-					finalPosition);
+			
+			_languageConfiguration = getProperty(fileContent);
 			
 			// Gets the menu configuration 37
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_menuConfiguration = fileContent.substring(initialPosition,
-					finalPosition);
+			
+			_menuConfiguration = getProperty(fileContent);
 			
 			// Gets the menu new configuration 38
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_menuNewConfiguration = fileContent.substring(initialPosition,
-					finalPosition);
+			
+			_menuNewConfiguration = getProperty(fileContent);
 
 			// Gets the tool bar configuration 39
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			_toolBarConfiguration = fileContent.substring(initialPosition,
-					finalPosition);
+			
+			_toolBarConfiguration = getProperty(fileContent);
 			
 			// Gets the panels from the panels list, they are kept in order
 			for (int i = 0; i < 6; i++) {
-				initialPosition = finalPosition + 1;
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				_panelList.add(fileContent.substring(initialPosition,
-						finalPosition));
+				
+				_panelList.add(getProperty(fileContent));
 			}
 
 			// Gets the number of files of the project 46
-			initialPosition = finalPosition + 1;
-			finalPosition = fileContent.indexOf("\n", initialPosition);
-			String numFiles = fileContent.substring(initialPosition,
-					finalPosition);
-			initialPosition = finalPosition + 1;
+			
+			String numFiles = getProperty(fileContent);
+			
 
 			boolean isCompilableFile;
 			boolean isMainFile;
@@ -593,43 +487,31 @@ public class AcideProjectConfiguration {
 				AcideProjectFile file = new AcideProjectFile();
 
 				// Gets the absolute path 38
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				path = fileContent.substring(initialPosition, finalPosition);
-				initialPosition = finalPosition + 1;
+				path = getProperty(fileContent);
+
  
 				// Gets the name 39
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				name = fileContent.substring(initialPosition, finalPosition);
-				initialPosition = finalPosition + 1;
+				name = getProperty(fileContent);
+
 
 				// Gets the parent 40
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				parent = fileContent.substring(initialPosition, finalPosition);
-				initialPosition = finalPosition + 1;
+				parent = getProperty(fileContent);
+
 
 				// Gets the is directory flag 41
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				isDirectory = Boolean.parseBoolean(fileContent.substring(
-						initialPosition, finalPosition));
-				initialPosition = finalPosition + 1;
+				isDirectory = Boolean.parseBoolean(getProperty(fileContent));
+
 
 				// Gets the is compilable flag 42
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				isCompilableFile = Boolean.parseBoolean(fileContent.substring(
-						initialPosition, finalPosition));
-				initialPosition = finalPosition + 1;
+				isCompilableFile = Boolean.parseBoolean(getProperty(fileContent));
+
 
 				// Gets the is main flag 43
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				isMainFile = Boolean.parseBoolean(fileContent.substring(
-						initialPosition, finalPosition));
-				initialPosition = finalPosition + 1;
+				isMainFile = Boolean.parseBoolean(getProperty(fileContent));
 
 				// Gets the is opened flag 44
-				finalPosition = fileContent.indexOf("\n", initialPosition);
-				isOpened = Boolean.parseBoolean(fileContent.substring(
-						initialPosition, finalPosition));
-				initialPosition = finalPosition + 1;
+				isOpened = Boolean.parseBoolean(getProperty(fileContent));
+
 
 				// Updates the ACIDE - A Configurable IDE file with the info
 
@@ -1079,7 +961,7 @@ public class AcideProjectConfiguration {
 	 * Returns the index of the file from the file list which absolute path
 	 * matches with the path given as a parameter.
 	 * 
-	 * @param absolutePath
+	 * @param filePath
 	 *            absolute path to compare with.
 	 * 
 	 * @return the index of the file from the file list. If it is not at the
@@ -1552,7 +1434,7 @@ public class AcideProjectConfiguration {
 	 * Sets a new value to the ACIDE - A Configurable IDE project configuration
 	 * shell path.
 	 * 
-	 * @param shellPath
+	 * @param shellParameters
 	 *            new value to set.
 	 */
 	public void setShellParameters(String shellParameters) {
@@ -1959,7 +1841,7 @@ public class AcideProjectConfiguration {
 	 * Sets a new value for the ACIDE - A Configurable IDE window configuration
 	 * vertical files split pane divider location.
 	 * 
-	 * @param verticalFiles SplitPaneDividerLocation
+	 * @param verticalFilesSplitPaneDividerLocation SplitPaneDividerLocation
 	 *            new value to set.
 	 */
 	public void setVerticalFilesSplitPaneDividerLocation(
@@ -2124,7 +2006,12 @@ public class AcideProjectConfiguration {
 	}
 	
 	
-	
+	private String getProperty(String fileContent){
+		int finalPosition = fileContent.indexOf("\n", _position);
+		String property = fileContent.substring(_position, finalPosition);
+		_position = finalPosition + 1;
+		return property;
+	}
 	
 	
 	
