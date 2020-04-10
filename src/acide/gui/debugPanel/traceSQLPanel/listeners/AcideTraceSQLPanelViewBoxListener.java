@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,6 +49,7 @@ import javax.swing.tree.TreePath;
 
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
+import acide.gui.debugPanel.helpers.AcideDebugHelper;
 import acide.gui.debugPanel.traceSQLPanel.AcideTraceSQLPanel;
 import acide.gui.debugPanel.utils.TreeUtils;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
@@ -129,29 +130,13 @@ public class AcideTraceSQLPanelViewBoxListener implements ActionListener {
 							String query = AcideMainWindow.getInstance()
 									.getDebugPanel().getTraceSQLPanel()
 									.getCanvas().getRootNode().getLabel();
-							// gets the / separator
-							if(query.indexOf('/')>=0)
-								query = query.substring(0, query.lastIndexOf("/"));
-							// gets the tree of the database panel
-							AcideTree tree = AcideMainWindow.getInstance()
-									.getDataBasePanel().getTree();
-							// searches for the root node on the tree
-							TreePath path = TreeUtils
-									.searchForNode((TreeNode) tree.getModel()
-											.getRoot(), query);
-							// selects the node
-							if (path != null)
-								tree.setSelectionPath(path);
+							AcideDebugHelper.getRoot(query);
 						} catch (Exception e) {
-							
+							System.err.println(e);
 						}
-
 					}
 				}).start();
 			}
-
 		}
-
 	}
-
 }

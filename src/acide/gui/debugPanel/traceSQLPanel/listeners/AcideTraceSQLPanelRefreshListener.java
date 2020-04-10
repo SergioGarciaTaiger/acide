@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
+import acide.gui.debugPanel.helpers.AcideDebugHelper;
 import acide.gui.debugPanel.traceSQLPanel.AcideTraceSQLPanel;
 import acide.gui.graphCanvas.AcideGraphCanvas.CanvasPanel;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
@@ -72,31 +73,18 @@ public class AcideTraceSQLPanelRefreshListener implements ActionListener {
 		// Gets the trace SQL output for query
 		LinkedList<String> l = DesDatabaseManager.getInstance().executeCommand(
 				"/tapi /trace_sql " + consult);
-		String result = "";
+		StringBuilder result = new StringBuilder();
 		for (String s : l) {
-			result += s + "\n";
+			result.append(s).append("\n");
 		}
 		// Parses the result and generates the path graph (/pdg -> /rdg v0.17)
-		final Thread t = new Thread(new AcideDebugCanvasParseTask(result,
+		final Thread t = new Thread(new AcideDebugCanvasParseTask(result.toString(),
 				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
 						.getInstance().getDebugPanel().getTraceSQLPanel()
 						.getCanvas(), AcideDebugCanvasParseTask.DESTINY_PATH,consult,false));
-		t.start();
-		// Gets the RDG output for the query
-		try{
-		
-		l = DesDatabaseManager.getInstance().executeCommand(
-				"/tapi /rdg " + consult.substring(0, consult.lastIndexOf("(")>0?consult.lastIndexOf("("):consult.length()));
-		}
-		catch(Exception ie){
-			ie.printStackTrace();
-			}
-		result = "";
-		for (String s : l) {
-			result += s + "\n";
-		}
+		result = new StringBuilder(AcideDebugHelper.obtainSQLResult(t, result.toString(), l, consult));
 		// Parses the result and generates the graph (/pdg -> /rdg v0.17)
-		new Thread(new AcideDebugCanvasParseTask(result,
+		new Thread(new AcideDebugCanvasParseTask(result.toString(),
 				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
 						.getInstance().getDebugPanel().getTraceSQLPanel()
 						.getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))

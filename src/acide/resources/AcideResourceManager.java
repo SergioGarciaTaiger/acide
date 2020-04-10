@@ -171,8 +171,7 @@ public class AcideResourceManager {
 	 * @return String introduced with the correct file separators.
 	 * 
 	 */
-	public String replaceSeparators(String name)
-			{
+	public String replaceSeparators(String name) {
 
 		String value = name;	
 		
@@ -213,7 +212,6 @@ public class AcideResourceManager {
 					if (!value.contains(".") && !value.contains(".exe"))
 						value = value + ".exe";
 				}
-				
 			}
 			
 			

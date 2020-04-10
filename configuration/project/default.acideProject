@@ -1,5 +1,5 @@
 xd jaja saludos
-/Users/sergiogarciarodriguez/dev/Acide
+./configuration/project/default.acideProject
 /Users/sergiogarciarodriguez/dev/Acide/des
 ./des
 false
@@ -23,19 +23,19 @@ true
 true
 true
 true
-800
-600
-440
-204
-150
-150
-500
-350
-350
+1680
+944
+0
+23
+186
+186
+1289
+665
+525
 English
 ./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-./configuration/toolbar/default.toolbarConfig
+/Users/sergiogarciarodriguez/dev/Acide/./configuration/toolbar/des.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel

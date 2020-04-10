@@ -2,7 +2,7 @@
 name = consult
 action = consult($activeFile$).
 hintText = Consults the selected file
-icon = 
+icon =
 parameterType = NONE
 isExecutedInSytemShell = false
 
@@ -10,7 +10,7 @@ isExecutedInSytemShell = false
 name = listing
 action = listing.
 hintText = Lists the contents of the database
-icon = 
+icon =
 parameterType = NONE
 isExecutedInSytemShell = false
 
@@ -18,7 +18,7 @@ isExecutedInSytemShell = false
 name = shell
 action = shell.
 hintText = Opens an OS shell
-icon = 
+icon =
 parameterType = NONE
 isExecutedInSytemShell = false
 
@@ -26,7 +26,7 @@ isExecutedInSytemShell = false
 name = pwd
 action = working_directory(X,X).
 hintText = Displays the current folder
-icon = 
+icon =
 parameterType = NONE
 isExecutedInSytemShell = false
 
@@ -36,6 +36,6 @@ isExecutedInSytemShell = false
 name = Acrobat Reader
 path = C:\Archivos de programa\Adobe\Reader 10.0\Reader\AcroRd32.exe
 hintText = Launch the Acrobat Reader
-icon = 
+icon =
 
 // End Of External Applications Tool Bar Button Configuration
