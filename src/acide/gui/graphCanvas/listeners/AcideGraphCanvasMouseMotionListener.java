@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -82,55 +82,54 @@ public class AcideGraphCanvasMouseMotionListener implements MouseMotionListener 
 	 * if you have clicked on an empty area it moves the all the nodes of the graph.
 	 */
 	public void mouseDragged(MouseEvent ev) {
-			if(x!=-1 || y!=-1){
-				int difx=ev.getX()-x;
-				int dify=ev.getY()-y;
-				AcideGraphCanvas canvas = AcideGraphCanvas.getInstance();
-				DirectedWeightedGraph graph = canvas.get_graph();
-				ArrayList<Node> nodes = graph.get_nodes();
-				if(!_nodeClicked)
-					for(Node n:nodes){
-						//checks if the node is clicked
-						if(ev.getX()>=n.getX() && ev.getX()<=n.getX()+(int)(canvas.getNodeSize()*canvas.getZoom()) &&
-								ev.getY()>=n.getY() && ev.getY()<=n.getY()+(int)(canvas.getNodeSize()*canvas.getZoom())){
+		if(x!=-1 || y!=-1){
+			int difx=ev.getX()-x;
+			int dify=ev.getY()-y;
+			AcideGraphCanvas canvas = AcideGraphCanvas.getInstance();
+			DirectedWeightedGraph graph = canvas.get_graph();
+			ArrayList<Node> nodes = graph.get_nodes();
+			if(!_nodeClicked)
+				for(Node n:nodes){
+					//checks if the node is clicked
+					if(ev.getX()>=n.getX() && ev.getX()<=n.getX()+(int)(canvas.getNodeSize()*canvas.getZoom()) &&
+							ev.getY()>=n.getY() && ev.getY()<=n.getY()+(int)(canvas.getNodeSize()*canvas.getZoom())){
+						_selected = n;
+						_nodeClicked=true;
+						break;
+					}
+
+					//checks if the labels of the nodes are shown and if they are checks if the label is clicked
+					if(!_nodeClicked && canvas.isShowingLabels()){
+						Graphics g = canvas.getGraphics();
+						Rectangle2D rect = g.getFontMetrics().getStringBounds(n.getLabel(), g);
+						int posxRect=(int)n.getX()-(int)((rect.getWidth()/2-(canvas.getNodeSize()*canvas.getZoom())/2));
+						if(ev.getX()>=posxRect
+								&& ev.getX()<=posxRect+rect.getWidth()
+								&& ev.getY()>=(int)n.getY()- (5+(int)rect.getHeight())
+								&& ev.getY()<=n.getY()){
 							_selected = n;
 							_nodeClicked=true;
 							break;
 						}
-						
-						//checks if the labels of the nodes are shown and if they are checks if the label is clicked
-						if(!_nodeClicked && canvas.isShowingLabels()){
-							Graphics g = canvas.getGraphics();
-							Rectangle2D rect = g.getFontMetrics().getStringBounds(n.getLabel(), g);
-							int posxRect=(int)n.getX()-(int)((rect.getWidth()/2-(canvas.getNodeSize()*canvas.getZoom())/2));
-							if(ev.getX()>=posxRect
-									&& ev.getX()<=posxRect+rect.getWidth()
-									&& ev.getY()>=(int)n.getY()- (5+(int)rect.getHeight())
-									&& ev.getY()<=n.getY()){
-								_selected = n;
-								_nodeClicked=true;
-								break;
-							}
-						}
 					}
-				//moves the selected node.
-				if(_selected!=null)
-					_selected.move(difx,dify);
-				else
-					//moves all the nodes.
-					for(Node n:nodes)
-						n.move(difx, dify);
-				canvas.repaint();
-			}
-			//saves the new value of x and y coordinates.
-			x=ev.getX();
-			y=ev.getY();
-			try {
-				Thread.sleep(5);
-			} catch (InterruptedException e) {				
-				e.printStackTrace();
-			}
-		
+				}
+			//moves the selected node.
+			if(_selected!=null)
+				_selected.move(difx,dify);
+			else
+				//moves all the nodes.
+				for(Node n:nodes)
+					n.move(difx, dify);
+			canvas.repaint();
+		}
+		//saves the new value of x and y coordinates.
+		x=ev.getX();
+		y=ev.getY();
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

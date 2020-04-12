@@ -66,3 +66,5 @@
 10 abr 2020 11:59:45,327 [AWT-EventQueue-0] INFO  LogAcide - Initializing icons...
 10 abr 2020 11:59:45,328 [AWT-EventQueue-0] INFO  LogAcide - Icons created
 10 abr 2020 11:59:45,329 [AWT-EventQueue-0] INFO  LogAcide - Icons created
+12 abr 2020 15:46:20,335 [AWT-EventQueue-0] INFO  LogAcide - File save correctly: ./configuration/project/default.acideProject
+12 abr 2020 15:46:20,358 [AWT-EventQueue-0] INFO  LogAcide - Unable to kill des. Exit code: 1n

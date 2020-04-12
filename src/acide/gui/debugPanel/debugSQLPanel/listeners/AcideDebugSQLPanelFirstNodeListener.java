@@ -44,7 +44,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.helpers.AcideDebugHelper;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 
@@ -72,7 +72,7 @@ public class AcideDebugSQLPanelFirstNodeListener implements ActionListener {
 				selectedNode = canvas.getSelectedNode();
 				canvas.retardSelectedNode();
 			}while(!selectedNode.equals(canvas.getSelectedNode()));
-			AcideDebugHelper.updateCanvas(canvas);
+			AcideDebugHelper.updateCanvasDebug(canvas);
 		} catch (Exception ex) {
 			
 			AcideMainWindow.getInstance().getDebugPanel()

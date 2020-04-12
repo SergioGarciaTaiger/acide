@@ -42,20 +42,28 @@ package acide.gui.debugPanel.traceSQLPanel.listeners;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Enumeration;
 
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+
+import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
+import acide.gui.debugPanel.utils.AcideDebugPanelHighLighter;
+import acide.gui.debugPanel.utils.TreeUtils;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.language.AcideLanguageManager;
 
 /**
  *
- * ACIDE - A Configurable IDE trace SQL last node listener.
+ * ACIDE - A Configurable IDE trace SQL first node listener.
  *
- * @version 
+ * @version 0.16
  *
  */
-public class AcideTraceSQLPanelLastNodeListener implements ActionListener {
+public class AcideTraceSQLPanelNodeListener implements ActionListener {
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -70,7 +78,7 @@ public class AcideTraceSQLPanelLastNodeListener implements ActionListener {
 			Node selectedNode;
 			do{
 				selectedNode = canvas.getSelectedNode();
-				canvas.advanceSelectedNode();
+				canvas.retardSelectedNode();
 			}while(!selectedNode.equals(canvas.getSelectedNode()));
 			AcideDebugHelper.updateCanvasTrace(canvas);
 		} catch (Exception ex) {

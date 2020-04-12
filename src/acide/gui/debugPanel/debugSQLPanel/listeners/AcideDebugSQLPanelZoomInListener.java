@@ -52,7 +52,6 @@ import acide.gui.mainWindow.AcideMainWindow;
  * ACIDE - A Configurable IDE trace SQL panel zoom in listener.
  * 
  * @version 0.15
- * @see AcitonListener
  */
 public class AcideDebugSQLPanelZoomInListener implements ActionListener {
 

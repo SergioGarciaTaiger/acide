@@ -1,4 +1,4 @@
-package acide.gui.debugPanel.helpers;
+package acide.gui.debugPanel.utils;
 
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
@@ -16,14 +16,14 @@ import java.util.LinkedList;
 
 public class AcideDebugHelper {
 
-    public static void updateCanvas(AcideDebugCanvas canvas){
+    public static void updateCanvasDebug(AcideDebugCanvas canvas){
+        AcideDebugPanelHighLighter highLighter = AcideMainWindow
+                .getInstance().getDebugPanel().getDebugSQLPanel()
+                .getHighLighter();
         canvas.repaint();
         String selected = canvas.getSelectedNode().getLabel();
 
         // Updates the highlights
-        AcideDebugPanelHighLighter highLighter = AcideMainWindow
-                .getInstance().getDebugPanel().getDebugSQLPanel()
-                .getHighLighter();
         highLighter.resetLines();
         highLighter.unHighLight();
         highLighter.highLight(selected);
@@ -42,6 +42,34 @@ public class AcideDebugHelper {
                     .setCursor(Cursor.getDefaultCursor());
         }
     }
+
+    public static void updateCanvasTrace(AcideDebugCanvas canvas){
+        AcideDebugPanelHighLighter highLighter = AcideMainWindow
+                .getInstance().getDebugPanel().getTraceSQLPanel()
+                .getHighLighter();
+        canvas.repaint();
+        String selected = canvas.getSelectedNode().getLabel();
+
+        // Updates the highlights
+        highLighter.resetLines();
+        highLighter.unHighLight();
+        highLighter.highLight(selected);
+        if (AcideMainWindow.getInstance().getDebugPanel()
+                .getTraceSQLPanel().getShowSQLMenuItem().isSelected()) {
+            AcideMainWindow
+                    .getInstance()
+                    .getDebugPanel()
+                    .setCursor(
+                            Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            // Selects the node on the database panel tree
+            String query = canvas.getSelectedNode().getLabel();
+            query = query.substring(0, query.lastIndexOf("/"));
+            selectSQLTEXT(query);
+            AcideMainWindow.getInstance().getDebugPanel()
+                    .setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
 
     public static String obtainSQLResult(final Thread t, String result, LinkedList<String> l, String consult){
         t.start();
@@ -78,7 +106,7 @@ public class AcideDebugHelper {
         return tree;
     }
 
-    private static void selectSQLTEXT(String query) {
+    public static void selectSQLTEXT(String query) {
         AcideTree tree = AcideMainWindow.getInstance().getDataBasePanel()
                 .getTree();
         // Searches for the table/view node on the database tree
