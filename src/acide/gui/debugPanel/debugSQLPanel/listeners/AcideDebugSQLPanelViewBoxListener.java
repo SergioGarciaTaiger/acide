@@ -79,6 +79,8 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 		if (query != null) {
 			//enable the refresh button
 			AcideDebugSQLPanel.refreshSQL.setEnabled(true);
+			//enable the refresh button
+			AcideDebugSQLPanel.showView.setEnabled(true);
 			// Updates the query
 			AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel()
 					.setQuery(query);

@@ -1,5 +1,6 @@
 package acide.gui.debugPanel.utils;
 
+import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.utils.AcideDebugPanelHighLighter;
@@ -135,5 +136,13 @@ public class AcideDebugHelper {
             }
             tree.setSelectionPath(path);
         }
+    }
+
+    public static void getView(String view){
+        AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+
+        panelDv.setState(panelDv.NORMAL);
+        panelDv.setAlwaysOnTop(true);
+        panelDv.setAlwaysOnTop(false);
     }
 }

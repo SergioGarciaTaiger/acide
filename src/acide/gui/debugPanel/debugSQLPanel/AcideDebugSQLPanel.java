@@ -312,13 +312,6 @@ public class AcideDebugSQLPanel extends JPanel {
 		// Adds the listeners to the views combo box
 		_viewBox.addActionListener(new AcideDebugSQLPanelViewBoxListener());
 		_viewBox.addFocusListener(new FocusAdapter() {
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see
-			 * java.awt.event.FocusAdapter#focusGained(java.awt.event.FocusEvent
-			 * )
-			 */
 			@Override
 			public void focusGained(FocusEvent e) {
 
@@ -336,7 +329,7 @@ public class AcideDebugSQLPanel extends JPanel {
 					// Checks if the output is an error output
 					if (s.equals("$error")) {
 						// Resets the list of views
-						views = new ArrayList<String>();
+						views = new ArrayList<>();
 						views.add(AcideLanguageManager.getInstance()
 								.getLabels().getString("s2287"));
 						break;
@@ -361,7 +354,6 @@ public class AcideDebugSQLPanel extends JPanel {
 				// Puts the default cursor
 				// AcideDebugSQLPanel.acideWindow.setCursor(new
 				// Cursor(Cursor.DEFAULT_CURSOR));
-
 			}
 		});
 		subButtonPanel2.add(_viewBox);
