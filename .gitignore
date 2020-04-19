@@ -3,5 +3,5 @@
 *bin
 /log/
 .DS_Store
-/.idea*
+.idea*
 *ant
