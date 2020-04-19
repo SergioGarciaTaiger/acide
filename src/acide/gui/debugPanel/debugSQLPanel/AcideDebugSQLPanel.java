@@ -173,13 +173,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	 */
 	private final static ImageIcon REFRESH_IMAGE = new ImageIcon(
 			"./resources/icons/panels/refresh.png");
-
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel show view button icon
 	 */
 	private final static ImageIcon SHOW_VIEW = new ImageIcon(
 			"./resources/icons/dataBase/table.png");
-
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel refresh button
 	 */

@@ -79,6 +79,8 @@ public class AcideTraceSQLPanelViewBoxListener implements ActionListener {
 		if (query != null) {
 			//enable the refresh button
 			AcideTraceSQLPanel.refreshSQL.setEnabled(true);
+			//enable the show view button
+			AcideTraceSQLPanel.showView.setEnabled(true);
 			// Updates the query
 			AcideMainWindow.getInstance().getDebugPanel().getTraceSQLPanel()
 					.setQuery(query);
