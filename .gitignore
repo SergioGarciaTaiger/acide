@@ -1,7 +1,7 @@
-out/
+/out/
 *META-INF
 *bin
-log/
+/log/
 .DS_Store
-.idea*
+/.idea*
 *ant
