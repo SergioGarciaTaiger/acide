@@ -2,8 +2,6 @@ out*
 *META-INF
 *bin
 log*
-Acide.jar
 .DS_Store
-.idea/*
-*.class
+.idea*
 *ant
