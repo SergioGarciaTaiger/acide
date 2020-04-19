@@ -63,20 +63,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelFirstNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelColorNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelGrayNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelRedNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelGreenNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelLastNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelNexNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelPreviousNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelRefreshListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelShowLabelsListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelViewBoxListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomInListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomOutListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomSpinnerListener;
+import acide.gui.debugPanel.debugSQLPanel.listeners.*;
 import acide.gui.debugPanel.utils.AcideDebugPanelHighLighter;
 import acide.gui.graphUtils.DirectedWeightedGraph;
 import acide.gui.graphUtils.Node;
@@ -187,8 +174,21 @@ public class AcideDebugSQLPanel extends JPanel {
 	private final static ImageIcon REFRESH_IMAGE = new ImageIcon(
 			"./resources/icons/panels/refresh.png");
 
-	// builds the refresh button
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel show view button icon
+	 */
+	private final static ImageIcon SHOW_VIEW = new ImageIcon(
+			"./resources/icons/dataBase/table.png");
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel refresh button
+	 */
 	public static JButton refreshSQL = new JButton();
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel show view button
+	 */
+	public static JButton showView = new JButton();
 
 	public JPopupMenu _popUp = null;
 
@@ -240,6 +240,20 @@ public class AcideDebugSQLPanel extends JPanel {
 		refreshSQL.setEnabled(false);
 		// adds the refresh button
 		subButtonPanel1.add(refreshSQL);
+
+		showView.setIcon(SHOW_VIEW);
+		showView.setPreferredSize(new Dimension((int) (1.5 * showView
+				.getIcon().getIconWidth()), (int) showView.getPreferredSize()
+				.getHeight()));
+		// adds the action listener to the refresh button
+		showView.addActionListener(new AcideDebugSQLPanelShowViewListener());
+		// sets tooltip button
+		showView.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2323"));
+		// unable the button
+		showView.setEnabled(false);
+		// adds the refresh button
+		subButtonPanel1.add(showView);
 		// creates the spinner model for the zoom spinner
 		SpinnerModel model = new SpinnerNumberModel(
 				(int) _canvas.getZoom() * 100, 0, Integer.MAX_VALUE, 1);

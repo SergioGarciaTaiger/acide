@@ -1,6 +1,446 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b52af171-9448-48ba-9d26-4b40a052ba6c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowViewListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/Espa§ol.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/Espa§ol.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/Franáais.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/Franáais.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/language/AcideLanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/language/AcideLanguageManager.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="248" column="52" selection-start-line="248" selection-start-column="52" selection-end-line="248" selection-end-column="52" />
+              <folding>
+                <element signature="e#11604#13154#0" expanded="true" />
+                <element signature="e#11766#11774#0" expanded="true" />
+                <element signature="e#13153#13154#0" expanded="true" />
+                <element signature="e#15806#15807#0" expanded="true" />
+                <element signature="e#15827#15828#0" expanded="true" />
+                <element signature="e#16027#16028#0" expanded="true" />
+                <element signature="e#16050#16051#0" expanded="true" />
+                <element signature="e#16277#16278#0" expanded="true" />
+                <element signature="e#16299#16300#0" expanded="true" />
+                <element signature="e#16497#16498#0" expanded="true" />
+                <element signature="e#16522#16523#0" expanded="true" />
+                <element signature="e#16767#16768#0" expanded="true" />
+                <element signature="e#16793#16794#0" expanded="true" />
+                <element signature="e#17006#17007#0" expanded="true" />
+                <element signature="e#17039#17040#0" expanded="true" />
+                <element signature="e#17293#17294#0" expanded="true" />
+                <element signature="e#17326#17327#0" expanded="true" />
+                <element signature="e#17565#17566#0" expanded="true" />
+                <element signature="e#17617#17618#0" expanded="true" />
+                <element signature="e#17862#17863#0" expanded="true" />
+                <element signature="e#17892#17893#0" expanded="true" />
+                <element signature="e#18121#18122#0" expanded="true" />
+                <element signature="e#18168#18169#0" expanded="true" />
+                <element signature="e#18368#18369#0" expanded="true" />
+                <element signature="e#18388#18389#0" expanded="true" />
+                <element signature="e#18570#18571#0" expanded="true" />
+                <element signature="e#18596#18597#0" expanded="true" />
+                <element signature="e#18816#18817#0" expanded="true" />
+                <element signature="e#18842#18843#0" expanded="true" />
+                <element signature="e#19084#19085#0" expanded="true" />
+                <element signature="e#19122#19123#0" expanded="true" />
+                <element signature="e#21672#21673#0" expanded="true" />
+                <element signature="e#21703#21704#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowViewListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/menuBar/AcideMenuBar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/acide/language/AcideLanguageManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="280" column="8" lean-forward="true" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>setE</find>
+      <find>langua</find>
+    </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/language/English.properties" />
+        <option value="$PROJECT_DIR$/language/Franáais.properties" />
+        <option value="$PROJECT_DIR$/language/Espa§ol.properties" />
+        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowViewListener.java" />
+        <option value="$PROJECT_DIR$/src/acide/language/AcideLanguageManager.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="language" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="debugPanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="debugPanel" type="462c0819:PsiDirectoryNode" />
+              <item name="debugSQLPanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="acide.gui.debugPanel.debugSQLPanel.listeners" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="870000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="944" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27106228" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298122" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286385" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39906102" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32981133" />
+      <window_info anchor="bottom" id="Duplicates" order="13" weight="0.3298122" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27106228" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298122" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3286385" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39906102" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Docker" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32981133" />
+      <window_info anchor="bottom" id="Duplicates" order="13" weight="0.3298122" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelRefreshListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="74" column="31" selection-start-line="74" selection-start-column="31" selection-end-line="74" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDataBaseDataViewTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="405" selection-start-line="405" selection-end-line="405" />
+          <folding>
+            <element signature="method#processKeyBinding#0;class#AcideDataBaseDataViewTable#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4044">
+          <caret line="573" column="30" selection-start-line="573" selection-start-column="30" selection-end-line="573" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleOutputProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="571" selection-start-line="571" selection-end-line="571" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/resources/AcideResourceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="145" selection-start-line="145" selection-end-line="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/Franáais.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="1158" column="9" selection-start-line="1158" selection-start-column="9" selection-end-line="1158" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/Espa§ol.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="1158" column="21" selection-start-line="1158" selection-start-column="21" selection-end-line="1158" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="248" column="52" selection-start-line="248" selection-start-column="52" selection-end-line="248" selection-end-column="52" />
+          <folding>
+            <element signature="e#11604#13154#0" expanded="true" />
+            <element signature="e#11766#11774#0" expanded="true" />
+            <element signature="e#13153#13154#0" expanded="true" />
+            <element signature="e#15806#15807#0" expanded="true" />
+            <element signature="e#15827#15828#0" expanded="true" />
+            <element signature="e#16027#16028#0" expanded="true" />
+            <element signature="e#16050#16051#0" expanded="true" />
+            <element signature="e#16277#16278#0" expanded="true" />
+            <element signature="e#16299#16300#0" expanded="true" />
+            <element signature="e#16497#16498#0" expanded="true" />
+            <element signature="e#16522#16523#0" expanded="true" />
+            <element signature="e#16767#16768#0" expanded="true" />
+            <element signature="e#16793#16794#0" expanded="true" />
+            <element signature="e#17006#17007#0" expanded="true" />
+            <element signature="e#17039#17040#0" expanded="true" />
+            <element signature="e#17293#17294#0" expanded="true" />
+            <element signature="e#17326#17327#0" expanded="true" />
+            <element signature="e#17565#17566#0" expanded="true" />
+            <element signature="e#17617#17618#0" expanded="true" />
+            <element signature="e#17862#17863#0" expanded="true" />
+            <element signature="e#17892#17893#0" expanded="true" />
+            <element signature="e#18121#18122#0" expanded="true" />
+            <element signature="e#18168#18169#0" expanded="true" />
+            <element signature="e#18368#18369#0" expanded="true" />
+            <element signature="e#18388#18389#0" expanded="true" />
+            <element signature="e#18570#18571#0" expanded="true" />
+            <element signature="e#18596#18597#0" expanded="true" />
+            <element signature="e#18816#18817#0" expanded="true" />
+            <element signature="e#18842#18843#0" expanded="true" />
+            <element signature="e#19084#19085#0" expanded="true" />
+            <element signature="e#19122#19123#0" expanded="true" />
+            <element signature="e#21672#21673#0" expanded="true" />
+            <element signature="e#21703#21704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/language/English.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="1158" selection-start-line="1158" selection-end-line="1158" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowViewListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/menuBar/AcideMenuBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/language/AcideLanguageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="280" column="8" lean-forward="true" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
