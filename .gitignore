@@ -1,7 +1,0 @@
-out/
-*META-INF
-*bin
-log/
-.DS_Store
-.idea*
-*ant
