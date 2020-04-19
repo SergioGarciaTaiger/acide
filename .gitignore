@@ -3,6 +3,6 @@
 *bin
 /log/
 .DS_Store
-.idea*
+.idea/workspace.xml
 *ant
 *.class
