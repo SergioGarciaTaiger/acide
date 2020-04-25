@@ -137,6 +137,10 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
 	private JMenuItem _colorNodeGray;
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
+	 */
+	private JMenuItem _colorNodeOrange;
 	
 	/**
 	 * ACIDE - A Configurable IDE debug datalog panel to the first button icon
@@ -581,7 +585,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		_popUp.add(_colorNodeGray);				
 		// Option non valid node
 		_colorNodeRed = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
-		_colorNodeRed.addActionListener(new AcideDebugSQLPanelRedNodeListener());
+		_colorNodeRed.addActionListener(new AcideDebugSQLPanelOrangeNodeListener());
 		_popUp.add(_colorNodeRed);
 		// option valid node
 		_colorNodeGreen = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
@@ -590,6 +594,9 @@ public class AcideDebugSQLPanel extends JPanel {
 		// option change comun color nodes
 		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2321"));
 		_colorNode.addActionListener(new AcideDebugSQLPanelColorNodeListener());
+		_popUp.add(_colorNode);
+		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
+		_colorNode.addActionListener(new AcideDebugSQLPanelRedNodeListener());
 		_popUp.add(_colorNode);
 	}
 

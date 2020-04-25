@@ -7,20 +7,10 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>/Users/sergiogarciarodriguez/dev/Acide/examples/e5.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
+            <__caretPosition>476</__caretPosition>
             <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
-            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
-            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
-          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-            <__path>/Users/sergiogarciarodriguez/dev/Acide/examples/e4trust.sql</__path>
-            <__type>Normal</__type>
-            <__caretPosition>0</__caretPosition>
-            <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
-            <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
+            <__lexiconConfiguration>/Users/sergiogarciarodriguez/dev/Acide/./configuration/lexicon/sql.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>

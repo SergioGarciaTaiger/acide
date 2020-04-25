@@ -115,11 +115,6 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 			if (AcideMainWindow.getInstance().getDebugPanel()
 					.getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
 				new Thread(new Runnable() {
-					/*
-					 * (non-Javadoc)
-					 * 
-					 * @see java.lang.Runnable#run()
-					 */
 					@Override
 					public void run() {
 						try {

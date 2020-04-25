@@ -51,18 +51,11 @@ import acide.gui.mainWindow.AcideMainWindow;
 /**
  * ACIDE - A Configurable IDE trace SQL color node listener.
  * 
- * @see AcitonListener
+ * @see ActionListener
  * @version 0.17
  * 
  */
 public class AcideDebugSQLPanelRedNodeListener implements ActionListener {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
