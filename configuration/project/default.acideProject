@@ -27,11 +27,11 @@ true
 944
 0
 23
-339
-228
-1245
-511
-466
+396
+189
+1185
+332
+649
 English
 ./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
@@ -42,4 +42,11 @@ AcideDataBasePanel
 AcideConsolePanel
 AcideGraphPanel
 AcideDebugPanel
-0
+1
+/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql
+debug.sql
+debug sql project
+false
+true
+false
+true

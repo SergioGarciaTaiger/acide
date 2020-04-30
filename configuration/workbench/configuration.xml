@@ -5,9 +5,9 @@
       <__list>
         <__list>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-            <__path>/Users/sergiogarciarodriguez/dev/Acide/examples/e5.sql</__path>
-            <__type>Normal</__type>
-            <__caretPosition>476</__caretPosition>
+            <__path>/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql</__path>
+            <__type>Compilable</__type>
+            <__caretPosition>154</__caretPosition>
             <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>/Users/sergiogarciarodriguez/dev/Acide/./configuration/lexicon/sql.xml</__lexiconConfiguration>
@@ -17,7 +17,7 @@
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>e5.sql</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>debug.sql</__selectedFileEditorPanelName>
     <__fontName>Monospaced</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>
@@ -42,7 +42,7 @@
     <__spaceSelected>false</__spaceSelected>
   </__fileEditorConfiguration>
   <__consolePanelConfiguration>
-    <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
+    <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
     <__commandsConfiguration>./configuration/console/default.xml</__commandsConfiguration>
     <__lineWrapping>true</__lineWrapping>
   </__consolePanelConfiguration>
@@ -52,19 +52,20 @@
         <__list/>
       </__list>
     </__list>
-    <__consoleLexiconConfiguration>./configuration/lexicon/default.xml</__consoleLexiconConfiguration>
+    <__consoleLexiconConfiguration>./configuration/lexicon/console.xml</__consoleLexiconConfiguration>
     <__applyLexiconToConsole>false</__applyLexiconToConsole>
   </__lexiconAssignerConfiguration>
   <__recentFilesConfiguration>
     <__list>
-      <string>/Users/sergiogarciarodriguez/dev/Acide/examples/e5.sql</string>
-      <string>/Users/sergiogarciarodriguez/dev/Acide/examples/e4trust.sql</string>
+      <string>/Users/sergiogarciarodriguez/dev/Acide/examples/debug.sql</string>
+      <string>debug.sql</string>
     </__list>
   </__recentFilesConfiguration>
   <__recentProjectsConfiguration>
     <__list>
-      <string>/Users/sergiogarciarodriguez/dev/Acide/Prueba.acideProject</string>
-      <string>/Users/sergiogarciarodriguez/dev/Acide/primer_proyecto.acideProject</string>
+      <string>/Users/sergiogarciarodriguez/dev/Acide/configuration/project/default.acideProject</string>
+      <string>/Users/sergiogarciarodriguez/dev/Acide/./configuration/project/mac.acideProject</string>
+      <string>/Users/sergiogarciarodriguez/dev/Acide/mac.acideProject</string>
     </__list>
   </__recentProjectsConfiguration>
 </acide.configuration.workbench.AcideWorkbenchConfiguration>
