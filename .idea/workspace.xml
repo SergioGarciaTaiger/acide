@@ -7,24 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bff6704-a247-4e48-b2c2-c49877fabd7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugConfigurationView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelConfigureDebugListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Acide.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Acide.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/V23_Acide0_17Exe.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/configuration.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/project/default.acideProject" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/project/default.acideProject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/workbench/configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/workbench/configuration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/empTraining.sql" beforeDir="false" afterPath="$PROJECT_DIR$/examples/empTraining.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/language/English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/English.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/language/Espa§ol.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/Español.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/language/Franáais.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/Français.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelGreenNodeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelGreenNodeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelViewBoxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelViewBoxListener.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,9 +25,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="711" column="17" selection-start-line="711" selection-start-column="17" selection-end-line="711" selection-end-column="17" />
+            <state relative-caret-position="643">
+              <caret line="560" column="35" lean-forward="true" selection-start-line="560" selection-start-column="35" selection-end-line="560" selection-end-column="35" />
               <folding>
+                <element signature="e#22107#22108#0" expanded="true" />
+                <element signature="e#22130#22131#0" expanded="true" />
+                <element signature="e#23860#23861#0" expanded="true" />
                 <element signature="e#23898#23899#0" expanded="true" />
               </folding>
             </state>
@@ -53,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugConfigurationView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="300">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,7 +74,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/acide/gui/fileEditor/fileEditorManager/AcideFileEditorManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
+            <state relative-caret-position="3390">
               <caret line="300" selection-start-line="300" selection-end-line="300" />
             </state>
           </provider>
@@ -96,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/utils/AcideFileEditorLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="1035">
               <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
@@ -223,6 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -286,7 +274,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -371,12 +358,13 @@
       <workItem from="1585639118745" duration="157000" />
       <workItem from="1586415701445" duration="16266000" />
       <workItem from="1586855308318" duration="18069000" />
-      <workItem from="1588143084873" duration="10284000" />
+      <workItem from="1588143084873" duration="11378000" />
+      <workItem from="1588296567297" duration="614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74991000" />
+    <option name="totallyTimeSpent" value="76699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,10 +376,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="944" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="944" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2741148" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -410,7 +398,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Docker" order="11" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.3286385" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3286385" />
       <window_info anchor="bottom" id="Duplicates" order="13" weight="0.3298122" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -878,7 +866,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java</url>
-          <line>710</line>
+          <line>705</line>
           <properties />
           <option name="timeStamp" value="164" />
         </line-breakpoint>
@@ -1237,6 +1225,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugConfigurationView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowViewListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1244,13 +1242,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugConfigurationView.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/fileEditor/fileEditorManager/AcideFileEditorManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="3390">
+          <caret line="300" selection-start-line="300" selection-end-line="300" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/utils/AcideFileEditorLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1035">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
@@ -1265,25 +1267,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/fileEditor/fileEditorManager/AcideFileEditorManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/utils/AcideFileEditorLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="711" column="17" selection-start-line="711" selection-start-column="17" selection-end-line="711" selection-end-column="17" />
+        <state relative-caret-position="643">
+          <caret line="560" column="35" lean-forward="true" selection-start-line="560" selection-start-column="35" selection-end-line="560" selection-end-column="35" />
           <folding>
+            <element signature="e#22107#22108#0" expanded="true" />
+            <element signature="e#22130#22131#0" expanded="true" />
+            <element signature="e#23860#23861#0" expanded="true" />
             <element signature="e#23898#23899#0" expanded="true" />
           </folding>
         </state>

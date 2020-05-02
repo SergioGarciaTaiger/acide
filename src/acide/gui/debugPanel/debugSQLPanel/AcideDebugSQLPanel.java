@@ -654,7 +654,6 @@ public class AcideDebugSQLPanel extends JPanel {
 
 	public void this_mousePressed(MouseEvent e) {
 		showPopupMenu(e);
-
 	}
 
 	
@@ -681,19 +680,15 @@ public class AcideDebugSQLPanel extends JPanel {
 				highLighter.unHighLight();
 				// Highlights the lines corresponding to the new selected node
 				highLighter.highLight(selected);
-				
-				}
+			}
 		}
-	
 	}
 
 	private void showPopupMenu(MouseEvent e) {
-
 		if (e.isPopupTrigger()) { 
 			// we show the popUp in the position of mouse
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
 		}
-
 	}
 
 	class AcideDegugSQLPanelClickListener extends MouseAdapter {
@@ -723,10 +718,8 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * Sets the ACIDE - A Configurable IDE database panel listeners.
 	 */
 	private void setListeners() {
-
 		// Sets the ACIDE - A Configurable IDE database panel _popUp menu listener
 		_canvas.addMouseListener(new AcideDegugSQLPanelClickListener(this));
-				
 	}
 
 }
