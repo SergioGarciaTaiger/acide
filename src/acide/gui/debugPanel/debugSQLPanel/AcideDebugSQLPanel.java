@@ -300,7 +300,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				.getIcon().getIconWidth()), (int) configurationDebug.getPreferredSize()
 				.getHeight()));
 		// adds the action listener to the refresh button
-		configurationDebug.addActionListener(new AcideDebugSQLPanelShowViewListener());
+		configurationDebug.addActionListener(new AcideDebugSQLPanelConfigureDebugListener());
 		// sets tooltip button
 		configurationDebug.setToolTipText(AcideLanguageManager.getInstance()
 				.getLabels().getString("s2326"));

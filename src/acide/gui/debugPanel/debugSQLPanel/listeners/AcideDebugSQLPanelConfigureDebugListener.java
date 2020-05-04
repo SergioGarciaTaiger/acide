@@ -1,7 +1,6 @@
 package acide.gui.debugPanel.debugSQLPanel.listeners;
 
-import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.utils.AcideDebugHelper;
+import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfigurationWindow;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import java.awt.*;
@@ -12,8 +11,8 @@ public class AcideDebugSQLPanelConfigureDebugListener implements ActionListener 
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-
-
+            // Shows the new project configuration window
+            AcideDebugConfigurationWindow.getInstance().showWindow();
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()
                     .setCursor(Cursor.getDefaultCursor());

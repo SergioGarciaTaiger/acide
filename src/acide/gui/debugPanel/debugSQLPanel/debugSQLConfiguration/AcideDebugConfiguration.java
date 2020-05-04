@@ -1,4 +1,4 @@
-package acide.gui.debugPanel.debugSQLPanel;
+package acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration;
 
 public class AcideDebugConfiguration {
 
@@ -45,6 +45,10 @@ public class AcideDebugConfiguration {
         if(oracle_file == null || oracle_file.isEmpty())
             configuration += "oracle_file(" + oracle_file + ") ";
         return configuration;
+    }
+
+    public void saveConfiguration(AcideDebugConfiguration configuration){
+        instance = configuration;
     }
 
     public Trust_tables getTrust_tables() {
