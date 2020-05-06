@@ -267,10 +267,10 @@ public class AcideProjectConfiguration {
 		_isFirstSave = false;
 		
 		// Creates the file list
-		_fileList = new ArrayList<AcideProjectFile>();
+		_fileList = new ArrayList<>();
 		
 		// Creates the panels list
-		_panelList = new ArrayList<String>();
+		_panelList = new ArrayList<>();
 	}
 
 	/**

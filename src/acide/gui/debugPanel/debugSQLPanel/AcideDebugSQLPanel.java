@@ -63,20 +63,8 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelFirstNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelColorNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelGrayNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelRedNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelGreenNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelLastNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelNexNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelPreviousNodeListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelRefreshListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelShowLabelsListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelViewBoxListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomInListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomOutListener;
-import acide.gui.debugPanel.debugSQLPanel.listeners.AcideDebugSQLPanelZoomSpinnerListener;
+import acide.gui.debugPanel.debugSQLPanel.listeners.*;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.debugPanel.utils.AcideDebugPanelHighLighter;
 import acide.gui.graphUtils.DirectedWeightedGraph;
 import acide.gui.graphUtils.Node;
@@ -150,6 +138,10 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
 	private JMenuItem _colorNodeGray;
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
+	 */
+	private JMenuItem _colorNodeOrange;
 	
 	/**
 	 * ACIDE - A Configurable IDE debug datalog panel to the first button icon
@@ -186,9 +178,42 @@ public class AcideDebugSQLPanel extends JPanel {
 	 */
 	private final static ImageIcon REFRESH_IMAGE = new ImageIcon(
 			"./resources/icons/panels/refresh.png");
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel show view button icon
+	 */
+	private final static ImageIcon SHOW_VIEW = new ImageIcon(
+			"./resources/icons/dataBase/table.png");
 
-	// builds the refresh button
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel start debug button icon
+	 */
+	private final static ImageIcon START_DEBUG = new ImageIcon(
+			"./resources/icons/editor/compilable.png");
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel configure button icon
+	 */
+	private final static ImageIcon CONFIGURE_DEBUG = new ImageIcon(
+			"./resources/icons/menu/configuration/console/configure.png");
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel refresh button
+	 */
 	public static JButton refreshSQL = new JButton();
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel show view button
+	 */
+	public static JButton showView = new JButton();
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel show view button
+	 */
+	public static JButton startDebug = new JButton();
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel configuration debug button
+	 */
+	public static JButton configurationDebug = new JButton();
 
 	public JPopupMenu _popUp = null;
 
@@ -211,7 +236,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		//Inits the popUp panel
 		popUpInit();
 
-		}
+	}
 
 	/**
 	 * Builds the buttons for the ACIDE - A Configurable IDE debug SQL panel.
@@ -240,6 +265,49 @@ public class AcideDebugSQLPanel extends JPanel {
 		refreshSQL.setEnabled(false);
 		// adds the refresh button
 		subButtonPanel1.add(refreshSQL);
+
+		showView.setIcon(SHOW_VIEW);
+		showView.setPreferredSize(new Dimension((int) (1.5 * showView
+				.getIcon().getIconWidth()), (int) showView.getPreferredSize()
+				.getHeight()));
+		// adds the action listener to the refresh button
+		showView.addActionListener(new AcideDebugSQLPanelShowViewListener());
+		// sets tooltip button
+		showView.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2323"));
+		// unable the button
+		showView.setEnabled(false);
+		// adds the refresh button
+		subButtonPanel1.add(showView);
+
+		startDebug.setIcon(START_DEBUG);
+		startDebug.setPreferredSize(new Dimension((int) (1.7 * startDebug
+				.getIcon().getIconWidth()), (int) startDebug.getPreferredSize()
+				.getHeight()));
+		// adds the action listener to the refresh button
+		startDebug.addActionListener(new AcideDebugSQLPanelStartDebugListener());
+		// sets tooltip button
+		startDebug.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2325"));
+		// unable the button
+		startDebug.setEnabled(false);
+		// adds the refresh button
+		subButtonPanel1.add(startDebug);
+
+		//DEBUG CONG
+		configurationDebug.setIcon(CONFIGURE_DEBUG);
+		configurationDebug.setPreferredSize(new Dimension((int) (1.7 * configurationDebug
+				.getIcon().getIconWidth()), (int) configurationDebug.getPreferredSize()
+				.getHeight()));
+		// adds the action listener to the refresh button
+		configurationDebug.addActionListener(new AcideDebugSQLPanelConfigureDebugListener());
+		// sets tooltip button
+		configurationDebug.setToolTipText(AcideLanguageManager.getInstance()
+				.getLabels().getString("s2326"));
+		// unable the button
+		configurationDebug.setEnabled(true);
+		// adds the refresh button
+		subButtonPanel1.add(configurationDebug);
 		// creates the spinner model for the zoom spinner
 		SpinnerModel model = new SpinnerNumberModel(
 				(int) _canvas.getZoom() * 100, 0, Integer.MAX_VALUE, 1);
@@ -298,13 +366,6 @@ public class AcideDebugSQLPanel extends JPanel {
 		// Adds the listeners to the views combo box
 		_viewBox.addActionListener(new AcideDebugSQLPanelViewBoxListener());
 		_viewBox.addFocusListener(new FocusAdapter() {
-			/*
-			 * (non-Javadoc)
-			 * 
-			 * @see
-			 * java.awt.event.FocusAdapter#focusGained(java.awt.event.FocusEvent
-			 * )
-			 */
 			@Override
 			public void focusGained(FocusEvent e) {
 
@@ -322,7 +383,7 @@ public class AcideDebugSQLPanel extends JPanel {
 					// Checks if the output is an error output
 					if (s.equals("$error")) {
 						// Resets the list of views
-						views = new ArrayList<String>();
+						views = new ArrayList<>();
 						views.add(AcideLanguageManager.getInstance()
 								.getLabels().getString("s2287"));
 						break;
@@ -347,7 +408,6 @@ public class AcideDebugSQLPanel extends JPanel {
 				// Puts the default cursor
 				// AcideDebugSQLPanel.acideWindow.setCursor(new
 				// Cursor(Cursor.DEFAULT_CURSOR));
-
 			}
 		});
 		subButtonPanel2.add(_viewBox);
@@ -577,7 +637,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		_popUp.add(_colorNodeGray);				
 		// Option non valid node
 		_colorNodeRed = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
-		_colorNodeRed.addActionListener(new AcideDebugSQLPanelRedNodeListener());
+		_colorNodeRed.addActionListener(new AcideDebugSQLPanelOrangeNodeListener());
 		_popUp.add(_colorNodeRed);
 		// option valid node
 		_colorNodeGreen = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
@@ -587,11 +647,13 @@ public class AcideDebugSQLPanel extends JPanel {
 		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2321"));
 		_colorNode.addActionListener(new AcideDebugSQLPanelColorNodeListener());
 		_popUp.add(_colorNode);
+		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
+		_colorNode.addActionListener(new AcideDebugSQLPanelRedNodeListener());
+		_popUp.add(_colorNode);
 	}
 
 	public void this_mousePressed(MouseEvent e) {
 		showPopupMenu(e);
-
 	}
 
 	
@@ -618,19 +680,15 @@ public class AcideDebugSQLPanel extends JPanel {
 				highLighter.unHighLight();
 				// Highlights the lines corresponding to the new selected node
 				highLighter.highLight(selected);
-				
-				}
+			}
 		}
-	
 	}
 
 	private void showPopupMenu(MouseEvent e) {
-
 		if (e.isPopupTrigger()) { 
 			// we show the popUp in the position of mouse
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
 		}
-
 	}
 
 	class AcideDegugSQLPanelClickListener extends MouseAdapter {
@@ -641,6 +699,13 @@ public class AcideDebugSQLPanel extends JPanel {
 		}
 
 		public void mousePressed(MouseEvent e) {
+			if(e.getClickCount() >= 2) {
+				String view;
+				if(_canvas.getSelectedNode().getLabel().contains("/")) {
+					view = _canvas.getSelectedNode().getLabel().split("/")[0];
+					AcideDebugHelper.getView(view);
+				}
+			}
 			adaptee.this_mousePressed(e);
 		}
 
@@ -653,10 +718,8 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * Sets the ACIDE - A Configurable IDE database panel listeners.
 	 */
 	private void setListeners() {
-
 		// Sets the ACIDE - A Configurable IDE database panel _popUp menu listener
 		_canvas.addMouseListener(new AcideDegugSQLPanelClickListener(this));
-				
 	}
 
 }

@@ -44,14 +44,10 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import javax.swing.JComboBox;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 
-import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
-import acide.gui.debugPanel.helpers.AcideDebugHelper;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.debugPanel.traceSQLPanel.AcideTraceSQLPanel;
-import acide.gui.debugPanel.utils.TreeUtils;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.process.console.DesDatabaseManager;
@@ -83,6 +79,8 @@ public class AcideTraceSQLPanelViewBoxListener implements ActionListener {
 		if (query != null) {
 			//enable the refresh button
 			AcideTraceSQLPanel.refreshSQL.setEnabled(true);
+			//enable the show view button
+			AcideTraceSQLPanel.showView.setEnabled(true);
 			// Updates the query
 			AcideMainWindow.getInstance().getDebugPanel().getTraceSQLPanel()
 					.setQuery(query);

@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -43,21 +43,15 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.LinkedList;
 
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
-import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugCanvas.traceDatalogDataView.AcideTraceDatalogDataView;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.debugPanel.utils.AcideDebugPanelHighLighter;
-import acide.gui.debugPanel.utils.TreeUtils;
 import acide.gui.graphUtils.DirectedWeightedGraph;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
-import acide.language.AcideLanguageManager;
 import acide.process.console.AcideDatabaseManager;
 
 /**
@@ -150,11 +144,10 @@ public class AcideDebugCanvasMouseListener extends MouseAdapter {
 						.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 						String query = _canvas.getSelectedNode().getLabel();
 						query = query.substring(0, query.lastIndexOf("/"));
-						selectSQLTEXT(query);
+						AcideDebugHelper.selectSQLTEXT(query);
 						AcideMainWindow.getInstance().getDebugPanel()
 						.setCursor(Cursor.getDefaultCursor());
 					}
-
 				}
 			}
 		}
@@ -383,7 +376,7 @@ public class AcideDebugCanvasMouseListener extends MouseAdapter {
 									.getDataView(database, query);
 						}
 					}
-					selectSQLTEXT(query);
+					AcideDebugHelper.selectSQLTEXT(query);
 
 				}
 				// updates the cursor
@@ -444,32 +437,4 @@ public class AcideDebugCanvasMouseListener extends MouseAdapter {
 		}
 		return result;
 	}
-
-	private void selectSQLTEXT(String query){
-		AcideTree tree = AcideMainWindow.getInstance()
-				.getDataBasePanel().getTree();
-		// Searches for the table/view node on the database tree
-		TreePath path = TreeUtils.searchForNodeV2((TreeNode) tree.getModel()
-				.getRoot(), query,tree,new TreePath((TreeNode) tree.getModel()
-				.getRoot()),true);						
-		if(path!=null){
-			TreeNode node = (TreeNode) path.getLastPathComponent();
-			tree.setSelectionPath(path);
-			// Searches for the child node SQL Text on the children of the node (only for views)
-			Enumeration<TreeNode> e = node.children();
-			while (e.hasMoreElements()){
-				TreeNode node2 = e.nextElement();
-				if(node2.toString().equals(AcideLanguageManager.getInstance().getLabels().getString("s2036"))){
-					path = path.pathByAddingChild(node2);
-					// Adds the child node of the SQL Text node with the sql definition of the view
-					if(!node2.isLeaf()){
-						tree.setSelectionPath(path);
-						path = path.pathByAddingChild(node2.getChildAt(0));
-					}
-				}
-			}
-			tree.setSelectionPath(path);
-		}
-	}
-	
 }

@@ -248,6 +248,10 @@ public class AcideDebugCanvas extends AcideGraphCanvas {
 	 */
 	@Override
 	public void paint(Graphics gorig) {
+		if(_width <= 1 || _height <= 1){
+			_width = 1024;
+			_height = 728;
+		}
 		// creates a new image with the dimension of the canvas
 		Image image = new BufferedImage(_width, _height,
 				BufferedImage.TYPE_INT_ARGB);

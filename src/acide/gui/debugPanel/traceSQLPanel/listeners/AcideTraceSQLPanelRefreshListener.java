@@ -44,7 +44,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
-import acide.gui.debugPanel.helpers.AcideDebugHelper;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.debugPanel.traceSQLPanel.AcideTraceSQLPanel;
 import acide.gui.graphCanvas.AcideGraphCanvas.CanvasPanel;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
@@ -90,6 +90,6 @@ public class AcideTraceSQLPanelRefreshListener implements ActionListener {
 						.getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
 				.start();
 		AcideTraceSQLPanel._canvas.setZoom(1, CanvasPanel.TraceSQL);
-		}
+	}
 
 }

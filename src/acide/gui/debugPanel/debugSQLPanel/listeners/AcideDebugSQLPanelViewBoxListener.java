@@ -44,14 +44,10 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 import javax.swing.JComboBox;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
 
-import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
-import acide.gui.debugPanel.helpers.AcideDebugHelper;
-import acide.gui.debugPanel.utils.TreeUtils;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.process.console.DesDatabaseManager;
@@ -83,6 +79,10 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 		if (query != null) {
 			//enable the refresh button
 			AcideDebugSQLPanel.refreshSQL.setEnabled(true);
+			//enable the refresh button
+			AcideDebugSQLPanel.showView.setEnabled(true);
+			//enable start debug button
+			AcideDebugSQLPanel.startDebug.setEnabled(true);
 			// Updates the query
 			AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel()
 					.setQuery(query);
@@ -117,11 +117,6 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 			if (AcideMainWindow.getInstance().getDebugPanel()
 					.getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
 				new Thread(new Runnable() {
-					/*
-					 * (non-Javadoc)
-					 * 
-					 * @see java.lang.Runnable#run()
-					 */
 					@Override
 					public void run() {
 						try {
