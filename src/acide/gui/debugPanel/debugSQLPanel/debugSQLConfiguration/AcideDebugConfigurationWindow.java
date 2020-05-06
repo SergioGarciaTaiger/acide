@@ -170,7 +170,10 @@ public class AcideDebugConfigurationWindow extends JFrame {
     }
 
     private void setListeners() {
-
+        browseTrustFileButton.addActionListener(new Trust_fileButtonAction());
+        browseOracleFileButton.addActionListener(new Oracle_fileButtonAction());
+        defaultConfigurationButton.addActionListener(new SetDefaultAction());
+        saveCondigurationButton.addActionListener(new SaveAction());
     }
 
     private void addComponents() {
@@ -218,7 +221,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
         mainPanel.add(trust_fileTextField, constraints);
 
         constraints.gridx = 2;
-        constraints.ipadx = 50;
+        constraints.ipadx = 20;
         constraints.ipady = 3;
 
         // Adds the name text field to the main panel
@@ -239,7 +242,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
         mainPanel.add(oracle_fileTextField, constraints);
 
         constraints.gridx = 2;
-        constraints.ipadx = 50;
+        constraints.ipadx = 20;
         constraints.ipady = 3;
 
         // Adds the name text field to the main panel
@@ -306,7 +309,6 @@ public class AcideDebugConfigurationWindow extends JFrame {
         // Adds the button panel to the window
         add(buttonPanel, constraints);
 
-
         // Sets the window closing listener
         addWindowListener(new AcideWindowClosingListener());
 
@@ -370,7 +372,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
         if(configuration.getOrder().equals(AcideDebugConfiguration.Order.CARDINALITY))
             orderCardinalityRadio.setSelected(true);
         else
-            orderCardinalityRadio.setSelected(true);
+            orderTopDownRadio.setSelected(true);
 
         // Empties the name text field
         trust_fileTextField.setText(configuration.getTrust_file());
@@ -489,6 +491,66 @@ public class AcideDebugConfigurationWindow extends JFrame {
         public void actionPerformed(ActionEvent actionEvent) {
             // Closes the window
             closeWindow();
+        }
+    }
+
+    class SaveAction extends AbstractAction{
+        /**
+         * Escape key action serial version UID.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
+         * )
+         */
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            if(trust_tablesYesRadio.isSelected())
+                configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.YES);
+            else
+                configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.NO);
+
+            if(trust_fileTextField.getText() != null && !trust_fileTextField.getText().isEmpty())
+                configuration.setTrust_file(trust_fileTextField.getText());
+
+            if(oracle_fileTextField.getText() != null && !oracle_fileTextField.getText().isEmpty())
+                configuration.setOracle_file(oracle_fileTextField.getText());
+
+            if(debugFullRadio.isSelected())
+                configuration.setDebug(AcideDebugConfiguration.Debug.FULL);
+            else
+                configuration.setDebug(AcideDebugConfiguration.Debug.PLAIN);
+
+            if(orderCardinalityRadio.isSelected())
+                configuration.setOrder(AcideDebugConfiguration.Order.CARDINALITY);
+            else
+                configuration.setOrder(AcideDebugConfiguration.Order.TOPDOWN);
+
+            AcideDebugConfiguration.getInstance().saveConfiguration(configuration);
+        }
+    }
+
+    class SetDefaultAction extends  AbstractAction{
+        /**
+         * Escape key action serial version UID.
+         */
+        private static final long serialVersionUID = 1L;
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see
+         * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
+         * )
+         */
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            configuration.setDefaultConfiguration();
+            AcideDebugConfigurationWindow.getInstance().showWindow();
         }
     }
 }

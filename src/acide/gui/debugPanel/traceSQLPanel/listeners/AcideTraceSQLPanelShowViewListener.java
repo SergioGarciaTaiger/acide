@@ -16,6 +16,6 @@ public class AcideTraceSQLPanelShowViewListener implements ActionListener {
             return;
         // Gets the label of the selected item
         String view = (String) viewBox.getSelectedItem();
-        AcideDebugHelper.getView(view);
+        AcideDebugHelper.showView(view);
     }
 }

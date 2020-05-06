@@ -40,9 +40,9 @@ public class AcideDebugConfiguration {
             configuration += "debug(" + debug.getValue() + ") ";
         if(order == Order.TOPDOWN)
             configuration += "order(" + order.getValue() + ") ";
-        if(trust_file == null || trust_file.isEmpty())
+        if(trust_file != null && !trust_file.isEmpty())
             configuration += "trust_file(" + trust_file + ") ";
-        if(oracle_file == null || oracle_file.isEmpty())
+        if(oracle_file != null && !oracle_file.isEmpty())
             configuration += "oracle_file(" + oracle_file + ") ";
         return configuration;
     }
