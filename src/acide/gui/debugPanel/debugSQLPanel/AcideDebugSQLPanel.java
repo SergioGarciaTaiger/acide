@@ -217,6 +217,7 @@ public class AcideDebugSQLPanel extends JPanel {
 
 	public JPopupMenu _popUp = null;
 
+
 	public AcideDebugSQLPanel() {
 		// Sets the layout of the panel
 		setLayout(new BorderLayout());
@@ -703,7 +704,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				String view;
 				if(_canvas.getSelectedNode().getLabel().contains("/")) {
 					view = _canvas.getSelectedNode().getLabel().split("/")[0];
-					AcideDebugHelper.getView(view);
+					AcideDebugHelper.showView(view);
 				}
 			}
 			adaptee.this_mousePressed(e);

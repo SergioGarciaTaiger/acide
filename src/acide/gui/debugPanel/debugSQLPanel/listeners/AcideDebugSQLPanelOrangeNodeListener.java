@@ -1,6 +1,7 @@
 package acide.gui.debugPanel.debugSQLPanel.listeners;
 
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import java.awt.*;
@@ -17,6 +18,7 @@ public class AcideDebugSQLPanelOrangeNodeListener implements ActionListener {
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
             // Updates the selected node
             canvas.setColorSelectedNode(Color.ORANGE);
+            AcideDebugHelper.performDebug("n");
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()
                     .setCursor(Cursor.getDefaultCursor());

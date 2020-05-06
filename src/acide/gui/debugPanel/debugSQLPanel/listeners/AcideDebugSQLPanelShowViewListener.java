@@ -1,6 +1,5 @@
 package acide.gui.debugPanel.debugSQLPanel.listeners;
 
-import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
 
@@ -17,6 +16,6 @@ public class AcideDebugSQLPanelShowViewListener implements ActionListener {
             return;
         // Gets the label of the selected item
         String view = (String) viewBox.getSelectedItem();
-        AcideDebugHelper.getView(view);
+        AcideDebugHelper.showView(view);
     }
 }

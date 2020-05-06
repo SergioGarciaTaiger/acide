@@ -72,7 +72,7 @@ public class AcideDebugSQLPanelLastNodeListener implements ActionListener {
 				selectedNode = canvas.getSelectedNode();
 				canvas.advanceSelectedNode();
 			}while(!selectedNode.equals(canvas.getSelectedNode()));
-			AcideDebugHelper.updateCanvasDebug(canvas);
+			AcideDebugHelper.updateCanvasDebugGraph(canvas);
 		} catch (Exception ex) {
 			
 			AcideMainWindow.getInstance().getDebugPanel()

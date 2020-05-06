@@ -43,10 +43,17 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
+import acide.gui.debugPanel.AcideDebugPanel;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
+import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
+import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.process.console.DesDatabaseManager;
 
 /**
  * ACIDE - A Configurable IDE trace SQL color node listener.
@@ -61,9 +68,8 @@ public class AcideDebugSQLPanelGreenNodeListener implements ActionListener {
 			// Gets the canvas
 			AcideDebugCanvas canvas = AcideMainWindow.getInstance()
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
-			// Updates the selected node
 			canvas.setColorSelectedNode(Color.GREEN);
-			AcideDebugHelper.updateCanvasDebug(canvas);
+			AcideDebugHelper.performDebug("y");
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
 					.setCursor(Cursor.getDefaultCursor());
