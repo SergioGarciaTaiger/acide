@@ -30,7 +30,8 @@ public class AcideDebugHelper {
         // Updates the highlights
         highLighter.resetLines();
         highLighter.unHighLight();
-        highLighter.highLight(selected);
+        if(canvas.getSelectedNode().getNodeColor().equals(Color.GRAY))
+            highLighter.highLight(selected);
         if (AcideMainWindow.getInstance().getDebugPanel()
                 .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
             AcideMainWindow
