@@ -41,9 +41,9 @@ public class AcideDebugConfiguration {
         if(order == Order.TOPDOWN)
             configuration += "order(" + order.getValue() + ") ";
         if(trust_file != null && !trust_file.isEmpty())
-            configuration += "trust_file(" + trust_file + ") ";
+            configuration += "trust_file('" + trust_file + "') ";
         if(oracle_file != null && !oracle_file.isEmpty())
-            configuration += "oracle_file(" + oracle_file + ") ";
+            configuration += "oracle_file('" + oracle_file + "') ";
         return configuration;
     }
 

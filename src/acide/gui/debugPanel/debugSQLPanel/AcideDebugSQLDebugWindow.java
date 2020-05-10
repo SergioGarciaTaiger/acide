@@ -179,6 +179,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Closes the window
         setVisible(false);
 
+        //enable start debug button
+        AcideDebugSQLPanel.startDebug.setEnabled(true);
+
         // Brings the main window to the front
         AcideMainWindow.getInstance().setAlwaysOnTop(true);
 
@@ -190,6 +193,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
+
+        setWindowConfiguration();
 
         // Displays the window
         setVisible(true);

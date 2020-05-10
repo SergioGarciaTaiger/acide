@@ -14,6 +14,7 @@ import acide.process.console.DesDatabaseManager;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
@@ -165,8 +166,8 @@ public class AcideDebugHelper {
                 view = canvas.getSelectedNode().getLabel().split("/")[0];
             else
                 throw new Exception("view not obtained");
-            LinkedList<String> result = DesDatabaseManager.getInstance()
-                    .executeCommand("/debug_sql " + view + AcideDebugConfiguration.getInstance().getDebugConfiguration());
+            LinkedList<String> result = getUsefulDebugInfo(DesDatabaseManager.getInstance()
+                    .startDebug(view, AcideDebugConfiguration.getInstance().getDebugConfiguration()));
             updateDebugWindow(result);
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()
@@ -180,8 +181,9 @@ public class AcideDebugHelper {
         }
         AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getCanvas();
-        LinkedList<String> result = DesDatabaseManager.getInstance()
-                .executeCommand(action);
+        LinkedList<String> result = getUsefulDebugInfo(DesDatabaseManager.getInstance()
+                .debug(action));
+
         String nextView = result.getFirst().split("'")[1].split("'")[0];
         List<Node> nodes = canvas.get_graph().get_nodes();
         Node node = null;
@@ -223,5 +225,17 @@ public class AcideDebugHelper {
         }
         else
             throw new Exception("something went wrong with DES communication");
+    }
+
+    private static LinkedList<String> getUsefulDebugInfo(LinkedList<String> consoleInfo){
+        LinkedList<String> result = new LinkedList<>();
+        boolean usefulInfo = false;
+        for(String line : consoleInfo){
+            if(line.contains("Info: Debugging view") || line.contains("Buggy view"))
+                usefulInfo = true;
+            if(usefulInfo)
+                result.add(line);
+        }
+        return result;
     }
 }

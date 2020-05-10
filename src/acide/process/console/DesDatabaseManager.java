@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      -Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,6 +41,7 @@ package acide.process.console;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JTextPane;
@@ -1054,28 +1055,24 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 			String[] lines = panel.getProcessThread().getOutputGobbler()
 					.getText().split("\n");
 
-			for (int i = 0; i < lines.length; i++) {
+			for (String line : lines) {
 
 				// dates to catch for ddbb
-				if (!lines[i].startsWith("*")
-						&& !lines[i].equalsIgnoreCase("$eot")
+				if (!line.startsWith("*")
+						&& !line.equalsIgnoreCase("$eot")
 						//&& !lines[i].startsWith("DES>")
-						&& !lines[i].startsWith(">")
-						&& !lines[i].startsWith("DES")
-						&& !lines[i].startsWith("HR")
+						&& !line.startsWith(">")
+						&& !line.startsWith("DES")
+						&& !line.startsWith("HR")
 						//&& !lines[i].startsWith("DES:$des>")
-						&& !lines[i].startsWith("?-")
+						&& !line.startsWith("?-")
 						//&& !lines[i].equals("$error")
-						&& !lines[i].equals("$success")
-						&& !lines[i].contains("already in use.")
-						&& !lines[i].endsWith("$eot")) {
+						&& !line.equals("$success")
+						&& !line.contains("already in use.")
+						&& !line.endsWith("$eot")) {
 
-					if (!lines[i].matches("")) {
-
-						String line = lines[i];
-
+					if (!line.matches("")) {
 						res.add(line);
-
 					}
 				}
 			}
@@ -1968,6 +1965,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		return res;
 	}
 
+
 	public String deleteRows(String database, String table,
 			Vector<String> dataColumns, Vector<String> columnNames) {
 
@@ -2140,7 +2138,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 		String command = "/tapi SELECT COUNT(*) FROM " + table + " WHERE "
 				+ columnsNames.get(0) + "=" + infoRow.get(0) + " ";
-		// tapi SELECT COUNT(*) FROM tabla WHERE condición
+		// tapi SELECT COUNT(*) FROM tabla WHERE condiciï¿½n
 
 		for (int i = 1; i < columnsNames.size(); i++) {
 
@@ -2209,5 +2207,38 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 		return res;
 
+	}
+
+	public LinkedList<String> startDebug(String view, String configuration) throws Exception {
+		AcideConsolePanel panel = AcideMainWindow.getInstance()
+				.getConsolePanel();
+		panel.getProcessThread().getOutputGobbler().set_sendToConsole(false);
+		panel.sendCommandToConsole("/debug_sql " + view + configuration, "");
+		return getDebugOutput(panel);
+	}
+
+	public LinkedList<String> debug(String action) throws Exception {
+		AcideConsolePanel panel = AcideMainWindow.getInstance()
+				.getConsolePanel();
+		panel.getProcessThread().getOutputGobbler().set_sendToConsole(false);
+		panel.sendCommandToConsole(action, "");
+		return getDebugOutput(panel);
+	}
+
+	private LinkedList<String> getDebugOutput(AcideConsolePanel panel) throws Exception {
+		LinkedList<String> consoleOutput = new LinkedList<>();
+		boolean usefulInfo = false;
+		boolean received = panel.getProcessThread().getOutputGobbler()
+				.waitForDebuggingStart(20000);
+		if(received){
+			String[] lines = panel.getProcessThread().getOutputGobbler()
+					.getText().split("\n");
+			for(String line : lines){
+				consoleOutput.add(line);
+			}
+		}
+		else
+			throw new Exception("error while trying to do last debug");
+		return consoleOutput;
 	}
 }
