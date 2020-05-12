@@ -1,17 +1,17 @@
 debug sql project
 ./configuration/project/default.acideProject
-/Users/sergiogarciarodriguez/dev/Acide/des
+.des
 ./des
 false
 /
 
-/Users/sergiogarciarodriguez/dev/Acide
+.
 ./des
-/Users/sergiogarciarodriguez/dev/Acide/des
-/Users/sergiogarciarodriguez/dev/Acide
-/q
-false
-sh des
+/Users/sergiogarciarodriguez/dev/Acide/./des
+/Users/sergiogarciarodriguez/dev/Acide/./
+
+true
+
 -16777216
 -1
 Monospaced
@@ -27,15 +27,15 @@ true
 944
 0
 23
-396
-189
-1185
-332
-649
+419
+177
+891
+433
+510
 English
 ./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-/Users/sergiogarciarodriguez/dev/Acide/./configuration/toolbar/des.toolbarConfig
+./configuration/toolbar/des.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel
@@ -43,7 +43,7 @@ AcideConsolePanel
 AcideGraphPanel
 AcideDebugPanel
 1
-/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql
+./examples/debug.sql
 debug.sql
 debug sql project
 false
