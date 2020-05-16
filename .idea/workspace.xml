@@ -7,17 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bff6704-a247-4e48-b2c2-c49877fabd7c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +33,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+            <state relative-caret-position="480">
+              <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -248,14 +238,6 @@
               <item name="gui" type="462c0819:PsiDirectoryNode" />
               <item name="databasePanel" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Acide" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="acide" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -355,7 +337,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155979000" />
+    <option name="totallyTimeSpent" value="156153000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,6 +350,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="2560" height="1334" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49939975" visible="true" weight="0.19817315" />
       <window_info id="Structure" order="1" sideWeight="0.5006002" side_tool="true" weight="0.19817315" />
@@ -1357,8 +1340,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+        <state relative-caret-position="480">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
         </state>
       </provider>
     </entry>
