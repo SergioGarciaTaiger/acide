@@ -47,7 +47,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.Locale;
-import java.util.NoSuchElementException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -56,10 +55,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import acide.gui.databasePanel.AcideDataBasePanel;
 import acide.gui.databasePanel.Nodes.NodeDefinition;
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.mainWindow.AcideMainWindow;
@@ -429,31 +426,13 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 					JOptionPane.showMessageDialog(null,result.toString(),"Error",JOptionPane.OK_OPTION);
 				}
 				
-				updateView();
+				DataBasePanelUtils.updateDataBasePanelView();
 				
 				closeWindow();
 			}
 		}
 	}
 
-	/**
-	 * Update only the Views node
-	 */
-	private void updateView(){
-		
-		AcideDataBasePanel panel = AcideMainWindow.getInstance().getDataBasePanel();
-		
-		DefaultMutableTreeNode nodeBase = (DefaultMutableTreeNode) panel.getTree().getModel()
-				.getChild(panel.getTree().getModel().getRoot(), 0);
-		
-		try{
-			DefaultMutableTreeNode nodoDes = (DefaultMutableTreeNode) nodeBase.getFirstChild();
-			DefaultMutableTreeNode nodoTables = (DefaultMutableTreeNode) nodoDes.getFirstChild();
-			panel.updateDataBaseTree((DefaultMutableTreeNode) nodoTables.getNextSibling());
-		} catch (NoSuchElementException e){
-				
-			}
-	}
 	
 	/**
 	 * Checks if the operation was successful

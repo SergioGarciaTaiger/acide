@@ -7,15 +7,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bff6704-a247-4e48-b2c2-c49877fabd7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,50 +32,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="434" column="30" lean-forward="true" selection-start-line="434" selection-start-column="30" selection-end-line="434" selection-end-column="30" />
-              <folding>
-                <element signature="e#5765#5766#0" expanded="true" />
-                <element signature="e#5789#5790#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="426">
-              <caret line="174" column="20" lean-forward="true" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="69" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+              <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="86" column="47" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
+            <state relative-caret-position="375">
+              <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -82,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+              <caret line="81" column="65" selection-start-line="81" selection-start-column="65" selection-end-line="81" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -91,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="615">
-              <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+              <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
             </state>
           </provider>
         </entry>
@@ -109,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
-              <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
+              <caret line="85" column="61" selection-start-line="85" selection-start-column="61" selection-end-line="85" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -118,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
-              <caret line="90" column="30" lean-forward="true" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
+              <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -179,9 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/AcideDataBasePanel.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelFirstNodeListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelNexNodeListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowTableListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/traceSQLPanel/AcideTraceSQLPanel.java" />
@@ -223,13 +191,16 @@
         <option value="$PROJECT_DIR$/configuration/configuration.properties" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/GuiUtils.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" />
       </list>
     </option>
   </component>
@@ -268,6 +239,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="acide" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="databasePanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -368,7 +355,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155622000" />
+    <option name="totallyTimeSpent" value="155979000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -381,9 +368,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="2560" height="1334" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49939975" visible="true" weight="0.19817315" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49939975" visible="true" weight="0.19817315" />
       <window_info id="Structure" order="1" sideWeight="0.5006002" side_tool="true" weight="0.19817315" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -403,7 +389,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3298122" />
       <window_info anchor="bottom" id="Docker" order="11" weight="0.3298122" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3286385" />
-      <window_info anchor="bottom" id="Duplicates" order="13" visible="true" weight="0.32930756" />
+      <window_info anchor="bottom" id="Duplicates" order="13" weight="0.32930756" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -858,7 +844,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java</url>
-          <line>179</line>
+          <line>175</line>
           <properties />
           <option name="timeStamp" value="237" />
         </line-breakpoint>
@@ -946,20 +932,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="1364" column="10" selection-start-line="1364" selection-start-column="10" selection-end-line="1364" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/configuration/menu/AcideMenuObjectConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideSendFileToConsoleButtonAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2862">
@@ -1302,56 +1274,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="434" column="30" lean-forward="true" selection-start-line="434" selection-start-column="30" selection-end-line="434" selection-end-column="30" />
-          <folding>
-            <element signature="e#5765#5766#0" expanded="true" />
-            <element signature="e#5789#5790#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="69" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropTableMenuItemAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
-          <caret line="90" column="30" lean-forward="true" selection-start-line="90" selection-start-column="30" selection-end-line="90" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="174" column="20" lean-forward="true" selection-start-line="174" selection-start-column="20" selection-end-line="174" selection-end-column="20" />
+          <caret line="88" column="30" lean-forward="true" selection-start-line="88" selection-start-column="30" selection-end-line="88" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideDropViewMenuItemAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
-          <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
+          <caret line="85" column="61" selection-start-line="85" selection-start-column="61" selection-end-line="85" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewMenuItemAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
-          <caret line="84" column="55" selection-start-line="84" selection-start-column="55" selection-end-line="84" selection-end-column="55" />
+          <caret line="81" column="65" selection-start-line="81" selection-start-column="65" selection-end-line="81" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteViewItemActionInViewNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
@@ -1362,17 +1309,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/utils/GuiUtils.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+        <state relative-caret-position="600">
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideRenameViewMenuItemAction.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideOpenDesginViewMenuItemAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="86" column="47" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
+        <state relative-caret-position="165">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcideModifyConstraintMenuItemAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/popup/listeners/AcidePasteTableMenuItemAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="69" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5445">
+          <caret line="434" column="30" lean-forward="true" selection-start-line="434" selection-start-column="30" selection-end-line="434" selection-end-column="30" />
+          <folding>
+            <element signature="e#5765#5766#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/listeners/AcideDatabasePanelKeyboardListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="172" column="20" lean-forward="true" selection-start-line="172" selection-start-column="20" selection-end-line="172" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
         </state>
       </provider>
     </entry>

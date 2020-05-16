@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,19 +41,10 @@ package acide.gui.databasePanel.popup.listeners;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.NoSuchElementException;
 
-import javax.swing.JOptionPane;
-import javax.swing.tree.DefaultMutableTreeNode;
-
-import acide.gui.databasePanel.AcideDataBasePanel;
-import acide.gui.databasePanel.utils.AcideDatabaseCopyTableOption;
-import acide.gui.mainWindow.AcideMainWindow;
-import acide.language.AcideLanguageManager;
-import acide.process.console.AcideDatabaseManager;
+import acide.gui.databasePanel.utils.DataBasePanelUtils;
 
 /**
  * ACIDE - A Configurable IDE drop table menu item.
@@ -64,50 +55,8 @@ import acide.process.console.AcideDatabaseManager;
 public class AcidePasteTableMenuItemAction implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
-		try {
-			Toolkit toolkit = Toolkit.getDefaultToolkit();
-			Clipboard clipboard = toolkit.getSystemClipboard();
-			String result = (String) clipboard.getData(DataFlavor.stringFlavor);
-			String s = (String)JOptionPane.showInputDialog(null,
-					AcideLanguageManager.getInstance().getLabels().getString("s2119"), 
-					AcideLanguageManager.getInstance().getLabels().getString("s2120"),
-					JOptionPane.PLAIN_MESSAGE, null,null,result); 
-
-			if ((s != null) && (s.length() > 0)) {				
-				
-				AcideDatabaseManager des =AcideDatabaseManager.getInstance();
-			  
-				int option = AcideDatabaseCopyTableOption.getInstance().getOption();
-				
-				String res = des.pasteTable(s, result, option);
-				
-				if(res.contains("success"))
-					updateTable();
-				
-				else JOptionPane.showMessageDialog(null,res,
-					    "Error",JOptionPane.ERROR_MESSAGE);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-	}
-	
-	/**
-	 * Update only the Tables node
-	 */
-	private void updateTable(){
-		
-		AcideDataBasePanel panel = AcideMainWindow.getInstance().getDataBasePanel();
-		
-		DefaultMutableTreeNode nodeBase = (DefaultMutableTreeNode) panel.getTree().getModel()
-				.getChild(panel.getTree().getModel().getRoot(), 0);
-		
-		try{
-			DefaultMutableTreeNode nodoDes = (DefaultMutableTreeNode) nodeBase.getFirstChild();
-			DefaultMutableTreeNode nodoTables = (DefaultMutableTreeNode) nodoDes.getFirstChild();
-			panel.updateDataBaseTree((DefaultMutableTreeNode) nodoTables);
-		} catch (NoSuchElementException e){
-				
-			}
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Clipboard clipboard = toolkit.getSystemClipboard();
+		DataBasePanelUtils.pasteDataBasePanelTable(clipboard);
 	}
 }
