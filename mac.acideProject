@@ -1,17 +1,17 @@
 mac
-/Users/sergiogarciarodriguez/dev/Acide/mac.acideProject
-/Users/sergiogarciarodriguez/dev/Acide/des
+mac.acideProject
+./des
 ./des
 false
 /
 
-/Users/sergiogarciarodriguez/dev/Acide
+.
 ./des
-/Users/sergiogarciarodriguez/dev/Acide/des
-/Users/sergiogarciarodriguez/dev/Acide
+./des
+.
 /q
 false
-sh des
+sh ./des
 -16777216
 -1
 Monospaced
@@ -27,15 +27,15 @@ true
 944
 0
 23
-396
-189
-1185
-340
-513
+370
+187
+1105
+306
+470
 English
 ./configuration/menu/lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-/Users/sergiogarciarodriguez/dev/Acide/./configuration/toolbar/des.toolbarConfig
+./configuration/toolbar/des.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel
@@ -43,10 +43,10 @@ AcideConsolePanel
 AcideGraphPanel
 AcideDebugPanel
 1
-/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql
+./examples/debug.sql
 debug.sql
 mac
 false
 true
 false
-true
+false

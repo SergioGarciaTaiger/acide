@@ -314,7 +314,7 @@ public class AcideDebugCanvas extends AcideGraphCanvas {
 					g.setColor(n.getNodeColor());
 				} else
 					g.setColor(n.getNodeColor());
-				if (n.equals(_selectedNode))
+				if (n.equals(_selectedNode) && _selectedNode.getNodeColor().equals(Color.GRAY))
 					g.setColor(_selectedTraceNodeColor);
 				/*
 				 * else g.setColor(_nodeColor);

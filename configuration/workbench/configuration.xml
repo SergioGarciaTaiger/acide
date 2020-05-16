@@ -5,19 +5,29 @@
       <__list>
         <__list>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-            <__path>/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql</__path>
+            <__path>./examples/debug.sql</__path>
             <__type>Compilable</__type>
-            <__caretPosition>154</__caretPosition>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>/Users/sergiogarciarodriguez/dev/Acide/./examples/pets2.sql</__path>
+            <__type>Normal</__type>
+            <__caretPosition>3060</__caretPosition>
             <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
-            <__lexiconConfiguration>/Users/sergiogarciarodriguez/dev/Acide/./configuration/lexicon/sql.xml</__lexiconConfiguration>
+            <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>debug.sql</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>pets2.sql</__selectedFileEditorPanelName>
     <__fontName>Monospaced</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>
@@ -42,7 +52,7 @@
     <__spaceSelected>false</__spaceSelected>
   </__fileEditorConfiguration>
   <__consolePanelConfiguration>
-    <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
+    <__lexiconConfiguration>./configuration/lexicon/default.xml</__lexiconConfiguration>
     <__commandsConfiguration>./configuration/console/default.xml</__commandsConfiguration>
     <__lineWrapping>true</__lineWrapping>
   </__consolePanelConfiguration>
@@ -59,6 +69,7 @@
     <__list>
       <string>/Users/sergiogarciarodriguez/dev/Acide/examples/debug.sql</string>
       <string>debug.sql</string>
+      <string>/Users/sergiogarciarodriguez/dev/Acide/./examples/pets2.sql</string>
     </__list>
   </__recentFilesConfiguration>
   <__recentProjectsConfiguration>

@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -137,31 +137,21 @@ public class AcideEnterTextWindow extends JDialog {
 	}
 	
 public AcideEnterTextWindow(String prompt, String title, boolean editable, String database){
-		
 		AcideMainWindow.getInstance().setAlwaysOnTop(false);
-		
 		AcideMainWindow.getInstance().setEnabled(false);
-		
 		setIconImage(ICON.getImage());
-		
 		this.setTitle(title);
-			
+
 		_prompt = prompt;
-		
 		_editable = editable;
-		
 		_database = database;
-		
+
 		buildComponents();
-		
 		setLookAndFeel();
-		
 		addListeners();
-		
+
 		setVisible(true);
-		
 		setAlwaysOnTop(true);
-		
 		setDefaultCloseOperation(2);		
 	}
 	
@@ -182,8 +172,6 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 		_text.setText(_prompt);
 		_text.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
-			
-		
 		if (!_title.contains("Datalog")) {
 			
 			_applyButton = new JButton(AcideLanguageManager.getInstance().getLabels().getString("s154"));
@@ -211,62 +199,52 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 	}
 	
 	private void setLookAndFeel(){
-
 		_panel.add(_scrollPane, BorderLayout.CENTER);
-		
+
 		if (!_title.contains("Datalog")) _panel.add(_buttonPanel, BorderLayout.SOUTH);
-		
-		getContentPane().add(_panel,BorderLayout.CENTER);	
-		
+
+		getContentPane().add(_panel,BorderLayout.CENTER);
 		setLocationRelativeTo(null);
-		
 		setResizable(true);
 
 		pack();
-		
 		setModal(true);
 	}
 	
 	private void addListeners() {
-	
+
 		if (!_title.contains("Datalog")){
-			
-		_applyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {	
-				save();
-			}
-		});
-		
-		_cancelButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				closeWindow();
-			}
-		});			
-		
-		_text.addKeyListener(new KeyListener() {
-			
-			public void keyTyped(KeyEvent e) {
-				dispatchEvent(e);				
-			}
-			
-			public void keyReleased(KeyEvent e) {
-				dispatchEvent(e);
-			}
-			
-			public void keyPressed(KeyEvent arg0) {
-				if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
-					if(arg0.isControlDown()){											
-						arg0.consume();
-						save();
-						
-					}
-				} else if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE){
+			_applyButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					save();
+				}
+			});
+
+			_cancelButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					closeWindow();
-				} else dispatchEvent(arg0); 
-				
-			}
-			
+				}
+			});
+
+			_text.addKeyListener(new KeyListener() {
+				public void keyTyped(KeyEvent e) {
+					dispatchEvent(e);
+				}
+				public void keyReleased(KeyEvent e) {
+					dispatchEvent(e);
+				}
+				public void keyPressed(KeyEvent arg0) {
+					if (arg0.getKeyCode() == KeyEvent.VK_ENTER){
+						if(arg0.isControlDown()){
+							arg0.consume();
+							save();
+						}
+					} else if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE){
+						closeWindow();
+					} else
+						dispatchEvent(arg0);
+				}
+
 			});
 		
 		}
@@ -274,13 +252,9 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 	}
 	
 	private void closeWindow(){
-		
 		AcideMainWindow.getInstance().setEnabled(true);
-		
 		dispose();
-		
 		AcideMainWindow.getInstance().setAlwaysOnTop(true);
-		
 		AcideMainWindow.getInstance().setAlwaysOnTop(false);
 	}
 	
