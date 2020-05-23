@@ -1,15 +1,83 @@
 <acide.configuration.lexicon.AcideLexiconConfiguration>
-  <__name>console</__name>
-  <__path>C:\fernan\research\BDDEDUC\DES\DESDevel\Executables\ACIDEBundle\acide_conf\des\configuration\lexicon\console.xml</__path>
+  <__name>ra</__name>
+  <__path>C:\fernan\research\BDDEDUC\DES\DESDevel\Executables\ACIDEBundle\acide_conf\des\configuration\lexicon\ra.xml</__path>
   <__isCompiledOrInterpreted>false</__isCompiledOrInterpreted>
   <__tokenTypeManager>
     <__list>
       <__list>
         <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 0, G: 50, B: 0], Font Style: Bold, Case Sensitive: Yes</__name>
+          <__name>Color: [R: 0, G: 0, B: 255], Font Style: Plain, Case Sensitive: No</__name>
           <__color>
             <red>0</red>
-            <green>50</green>
+            <green>0</green>
+            <blue>255</blue>
+            <alpha>255</alpha>
+          </__color>
+          <__fontStyle>0</__fontStyle>
+          <__isCaseSensitive>false</__isCaseSensitive>
+          <__tokenList>
+            <__list>
+              <string>true</string>
+              <string>false</string>
+              <string>and</string>
+              <string>or</string>
+              <string>not</string>
+              <string>exists</string>
+              <string>forall</string>
+              <string>implies</string>
+              <string>-&gt;</string>
+              <string>in</string>
+/silent /list_lex_cmd_opts acide
+              <string>a1</string>
+              <string>a3</string>
+              <string>add</string>
+              <string>append</string>
+              <string>acide</string>
+              <string>batch</string>
+              <string>bpl</string>
+              <string>datalog</string>
+              <string>declared</string>
+              <string>des</string>
+              <string>des_db</string>
+              <string>detailed</string>
+              <string>direct</string>
+              <string>display</string>
+              <string>fuzzy</string>
+              <string>goedel</string>
+              <string>hamacher</string>
+              <string>luka</string>
+              <string>lukasiewicz</string>
+              <string>min</string>
+              <string>nilpotent</string>
+              <string>no</string>
+              <string>nonvalid</string>
+              <string>on</string>
+              <string>off</string>
+              <string>plain</string>
+              <string>postorder</string>
+              <string>preorder</string>
+              <string>product</string>
+              <string>prolog</string>
+              <string>reflexive</string>
+              <string>replace</string>
+              <string>runtime</string>
+              <string>symmetric</string>
+              <string>total_runtime</string>
+              <string>transitive</string>
+              <string>trust_file</string>
+              <string>trust_tables</string>
+              <string>valid</string>
+              <string>write</string>
+              <string>yes</string>
+/silent /nolog
+            </__list>
+          </__tokenList>
+        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
+        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
+          <__name>Color: [R: 204, G: 153, B: 0], Font Style: Bold, Case Sensitive: Yes</__name>
+          <__color>
+            <red>204</red>
+            <green>153</green>
             <blue>0</blue>
             <alpha>255</alpha>
           </__color>
@@ -17,46 +85,20 @@
           <__isCaseSensitive>true</__isCaseSensitive>
           <__tokenList>
             <__list>
-              <string>FDES</string>
-              <string>DES</string>
-              <string>DES-Datalog</string>
-              <string>DES-SQL</string>
-              <string>DES-RA</string>
-              <string>DES-TRC</string>
-              <string>DES-DRC</string>
-              <string>DES-Prolog</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 204, G:153, B: 0], Font Style: Plain, Case Sensitive: Yes</__name>
-          <__color>
-            <red>100</red>
-            <green>10</green>
-            <blue>0</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>0</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
+              <string>|</string>
               <string>{</string>
               <string>}</string>
-              <string>|</string>
+              <string>(</string>
+              <string>)</string>
+              <string>.</string>
+              <string>,</string>
+              <string>:=</string>
               <string>=</string>
-              <string>\=</string>
               <string>&gt;</string>
               <string>&gt;=</string>
               <string>&lt;</string>
               <string>=&lt;</string>
-              <string>.</string>
-              <string>(</string>
-              <string>)</string>
-              <string>:-</string>
-              <string>,</string>
-              <string>\</string>
-              <string>-</string>
-              <string>$</string>
+              <string>-&gt;</string>
 /silent /list_lex_fnops acide
               <string>*</string>
               <string>**</string>
@@ -375,347 +417,6 @@
             </__list>
           </__tokenList>
         </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 0, G: 0, B: 255], Font Style: Plain, Case Sensitive: No</__name>
-          <__color>
-            <red>0</red>
-            <green>0</green>
-            <blue>255</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>0</__fontStyle>
-          <__isCaseSensitive>false</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>pk</string>
-              <string>ck</string>
-              <string>fk</string>
-              <string>fd</string>
-              <string>type</string>
-              <string>mode</string>
-              <string>persistent</string>
-              <string>is</string>
-              <string>is_null</string>
-              <string>is_not_null</string>
-              <string>lj</string>
-              <string>rj</string>
-              <string>fj</string>
-              <string>group_by</string>
-              <string>dual</string>
-              <string>answer</string>
-              <string>count</string>
-              <string>count_distinct</string>
-              <string>sum</string>
-              <string>sum_distinct</string>
-              <string>min</string>
-              <string>max</string>
-              <string>avg</string>
-              <string>avg_distinct</string>
-              <string>times</string>
-              <string>times_distinct</string>
-              <string>distinct</string>
-              <string>division</string>
-              <string>top</string>
-              <string>null</string>
-              <string>order_by</string>
-              <string>not</string>
-              <string>exists</string>
-              <string>with</string>
-              <string>approx_degree</string>
-              <string>$rand</string>
-              <string>$length</string>
-              <string>$concat</string>
-              <string>$lower</string>
-              <string>$substr</string>
-              <string>$upper</string>
-              <string>$like</string>
-              <string>$left</string>
-              <string>$ltrim</string>
-              <string>$rtrim</string>
-              <string>$repeat</string>
-              <string>$right</string>
-              <string>$space</string>
-              <string>$sysdate</string>
-              <string>$trunc</string>
-              <string>$truncate</string>
-              <string>$year</string>
-              <string>$month</string>
-              <string>$day</string>
-              <string>$hour</string>
-              <string>$minute</string>
-              <string>$second</string>
-              <string>$extract</string>
-              <string>$current_date</string>
-              <string>$current_time</string>
-              <string>$current_timestamp</string>
-/silent /list_lex_sql_kws acide
-              <string>add</string>
-              <string>all</string>
-              <string>alter</string>
-              <string>and</string>
-              <string>answer</string>
-              <string>any</string>
-              <string>as</string>
-              <string>asc</string>
-              <string>ascending</string>
-              <string>assume</string>
-              <string>between</string>
-              <string>by</string>
-              <string>candidate</string>
-              <string>cascade</string>
-              <string>check</string>
-              <string>commit</string>
-              <string>constraint</string>
-              <string>create</string>
-              <string>database</string>
-              <string>databases</string>
-              <string>decimal</string>
-              <string>default</string>
-              <string>delete</string>
-              <string>desc</string>
-              <string>descending</string>
-              <string>describe</string>
-              <string>determined</string>
-              <string>distinct</string>
-              <string>division</string>
-              <string>drop</string>
-              <string>dual</string>
-              <string>escape</string>
-              <string>except</string>
-              <string>exists</string>
-              <string>false</string>
-              <string>fetch</string>
-              <string>first</string>
-              <string>foreign</string>
-              <string>from</string>
-              <string>full</string>
-              <string>group</string>
-              <string>having</string>
-              <string>if</string>
-              <string>in</string>
-              <string>inner</string>
-              <string>insert</string>
-              <string>intersect</string>
-              <string>into</string>
-              <string>is</string>
-              <string>join</string>
-              <string>key</string>
-              <string>left</string>
-              <string>like</string>
-              <string>minus</string>
-              <string>natural</string>
-              <string>not</string>
-              <string>null</string>
-              <string>number</string>
-              <string>on</string>
-              <string>only</string>
-              <string>or</string>
-              <string>order</string>
-              <string>outer</string>
-              <string>primary</string>
-              <string>recursive</string>
-              <string>references</string>
-              <string>rename</string>
-              <string>replace</string>
-              <string>right</string>
-              <string>rollback</string>
-              <string>rows</string>
-              <string>savepoint</string>
-              <string>select</string>
-              <string>set</string>
-              <string>show</string>
-              <string>some</string>
-              <string>table</string>
-              <string>tables</string>
-              <string>to</string>
-              <string>top</string>
-              <string>true</string>
-              <string>union</string>
-              <string>unique</string>
-              <string>update</string>
-              <string>using</string>
-              <string>values</string>
-              <string>view</string>
-              <string>views</string>
-              <string>where</string>
-              <string>with</string>
-              <string>work</string>
-/silent /nolog
-              <string>and</string>
-              <string>difference</string>
-              <string>distinct</string>
-              <string>division</string>
-              <string>false</string>
-              <string>fjoin</string>
-              <string>group_by</string>
-              <string>intersect</string>
-              <string>ljoin</string>
-              <string>minus</string>
-              <string>njoin</string>
-              <string>nljoin</string>
-              <string>not</string>
-              <string>nrjoin</string>
-              <string>null</string>
-              <string>or</string>
-              <string>product</string>
-              <string>project</string>
-              <string>rename</string>
-              <string>rjoin</string>
-              <string>select</string>
-              <string>sort</string>
-              <string>top</string>
-              <string>true</string>
-              <string>union</string>
-              <string>zjoin</string>
-              <string>true</string>
-              <string>false</string>
-              <string>and</string>
-              <string>or</string>
-              <string>not</string>
-              <string>exists</string>
-              <string>forall</string>
-              <string>implies</string>
-              <string>-&gt;</string>
-              <string>in</string>
-/silent /list_lex_cmd_opts acide
-              <string>a1</string>
-              <string>a3</string>
-              <string>add</string>
-              <string>append</string>
-              <string>acide</string>
-              <string>batch</string>
-              <string>bpl</string>
-              <string>datalog</string>
-              <string>declared</string>
-              <string>des</string>
-              <string>des_db</string>
-              <string>detailed</string>
-              <string>direct</string>
-              <string>display</string>
-              <string>fuzzy</string>
-              <string>goedel</string>
-              <string>hamacher</string>
-              <string>luka</string>
-              <string>lukasiewicz</string>
-              <string>min</string>
-              <string>nilpotent</string>
-              <string>no</string>
-              <string>nonvalid</string>
-              <string>on</string>
-              <string>off</string>
-              <string>plain</string>
-              <string>postorder</string>
-              <string>preorder</string>
-              <string>product</string>
-              <string>prolog</string>
-              <string>reflexive</string>
-              <string>replace</string>
-              <string>runtime</string>
-              <string>symmetric</string>
-              <string>total_runtime</string>
-              <string>transitive</string>
-              <string>trust_file</string>
-              <string>trust_tables</string>
-              <string>valid</string>
-              <string>write</string>
-              <string>yes</string>
-/silent /nolog
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 0, G: 153, B: 0], Font Style: Plain, Case Sensitive: Yes</__name>
-          <__color>
-            <red>0</red>
-            <green>153</green>
-            <blue>0</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>0</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>string</string>
-              <string>varchar</string>
-              <string>varchar2</string>
-              <string>char</string>
-              <string>int</string>
-              <string>integer</string>
-              <string>real</string>
-              <string>float</string>
-              <string>date</string>
-              <string>time</string>
-              <string>datetime</string>
-              <string>timestamp</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 153, G: 153, B: 255], Font Style: Bold, Case Sensitive: Yes</__name>
-          <__color>
-            <red>153</red>
-            <green>153</green>
-            <blue>255</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>1</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>Answers</string>
-              <string>Calls</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 255, G: 140, B: 0], Font Style: Bold, Case Sensitive: Yes</__name>
-          <__color>
-            <red>204</red>
-            <green>102</green>
-            <blue>0</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>1</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>Warning</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 255, G: 0, B: 0], Font Style: Bold, Case Sensitive: Yes</__name>
-          <__color>
-            <red>255</red>
-            <green>0</green>
-            <blue>0</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>1</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>Error</string>
-              <string>Exception</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 51, G: 164, B: 0], Font Style: Bold, Case Sensitive: Yes</__name>
-          <__color>
-            <red>51</red>
-            <green>164</green>
-            <blue>0</blue>
-            <alpha>255</alpha>
-          </__color>
-          <__fontStyle>1</__fontStyle>
-          <__isCaseSensitive>true</__isCaseSensitive>
-          <__tokenList>
-            <__list>
-              <string>Info</string>
-            </__list>
-          </__tokenList>
-        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
       </__list>
     </__list>
   </__tokenTypeManager>
@@ -729,22 +430,17 @@
   <__delimitersManager>
     <__list>
       <__list>
-        <string>=</string>
-        <string>\=</string>
-        <string>&gt;</string>
-        <string>&gt;=</string>
-        <string>&lt;</string>
-        <string>=&lt;</string>
-        <string>(</string>
-        <string>)</string>
+        <string>|</string>
         <string>{</string>
         <string>}</string>
-        <string>|</string>
-        <string>'</string>
+        <string>(</string>
+        <string>)</string>
         <string>.</string>
         <string>,</string>
-        <string>;</string>
         <string>:</string>
+        <string>=</string>
+        <string>&gt;</string>
+        <string>&lt;</string>
         <string>!</string>
         <string>*</string>
         <string>+</string>
@@ -763,6 +459,6 @@
       <blue>0</blue>
       <alpha>255</alpha>
     </__color>
-    <__fontStyle>3</__fontStyle>
+    <__fontStyle>0</__fontStyle>
   </__remarksManager>
 </acide.configuration.lexicon.AcideLexiconConfiguration>

@@ -1,11 +1,12 @@
 package acide.gui.debugPanel.debugSQLPanel;
 
-import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
+import acide.gui.databasePanel.dataView.AcideDataBaseDataViewTable;
+import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.process.console.DesDatabaseManager;
+import com.sun.javaws.util.JfxHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 public class AcideDebugSQLDebugWindow extends JFrame {
@@ -30,22 +33,30 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     private JButton missingTupleButton;
     private JButton wrongTupleButton;
 
+    private String view;
+    private String gifLoadingURL = "http://docs.oracle.com/javase/tutorial/uiswing/examples/misc/SplashDemoProject/src/misc/images/splash.gif";
+    private String currentQuestion;
+
+    private JScrollPane viewTable;
+
     private boolean debuging;
 
     private static AcideDebugSQLDebugWindow instance;
 
     public static AcideDebugSQLDebugWindow getInstance() {
         if (instance == null) {
-            instance = new AcideDebugSQLDebugWindow("", "");
+            instance = new AcideDebugSQLDebugWindow();
         }
         return instance;
     }
 
 
-    public AcideDebugSQLDebugWindow(String info, String question) {
-        super("Debug execution");
+    public AcideDebugSQLDebugWindow() {
+        this.setTitle("Debug execution");
 
         debuging = false;
+
+        this.setView(AcideDebugHelper.getSelectedViewName());
 
         // Builds the window components
         buildComponents();
@@ -59,9 +70,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Sets the window configuration
         setWindowConfiguration();
 
-        setInfo(info);
-        setQuestion(question);
         addWindowListener(new WindowCloser());
+
+
     }
 
     private void buildComponents() {
@@ -74,6 +85,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         wrongButton = new JButton("wrong");
         missingTupleButton = new JButton("missing tuple");
         wrongTupleButton = new JButton("wrong tuple");
+
+        questionLabel.setText("");
+        infoReicibedLabel.setText("");
+
+        viewTable = new JScrollPane();
 
         mainPanel = new JPanel(new GridBagLayout());
 
@@ -116,9 +132,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         mainPanel.add(infoReicibedLabel, constraints);
 
         constraints.gridx = 0;
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         constraints.ipadx = 100;
-        constraints.ipady = 0;
+        constraints.ipady = 10;
 
         // Adds the name label to the main panel
         mainPanel.add(questionLabel, constraints);
@@ -133,7 +149,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
 
         // Adds the button panel to the window
         add(buttonPanel, constraints);
@@ -193,6 +209,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
+        viewTable.setVisible(true);
 
         setWindowConfiguration();
 
@@ -238,15 +255,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            try {
-                // Gets the canvas
-                AcideMainWindow.getInstance().getDebugPanel()
-                        .getDebugSQLPanel().getCanvas().setColorSelectedNode(Color.GREEN);
-                AcideDebugHelper.performDebug("y");
-            } catch (Exception ex) {
-                AcideMainWindow.getInstance().getDebugPanel()
-                        .setCursor(Cursor.getDefaultCursor());
-            }
+            AcideDebugHelper.performDebug("valid");
         }
     }
 
@@ -259,15 +268,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            try {
-                // Gets the canvas
-                AcideMainWindow.getInstance().getDebugPanel()
-                        .getDebugSQLPanel().getCanvas().setColorSelectedNode(Color.ORANGE);
-                AcideDebugHelper.performDebug("n");
-            } catch (Exception ex) {
-                AcideMainWindow.getInstance().getDebugPanel()
-                        .setCursor(Cursor.getDefaultCursor());
-            }
+            AcideDebugHelper.performDebug("nonvalid");
         }
     }
 
@@ -294,7 +295,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            AcideDebugHelper.performDebug("erroneous");
         }
     }
 
@@ -349,9 +350,60 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         }
         info += "</html>";
         setInfo(info);
+        viewTable.setVisible(false);
         questionLabel.setVisible(false);
         buttonPanel.setVisible(false);
+        setWindowConfiguration();
+
+        AcideDebugSQLPanel.startDebug.setEnabled(true);
+        this.setDebuging(false);
+        this.setVisible(true);
     }
 
+    public void putView(String view, JScrollPane viewTable){
+        try {
+            if(this.view != null)
+                mainPanel.remove(this.viewTable);
+        }catch (Exception e){
+
+        }
+
+        setView(view);
+        setViewTable(viewTable);
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.insets = new Insets(5, 5, 5, 5);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.ipadx = 250;
+        constraints.ipady = 200;
+
+        // Adds the view viewTable to the main panel
+        mainPanel.add(this.viewTable, constraints);
+    }
+
+    public void setViewTable(JScrollPane viewTable){
+        this.viewTable = viewTable;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
+    }
+
+
+
+    public String getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public void setCurrentQuestion(String currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
 
 }

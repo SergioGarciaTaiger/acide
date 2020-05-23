@@ -2209,11 +2209,12 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 	}
 
-	public LinkedList<String> startDebug(String view, String configuration) throws Exception {
+	/*public LinkedList<String> startDebug(String view, String configuration) throws Exception {
 		AcideConsolePanel panel = AcideMainWindow.getInstance()
 				.getConsolePanel();
 		panel.getProcessThread().getOutputGobbler().set_sendToConsole(false);
-		panel.sendCommandToConsole("/debug_sql " + view + configuration, "");
+
+		panel.sendCommandToConsole("/tapi /debug_sql " + view + configuration, "");
 		return getDebugOutput(panel);
 	}
 
@@ -2225,11 +2226,12 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		return getDebugOutput(panel);
 	}
 
+
 	private LinkedList<String> getDebugOutput(AcideConsolePanel panel) throws Exception {
 		LinkedList<String> consoleOutput = new LinkedList<>();
 		boolean usefulInfo = false;
 		boolean received = panel.getProcessThread().getOutputGobbler()
-				.waitForDebuggingStart(20000);
+				.waitForDebuggingStart(30000);
 		if(received){
 			String[] lines = panel.getProcessThread().getOutputGobbler()
 					.getText().split("\n");
@@ -2240,5 +2242,29 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		else
 			throw new Exception("error while trying to do last debug");
 		return consoleOutput;
+	}*/
+
+	public LinkedList<String> startDebug(String view, String configuration){
+		String commandLine = "/tapi /debug_sql " + view + configuration;
+		LinkedList<String> result = executeCommand(commandLine);
+		return result;
 	}
+
+	public LinkedList<String> setNodeState(String nodeName, String state){
+		String commandLine = "/tapi /debug_sql_set_node " + nodeName + " " + state;
+		LinkedList<String> result = executeCommand(commandLine);
+		return result;
+	}
+
+	public LinkedList<String> debugCurrentQuestion(){
+		LinkedList<String> result = executeCommand("/tapi /debug_sql_current_question");
+		return result;
+	}
+
+	public LinkedList<String> debugCurrentAnswer(String question, String answer){
+		String commandLine = "/tapi /debug_sql_answer " + question + " " + answer;
+		LinkedList<String> result = executeCommand(commandLine);
+		return result;
+	}
+
 }

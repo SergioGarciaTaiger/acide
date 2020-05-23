@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,12 +39,7 @@
  */
 package acide.gui.databasePanel.dataView;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -97,13 +92,14 @@ public class AcideDatabaseDataView extends JFrame{
 
 	private String _database;
 	private String _table;
+
 	protected String _totalRecords;
 	protected int _totalColumns=0;
 
 	protected int _width = 250;
 	protected int _height = 280;
 
-	protected Vector<types> _tipos = new Vector<types>();
+	protected Vector<types> _tipos = new Vector<>();
 
 	protected boolean _isAscending=false;
 	protected boolean _isDescending=false;
@@ -128,9 +124,9 @@ public class AcideDatabaseDataView extends JFrame{
 	protected JvUndoManager _undoManager;
 	private JTextField _recordIndexT;
 	
-	private HashMap<String,String> orderColumns = new HashMap<String,String>();
-	private HashMap<String,Boolean> activeColumns = new HashMap<String,Boolean>();
-	private Vector<String> orderNameColumns = new Vector<String>();
+	private HashMap<String,String> orderColumns = new HashMap<>();
+	private HashMap<String,Boolean> activeColumns = new HashMap<>();
+	private Vector<String> orderNameColumns = new Vector<>();
 
 	private boolean _isTable=true;
 	
@@ -141,18 +137,13 @@ public class AcideDatabaseDataView extends JFrame{
 	 * ACIDE - A Configurable IDE main window image icon.
 	 */
 	private static final ImageIcon _ICON = new ImageIcon("./resources/images/icon.png");
-	
-	public AcideDatabaseDataView getAcideDatabaseDataView(){
-			return this;
-	}
 
 	public AcideDataBaseDataViewTable get_jTable() {
 		return _jTable;
 	}
 
 	public AcideDatabaseDataView(String db, String tabla){
-		super();
-
+		setAlwaysOnTop(false);
 		AcideMainWindow.getInstance().setEnabled(false);
 		setIconImage(_ICON.getImage());
 
@@ -191,7 +182,7 @@ public class AcideDatabaseDataView extends JFrame{
 
 	public void build(LinkedList<String> info){	
 		
-		if(_scrollPane!=null){
+ 		if(_scrollPane!=null){
 			_scrollPane.remove(_jTable);
 			this.getContentPane().remove(_scrollPane);
 		}
@@ -254,7 +245,7 @@ public class AcideDatabaseDataView extends JFrame{
 			this.setSize(getWidth(), getHeight());
 		else this.setSize(_totalColumns*20+_width, height);	
 		
-		setAlwaysOnTop(false);
+
 
 	}
 
@@ -436,7 +427,7 @@ public class AcideDatabaseDataView extends JFrame{
 		if(_database.contains("$des")){
 			Indexinfo = info.get(index);
 			int inicio = Indexinfo.indexOf(".");
-			//añadimos las columnas
+			//aï¿½adimos las columnas
 			while(!Indexinfo.equals("$")){								  
 				String nameColumn = Indexinfo.substring(inicio+1);
 				_totalColumns++;
@@ -473,7 +464,7 @@ public class AcideDatabaseDataView extends JFrame{
 					data[rows-1][_totalColumns] ="";
 			}
 
-			//añadimos las filas
+			//aï¿½adimos las filas
 			for(int row = 0; row < rows; row++) {	  	    
 				for(int column = 1; column < _totalColumns+1; column++) {
 					String infoColumn= info.get(index);    			
@@ -493,7 +484,8 @@ public class AcideDatabaseDataView extends JFrame{
 				if (info.size()>0)
 					for(int column=1;column<_totalColumns+1;column++)
 						data[rows][column] ="";	
-		} else{
+		}
+		else{
 			index = _table.indexOf("(");
 			if (index >0)
 				_table=_table.substring(_table.indexOf("("),_table.length());		
@@ -1085,6 +1077,15 @@ public class AcideDatabaseDataView extends JFrame{
 			this.setTitle(_table+": " +AcideLanguageManager.getInstance().getLabels().getString("s2156"));
 		validar();
 
+	}
+
+
+	public int get_totalRecords() {
+		return Integer.parseInt(_totalRecords);
+	}
+
+	public JScrollPane getSrollPane(){
+		return this._scrollPane;
 	}
 
 	public void selectCurrentRecord() {

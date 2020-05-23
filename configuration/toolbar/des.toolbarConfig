@@ -1,15 +1,15 @@
-// buttonConfiguration consult
-name = consult
-action = /consult $activeFile$
-hintText = Consults the selected file
-icon = 
-parameterType = NONE
-isExecutedInSytemShell = false
-
 // buttonConfiguration process
 name = process
 action = /process $activeFile$
 hintText = Process the selected file as inputs at the command prompt
+icon = 
+parameterType = NONE
+isExecutedInSytemShell = false
+
+// buttonConfiguration consult
+name = consult
+action = /consult $activeFile$
+hintText = Consults the selected file
 icon = 
 parameterType = NONE
 isExecutedInSytemShell = false
@@ -94,34 +94,18 @@ icon =
 parameterType = NONE
 isExecutedInSytemShell = false
 
-// buttonConfiguration log
-name = log
-action = /log
-hintText = Displays the current log, if any
-icon = 
-parameterType = NONE
-isExecutedInSytemShell = false
-
-// buttonConfiguration nolog
-name = nolog
-action = /nolog
-hintText = Disables logging
+// buttonConfiguration autosave
+name = autosave
+action = /autosave toggle
+hintText = Toggles autosave mode
 icon = 
 parameterType = NONE
 isExecutedInSytemShell = false
 
 // buttonConfiguration verbose
 name = verbose
-action = /verbose on
-hintText = Enables verbose output
-icon = 
-parameterType = NONE
-isExecutedInSytemShell = false
-
-// buttonConfiguration noverbose
-name = noverbose
-action = /verbose off
-hintText = Disables verbose output
+action = /verbose toggle
+hintText = Toggles verbose output
 icon = 
 parameterType = NONE
 isExecutedInSytemShell = false

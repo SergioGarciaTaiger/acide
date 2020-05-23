@@ -11,12 +11,11 @@ import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.console.DesDatabaseManager;
 
+import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
 
 public class AcideDebugHelper {
@@ -153,89 +152,147 @@ public class AcideDebugHelper {
 
     public static void startDebug(){
         try {
-            AcideDebugSQLPanel.startDebug.setEnabled(false);
-            // Gets the canvas
-            AcideDebugCanvas canvas = AcideMainWindow.getInstance()
-                    .getDebugPanel().getDebugSQLPanel().getCanvas();
-            // Gets the canvas
-            String view;
-            if(canvas.getSelectedNode() == null){
-                canvas.setSelectedNode(canvas.getRootNode());
+            String view = getSelectedViewName();
+            if(view != null && view != "          ") {
+                // Gets the canvas
+                AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                        .getDebugPanel().getDebugSQLPanel().getCanvas();
+
+                // select node
+                List<Node> nodes = canvas.get_graph().get_nodes();
+                Node node = null;
+                for (Node n : nodes) {
+                    if (n.getLabel().split("/")[0].equals(view))
+                        node = n;
+                }
+
+                if (node != null)
+                    canvas.setSelectedNode(node);
+
+                else
+                    throw new Exception("error while trying to retrieve node");
+
+                AcideDebugSQLPanel.startDebug.setEnabled(false);
+
+                LinkedList<String> consoleInfo = DesDatabaseManager.getInstance()
+                        .startDebug(view, AcideDebugConfiguration.getInstance().getDebugConfiguration());
+
+                // Check if debug must continue
+                nextMovement(consoleInfo);
+            }else{
+                LinkedList<String> error = new LinkedList<>();
+                error.add("No view selected, please select a valid node to start");
+                AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
             }
-            if(canvas.getSelectedNode().getLabel().contains("/"))
-                view = canvas.getSelectedNode().getLabel().split("/")[0];
-            else
-                throw new Exception("view not obtained");
-            LinkedList<String> result = getUsefulDebugInfo(DesDatabaseManager.getInstance()
-                    .startDebug(view, AcideDebugConfiguration.getInstance().getDebugConfiguration()));
-            updateDebugWindow(result);
         } catch (Exception ex) {
+            LinkedList<String> error = new LinkedList<>();
+            error.add("Something happened while trying to start debug");
+            AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
             AcideMainWindow.getInstance().getDebugPanel()
                     .setCursor(Cursor.getDefaultCursor());
+            AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
         }
     }
-    public static void performDebug(String action) throws Exception {
+
+
+    /**
+     * Parse debug answer updating graph and check if debug must continue
+     *
+     * @param info
+     * @return continueDebugging if continues debugging
+     */
+    private static boolean updateDebugState(LinkedList<String> info){
+        boolean continueDebugging = true;
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        List<Node> nodes = canvas.get_graph().get_nodes();
+
+        for(String line: info){
+            String view = line.split(" ")[0];
+            String state = line.split(" ")[1];
+
+            for(Node n: nodes){
+
+                if(n.getLabel().split("/")[0].equals(view)) {
+                    canvas.setSelectedNode(n);
+
+                    if(state.equals("nonvalid"))
+                        canvas.setColorSelectedNode(Color.ORANGE);
+                    else if(state.equals("valid"))
+                        canvas.setColorSelectedNode(Color.GREEN);
+                    else{
+                        canvas.setColorSelectedNode(Color.RED);
+                        continueDebugging = false;
+                    }
+                }
+            }
+        }
+        AcideDebugHelper.updateCanvasDebugGraph(canvas);
+
+        return continueDebugging;
+    }
+
+    /**
+     * Parse current view debugging
+     *
+     * @param currentQuestion
+     * @return desired view
+     */
+    private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
+        String str = currentQuestion.getFirst();
+        return str.substring(str.indexOf("(")+1,str.indexOf(")"));
+    }
+
+
+    public static JScrollPane getViewTable(String view) {
+        AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
+                .getDataView("$des", view);
+        viewWindow.setIsHidden(true);
+        viewWindow.setState(viewWindow.NORMAL);
+        viewWindow.setIsReadOnly(true);
+        JScrollPane table = viewWindow.getSrollPane();
+        viewWindow.closeWindow();
+        return table;
+    }
+
+    public static void performDebug(String action){
         if(!AcideDebugSQLDebugWindow.getInstance().isDebuging()){
             AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
             AcideDebugHelper.startDebug();
         }
-        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getCanvas();
-        LinkedList<String> result = getUsefulDebugInfo(DesDatabaseManager.getInstance()
-                .debug(action));
 
-        String nextView = result.getFirst().split("'")[1].split("'")[0];
-        List<Node> nodes = canvas.get_graph().get_nodes();
-        Node node = null;
-        for(Node n: nodes){
-            if(n.getLabel().split("/")[0].equals(nextView))
-                node = n;
-        }
-        if(node != null) {
-            canvas.setSelectedNode(node);
-            if(result.getFirst().contains("Buggy view found")){
-                AcideDebugSQLDebugWindow.getInstance().stopDepug(result);
-                canvas.setColorSelectedNode(Color.RED);
-                AcideDebugSQLPanel.startDebug.setEnabled(true);
-                AcideDebugSQLDebugWindow.getInstance().setDebuging(false);
-            }
-            else
-                updateDebugWindow(result);
-            AcideDebugHelper.updateCanvasDebugGraph(canvas);
-        }
-        else{
-            AcideDebugSQLDebugWindow.getInstance().setDebuging(false);
-            AcideDebugSQLDebugWindow.getInstance().closeWindow();
-            throw new Exception("something went wrong with DES communication");
+        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
+                AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
+
+        nextMovement(consoleInfo);
+    }
+
+    private static void nextMovement(LinkedList<String> info){
+        if(updateDebugState(info)) {
+            LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
+            AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
+            String nextView = parseCurrentQuestion(currentQuestion);
+            AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
+            updateDebugWindow();
+        }else{
+            AcideDebugSQLDebugWindow.getInstance().stopDepug(info);
         }
     }
 
-    public static void updateDebugWindow(List<String> result) throws Exception {
-        if(result.size() > 0) {
-            String info = "<html>";
-            String question = "";
-            for (int i = 0; i < result.size() - 1; i++) {
-                info += result.get(i) + "<br>";
-            }
-            info += "</html>";
-            question = result.get(result.size() - 1).split("\\?")[0];
-            AcideDebugSQLDebugWindow.getInstance().setInfo(info);
-            AcideDebugSQLDebugWindow.getInstance().setQuestion(question);
-            AcideDebugSQLDebugWindow.getInstance().showWindow();
-        }
-        else
-            throw new Exception("something went wrong with DES communication");
+    public static void updateDebugWindow() {
+        String view = AcideDebugSQLDebugWindow.getInstance().getView();
+        AcideDebugSQLDebugWindow.getInstance().setInfo("Debugging view " + view);
+        AcideDebugSQLDebugWindow.getInstance().setQuestion("Is this the expected result of this view?");
+        AcideDebugSQLDebugWindow.getInstance().showWindow();
     }
 
-    private static LinkedList<String> getUsefulDebugInfo(LinkedList<String> consoleInfo){
-        LinkedList<String> result = new LinkedList<>();
-        boolean usefulInfo = false;
-        for(String line : consoleInfo){
-            if(line.contains("Info: Debugging view") || line.contains("Buggy view"))
-                usefulInfo = true;
-            if(usefulInfo)
-                result.add(line);
-        }
-        return result;
+
+    public static String getSelectedViewName(){
+        JComboBox viewBox = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getViewBox();
+        if (viewBox.getSelectedIndex() < 1)
+            return "";
+        // Gets the label of the selected item
+        return (String) viewBox.getSelectedItem();
     }
 }

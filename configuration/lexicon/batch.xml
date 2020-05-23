@@ -1,19 +1,19 @@
 <acide.configuration.lexicon.AcideLexiconConfiguration>
   <__name>batch</__name>
-  <__path>.\configuration\lexicon\batch.xml</__path>
+  <__path>./configuration/lexicon/batch.xml</__path>
   <__isCompiledOrInterpreted>false</__isCompiledOrInterpreted>
   <__tokenTypeManager>
     <__list>
       <__list>
         <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
-          <__name>Color: [R: 0, G: 0, B: 0], Font Style: Bold, Case Sensitive: No</__name>
+          <__name>Color: [R: 0, G: 0, B: 255], Font Style: Plain, Case Sensitive: No</__name>
           <__color>
             <red>0</red>
             <green>0</green>
-            <blue>0</blue>
+            <blue>255</blue>
             <alpha>255</alpha>
           </__color>
-          <__fontStyle>2</__fontStyle>
+          <__fontStyle>0</__fontStyle>
           <__isCaseSensitive>false</__isCaseSensitive>
           <__tokenList>
             <__list>
@@ -69,7 +69,6 @@
               <string>pushd</string>
               <string>rd</string>
               <string>recover</string>
-              <string>rem</string>
               <string>ren</string>
               <string>rename</string>
               <string>replace</string>
@@ -99,7 +98,7 @@
             <blue>0</blue>
             <alpha>255</alpha>
           </__color>
-          <__fontStyle>2</__fontStyle>
+          <__fontStyle>0</__fontStyle>
           <__isCaseSensitive>false</__isCaseSensitive>
           <__tokenList>
             <__list>
@@ -110,6 +109,22 @@
               <string>)</string>
               <string>,</string>
               <string>%</string>
+            </__list>
+          </__tokenList>
+        </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
+        <acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>
+          <__name>Color: [R: 255, G: 102, B: 0], Font Style: Plain, Case Sensitive: No</__name>
+          <__color>
+            <red>255</red>
+            <green>102</green>
+            <blue>0</blue>
+            <alpha>255</alpha>
+          </__color>
+          <__fontStyle>0</__fontStyle>
+          <__isCaseSensitive>false</__isCaseSensitive>
+          <__tokenList>
+            <__list>
+              <string>errorlevel</string>
             </__list>
           </__tokenList>
         </acide.configuration.lexicon.tokens.AcideLexiconTokenGroup>

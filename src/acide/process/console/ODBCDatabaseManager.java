@@ -1110,8 +1110,17 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
 	}
 
 	@Override
-	public LinkedList<String> debug(String action) {
-		//TODO
+	public LinkedList<String> setNodeState(String nodeName, String state) {
+		return null;
+	}
+
+	@Override
+	public LinkedList<String> debugCurrentQuestion() {
+		return null;
+	}
+
+	@Override
+	public LinkedList<String> debugCurrentAnswer(String question, String answer) {
 		return null;
 	}
 }

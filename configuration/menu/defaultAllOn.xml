@@ -97,6 +97,14 @@
                   <__erasable>false</__erasable>
                   <__image>./resources/icons/menu/file/exit.png</__image>
                 </acide.configuration.menu.AcideMenuItemConfiguration>
+                <acide.configuration.menu.AcideMenuItemConfiguration>
+                  <__command>$NEW_FILE</__command>
+                  <__parameter>None</__parameter>
+                  <__name>New file</__name>
+                  <__visible>false</__visible>
+                  <__erasable>false</__erasable>
+                  <__image>./resources/icons/menu/file/newFile.png</__image>
+                </acide.configuration.menu.AcideMenuItemConfiguration>
               </__list>
             </__list>
           </__itemsManager>
@@ -192,7 +200,7 @@
                           <__visible>true</__visible>
                           <__erasable>false</__erasable>
                           <__image></__image>
-                        </acide.configuration.menu.AcideMenuItemConfiguration>  
+                        </acide.configuration.menu.AcideMenuItemConfiguration>
                         <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$LOWER_CASE</__command>
                           <__parameter>None</__parameter>
@@ -460,7 +468,7 @@
                   <__erasable>false</__erasable>
                   <__image>./resources/icons/menu/view/showDataBasePanel.png</__image>
                 </acide.configuration.menu.AcideMenuItemConfiguration>
-				<acide.configuration.menu.AcideMenuItemConfiguration>
+                <acide.configuration.menu.AcideMenuItemConfiguration>
                   <__command>$SHOW_GRAPH_PANEL</__command>
                   <__parameter>None</__parameter>
                   <__name>Show Graph Panel</__name>
@@ -468,7 +476,7 @@
                   <__erasable>false</__erasable>
                   <__image>./resources/icons/menu/view/showGraphPanel.png</__image>
                 </acide.configuration.menu.AcideMenuItemConfiguration>
-				<acide.configuration.menu.AcideMenuItemConfiguration>
+                <acide.configuration.menu.AcideMenuItemConfiguration>
                   <__command>$SHOW_DEBUG_PANEL</__command>
                   <__parameter>None</__parameter>
                   <__name>Show Debug Panel</__name>
@@ -476,7 +484,7 @@
                   <__erasable>false</__erasable>
                   <__image>./resources/icons/menu/view/showDebugPanel.png</__image>
                 </acide.configuration.menu.AcideMenuItemConfiguration>
-				<acide.configuration.menu.AcideMenuItemConfiguration>
+                <acide.configuration.menu.AcideMenuItemConfiguration>
                   <__command>$SHOW_ASSERTED_DATABASE_PANEL</__command>
                   <__parameter>None</__parameter>
                   <__name>Show Asserted Database Panel</__name>
@@ -592,14 +600,6 @@
                           <__erasable>false</__erasable>
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-
-
-
-
-
-
-
-
                       </__list>
                     </__list>
                   </__itemsManager>
@@ -620,7 +620,7 @@
                   <__itemsManager>
                     <__list>
                       <__list>
-                         <acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$PREFERENCES</__command>
                           <__parameter>None</__parameter>
                           <__name>Preferences</__name>
@@ -704,7 +704,7 @@
                           <__erasable>false</__erasable>
                           <__image>./resources/icons/menu/configuration/console/consoleDisplayOptions.png</__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$CONSOLE_LINE_WRAPPING</__command>
                           <__parameter>None</__parameter>
                           <__name>Console Line Wrapping</__name>
@@ -773,41 +773,41 @@
                           <__image></__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
                         <acide.configuration.menu.AcideMenuSubmenuConfiguration>
-		                  <__itemsManager>
-		                    <__list>
-		                      <__list>
-		                        <acide.configuration.menu.AcideMenuItemConfiguration>
-		                          <__command>$SHOW_NAME</__command>
-		                          <__parameter>None</__parameter>
-		                          <__name>Name</__name>
-		                          <__visible>true</__visible>
-		                          <__erasable>false</__erasable>
-		                          <__image></__image>
-		                        </acide.configuration.menu.AcideMenuItemConfiguration>  
-		                        <acide.configuration.menu.AcideMenuItemConfiguration>
-		                          <__command>$SHOW_NAME_FIELDS</__command>
-		                          <__parameter>None</__parameter>
-		                          <__name>Name Fields</__name>
-		                          <__visible>true</__visible>
-		                          <__erasable>false</__erasable>
-		                          <__image></__image>
-		                        </acide.configuration.menu.AcideMenuItemConfiguration>
-		                        <acide.configuration.menu.AcideMenuItemConfiguration>
-		                          <__command>$SHOW_NAME_FIELDS_TYPES</__command>
-		                          <__parameter>None</__parameter>
-		                          <__name>Name Fields Types</__name>
-		                          <__visible>true</__visible>
-		                          <__erasable>false</__erasable>
-		                          <__image></__image>
-		                        </acide.configuration.menu.AcideMenuItemConfiguration>
-		                      </__list>
-		                    </__list>
-		                  </__itemsManager>
-		                  <__name>Show Details</__name>
-		                  <__visible>true</__visible>
-		                  <__erasable>false</__erasable>
-		                  <__image></__image>
-		                </acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$SHOW_NAME</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Name</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image></__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$SHOW_NAME_FIELDS</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Name Fields</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image></__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$SHOW_NAME_FIELDS_TYPES</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Name Fields Types</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image></__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Show Details</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
                       </__list>
                     </__list>
                   </__itemsManager>
@@ -816,7 +816,7 @@
                   <__erasable>false</__erasable>
                   <__image></__image>
                 </acide.configuration.menu.AcideMenuSubmenuConfiguration>
-				<acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                <acide.configuration.menu.AcideMenuSubmenuConfiguration>
                   <__itemsManager>
                     <__list>
                       <__list>
@@ -824,110 +824,110 @@
                           <__command>$NODES_COLOR</__command>
                           <__parameter>None</__parameter>
                           <__name>Node Color</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$SHOW_LABELS</__command>
                           <__parameter>None</__parameter>
                           <__name>Show Labels</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$NODES_SIZE</__command>
                           <__parameter>None</__parameter>
                           <__name>Node Size</__name>
-                          <__visible>true</__visible>
+                          <__visible>false</__visible>
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$NODES_SHAPE_CIRCLE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Circle</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$NODES_SHAPE_SQUARE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Square</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Node Shape</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$ARROW_COLOR_DIRECT</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Direct</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$ARROW_COLOR_INVERSE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Inverse</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Arrow Color</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$ARROW_SHAPE_POLYGON</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Polygon</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$ARROW_SHAPE_LINE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Line</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>										
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Arrow Shape</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$NODES_SHAPE_CIRCLE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Circle</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$NODES_SHAPE_SQUARE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Square</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Node Shape</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$ARROW_COLOR_DIRECT</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Direct</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$ARROW_COLOR_INVERSE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Inverse</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Arrow Color</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$ARROW_SHAPE_POLYGON</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Polygon</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$ARROW_SHAPE_LINE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Line</__name>
+                                  <__visible>false</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Arrow Shape</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
                       </__list>
                     </__list>
                   </__itemsManager>
@@ -936,7 +936,7 @@
                   <__erasable>false</__erasable>
                   <__image></__image>
                 </acide.configuration.menu.AcideMenuSubmenuConfiguration>
-				<acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                <acide.configuration.menu.AcideMenuSubmenuConfiguration>
                   <__itemsManager>
                     <__list>
                       <__list>
@@ -948,7 +948,7 @@
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$DEBUG_SELECTED_NODES_COLOR</__command>
                           <__parameter>None</__parameter>
                           <__name>Selected Node Color</__name>
@@ -956,7 +956,7 @@
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$DEBUG_SHOW_LABELS</__command>
                           <__parameter>None</__parameter>
                           <__name>Show Labels</__name>
@@ -964,7 +964,7 @@
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuItemConfiguration>
+                        <acide.configuration.menu.AcideMenuItemConfiguration>
                           <__command>$DEBUG_NODES_SIZE</__command>
                           <__parameter>None</__parameter>
                           <__name>Node Size</__name>
@@ -972,90 +972,90 @@
                           <__erasable>false</__erasable>
                           <__image>         </__image>
                         </acide.configuration.menu.AcideMenuItemConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_NODES_SHAPE_CIRCLE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Circle</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_NODES_SHAPE_SQUARE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Square</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Node Shape</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_ARROW_COLOR_DIRECT</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Direct</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_ARROW_COLOR_INVERSE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Inverse</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Arrow Color</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
-						<acide.configuration.menu.AcideMenuSubmenuConfiguration>
-							<__itemsManager>
-								<__list>
-									<__list>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_ARROW_SHAPE_POLYGON</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Polygon</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>
-										<acide.configuration.menu.AcideMenuItemConfiguration>
-											<__command>$DEBUG_ARROW_SHAPE_LINE</__command>
-                          					<__parameter>None</__parameter>
-                          					<__name>Line</__name>
-                          					<__visible>true</__visible>
-                          					<__erasable>false</__erasable>
-                          					<__image>      </__image>
-										</acide.configuration.menu.AcideMenuItemConfiguration>										
-									 </__list>
-								</__list>
-							</__itemsManager>
-							<__name>Arrow Shape</__name>
-							<__visible>true</__visible>
-							<__erasable>false</__erasable>
-							<__image></__image>
-						</acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_NODES_SHAPE_CIRCLE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Circle</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_NODES_SHAPE_SQUARE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Square</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Node Shape</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_ARROW_COLOR_DIRECT</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Direct</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_ARROW_COLOR_INVERSE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Inverse</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Arrow Color</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                        <acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                          <__itemsManager>
+                            <__list>
+                              <__list>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_ARROW_SHAPE_POLYGON</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Polygon</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                                <acide.configuration.menu.AcideMenuItemConfiguration>
+                                  <__command>$DEBUG_ARROW_SHAPE_LINE</__command>
+                                  <__parameter>None</__parameter>
+                                  <__name>Line</__name>
+                                  <__visible>true</__visible>
+                                  <__erasable>false</__erasable>
+                                  <__image>      </__image>
+                                </acide.configuration.menu.AcideMenuItemConfiguration>
+                              </__list>
+                            </__list>
+                          </__itemsManager>
+                          <__name>Arrow Shape</__name>
+                          <__visible>true</__visible>
+                          <__erasable>false</__erasable>
+                          <__image></__image>
+                        </acide.configuration.menu.AcideMenuSubmenuConfiguration>
                       </__list>
                     </__list>
                   </__itemsManager>
@@ -1064,11 +1064,10 @@
                   <__erasable>false</__erasable>
                   <__image></__image>
                 </acide.configuration.menu.AcideMenuSubmenuConfiguration>
-				<acide.configuration.menu.AcideMenuSubmenuConfiguration>
+                <acide.configuration.menu.AcideMenuSubmenuConfiguration>
                   <__itemsManager>
                     <__list>
-                      <__list>
-                      </__list>
+                      <__list/>
                     </__list>
                   </__itemsManager>
                   <__name>Language</__name>
@@ -1207,6 +1206,14 @@
                   <__visible>true</__visible>
                   <__erasable>false</__erasable>
                   <__image>./resources/icons/menu/help/aboutUs.png</__image>
+                </acide.configuration.menu.AcideMenuItemConfiguration>
+                <acide.configuration.menu.AcideMenuItemConfiguration>
+                  <__command>./doc/manualDES.pdf</__command>
+                  <__parameter>None</__parameter>
+                  <__name>Show DES Help</__name>
+                  <__visible>true</__visible>
+                  <__erasable>true</__erasable>
+                  <__image></__image>
                 </acide.configuration.menu.AcideMenuItemConfiguration>
               </__list>
             </__list>

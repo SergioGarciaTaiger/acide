@@ -138,21 +138,6 @@ public class AcideConsoleOutputProcess extends Thread {
 		return received;
 	}
 
-	public synchronized boolean waitForDebuggingStart(long millis){
-		Date startingToWaitAt=new Date();
-		boolean received=false;
-		while (!received && (new Date().getTime()-startingToWaitAt.getTime())<millis){
-			try {
-				wait(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			received= !_text.equalsIgnoreCase("KO") && (_text.contains("$eot") ||
-					_text.contains("Debugging view") || _text.contains("Buggy view"));
-		}
-		return received;
-	}
-
 	private synchronized void newTextReady(){
 		notifyAll();
 	}

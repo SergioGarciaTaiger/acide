@@ -441,5 +441,10 @@ public abstract class AcideDatabaseManager {
 
     public abstract LinkedList<String> startDebug(String view, String debugConfiguration) throws Exception;
 
-    public abstract LinkedList<String> debug(String action)  throws Exception;
+	public abstract LinkedList<String> setNodeState(String nodeName, String state);
+
+	public abstract LinkedList<String> debugCurrentQuestion();
+
+	public abstract LinkedList<String> debugCurrentAnswer(String question, String answer);
+
 }

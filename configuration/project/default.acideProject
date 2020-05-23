@@ -1,15 +1,15 @@
-debug sql project
-./configuration/project/default.acideProject
-.des
-./des
+
+.\configuration\project\default.acideProject
+
+
 false
-/
 
-.
-./des
-/Users/sergiogarciarodriguez/dev/Acide/./des
-/Users/sergiogarciarodriguez/dev/Acide/./
 
+
+
+.\des.exe
+.\
+/q
 true
 
 -16777216
@@ -23,30 +23,23 @@ true
 true
 true
 true
-1680
-944
-0
-23
-419
-177
-891
-433
-510
+1380
+744
+-8
+-8
+188
+150
+977
+345
+344
 English
-./configuration/menu/lastModified.menuConfig
+.\configuration\menu\lastModified.menuConfig
 ./configuration/menu/defaultAllOn.xml
-./configuration/toolbar/des.toolbarConfig
+.\configuration\toolbar\des.toolbarConfig
 AcideExplorerPanel
 AcideFileEditor
 AcideDataBasePanel
 AcideConsolePanel
 AcideGraphPanel
 AcideDebugPanel
-1
-./examples/debug.sql
-debug.sql
-debug sql project
-false
-true
-false
-true
+0
