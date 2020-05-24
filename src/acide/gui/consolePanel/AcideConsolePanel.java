@@ -1179,33 +1179,38 @@ public class AcideConsolePanel extends JPanel {
 	 * Resets the ACIDE - A Configurable IDE console panel.
 	 */
 	public void resetConsole() {
-
 		// Kills the previous process
 		executeExitCommand();
 
-		// If the lexicon has to be applied to the console
-		if (AcideWorkbenchConfiguration.getInstance()
-				.getLexiconAssignerConfiguration().getApplyLexiconToConsole()) {
+		if(!_lexiconConfiguration.getName().equals(AcideLexiconConfiguration.DEFAULT_NAME.split("\\.")[0])) {
+			AcideWorkbenchConfiguration.getInstance()
+					.getLexiconAssignerConfiguration().setApplyLexiconToConsole(true);
+		} else {
 
-			// If there is no a lexicon configuration defined for the console
+			// If the lexicon has to be applied to the console
 			if (AcideWorkbenchConfiguration.getInstance()
-					.getLexiconAssignerConfiguration()
-					.getConsoleLexiconConfiguration().matches(""))
+					.getLexiconAssignerConfiguration().getApplyLexiconToConsole()) {
+
+				// If there is no a lexicon configuration defined for the console
+				if (AcideWorkbenchConfiguration.getInstance()
+						.getLexiconAssignerConfiguration()
+						.getConsoleLexiconConfiguration().matches(""))
+
+					// Loads the default lexicon configuration by default
+					_lexiconConfiguration
+							.load(AcideLexiconConfiguration.DEFAULT_PATH
+									+ AcideLexiconConfiguration.DEFAULT_NAME);
+				else
+					// Loads the defined lexicon configuration
+					_lexiconConfiguration.load(AcideWorkbenchConfiguration
+							.getInstance().getLexiconAssignerConfiguration()
+							.getConsoleLexiconConfiguration());
+			} else
 
 				// Loads the default lexicon configuration by default
-				_lexiconConfiguration
-						.load(AcideLexiconConfiguration.DEFAULT_PATH
-								+ AcideLexiconConfiguration.DEFAULT_NAME);
-			else
-				// Loads the defined lexicon configuration
-				_lexiconConfiguration.load(AcideWorkbenchConfiguration
-						.getInstance().getLexiconAssignerConfiguration()
-						.getConsoleLexiconConfiguration());
-		} else
-
-			// Loads the default lexicon configuration by default
-			_lexiconConfiguration.load(AcideLexiconConfiguration.DEFAULT_PATH
-					+ AcideLexiconConfiguration.DEFAULT_NAME);
+				_lexiconConfiguration.load(AcideLexiconConfiguration.DEFAULT_PATH
+						+ AcideLexiconConfiguration.DEFAULT_NAME);
+		}
 
 		// Applies the highlighting
 		resetStyledDocument();
@@ -1360,7 +1365,7 @@ public class AcideConsolePanel extends JPanel {
 	 * send them properly to the ACIDE - A Configurable IDE console panel for
 	 * its execution.
 	 * 
-	 * @param rawCommand
+	 * @param buttonAction
 	 *            raw command to execute from ACIDE - A Configurable IDE console
 	 *            panel.
 	 * 

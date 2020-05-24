@@ -5,7 +5,27 @@
       <__list>
         <__list>
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
-            <__path>/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql</__path>
+            <__path>./examples/aggregates.dl</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/aggregates.ra</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/ra.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/aggregates.sql</__path>
             <__type>Normal</__type>
             <__caretPosition>0</__caretPosition>
             <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
@@ -14,10 +34,60 @@
             <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
             <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
           </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/bom.dl</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/family.dl</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/family.ra</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/ra.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/family.sql</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>0</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+          <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
+            <__path>./examples/relop.dl</__path>
+            <__type>Normal</__type>
+            <__caretPosition>0</__caretPosition>
+            <__splitPaneDividerLocation>2</__splitPaneDividerLocation>
+            <__activeTextEditionArea>1</__activeTextEditionArea>
+            <__lexiconConfiguration>./configuration/lexicon/des.xml</__lexiconConfiguration>
+            <__previousGrammarConfiguration>./configuration/grammars/bytes.jar</__previousGrammarConfiguration>
+            <__currentGrammarConfiguration>./configuration/grammars/bytes.jar</__currentGrammarConfiguration>
+          </acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
         </__list>
       </__list>
     </__fileEditorPanelConfigurationList>
-    <__selectedFileEditorPanelName>debug.sql</__selectedFileEditorPanelName>
+    <__selectedFileEditorPanelName>aggregates.sql</__selectedFileEditorPanelName>
     <__fontName>Dialog</__fontName>
     <__fontStyle>0</__fontStyle>
     <__fontSize>12</__fontSize>
@@ -143,7 +213,7 @@
       </__list>
     </__list>
     <__consoleLexiconConfiguration>./configuration/lexicon/default.xml</__consoleLexiconConfiguration>
-    <__applyLexiconToConsole>false</__applyLexiconToConsole>
+    <__applyLexiconToConsole>true</__applyLexiconToConsole>
   </__lexiconAssignerConfiguration>
   <__recentFilesConfiguration>
     <__list>
@@ -162,7 +232,6 @@
       <string>./examples/aggregates.dl</string>
       <string>./examples/family.sql</string>
       <string>./examples/family.sql</string>
-      <string>/Users/sergiogarciarodriguez/dev/Acide/./examples/debug.sql</string>
     </__list>
   </__recentFilesConfiguration>
   <__recentProjectsConfiguration>
