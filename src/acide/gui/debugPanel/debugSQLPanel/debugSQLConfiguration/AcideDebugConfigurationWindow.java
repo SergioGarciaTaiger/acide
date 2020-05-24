@@ -26,7 +26,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
     private JLabel orderLabel;
     private JLabel trust_tablesLabel;
     private JLabel trust_fileLabel;
-    private JLabel orable_fileLabel;
+    //private JLabel orable_fileLabel;
 
     // Radio Buttons
     private JRadioButton debugFullRadio;
@@ -42,7 +42,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
 
     // TextFields
     private JTextField trust_fileTextField;
-    private JTextField oracle_fileTextField;
+    //private JTextField oracle_fileTextField;
 
     // Panels
     private JPanel mainPanel;
@@ -50,7 +50,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
 
     // Button
     private JButton browseTrustFileButton;
-    private JButton browseOracleFileButton;
+    //private JButton browseOracleFileButton;
     private JButton saveCondigurationButton;
     private JButton defaultConfigurationButton;
 
@@ -101,20 +101,19 @@ public class AcideDebugConfigurationWindow extends JFrame {
                .getLabels().getString("s2332"));
         trust_fileLabel = new JLabel(AcideLanguageManager.getInstance()
                .getLabels().getString("s2334"));
-        orable_fileLabel = new JLabel(AcideLanguageManager.getInstance()
-                .getLabels().getString("s2335"));
+        //orable_fileLabel = new JLabel(AcideLanguageManager.getInstance().getLabels().getString("s2335"));
 
         // Creates the trust_file text field
         trust_fileTextField = new JTextField("");
 
         // Creates the oracle_file text field
-        oracle_fileTextField = new JTextField("");
+        //oracle_fileTextField = new JTextField("");
 
         // Builds action buttons for configuration window
         browseTrustFileButton = new JButton(AcideLanguageManager.getInstance()
                 .getLabels().getString("s948"));
-        browseOracleFileButton = new JButton(AcideLanguageManager.getInstance()
-                .getLabels().getString("s948"));
+        //browseOracleFileButton = new JButton(AcideLanguageManager.getInstance().getLabels().getString("s948"));
+
         saveCondigurationButton = new JButton(AcideLanguageManager.getInstance()
                 .getLabels().getString("s2336"));
         defaultConfigurationButton = new JButton(AcideLanguageManager.getInstance()
@@ -171,7 +170,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
 
     private void setListeners() {
         browseTrustFileButton.addActionListener(new Trust_fileButtonAction());
-        browseOracleFileButton.addActionListener(new Oracle_fileButtonAction());
+        //browseOracleFileButton.addActionListener(new Oracle_fileButtonAction());
         defaultConfigurationButton.addActionListener(new SetDefaultAction());
         saveCondigurationButton.addActionListener(new SaveAction());
     }
@@ -232,21 +231,21 @@ public class AcideDebugConfigurationWindow extends JFrame {
         constraints.ipady = 10;
 
         // Adds the name label to the main panel
-        mainPanel.add(orable_fileLabel, constraints);
+        //mainPanel.add(orable_fileLabel, constraints);
 
         constraints.gridx = 1;
         constraints.ipadx = 200;
         constraints.ipady = 3;
 
         // Adds the name text field to the main panel
-        mainPanel.add(oracle_fileTextField, constraints);
+        //mainPanel.add(oracle_fileTextField, constraints);
 
         constraints.gridx = 2;
         constraints.ipadx = 20;
         constraints.ipady = 3;
 
         // Adds the name text field to the main panel
-        mainPanel.add(browseOracleFileButton, constraints);
+        //mainPanel.add(browseOracleFileButton, constraints);
 
 
         constraints.gridx = 0;
@@ -378,7 +377,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
         trust_fileTextField.setText(configuration.getTrust_file());
 
         // Empties the workspace text field
-        oracle_fileTextField.setText(configuration.getOracle_file());
+        //oracle_fileTextField.setText(configuration.getOracle_file());
 
         // Displays the window
         setVisible(true);
@@ -452,16 +451,16 @@ public class AcideDebugConfigurationWindow extends JFrame {
             if (absolutePath != null) {
 
                 // Sets the oracle path
-                configuration.setOracle_file(absolutePath);
+                //configuration.setOracle_file(absolutePath);
 
                 // Updates the oracle text field
-                oracle_fileTextField.setText(configuration.getOracle_file());
+                //oracle_fileTextField.setText(configuration.getOracle_file());
 
                 // Validates the changes in the oracle text field
-                oracle_fileTextField.validate();
+                //oracle_fileTextField.validate();
 
                 // Repaints the oracle text field
-                oracle_fileTextField.repaint();
+                //oracle_fileTextField.repaint();
             }
         }
     }
@@ -517,8 +516,8 @@ public class AcideDebugConfigurationWindow extends JFrame {
             if(trust_fileTextField.getText() != null && !trust_fileTextField.getText().isEmpty())
                 configuration.setTrust_file(trust_fileTextField.getText());
 
-            if(oracle_fileTextField.getText() != null && !oracle_fileTextField.getText().isEmpty())
-                configuration.setOracle_file(oracle_fileTextField.getText());
+//            if(oracle_fileTextField.getText() != null && !oracle_fileTextField.getText().isEmpty())
+//                configuration.setOracle_file(oracle_fileTextField.getText());
 
             if(debugFullRadio.isSelected())
                 configuration.setDebug(AcideDebugConfiguration.Debug.FULL);

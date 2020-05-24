@@ -8,7 +8,7 @@ public class AcideDebugConfiguration {
     private Trust_tables trust_tables;
     private Debug debug;
     private String trust_file;
-    private String oracle_file;
+    //private String oracle_file;
     private Order order;
 
     private static AcideDebugConfiguration instance;
@@ -29,7 +29,7 @@ public class AcideDebugConfiguration {
         debug = Debug.FULL;
         order = Order.CARDINALITY;
         trust_file = null;
-        oracle_file = null;
+        //oracle_file = null;
     }
 
     public String getDebugConfiguration(){
@@ -42,8 +42,8 @@ public class AcideDebugConfiguration {
             configuration += "order(" + order.getValue() + ") ";
         if(trust_file != null && !trust_file.isEmpty())
             configuration += "trust_file('" + trust_file + "') ";
-        if(oracle_file != null && !oracle_file.isEmpty())
-            configuration += "oracle_file('" + oracle_file + "') ";
+//        if(oracle_file != null && !oracle_file.isEmpty())
+//            configuration += "oracle_file('" + oracle_file + "') ";
         return configuration;
     }
 
@@ -75,13 +75,13 @@ public class AcideDebugConfiguration {
         this.trust_file = trust_file;
     }
 
-    public String getOracle_file() {
-        return oracle_file;
-    }
-
-    public void setOracle_file(String oracle_file) {
-        this.oracle_file = oracle_file;
-    }
+//    public String getOracle_file() {
+//        return oracle_file;
+//    }
+//
+//    public void setOracle_file(String oracle_file) {
+//        this.oracle_file = oracle_file;
+//    }
 
     public Order getOrder() {
         return order;

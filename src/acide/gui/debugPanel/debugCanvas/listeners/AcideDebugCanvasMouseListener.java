@@ -87,303 +87,78 @@ public class AcideDebugCanvasMouseListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent ev) {
 		try{
-		// Checks the number of clicks
-		if (ev.getClickCount() == 1) {
-			// Gets the graph of the canvas
-			DirectedWeightedGraph graph = _canvas.get_graph();
-			// Gets the nodes of the graph
-			ArrayList<Node> nodes = graph.get_nodes();
-			// Searches if a node has been clicked
-			for (Node n : nodes) {
-				if (ev.getX() >= n.getX()
-						&& ev.getX() <= n.getX()
-								+ (int) (_canvas.getNodeSize() * _canvas
-										.getZoom())
-						&& ev.getY() >= n.getY()
-						&& ev.getY() <= n.getY()
-								+ (int) (_canvas.getNodeSize() * _canvas
-										.getZoom())) {
-					// Updates the selected node
-					_canvas.setSelectedNode(n);
-					// Repaints the graph
-					_canvas.repaint();
-					// Gets the selected node name
-					String selected = n.getLabel();
-					// Gets the highlighter
-					AcideDebugPanelHighLighter highLighter = AcideMainWindow
-							.getInstance().getDebugPanel()
-							.getTraceDatalogPanel().getHighLighter();
-					// Checks if the asserted database panel is open
-					if (AcideMainWindow.getInstance()
-							.isAssertedDatabaseOpened()) {
-						// Updates the selected node on the asserted database
-						// panel
-						AcideMainWindow.getInstance()
-								.getAssertedDatabasePanel().setSelectedNode(n);
+			// Checks the number of clicks
+			if (ev.getClickCount() == 1) {
+				// Gets the graph of the canvas
+				DirectedWeightedGraph graph = _canvas.get_graph();
+				// Gets the nodes of the graph
+				ArrayList<Node> nodes = graph.get_nodes();
+				// Searches if a node has been clicked
+				for (Node n : nodes) {
+					if (ev.getX() >= n.getX()
+							&& ev.getX() <= n.getX()
+									+ (int) (_canvas.getNodeSize() * _canvas
+											.getZoom())
+							&& ev.getY() >= n.getY()
+							&& ev.getY() <= n.getY()
+									+ (int) (_canvas.getNodeSize() * _canvas
+											.getZoom())) {
+						// Updates the selected node
+						_canvas.setSelectedNode(n);
+						// Repaints the graph
+						_canvas.repaint();
+						// Gets the selected node name
+						String selected = n.getLabel();
+						// Gets the highlighter
+						AcideDebugPanelHighLighter highLighter = AcideMainWindow
+								.getInstance().getDebugPanel()
+								.getTraceDatalogPanel().getHighLighter();
+						// Checks if the asserted database panel is open
 						if (AcideMainWindow.getInstance()
-								.getAssertedDatabasePanel()
-								.getNumberOfPredicatesCheckBox().isSelected())
+								.isAssertedDatabaseOpened()) {
+							// Updates the selected node on the asserted database
+							// panel
 							AcideMainWindow.getInstance()
+									.getAssertedDatabasePanel().setSelectedNode(n);
+							if (AcideMainWindow.getInstance()
 									.getAssertedDatabasePanel()
-									.updateSelectedNode();
-					}
-					// Resets the highlights
-					highLighter.resetLines();
-					highLighter.unHighLight();
-					// Highlights the lines corresponding to the new selected
-					// node
-					highLighter.highLight(selected);
-					if (AcideMainWindow.getInstance().getDebugPanel()
-							.getTraceSQLPanelIndex() == AcideMainWindow
-							.getInstance().getDebugPanel().getTabbedPane()
-							.getSelectedIndex()
-							&& AcideMainWindow.getInstance().getDebugPanel()
-									.getTraceSQLPanel().getShowSQLMenuItem()
-									.isSelected()) {
-						AcideMainWindow.getInstance().getDebugPanel()
-						.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-						String query = _canvas.getSelectedNode().getLabel();
-						query = query.substring(0, query.lastIndexOf("/"));
-						AcideDebugHelper.selectSQLTEXT(query);
-						AcideMainWindow.getInstance().getDebugPanel()
-						.setCursor(Cursor.getDefaultCursor());
+									.getNumberOfPredicatesCheckBox().isSelected())
+								AcideMainWindow.getInstance()
+										.getAssertedDatabasePanel()
+										.updateSelectedNode();
+						}
+						// Resets the highlights
+						highLighter.resetLines();
+						highLighter.unHighLight();
+						// Highlights the lines corresponding to the new selected
+						// node
+						highLighter.highLight(selected);
+						if (AcideMainWindow.getInstance().getDebugPanel()
+								.getTraceSQLPanelIndex() == AcideMainWindow
+								.getInstance().getDebugPanel().getTabbedPane()
+								.getSelectedIndex()
+								&& AcideMainWindow.getInstance().getDebugPanel()
+										.getTraceSQLPanel().getShowSQLMenuItem()
+										.isSelected()) {
+							AcideMainWindow.getInstance().getDebugPanel()
+							.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+							String query = _canvas.getSelectedNode().getLabel();
+							query = query.substring(0, query.lastIndexOf("/"));
+							AcideDebugHelper.selectSQLTEXT(query);
+							AcideMainWindow.getInstance().getDebugPanel()
+							.setCursor(Cursor.getDefaultCursor());
+						}
 					}
 				}
 			}
-		}
-		// Checks the number of clicks
-		if (ev.getClickCount() >= 2) {
-			// Gets the graph of the canvas
-			DirectedWeightedGraph graph = _canvas.get_graph();
-			// Gets the nodes of the graph
-			ArrayList<Node> nodes = graph.get_nodes();
-			boolean changed = false;
-			// Searches if a node has been clicked
-			for (Node n : nodes) {
-				if (ev.getX() >= n.getX()
-						&& ev.getX() <= n.getX()
-								+ (int) (_canvas.getNodeSize() * _canvas
-										.getZoom())
-						&& ev.getY() >= n.getY()
-						&& ev.getY() <= n.getY()
-								+ (int) (_canvas.getNodeSize() * _canvas
-										.getZoom())) {
-					// Updates the selected node
-					changed = _canvas.setSelectedNode(n);
-					// Repaints the graph
-					_canvas.repaint();
-					// Gets the selected node name
-					String selected = n.getLabel();
-					// Gets the highlighter
-					AcideDebugPanelHighLighter highLighter = AcideMainWindow
-							.getInstance().getDebugPanel()
-							.getTraceDatalogPanel().getHighLighter();
-					// Resets the highlights
-					highLighter.resetLines();
-					highLighter.unHighLight();
-					// Highlights the lines corresponding to the new selected
-					// node
-					highLighter.highLight(selected);
-					if (AcideMainWindow.getInstance().getDebugPanel()
-							.getTraceSQLPanelIndex() == AcideMainWindow
-							.getInstance().getDebugPanel().getTabbedPane()
-							.getSelectedIndex()
-							&& AcideMainWindow.getInstance().getDebugPanel()
-									.getTraceSQLPanel().getShowSQLMenuItem()
-									.isSelected()) {
-						LinkedList<String> databases = AcideDatabaseManager
-								.getInstance().getDatabases();
-						boolean found = false;
-						String query = _canvas.getSelectedNode().getLabel();
-						query = query.substring(0, query.lastIndexOf("/"));
-
-						String database = null;
-						String view = null;
-						String table = null;
-						boolean viewFound = false;
-						boolean tableFound = false;
-
-						for (int i = 0; i < databases.size() && !found; i++) {
-							database = databases.get(i);
-							// Searches on the databases if the selected node
-							// corresponds to a view of the database
-							LinkedList<String> views = AcideDatabaseManager
-									.getInstance().getViews(database);
-							for (int j = 0; j < views.size() && !found; j++) {
-								view = views.get(j);
-								found = view.startsWith(query);
-							}
-							if (found)
-								viewFound = true;
-							// Searches on the databases if the selected node
-							// corresponds to a table of the database
-							LinkedList<String> tables = AcideDatabaseManager
-									.getInstance().getTables(database);
-							for (int j = 0; j < tables.size() && !found; j++) {
-								table = tables.get(j);
-								found = table.startsWith(query);
-							}
-							if (found && !viewFound)
-								tableFound = true;
-						}
-
-					}
+			// Checks the number of clicks
+			if(ev.getClickCount() >= 2) {
+				String view;
+				if(_canvas.getSelectedNode().getLabel().contains("/")) {
+					view = _canvas.getSelectedNode().getLabel().split("/")[0];
+					AcideDebugHelper.showView(view);
 				}
 			}
-			// If the selected node has changed
-			if (changed) {
-				AcideMainWindow
-						.getInstance()
-						.getDebugPanel()
-						.setCursor(
-								Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				// Checks if the selected tab is the trace datalog panel
-				if (AcideMainWindow.getInstance().getDebugPanel()
-						.getTraceDatalogPanelIndex() == AcideMainWindow
-						.getInstance().getDebugPanel().getTabbedPane()
-						.getSelectedIndex()) {
-					// Gets the open databases
-					LinkedList<String> databases = AcideDatabaseManager
-							.getInstance().getDatabases();
-					boolean found = false;
-					String query = _canvas.getSelectedNode().getLabel();
-
-					String database = null;
-					String table = null;
-					// Searches on the databases if the selected node
-					// corresponds to a table of the database
-					for (int i = 0; i < databases.size() && !found; i++) {
-						database = databases.get(i);
-						LinkedList<String> tables = AcideDatabaseManager
-								.getInstance().getTables(database);
-						for (int j = 0; j < tables.size() && !found; j++) {
-							table = tables.get(j);
-							String name = query.substring(0,
-									query.lastIndexOf("/"));
-							String arity = query.substring(query
-									.lastIndexOf("/") + 1);
-							if (table.startsWith(name)) {
-								found |= table.split("\\x2C").length == Integer
-										.parseInt(arity);
-							}
-						}
-					}
-					if (found) {
-						// open a new dataview dialog with the data of the
-						// selected node
-						AcideMainWindow
-								.getInstance()
-								.getDataBasePanel()
-								.getDataView(
-										database,
-										query.substring(0,
-												query.lastIndexOf("/")));
-					}else{
-						// creates the data view
-						AcideTraceDatalogDataView dataview = new AcideTraceDatalogDataView();
-						// gets the name of the datalog predicate
-						String name = query.substring(0,
-								query.lastIndexOf("/"));
-						// gets the arity of the datalog predicate
-						int arity = Integer.parseInt(query.substring(query.lastIndexOf("/")+1));
-						// creates the instruction to send
-						String instruction = "/tapi ";
-						// adds the name to the instruction
-						instruction += name+"(";
-						// adds the variables to the instruction
-						for(int i=0; i<arity;i++){
-							if(i+1<arity)
-								instruction+="X"+i+",";
-							else
-								instruction+="X"+i;							
-						}
-						// ends the instruction
-						instruction+=")";
-						// sends the instuction to the database manager
-						LinkedList<String> result = AcideDatabaseManager.getInstance().executeCommand(instruction);
-						if(!iserror(result)){
-							// gets the /list_et result
-							result = AcideDatabaseManager.getInstance().executeCommand("/tapi /list_et "+query);
-							// parses the result
-							LinkedList<String> data = parseListEt(result,name);
-							// sets the name to the data view
-							dataview.set_name(name);
-							dataview.setIsReadOnly(true);
-							// sets the columns of the data view
-							dataview.setTotalColumns(arity);	
-							// builds the data view with the list_et data
-							dataview.build(data);
-							// sets the title of the data view
-							dataview.setTitle(name+dataview.getTitle());
-						}
-					}
-				}
-				// Checks if the selected tab is the trace SQL panel
-				if (AcideMainWindow.getInstance().getDebugPanel()
-						.getTraceSQLPanelIndex() == AcideMainWindow
-						.getInstance().getDebugPanel().getTabbedPane()
-						.getSelectedIndex()
-						&& AcideMainWindow.getInstance().getDebugPanel()
-								.getTraceSQLPanel().getShowSQLMenuItem()
-								.isSelected()) {
-					// Gets the open databases
-					LinkedList<String> databases = AcideDatabaseManager
-							.getInstance().getDatabases();
-					// creates the found flag
-					boolean found = false;
-					// gets the query from the selected node
-					String query = _canvas.getSelectedNode().getLabel();
-					query = query.substring(0, query.lastIndexOf("/"));
-
-					String database = null;
-					String view = null;
-					String table = null;
-					boolean viewFound = false;
-					boolean tableFound = false;
-
-					for (int i = 0; i < databases.size() && !found; i++) {
-						database = databases.get(i);
-						// Searches on the databases if the selected node
-						// corresponds to a view of the database
-						LinkedList<String> views = AcideDatabaseManager
-								.getInstance().getViews(database);
-						for (int j = 0; j < views.size() && !found; j++) {
-							view = views.get(j);
-							found = view.startsWith(query);
-						}
-						if (found)
-							viewFound = true;
-						// Searches on the databases if the selected node
-						// corresponds to a table of the database
-						LinkedList<String> tables = AcideDatabaseManager
-								.getInstance().getTables(database);
-						for (int j = 0; j < tables.size() && !found; j++) {
-							table = tables.get(j);
-							found = table.startsWith(query);
-						}
-						if (found && !viewFound)
-							tableFound = true;
-					}
-					// open a new dataview dialog with the data of the
-					// selected node
-					if (found) {
-						if (viewFound) {
-							AcideMainWindow.getInstance().getDataBasePanel()
-									.getDataView(database, query);
-						}
-						if (tableFound) {
-							AcideMainWindow.getInstance().getDataBasePanel()
-									.getDataView(database, query);
-						}
-					}
-					AcideDebugHelper.selectSQLTEXT(query);
-
-				}
-				// updates the cursor
-				AcideMainWindow.getInstance().getDebugPanel()
-						.setCursor(Cursor.getDefaultCursor());
-			}
-		}
 		}catch(Exception ex){
 			
 			AcideMainWindow.getInstance().getDebugPanel()

@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -64,6 +64,7 @@ import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplac
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.traceDatalogPanel.AcideTraceDatalogPanel;
 import acide.gui.debugPanel.traceSQLPanel.AcideTraceSQLPanel;
+import acide.gui.graphCanvas.listeners.AchideGraphCanvasMouseListener;
 import acide.gui.graphCanvas.listeners.AcideGraphCanvasMouseMotionListener;
 import acide.gui.graphCanvas.listeners.AcideGraphCanvasMouseWheelListener;
 import acide.gui.graphLayout.DHLayout;
@@ -207,6 +208,7 @@ public class AcideGraphCanvas extends Canvas {
 		// adds the listeners of the canvas
 		this.addMouseMotionListener(new AcideGraphCanvasMouseMotionListener());
 		this.addMouseWheelListener(new AcideGraphCanvasMouseWheelListener());
+		this.addMouseListener(new AchideGraphCanvasMouseListener(this));
 		// sets the layout
 		this._layout = new DHLayout();
 		// creates a new graph
@@ -937,7 +939,7 @@ public class AcideGraphCanvas extends Canvas {
 					if (line.equals("+") || line.equals("-")) {
 						if (link != null)
 							throw new Exception(
-									"entrada incorrecta. No se puede añadir un nuevo arco");
+									"entrada incorrecta. No se puede aï¿½adir un nuevo arco");
 						// creates a new link
 						link = new DirectedWeightedLink();
 						link.setOrigin(null);

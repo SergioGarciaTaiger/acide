@@ -55,7 +55,7 @@ import acide.gui.graphUtils.Node;
  * ACIDE - A Configurable IDE graph canvas mouse motion listener.
  * 
  * @version 0.12
- * @see {@link #MouseMotionListener}
+ * @see MouseMotionListener
  */
 public class AcideGraphCanvasMouseMotionListener implements MouseMotionListener {
 
@@ -143,11 +143,11 @@ public class AcideGraphCanvasMouseMotionListener implements MouseMotionListener 
 	}
 	
 	public void mousePresed(MouseEvent ev) {
-		
+
 		popup = new JPopupMenu(); //creamos el menu saliente
 	       popup.add(new JMenuItem("Un elemento del menu")); //agregamos elemento
 	       popup.add(new JMenuItem("Otro elemento del menu")); //.. y otro elemento
-		
+
 		mostrarPopupMenu(ev);
 	}
 	
