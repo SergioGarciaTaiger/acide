@@ -8,8 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9bff6704-a247-4e48-b2c2-c49877fabd7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/configuration/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/configuration.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/workbench/configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/workbench/configuration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,111 +28,63 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="1212" column="9" selection-start-line="1212" selection-start-column="9" selection-end-line="1212" selection-end-column="9" />
-              <folding>
-                <element signature="e#37865#37866#0" expanded="true" />
-                <element signature="e#43899#43900#0" expanded="true" />
-                <element signature="e#44804#44805#0" expanded="true" />
-                <element signature="e#45638#45639#0" expanded="true" />
-                <element signature="e#45814#45815#0" expanded="true" />
-                <element signature="e#45986#45987#0" expanded="true" />
-                <element signature="e#46229#46230#0" expanded="true" />
-                <element signature="e#46443#46444#0" expanded="true" />
-                <element signature="e#46732#46733#0" expanded="true" />
-                <element signature="e#47019#47020#0" expanded="true" />
-                <element signature="e#47211#47212#0" expanded="true" />
-                <element signature="e#47410#47411#0" expanded="true" />
-                <element signature="e#47621#47622#0" expanded="true" />
-                <element signature="e#47854#47855#0" expanded="true" />
-                <element signature="e#48431#48432#0" expanded="true" />
-                <element signature="e#48629#48630#0" expanded="true" />
-                <element signature="e#48854#48855#0" expanded="true" />
-                <element signature="e#49066#49067#0" expanded="true" />
-                <element signature="e#51149#51150#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="220" column="37" lean-forward="true" selection-start-line="220" selection-start-column="37" selection-end-line="220" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/lexiconMenu/gui/defaultLexiconsWindow/AcideDefaultLexiconsWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="535" column="55" lean-forward="true" selection-start-line="535" selection-start-column="55" selection-end-line="535" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/AcideWorkbenchConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="494" selection-start-line="494" selection-end-line="494" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/configuration/lexicon/AcideLexiconConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1393">
-              <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleOutputProcess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="203" selection-start-line="203" selection-end-line="203" />
-              <folding>
-                <element signature="e#3274#3275#0" expanded="true" />
-                <element signature="e#3311#3312#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="409" column="8" selection-start-line="409" selection-start-column="8" selection-end-line="441" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/graphCanvas/AcideGraphCanvas.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12230">
-              <caret line="85" column="29" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/acide/gui/graphCanvas/listeners/AchideGraphCanvasMouseListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="49" column="68" lean-forward="true" selection-start-line="49" selection-start-column="68" selection-end-line="49" selection-end-column="68" />
+            <state relative-caret-position="413">
+              <caret line="300" column="28" selection-start-line="300" selection-start-column="28" selection-end-line="300" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#439#440#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#12114#12115#0" expanded="true" />
+                <element signature="e#12149#12150#0" expanded="true" />
+                <element signature="e#10972#10973#0" expanded="true" />
+                <element signature="e#11026#11027#0" expanded="true" />
+                <element signature="e#11432#11433#0" expanded="true" />
+                <element signature="e#11464#11465#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="208" column="42" selection-start-line="208" selection-start-column="42" selection-end-line="208" selection-end-column="42" />
+              <folding>
+                <element signature="method#updateCanvasDebugGraph#0;class#AcideDebugHelper#0" />
+                <element signature="method#updateCanvasTrace#0;class#AcideDebugHelper#0" />
+                <element signature="method#obtainSQLResult#0;class#AcideDebugHelper#0" />
+                <element signature="method#getRoot#0;class#AcideDebugHelper#0" />
+                <element signature="method#selectSQLTEXT#0;class#AcideDebugHelper#0" />
+                <element signature="method#showView#0;class#AcideDebugHelper#0" />
+                <element signature="method#parseCurrentQuestion#0;class#AcideDebugHelper#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="140" column="37" selection-start-line="140" selection-start-column="11" selection-end-line="140" selection-end-column="37" />
+              <folding>
+                <element signature="e#4501#4502#0" expanded="true" />
+                <element signature="e#4522#4523#0" expanded="true" />
+                <element signature="e#31994#31995#0" expanded="true" />
+                <element signature="e#32024#32025#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+              <folding>
+                <element signature="e#1042#1043#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,9 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GREEN</find>
-      <find>_selected</find>
-      <find>getFile</find>
       <find>start debug</find>
       <find>Threa</find>
       <find>_taskDone=true</find>
@@ -176,6 +129,9 @@
       <find>path</find>
       <find>_lexi</find>
       <find>reset</find>
+      <find>get_jta</find>
+      <find>get_j</find>
+      <find>wron</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/acide</dir>
@@ -205,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/gui/newProjectWindow/AcideNewProjectConfigurationWindow.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelGreenNodeListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelOrangeNodeListener.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java" />
         <option value="$PROJECT_DIR$/language/English.properties" />
@@ -227,13 +182,7 @@
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/GuiUtils.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/DataBasePanelUtils.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/AcideDebugPanel.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java" />
-        <option value="$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java" />
         <option value="$PROJECT_DIR$/src/acide/process/console/AcideConsoleOutputProcess.java" />
-        <option value="$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java" />
-        <option value="$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" />
-        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/debugSQLConfiguration/AcideDebugConfiguration.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/debugSQLConfiguration/AcideDebugConfigurationWindow.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/listeners/AcideDebugCanvasMouseListener.java" />
@@ -241,6 +190,13 @@
         <option value="$PROJECT_DIR$/src/acide/gui/graphCanvas/AcideGraphCanvas.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/graphCanvas/listeners/AchideGraphCanvasMouseListener.java" />
         <option value="$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java" />
+        <option value="$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" />
+        <option value="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" />
       </list>
     </option>
   </component>
@@ -288,6 +244,15 @@
               <item name="acide" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
               <item name="debugPanel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Acide" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="acide" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="debugPanel" type="462c0819:PsiDirectoryNode" />
+              <item name="debugSQLPanel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Acide" type="b2602c69:ProjectViewProjectNode" />
@@ -426,12 +391,12 @@
       <workItem from="1589821323858" duration="2660000" />
       <workItem from="1590071947671" duration="1056000" />
       <workItem from="1590073273119" duration="22446000" />
-      <workItem from="1590282275831" duration="8871000" />
+      <workItem from="1590282275831" duration="17387000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230455000" />
+    <option name="totallyTimeSpent" value="238971000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -443,7 +408,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="23" width="2560" height="1417" extended-state="6" />
+    <frame x="1680" y="23" width="2560" height="1342" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49939975" visible="true" weight="0.22279587" />
@@ -456,7 +421,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32981133" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.18641509" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.29056603" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.308" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298122" />
@@ -465,7 +430,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3298122" />
       <window_info anchor="bottom" id="Docker" order="11" weight="0.3298122" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3496" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3488" />
       <window_info anchor="bottom" id="Duplicates" order="13" weight="0.3290566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -927,21 +892,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java</url>
-          <line>266</line>
+          <line>268</line>
           <properties />
           <option name="timeStamp" value="376" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java</url>
-          <line>216</line>
-          <properties />
-          <option name="timeStamp" value="381" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java</url>
-          <line>1190</line>
-          <properties />
-          <option name="timeStamp" value="388" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java</url>
@@ -949,57 +902,81 @@
           <properties />
           <option name="timeStamp" value="390" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java</url>
+          <line>337</line>
+          <properties />
+          <option name="timeStamp" value="392" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java</url>
+          <line>202</line>
+          <properties />
+          <option name="timeStamp" value="395" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java</url>
+          <line>2247</line>
+          <properties />
+          <option name="timeStamp" value="396" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java</url>
+          <line>301</line>
+          <properties />
+          <option name="timeStamp" value="397" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>AcideWorkbenchConfiguration
-						.getInstance().getLexiconAssignerConfiguration()
-						.getConsoleLexiconConfiguration()</expression-string>
+        <expression-string>(Vector&lt;?&gt;) ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow())</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>AcideLexiconConfiguration.DEFAULT_NAME.split(&quot;\\.&quot;)</expression-string>
+        <expression-string>((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow())</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.Vector</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(String)((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow())</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.Vector</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>jTable.getModel()</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.Vector</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((java.util.Vector)data.get(0)).get(1)</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.Vector</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>AcideDebugSQLDebugWindow.getInstance().getViewTable().getViewport().getAccessibleContext()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>AcideLexiconConfiguration.DEFAULT_NAME.split(&quot;.&quot;)</expression-string>
+        <expression-string>AcideDebugSQLDebugWindow.getInstance().getViewTable().getViewport()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>AcideLexiconConfiguration.DEFAULT_NAME.split('.')</expression-string>
+        <expression-string>AcideDebugSQLDebugWindow.getInstance().isDebuging()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>AcideLexiconConfiguration.DEFAULT_NAME</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>AcideWorkbenchConfiguration.getInstance()
-				.getLexiconAssignerConfiguration()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>AcideWorkbenchConfiguration.getInstance()
-				.getLexiconAssignerConfiguration().getApplyLexiconToConsole()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>result.getFirst()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(String) viewBox.getSelectedItem()</expression-string>
+        <expression-string>AcideLexiconConfiguration.DEFAULT_NAME.split(&quot;\\.&quot;)[0]</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -1127,13 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDataBaseDataViewControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
@@ -1145,13 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="545">
           <caret line="3495" column="16" selection-start-line="3495" selection-start-column="16" selection-end-line="3495" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="144" column="58" selection-start-line="144" selection-start-column="58" selection-end-line="144" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -1190,13 +1153,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="367" column="66" selection-start-line="367" selection-start-column="66" selection-end-line="367" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/util/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1204,52 +1160,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="447" column="39" selection-start-line="447" selection-start-column="39" selection-end-line="447" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="1124" column="5" selection-start-line="1124" selection-start-column="5" selection-end-line="1124" selection-end-column="5" />
-          <folding>
-            <element signature="e#25234#25235#0" expanded="true" />
-            <element signature="e#25252#25253#0" expanded="true" />
-            <element signature="e#25316#25317#0" expanded="true" />
-            <element signature="e#25334#25335#0" expanded="true" />
-            <element signature="e#25426#25427#0" expanded="true" />
-            <element signature="e#25444#25445#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/java/awt/Frame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1766">
           <caret line="232" column="28" selection-start-line="232" selection-start-column="28" selection-end-line="232" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="2244" column="7" selection-start-line="2244" selection-start-column="7" selection-end-line="2244" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;class#DesDatabaseManager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3105">
-          <caret line="207" column="16" selection-start-line="207" selection-start-column="16" selection-end-line="207" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1295,23 +1209,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="149" selection-end-column="38" />
-          <folding>
-            <element signature="method#updateCanvasDebugGraph#0;class#AcideDebugHelper#0" />
-            <element signature="method#updateCanvasTrace#0;class#AcideDebugHelper#0" />
-            <element signature="method#obtainSQLResult#0;class#AcideDebugHelper#0" />
-            <element signature="method#getRoot#0;class#AcideDebugHelper#0" />
-            <element signature="method#selectSQLTEXT#0;class#AcideDebugHelper#0" />
-            <element signature="method#startDebug#0;class#AcideDebugHelper#0" />
-            <element signature="method#updateDebugState#0;class#AcideDebugHelper#0" />
-            <element signature="method#parseCurrentQuestion#0;class#AcideDebugHelper#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/listeners/AcideDebugCanvasMouseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
@@ -1320,20 +1217,6 @@
             <element signature="e#2592#2593#0" expanded="true" />
             <element signature="e#2620#2621#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="409" column="8" selection-start-line="409" selection-start-column="8" selection-end-line="441" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/graphCanvas/AcideGraphCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12230">
-          <caret line="85" column="29" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1356,6 +1239,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/javax/swing/text/JTextComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="1692" column="18" selection-start-line="1692" selection-start-column="18" selection-end-line="1692" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="220" column="37" lean-forward="true" selection-start-line="220" selection-start-column="37" selection-end-line="220" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/lexiconMenu/gui/defaultLexiconsWindow/AcideDefaultLexiconsWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="535" column="55" lean-forward="true" selection-start-line="535" selection-start-column="55" selection-end-line="535" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/AcideWorkbenchConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="494" selection-start-line="494" selection-end-line="494" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/configuration/lexicon/AcideLexiconConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1393">
+          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleOutputProcess.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -1367,65 +1285,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/configuration/lexicon/AcideLexiconConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/graphCanvas/AcideGraphCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1393">
-          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        <state relative-caret-position="-12230">
+          <caret line="85" column="29" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/AcideWorkbenchConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/AcideDebugCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="494" selection-start-line="494" selection-end-line="494" />
+        <state relative-caret-position="319">
+          <caret line="409" column="8" selection-start-line="409" selection-start-column="8" selection-end-line="441" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/process/console/ODBCDatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="220" column="37" lean-forward="true" selection-start-line="220" selection-start-column="37" selection-end-line="220" selection-end-column="37" />
+        <state relative-caret-position="941">
+          <caret line="1125" column="14" selection-start-line="1125" selection-start-column="14" selection-end-line="1125" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/src.zip!/javax/swing/text/JTextComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="1692" column="18" selection-start-line="1692" selection-start-column="18" selection-end-line="1692" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/lexiconMenu/gui/defaultLexiconsWindow/AcideDefaultLexiconsWindow.java">
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="535" column="55" lean-forward="true" selection-start-line="535" selection-start-column="55" selection-end-line="535" selection-end-column="55" />
+          <caret line="80" column="3" lean-forward="true" selection-start-line="80" selection-start-column="3" selection-end-line="80" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="1212" column="9" selection-start-line="1212" selection-start-column="9" selection-end-line="1212" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="670" selection-start-line="670" selection-end-line="670" />
           <folding>
+            <element signature="e#37828#37829#0" expanded="true" />
             <element signature="e#37865#37866#0" expanded="true" />
+            <element signature="e#43865#43866#0" expanded="true" />
             <element signature="e#43899#43900#0" expanded="true" />
+            <element signature="e#44775#44776#0" expanded="true" />
             <element signature="e#44804#44805#0" expanded="true" />
+            <element signature="e#45610#45611#0" expanded="true" />
             <element signature="e#45638#45639#0" expanded="true" />
+            <element signature="e#45790#45791#0" expanded="true" />
             <element signature="e#45814#45815#0" expanded="true" />
+            <element signature="e#45961#45962#0" expanded="true" />
             <element signature="e#45986#45987#0" expanded="true" />
+            <element signature="e#46180#46181#0" expanded="true" />
             <element signature="e#46229#46230#0" expanded="true" />
+            <element signature="e#46420#46421#0" expanded="true" />
             <element signature="e#46443#46444#0" expanded="true" />
+            <element signature="e#46697#46698#0" expanded="true" />
             <element signature="e#46732#46733#0" expanded="true" />
+            <element signature="e#46976#46977#0" expanded="true" />
             <element signature="e#47019#47020#0" expanded="true" />
+            <element signature="e#47192#47193#0" expanded="true" />
             <element signature="e#47211#47212#0" expanded="true" />
+            <element signature="e#47391#47392#0" expanded="true" />
             <element signature="e#47410#47411#0" expanded="true" />
+            <element signature="e#47596#47597#0" expanded="true" />
             <element signature="e#47621#47622#0" expanded="true" />
+            <element signature="e#47823#47824#0" expanded="true" />
             <element signature="e#47854#47855#0" expanded="true" />
+            <element signature="e#48396#48397#0" expanded="true" />
             <element signature="e#48431#48432#0" expanded="true" />
+            <element signature="e#48608#48609#0" expanded="true" />
             <element signature="e#48629#48630#0" expanded="true" />
+            <element signature="e#48825#48826#0" expanded="true" />
             <element signature="e#48854#48855#0" expanded="true" />
+            <element signature="e#49037#49038#0" expanded="true" />
             <element signature="e#49066#49067#0" expanded="true" />
+            <element signature="e#51116#51117#0" expanded="true" />
             <element signature="e#51149#51150#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/process/console/AcideDatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="441" column="39" selection-start-line="441" selection-start-column="39" selection-end-line="441" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="948">
+          <caret line="2247" selection-start-line="2247" selection-end-line="2247" />
+          <folding>
+            <element signature="docComment;class#DesDatabaseManager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDatabaseDataView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="140" column="37" selection-start-line="140" selection-start-column="11" selection-end-line="140" selection-end-column="37" />
+          <folding>
+            <element signature="e#4501#4502#0" expanded="true" />
+            <element signature="e#4522#4523#0" expanded="true" />
+            <element signature="e#31994#31995#0" expanded="true" />
+            <element signature="e#32024#32025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelStartDebugListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+          <folding>
+            <element signature="e#1042#1043#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="208" column="42" selection-start-line="208" selection-start-column="42" selection-end-line="208" selection-end-column="42" />
+          <folding>
+            <element signature="method#updateCanvasDebugGraph#0;class#AcideDebugHelper#0" />
+            <element signature="method#updateCanvasTrace#0;class#AcideDebugHelper#0" />
+            <element signature="method#obtainSQLResult#0;class#AcideDebugHelper#0" />
+            <element signature="method#getRoot#0;class#AcideDebugHelper#0" />
+            <element signature="method#selectSQLTEXT#0;class#AcideDebugHelper#0" />
+            <element signature="method#showView#0;class#AcideDebugHelper#0" />
+            <element signature="method#parseCurrentQuestion#0;class#AcideDebugHelper#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="300" column="28" selection-start-line="300" selection-start-column="28" selection-end-line="300" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12114#12115#0" expanded="true" />
+            <element signature="e#12149#12150#0" expanded="true" />
+            <element signature="e#10972#10973#0" expanded="true" />
+            <element signature="e#11026#11027#0" expanded="true" />
+            <element signature="e#11432#11433#0" expanded="true" />
+            <element signature="e#11464#11465#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -439,7 +439,7 @@ public abstract class AcideDatabaseManager {
 
 	public abstract LinkedList<String> orderColumns(String table, String command);
 
-    public abstract LinkedList<String> startDebug(String view, String debugConfiguration) throws Exception;
+    public abstract LinkedList<String> startDebug(String view, String debugConfiguration, String option);
 
 	public abstract LinkedList<String> setNodeState(String nodeName, String state);
 

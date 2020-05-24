@@ -30,8 +30,6 @@ public class AcideDebugSQLPanelStartDebugListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        AcideDebugSQLPanel.startDebug.setEnabled(false);
-        AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
         AcideDebugHelper.startDebug();
     }
 }

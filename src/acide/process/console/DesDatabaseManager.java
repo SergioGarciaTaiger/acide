@@ -2244,8 +2244,8 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		return consoleOutput;
 	}*/
 
-	public LinkedList<String> startDebug(String view, String configuration){
-		String commandLine = "/tapi /debug_sql " + view + configuration;
+	public LinkedList<String> startDebug(String view, String configuration, String option){
+		String commandLine = "/tapi /debug_sql " + view + configuration + option;
 		LinkedList<String> result = executeCommand(commandLine);
 		return result;
 	}

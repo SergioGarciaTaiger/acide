@@ -17,6 +17,7 @@ import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Vector;
 
 public class AcideDebugSQLDebugWindow extends JFrame {
 
@@ -38,6 +39,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     private String currentQuestion;
 
     private JScrollPane viewTable;
+    private AcideDataBaseDataViewTable jTable;
 
     private boolean debuging;
 
@@ -177,8 +179,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Centers the window
         setLocationRelativeTo(null);
 
-        // Disables the main window
-        AcideMainWindow.getInstance().setEnabled(false);
     }
 
     /**
@@ -282,7 +282,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            String tuple = JOptionPane.showInputDialog("Enter missing data");
+            AcideDebugHelper.performDebug("missing(" +
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
         }
     }
 
@@ -295,7 +297,15 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            AcideDebugHelper.performDebug("erroneous");
+            Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow());
+            String tuple = "";
+            for(Object value : data){
+                if(value != null){
+                    tuple += value.toString();
+                }
+            }
+            AcideDebugHelper.performDebug("wrong(" +
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
         }
     }
 
@@ -309,7 +319,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            String tuple = JOptionPane.showInputDialog("Enter missing data");
+            AcideDebugHelper.performDebug("missing(" +
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
         }
     }
 
@@ -322,7 +334,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-
+            JScrollPane pane = AcideDebugSQLDebugWindow.getInstance().getViewTable();
+            String tuple = "AcideDebugSQLDebugWindow.getInstance().getViewTable()";
+            /*AcideDebugHelper.performDebug("wrong(" +
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");*/
         }
     }
 
@@ -370,6 +385,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         setView(view);
         setViewTable(viewTable);
+        setJTable(jTable);
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -396,7 +412,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.view = view;
     }
 
-
+    public void setJTable(AcideDataBaseDataViewTable jTable){
+        this.jTable = jTable;
+    }
 
     public String getCurrentQuestion() {
         return currentQuestion;
@@ -404,6 +422,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void setCurrentQuestion(String currentQuestion) {
         this.currentQuestion = currentQuestion;
+    }
+
+
+    public JScrollPane getViewTable() {
+        return viewTable;
     }
 
 }

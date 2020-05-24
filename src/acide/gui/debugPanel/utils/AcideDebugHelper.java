@@ -153,7 +153,7 @@ public class AcideDebugHelper {
     public static void startDebug(){
         try {
             String view = getSelectedViewName();
-            if(view != null && view != "          ") {
+            if(view != null && !view.equals("          ")) {
                 // Gets the canvas
                 AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                         .getDebugPanel().getDebugSQLPanel().getCanvas();
@@ -174,11 +174,8 @@ public class AcideDebugHelper {
 
                 AcideDebugSQLPanel.startDebug.setEnabled(false);
 
-                LinkedList<String> consoleInfo = DesDatabaseManager.getInstance()
-                        .startDebug(view, AcideDebugConfiguration.getInstance().getDebugConfiguration());
-
-                // Check if debug must continue
-                nextMovement(consoleInfo);
+                AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+                updateDebugWindow();
             }else{
                 LinkedList<String> error = new LinkedList<>();
                 error.add("No view selected, please select a valid node to start");
@@ -251,18 +248,23 @@ public class AcideDebugHelper {
         viewWindow.setState(viewWindow.NORMAL);
         viewWindow.setIsReadOnly(true);
         JScrollPane table = viewWindow.getSrollPane();
+        AcideDebugSQLDebugWindow.getInstance().setJTable(viewWindow.get_jTable());
         viewWindow.closeWindow();
         return table;
     }
 
     public static void performDebug(String action){
+        LinkedList<String> consoleInfo;
         if(!AcideDebugSQLDebugWindow.getInstance().isDebuging()){
             AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
-            AcideDebugHelper.startDebug();
+            if(action.equals("valid") || action.equals("nonvalid"))
+                action = "";
+            consoleInfo = DesDatabaseManager.getInstance().
+                    startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+        } else {
+            consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
+                    AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
         }
-
-        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
-                AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
 
         nextMovement(consoleInfo);
     }
