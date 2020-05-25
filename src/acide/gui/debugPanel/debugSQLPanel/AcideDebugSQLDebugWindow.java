@@ -23,6 +23,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private JPanel mainPanel;
     private JPanel buttonPanel;
+    private JPanel errorPanel;
 
     private JLabel infoReicibedLabel;
     private JLabel questionLabel;
@@ -33,6 +34,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     private JButton wrongButton;
     private JButton missingTupleButton;
     private JButton wrongTupleButton;
+
+    private JButton okButton;
+    private JButton showViewButton;
 
     private String view;
     private String gifLoadingURL = "http://docs.oracle.com/javase/tutorial/uiswing/examples/misc/SplashDemoProject/src/misc/images/splash.gif";
@@ -88,6 +92,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         missingTupleButton = new JButton("missing tuple");
         wrongTupleButton = new JButton("wrong tuple");
 
+        okButton = new JButton("OK");
+        showViewButton = new JButton("show view");
+
         questionLabel.setText("");
         infoReicibedLabel.setText("");
 
@@ -105,6 +112,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         buttonPanel.add(missingTupleButton);
         buttonPanel.add(wrongTupleButton);
 
+        // Creates the error panel
+        errorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+        errorPanel.add(okButton);
+        errorPanel.add(showViewButton);
     }
 
 
@@ -115,6 +127,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         wrongButton.addActionListener(new WrongNodeAction());
         missingTupleButton.addActionListener(new MissingTupleAction());
         wrongTupleButton.addActionListener(new WrongTupleAction());
+
+        okButton.addActionListener(new CloseAction());
+        showViewButton.addActionListener(new ShowViewAction());
     }
 
     private void addComponents() {
@@ -155,6 +170,15 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         // Adds the button panel to the window
         add(buttonPanel, constraints);
+
+        constraints.insets = new Insets(0, 0, 0, 0);
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+
+        // Adds the button panel to the window
+        add(errorPanel, constraints);
 
 
         // Sets the window closing listener
@@ -210,9 +234,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
         viewTable.setVisible(true);
+        errorPanel.setVisible(false);
 
         setWindowConfiguration();
-
+        setAlwaysOnTop(true);
+        setAlwaysOnTop(false);
         // Displays the window
         setVisible(true);
     }
@@ -334,10 +360,29 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            JScrollPane pane = AcideDebugSQLDebugWindow.getInstance().getViewTable();
-            String tuple = "AcideDebugSQLDebugWindow.getInstance().getViewTable()";
-            /*AcideDebugHelper.performDebug("wrong(" +
-                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");*/
+            Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow());
+            String tuple = "";
+            for(Object value : data){
+                if(value != null){
+                    tuple += value.toString();
+                }
+            }
+            AcideDebugHelper.performDebug("wrong(" +
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
+        }
+    }
+
+    class ShowViewAction extends AbstractAction{
+
+        /**
+         * Escape key action serial version UID.
+         */
+        private static final long serialVersionUID = 1L;
+
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            AcideDebugHelper.showView(AcideDebugSQLDebugWindow.getInstance().getView());
         }
     }
 
@@ -358,16 +403,14 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setWindowConfiguration();
     }
 
-    public void stopDepug(LinkedList<String> result){
-        String info = "<html>";
-        for (int i = 0; i < result.size() - 1; i++) {
-            info += result.get(i) + "<br>";
-        }
-        info += "</html>";
+    public void stopDepug(String view){
+        String info = "Error in view '" + view + "' click below to edit that view";
+        this.setView(view);
         setInfo(info);
         viewTable.setVisible(false);
         questionLabel.setVisible(false);
         buttonPanel.setVisible(false);
+        errorPanel.setVisible(true);
         setWindowConfiguration();
 
         AcideDebugSQLPanel.startDebug.setEnabled(true);

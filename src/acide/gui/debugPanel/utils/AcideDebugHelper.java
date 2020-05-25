@@ -179,15 +179,10 @@ public class AcideDebugHelper {
             }else{
                 LinkedList<String> error = new LinkedList<>();
                 error.add("No view selected, please select a valid node to start");
-                AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
+                AcideDebugSQLDebugWindow.getInstance().stopDepug("asdfasd");
             }
         } catch (Exception ex) {
-            LinkedList<String> error = new LinkedList<>();
-            error.add("Something happened while trying to start debug");
-            AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
-            AcideMainWindow.getInstance().getDebugPanel()
-                    .setCursor(Cursor.getDefaultCursor());
-            AcideDebugSQLDebugWindow.getInstance().stopDepug(error);
+            // TODO
         }
     }
 
@@ -198,8 +193,8 @@ public class AcideDebugHelper {
      * @param info
      * @return continueDebugging if continues debugging
      */
-    private static boolean updateDebugState(LinkedList<String> info){
-        boolean continueDebugging = true;
+    private static String updateDebugState(LinkedList<String> info){
+        String errorView = "";
         AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getCanvas();
         List<Node> nodes = canvas.get_graph().get_nodes();
@@ -219,14 +214,14 @@ public class AcideDebugHelper {
                         canvas.setColorSelectedNode(Color.GREEN);
                     else{
                         canvas.setColorSelectedNode(Color.RED);
-                        continueDebugging = false;
+                        errorView = view;
                     }
                 }
             }
         }
         AcideDebugHelper.updateCanvasDebugGraph(canvas);
 
-        return continueDebugging;
+        return errorView;
     }
 
     /**
@@ -237,7 +232,13 @@ public class AcideDebugHelper {
      */
     private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
         String str = currentQuestion.getFirst();
-        return str.substring(str.indexOf("(")+1,str.indexOf(")"));
+        while(str.contains("(")){
+            if(str.contains(")"))
+                str = str.substring(str.indexOf("(")+1,str.indexOf(")"));
+            else
+                str = str.split("\\(")[0];
+        }
+        return str;
     }
 
 
@@ -270,14 +271,15 @@ public class AcideDebugHelper {
     }
 
     private static void nextMovement(LinkedList<String> info){
-        if(updateDebugState(info)) {
+        String errorView = updateDebugState(info);
+        if(errorView.equals("")) {
             LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
             AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
             String nextView = parseCurrentQuestion(currentQuestion);
             AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
             updateDebugWindow();
         }else{
-            AcideDebugSQLDebugWindow.getInstance().stopDepug(info);
+            AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
         }
     }
 

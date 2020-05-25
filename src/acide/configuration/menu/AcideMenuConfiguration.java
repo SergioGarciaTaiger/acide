@@ -163,9 +163,9 @@ public class AcideMenuConfiguration {
 				boolean isDisplayed = false;
 
 				// Makes the String to boolean conversion
-				if (isDisplayedString.matches("true"))
+				if (isDisplayedString.contains("true"))
 					isDisplayed = true;
-				else if (isDisplayedString.matches("false"))
+				else if (isDisplayedString.contains("false"))
 					isDisplayed = false;
 				else
 					throw new AcideMenuConfigurationFileFormatException(
