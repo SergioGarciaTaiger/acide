@@ -27,7 +27,7 @@
           <acide.configuration.workbench.fileEditor.AcideFileEditorPanelConfiguration>
             <__path>.\examples\aggregates.sql</__path>
             <__type>Normal</__type>
-            <__caretPosition>41</__caretPosition>
+            <__caretPosition>42</__caretPosition>
             <__splitPaneDividerLocation>1</__splitPaneDividerLocation>
             <__activeTextEditionArea>1</__activeTextEditionArea>
             <__lexiconConfiguration>./configuration/lexicon/sql.xml</__lexiconConfiguration>

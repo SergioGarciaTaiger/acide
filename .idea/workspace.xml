@@ -24,34 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba1a32ba-e127-4e7f-a837-8434e318ca72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Acide.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Acide.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DES6.5.acideProject" beforeDir="false" afterPath="$PROJECT_DIR$/DES6.5.acideProject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/configuration.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/console/default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/console/default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/batch.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/batch.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/bibtex.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/bibtex.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/java.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/java.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/z3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/z3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/lexicon/z3_console.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/lexicon/z3_console.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/menu/defaultAllOn.menuConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/menu/defaultAllOn.menuConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/menu/defaultAllOn.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/menu/defaultAllOn.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/menu/lastModified.menuConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/menu/lastModified.menuConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/menu/lastModified.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/menu/lastModified.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/menu/newMenu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/menu/newMenu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/project/default.acideProject" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/project/default.acideProject" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/project/default.acideProject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/toolbar/default.toolbarConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/toolbar/default.toolbarConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/toolbar/des.toolbarConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/toolbar/des.toolbarConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/toolbar/lastModified.toolbarConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/toolbar/lastModified.toolbarConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/toolbar/latex.toolbarConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/toolbar/latex.toolbarConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/workbench/configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/workbench/configuration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/configuration/menu/AcideMenuConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/configuration/menu/AcideMenuConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" afterDir="false" />
-    </list>
+    <list default="true" id="ba1a32ba-e127-4e7f-a837-8434e318ca72" name="Default Changelist" comment="wrong and missing options first version" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -168,6 +141,14 @@
       <workItem from="1590073273119" duration="22446000" />
       <workItem from="1590282275831" duration="18105000" />
     </task>
+    <task id="LOCAL-00001" summary="wrong and missing options first version">
+      <created>1590405880925</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590405880926</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -186,45 +167,62 @@
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="wrong and missing options first version" />
+    <option name="LAST_COMMIT_MESSAGE" value="wrong and missing options first version" />
   </component>
   <component name="WindowStateProjectService">
     <state x="715" y="222" key="#xdebugger.evaluate" timestamp="1590401665271">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="222" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1590401665271" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1590405070886">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405070886" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1590405070886">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1590405844744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405070886" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1590405070886">
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844744" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1590405844744">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405070886" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1590405070886">
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844744" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405070886" />
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1590405096798">
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405096798" />
-    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1590405096798">
+    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405096798" />
-    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1590405096798">
+    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405096798" />
-    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1590405096798">
+    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1590405844745">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405096798" />
+    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1590405901383">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590405901383" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,11 +276,6 @@
           <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideConsolePanelToolBar.java</url>
           <line>526</line>
           <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java</url>
-          <line>670</line>
-          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java</url>
@@ -573,11 +566,6 @@
           <url>file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java</url>
           <line>222</line>
           <option name="timeStamp" value="390" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java</url>
-          <line>363</line>
-          <option name="timeStamp" value="392" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java</url>
