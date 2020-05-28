@@ -2267,4 +2267,9 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		return result;
 	}
 
+	public void stopDebug(){
+		if(test().equals("$success"))
+			executeCommand(".");
+	}
+
 }

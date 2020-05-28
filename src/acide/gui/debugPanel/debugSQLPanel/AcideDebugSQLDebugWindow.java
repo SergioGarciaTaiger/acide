@@ -5,8 +5,6 @@ import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
-import acide.process.console.DesDatabaseManager;
-import com.sun.javaws.util.JfxHelper;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,9 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Vector;
 
 public class AcideDebugSQLDebugWindow extends JFrame {
@@ -30,16 +25,14 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private JButton validButton;
     private JButton nonValidButton;
-    private JButton missingButton;
-    private JButton wrongButton;
     private JButton missingTupleButton;
     private JButton wrongTupleButton;
+    private JButton abortButton;
 
     private JButton okButton;
     private JButton showViewButton;
 
     private String view;
-    private String gifLoadingURL = "http://docs.oracle.com/javase/tutorial/uiswing/examples/misc/SplashDemoProject/src/misc/images/splash.gif";
     private String currentQuestion;
 
     private JScrollPane viewTable;
@@ -87,10 +80,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         validButton = new JButton("valid");
         nonValidButton = new JButton("non valid");
-        missingButton = new JButton("missing");
-        wrongButton = new JButton("wrong");
         missingTupleButton = new JButton("missing tuple");
         wrongTupleButton = new JButton("wrong tuple");
+        abortButton = new JButton("abort");
 
         okButton = new JButton("OK");
         showViewButton = new JButton("show view");
@@ -107,10 +99,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         buttonPanel.add(validButton);
         buttonPanel.add(nonValidButton);
-        buttonPanel.add(missingButton);
-        buttonPanel.add(wrongButton);
         buttonPanel.add(missingTupleButton);
         buttonPanel.add(wrongTupleButton);
+        buttonPanel.add(abortButton);
 
         // Creates the error panel
         errorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -123,10 +114,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     private void setListeners() {
         validButton.addActionListener(new ValidNodeAction());
         nonValidButton.addActionListener(new NonValidNodeAction());
-        missingButton.addActionListener(new MissingNodeAction());
-        wrongButton.addActionListener(new WrongNodeAction());
         missingTupleButton.addActionListener(new MissingTupleAction());
         wrongTupleButton.addActionListener(new WrongTupleAction());
+        abortButton.addActionListener(new AbortAction());
 
         okButton.addActionListener(new CloseAction());
         showViewButton.addActionListener(new ShowViewAction());
@@ -210,23 +200,18 @@ public class AcideDebugSQLDebugWindow extends JFrame {
      */
 
     public void closeWindow() {
-        DesDatabaseManager.getInstance()
-                .executeCommand("a");
-
         // Enables the main window again
         AcideMainWindow.getInstance().setEnabled(true);
-
-        // Closes the window
-        setVisible(false);
 
         //enable start debug button
         AcideDebugSQLPanel.startDebug.setEnabled(true);
 
-        // Brings the main window to the front
         AcideMainWindow.getInstance().setAlwaysOnTop(true);
-
-        // But not permanently
         AcideMainWindow.getInstance().setAlwaysOnTop(false);
+
+        this.setDebuging(false);
+
+        this.setVisible(false);
     }
 
     public void showWindow() {
@@ -238,7 +223,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         setWindowConfiguration();
         setAlwaysOnTop(true);
-        setAlwaysOnTop(false);
         // Displays the window
         setVisible(true);
     }
@@ -249,6 +233,14 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void setDebuging(boolean debuging) {
         this.debuging =  debuging;
+    }
+
+    public void activateAbortButton(){
+        abortButton.setEnabled(true);
+    }
+
+    public void deactivateAbortButton(){
+        abortButton.setEnabled(false);
     }
 
     /**
@@ -298,42 +290,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         }
     }
 
-    class MissingNodeAction extends AbstractAction{
 
-        /**
-         * Escape key action serial version UID.
-         */
-        private static final long serialVersionUID = 1L;
-
-
-        @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            String tuple = JOptionPane.showInputDialog("Enter missing data");
-            AcideDebugHelper.performDebug("missing(" +
-                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
-        }
-    }
-
-    class WrongNodeAction extends AbstractAction{
-
-        /**
-         * Escape key action serial version UID.
-         */
-        private static final long serialVersionUID = 1L;
-
-        @Override
-        public void actionPerformed(ActionEvent actionEvent) {
-            Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow());
-            String tuple = "";
-            for(Object value : data){
-                if(value != null){
-                    tuple += value.toString();
-                }
-            }
-            AcideDebugHelper.performDebug("wrong(" +
-                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
-        }
-    }
 
     class MissingTupleAction extends AbstractAction{
 
@@ -372,6 +329,20 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         }
     }
 
+    class AbortAction extends AbstractAction{
+
+        /**
+         * Escape key action serial version UID.
+         */
+        private static final long serialVersionUID = 1L;
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            AcideDebugHelper.performDebug("abort");
+            closeWindow();
+        }
+    }
+
     class ShowViewAction extends AbstractAction{
 
         /**
@@ -407,6 +378,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         String info = "Error in view '" + view + "' click below to edit that view";
         this.setView(view);
         setInfo(info);
+        deactivateAbortButton();
         viewTable.setVisible(false);
         questionLabel.setVisible(false);
         buttonPanel.setVisible(false);

@@ -9,6 +9,7 @@ import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfig
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
+import acide.process.console.AcideDatabaseManager;
 import acide.process.console.DesDatabaseManager;
 
 import javax.swing.*;
@@ -144,7 +145,9 @@ public class AcideDebugHelper {
 
     public static void showView(String view){
         AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
-
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        if(!info.isEmpty())
+            panelDv.build(info);
         panelDv.setState(panelDv.NORMAL);
         panelDv.setAlwaysOnTop(true);
         panelDv.setAlwaysOnTop(false);
@@ -175,6 +178,7 @@ public class AcideDebugHelper {
                 AcideDebugSQLPanel.startDebug.setEnabled(false);
 
                 AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+                AcideDebugSQLDebugWindow.getInstance().deactivateAbortButton();
                 updateDebugWindow();
             }else{
                 LinkedList<String> error = new LinkedList<>();
@@ -185,7 +189,6 @@ public class AcideDebugHelper {
             // TODO
         }
     }
-
 
     /**
      * Parse debug answer updating graph and check if debug must continue
@@ -215,10 +218,12 @@ public class AcideDebugHelper {
                     else{
                         canvas.setColorSelectedNode(Color.RED);
                         errorView = view;
+                        DesDatabaseManager.getInstance().stopDebug();
                     }
                 }
             }
         }
+
         AcideDebugHelper.updateCanvasDebugGraph(canvas);
 
         return errorView;
@@ -241,13 +246,10 @@ public class AcideDebugHelper {
         return str;
     }
 
-
     public static JScrollPane getViewTable(String view) {
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView("$des", view);
-        viewWindow.setIsHidden(true);
         viewWindow.setState(viewWindow.NORMAL);
-        viewWindow.setIsReadOnly(true);
         JScrollPane table = viewWindow.getSrollPane();
         AcideDebugSQLDebugWindow.getInstance().setJTable(viewWindow.get_jTable());
         viewWindow.closeWindow();
@@ -258,6 +260,7 @@ public class AcideDebugHelper {
         LinkedList<String> consoleInfo;
         if(!AcideDebugSQLDebugWindow.getInstance().isDebuging()){
             AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
+            AcideDebugSQLDebugWindow.getInstance().activateAbortButton();
             if(action.equals("valid") || action.equals("nonvalid"))
                 action = "";
             consoleInfo = DesDatabaseManager.getInstance().
@@ -271,15 +274,19 @@ public class AcideDebugHelper {
     }
 
     private static void nextMovement(LinkedList<String> info){
-        String errorView = updateDebugState(info);
-        if(errorView.equals("")) {
-            LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
-            AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
-            String nextView = parseCurrentQuestion(currentQuestion);
-            AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
-            updateDebugWindow();
-        }else{
-            AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
+
+        // Info empty is abort
+        if(!info.isEmpty()) {
+            String errorView = updateDebugState(info);
+            if (errorView.equals("")) {
+                LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
+                AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
+                String nextView = parseCurrentQuestion(currentQuestion);
+                AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
+                updateDebugWindow();
+            } else {
+                AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
+            }
         }
     }
 
@@ -289,7 +296,6 @@ public class AcideDebugHelper {
         AcideDebugSQLDebugWindow.getInstance().setQuestion("Is this the expected result of this view?");
         AcideDebugSQLDebugWindow.getInstance().showWindow();
     }
-
 
     public static String getSelectedViewName(){
         JComboBox viewBox = AcideMainWindow.getInstance()

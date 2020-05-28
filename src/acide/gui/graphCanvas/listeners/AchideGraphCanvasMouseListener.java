@@ -5,11 +5,13 @@ import acide.gui.graphCanvas.AcideGraphCanvas;
 import acide.gui.graphUtils.DirectedWeightedGraph;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.process.console.AcideDatabaseManager;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class AchideGraphCanvasMouseListener extends MouseAdapter {
 
@@ -37,6 +39,7 @@ public class AchideGraphCanvasMouseListener extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent ev) {
         try{
+
             // Checks the number of clicks
             if (ev.getClickCount() >= 2) {
                 // Gets the graph of the canvas
@@ -57,6 +60,9 @@ public class AchideGraphCanvasMouseListener extends MouseAdapter {
                         if(n.getLabel().contains("/")) {
                             view = n.getLabel().split("/")[0];
                             AcideDatabaseDataView panelDv = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+                            LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+                            if(!info.isEmpty())
+                                panelDv.build(info);
                             panelDv.setAlwaysOnTop(true);
                             panelDv.setAlwaysOnTop(false);
                         }

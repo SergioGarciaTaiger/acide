@@ -447,4 +447,6 @@ public abstract class AcideDatabaseManager {
 
 	public abstract LinkedList<String> debugCurrentAnswer(String question, String answer);
 
+	public abstract void stopDebug();
+
 }
