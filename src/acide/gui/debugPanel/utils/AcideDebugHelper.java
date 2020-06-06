@@ -201,24 +201,25 @@ public class AcideDebugHelper {
         AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getCanvas();
         List<Node> nodes = canvas.get_graph().get_nodes();
+        if (info.size()%2 ==0) {
+            for (int i = 0; i < info.size(); i++) {
+                String view = info.get(i);
+                i++;
+                String state = info.get(i);
 
-        for(String line: info){
-            String view = line.split(" ")[0];
-            String state = line.split(" ")[1];
+                for (Node n : nodes) {
+                    if (n.getLabel().split("/")[0].equals(view)) {
+                        canvas.setSelectedNode(n);
 
-            for(Node n: nodes){
-
-                if(n.getLabel().split("/")[0].equals(view)) {
-                    canvas.setSelectedNode(n);
-
-                    if(state.equals("nonvalid"))
-                        canvas.setColorSelectedNode(Color.ORANGE);
-                    else if(state.equals("valid"))
-                        canvas.setColorSelectedNode(Color.GREEN);
-                    else{
-                        canvas.setColorSelectedNode(Color.RED);
-                        errorView = view;
-                        DesDatabaseManager.getInstance().stopDebug();
+                        if (state.equals("nonvalid"))
+                            canvas.setColorSelectedNode(Color.ORANGE);
+                        else if (state.equals("valid"))
+                            canvas.setColorSelectedNode(Color.GREEN);
+                        else {
+                            canvas.setColorSelectedNode(Color.RED);
+                            errorView = view;
+                            DesDatabaseManager.getInstance().stopDebug();
+                        }
                     }
                 }
             }
@@ -258,19 +259,28 @@ public class AcideDebugHelper {
 
     public static void performDebug(String action){
         LinkedList<String> consoleInfo;
-        if(!AcideDebugSQLDebugWindow.getInstance().isDebuging()){
-            AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
+        if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){
+            AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
             AcideDebugSQLDebugWindow.getInstance().activateAbortButton();
-            if(action.equals("valid") || action.equals("nonvalid"))
-                action = "";
             consoleInfo = DesDatabaseManager.getInstance().
                     startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         } else {
             consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
                     AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
         }
-
         nextMovement(consoleInfo);
+    }
+
+    public static void startNodeDebug(String node, String action){
+        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
+                startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+        updateDebugState(consoleInfo);
+    }
+
+    public static void performNodeDebug(String node, String action){
+        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
+                startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+        updateDebugState(consoleInfo);
     }
 
     private static void nextMovement(LinkedList<String> info){
@@ -297,6 +307,8 @@ public class AcideDebugHelper {
         AcideDebugSQLDebugWindow.getInstance().showWindow();
     }
 
+
+
     public static String getSelectedViewName(){
         JComboBox viewBox = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getViewBox();
@@ -305,4 +317,6 @@ public class AcideDebugHelper {
         // Gets the label of the selected item
         return (String) viewBox.getSelectedItem();
     }
+
+
 }

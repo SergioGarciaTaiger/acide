@@ -55,16 +55,19 @@ import acide.gui.mainWindow.AcideMainWindow;
  * @version 0.17
  * 
  */
-public class AcideDebugSQLPanelRedNodeListener implements ActionListener {
+public class AcideDebugSQLPanelNonValidNodeListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			// Gets the canvas
 			AcideDebugCanvas canvas = AcideMainWindow.getInstance()
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
-			// Updates the selected node
-			canvas.setColorSelectedNode(Color.RED);
-			AcideDebugHelper.updateCanvasDebugGraph(canvas);
+			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+				AcideDebugHelper.performNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "nonvalid");
+			}else{
+				AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
+				AcideDebugHelper.startNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "nonvalid");
+			}
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
 					.setCursor(Cursor.getDefaultCursor());

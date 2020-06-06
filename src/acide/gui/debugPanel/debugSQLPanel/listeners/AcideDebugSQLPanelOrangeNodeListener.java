@@ -16,9 +16,13 @@ public class AcideDebugSQLPanelOrangeNodeListener implements ActionListener {
             // Gets the canvas
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
-            // Updates the selected node
-            canvas.setColorSelectedNode(Color.ORANGE);
-            AcideDebugHelper.performDebug("n");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+
+                AcideDebugHelper.performNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "missing");
+            }else{
+                AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
+                AcideDebugHelper.startNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "missing");
+            }
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()
                     .setCursor(Cursor.getDefaultCursor());

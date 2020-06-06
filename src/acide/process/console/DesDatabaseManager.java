@@ -2245,6 +2245,8 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	}*/
 
 	public LinkedList<String> startDebug(String view, String configuration, String option){
+		if(option.equals("valid") || option.equals("nonvalid"))
+			option = "";
 		String commandLine = "/tapi /debug_sql " + view + configuration + option;
 		LinkedList<String> result = executeCommand(commandLine);
 		return result;
@@ -2270,6 +2272,11 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	public void stopDebug(){
 		if(test().equals("$success"))
 			executeCommand(".");
+	}
+
+	public LinkedList<String> getDebugStats(){
+		LinkedList<String> result = executeCommand("/tapi /debug_sql_statistics");
+		return result;
 	}
 
 }

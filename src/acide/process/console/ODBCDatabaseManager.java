@@ -1131,4 +1131,10 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
 	public void stopDebug() {
 		//TODO
 	}
+
+	@Override
+	public LinkedList<String> getDebugStats() {
+		//TODO
+		return null;
+	}
 }

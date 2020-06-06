@@ -61,15 +61,19 @@ import acide.process.console.DesDatabaseManager;
  * @version 0.17
  * 
  */
-public class AcideDebugSQLPanelGreenNodeListener implements ActionListener {
+public class AcideDebugSQLPanelValidNodeListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			// Gets the canvas
 			AcideDebugCanvas canvas = AcideMainWindow.getInstance()
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
-			canvas.setColorSelectedNode(Color.GREEN);
-			AcideDebugHelper.performDebug("y");
+			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+				AcideDebugHelper.performNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "valid");
+			}else{
+				AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
+				AcideDebugHelper.startNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "valid");
+			}
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
 					.setCursor(Cursor.getDefaultCursor());
