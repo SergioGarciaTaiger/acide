@@ -400,6 +400,11 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
         return result;
 	}
 
+	public LinkedList<String> getTableModel(String table) {
+		// TODO
+		return null;
+	}
+
 	/**
 	 * Executes a command in the database connected
 	 * 

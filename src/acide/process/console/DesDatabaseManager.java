@@ -994,6 +994,24 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 	}
 
+	public LinkedList<String> getTableModel(String table) {
+		LinkedList<String> ret = executeCommand("/tapi select * from " + table);
+		LinkedList<String> res = new LinkedList<>();
+		for(String line: ret){
+			if (line.contains("answer"))
+				continue;
+			else if(line.contains("error") || line.contains("$")){
+				res.add(line);
+				break;
+			}
+			else
+				res.add(line);
+		}
+		return res;
+	}
+
+
+
 	/**
 	 * Executes a command in the database connected
 	 * 

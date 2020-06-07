@@ -6,6 +6,7 @@ import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
+import acide.gui.graphCanvas.AcideGraphCanvas;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -144,7 +145,7 @@ public class AcideDebugHelper {
     }
 
     public static void showView(String view){
-        AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+        AcideDatabaseDataView panelDv = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
         if(!info.isEmpty())
             panelDv.build(info);
@@ -198,9 +199,10 @@ public class AcideDebugHelper {
      */
     private static String updateDebugState(LinkedList<String> info){
         String errorView = "";
-        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getCanvas();
-        List<Node> nodes = canvas.get_graph().get_nodes();
+        AcideGraphCanvas graphCanvas = AcideGraphCanvas.getInstance();
+        List<Node> nodes = debugCanvas.get_graph().get_nodes();
         if (info.size()%2 ==0) {
             for (int i = 0; i < info.size(); i++) {
                 String view = info.get(i);
@@ -209,14 +211,13 @@ public class AcideDebugHelper {
 
                 for (Node n : nodes) {
                     if (n.getLabel().split("/")[0].equals(view)) {
-                        canvas.setSelectedNode(n);
-
+                        debugCanvas.setSelectedNode(n);
                         if (state.equals("nonvalid"))
-                            canvas.setColorSelectedNode(Color.ORANGE);
+                            debugCanvas.setColorSelectedNode(Color.ORANGE);
                         else if (state.equals("valid"))
-                            canvas.setColorSelectedNode(Color.GREEN);
+                            debugCanvas.setColorSelectedNode(Color.GREEN);
                         else {
-                            canvas.setColorSelectedNode(Color.RED);
+                            debugCanvas.setColorSelectedNode(Color.RED);
                             errorView = view;
                             DesDatabaseManager.getInstance().stopDebug();
                         }
@@ -225,7 +226,7 @@ public class AcideDebugHelper {
             }
         }
 
-        AcideDebugHelper.updateCanvasDebugGraph(canvas);
+        AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
 
         return errorView;
     }
@@ -308,7 +309,7 @@ public class AcideDebugHelper {
     }
 
 
-
+    // Gets the view selected in the SQL Debug panel JComboBox
     public static String getSelectedViewName(){
         JComboBox viewBox = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getViewBox();
@@ -318,5 +319,56 @@ public class AcideDebugHelper {
         return (String) viewBox.getSelectedItem();
     }
 
+    public static String getDataFromSelectedTuple(JTable table){
+        Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) table.getModel()).getDataVector().get(table.getSelectedRow());
+        String tuple = "";
+        for(Object value : data){
+            if(value != null){
+                if(isNumeric(value.toString()))
+                    tuple += value + ",";
+                else
+                    tuple += "'" + value.toString() + "',";
+            }
+        }
+        // Remove last comma ','
+        if(!tuple.isEmpty()){
+            tuple = tuple.substring(0, tuple.length() - 1);
+        }
+        return tuple;
+    }
 
+    public static String getUserInputTuple(String view){
+        AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+        // builds only the model
+        LinkedList<String> info = DesDatabaseManager.getInstance().getTableModel(view);
+        int size = info.size()/2;
+        for(int i = 0; i < size; i++){
+            info.add("");
+        }
+        //info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        window.build(info);
+        window.setIsReadOnly(false);
+        JScrollPane srollPane = window.getSrollPane();
+        window.closeWindow();
+        ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
+
+        int input = JOptionPane.showConfirmDialog(null, srollPane, "Input the tuple",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
+        if(input == 0)
+            return getDataFromSelectedTuple(window.getTable());
+        else
+            return "";
+    }
+
+    private static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }

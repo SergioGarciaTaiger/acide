@@ -14,7 +14,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
-import java.util.Vector;
 
 public class AcideDebugSQLDebugWindow extends JFrame {
 
@@ -297,9 +296,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            String tuple = JOptionPane.showInputDialog("Enter missing data");
             AcideDebugHelper.performDebug("missing(" +
-                    AcideDebugSQLDebugWindow.getInstance().getView() + "('" + tuple +"'))");
+                AcideDebugSQLDebugWindow.getInstance().getView() + "('" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"'))");
         }
     }
 
@@ -312,19 +310,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector().get(jTable.getSelectedRow());
-            String tuple = "";
-            for(Object value : data){
-                if(value != null){
-                    tuple += "'" + value.toString() + "',";
-                }
-            }
-            // Remove last comma ','
-            if(!tuple.isEmpty()){
-                tuple = tuple.substring(0, tuple.length() - 1);
-            }
             AcideDebugHelper.performDebug("wrong(" +
-                    AcideDebugSQLDebugWindow.getInstance().getView() + "(" + tuple +"))");
+                    AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
         }
     }
 

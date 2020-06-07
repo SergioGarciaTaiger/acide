@@ -427,7 +427,7 @@ public class AcideDatabaseDataView extends JFrame{
 		if(_database.contains("$des")){
 			Indexinfo = info.get(index);
 			int inicio = Indexinfo.indexOf(".");
-			//a�adimos las columnas
+			//añadimos las columnas
 			while(!Indexinfo.equals("$")){								  
 				String nameColumn = Indexinfo.substring(inicio+1);
 				_totalColumns++;
