@@ -994,6 +994,24 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 	}
 
+	public LinkedList<String> getTableModel(String table) {
+		LinkedList<String> ret = executeCommand("/tapi select * from " + table);
+		LinkedList<String> res = new LinkedList<>();
+		for(String line: ret){
+			if (line.contains("answer"))
+				continue;
+			else if(line.contains("error") || line.contains("$")){
+				res.add(line);
+				break;
+			}
+			else
+				res.add(line);
+		}
+		return res;
+	}
+
+
+
 	/**
 	 * Executes a command in the database connected
 	 * 
@@ -2245,6 +2263,8 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	}*/
 
 	public LinkedList<String> startDebug(String view, String configuration, String option){
+		if(option.equals("valid") || option.equals("nonvalid"))
+			option = "";
 		String commandLine = "/tapi /debug_sql " + view + configuration + option;
 		LinkedList<String> result = executeCommand(commandLine);
 		return result;
@@ -2264,6 +2284,16 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	public LinkedList<String> debugCurrentAnswer(String question, String answer){
 		String commandLine = "/tapi /debug_sql_answer " + question + " " + answer;
 		LinkedList<String> result = executeCommand(commandLine);
+		return result;
+	}
+
+	public void stopDebug(){
+		if(test().equals("$success"))
+			executeCommand(".");
+	}
+
+	public LinkedList<String> getDebugStats(){
+		LinkedList<String> result = executeCommand("/tapi /debug_sql_statistics");
 		return result;
 	}
 

@@ -125,19 +125,19 @@ public class AcideDebugSQLPanel extends JPanel {
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
-	private JMenuItem _colorNode;
+	private JMenuItem _wrongNodeItem;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
-	private JMenuItem _colorNodeRed;
+	private JMenuItem _nonvalidNodeItem;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
-	private JMenuItem _colorNodeGreen;
+	private JMenuItem _validNodeItem;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
-	private JMenuItem _colorNodeGray;
+	private JMenuItem _missingNodeItem;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
@@ -215,10 +215,14 @@ public class AcideDebugSQLPanel extends JPanel {
 	 */
 	public static JButton configurationDebug = new JButton();
 
+	private boolean debuging;
+
 	public JPopupMenu _popUp = null;
 
 
 	public AcideDebugSQLPanel() {
+
+		debuging = false;
 		// Sets the layout of the panel
 		setLayout(new BorderLayout());
 		// Builds the canvas
@@ -439,7 +443,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				(int) nextNodeButton.getPreferredSize().getHeight()));
 		// adds the action listener to the next node button
 		nextNodeButton
-				.addActionListener(new AcideDebugSQLPanelNexNodeListener());
+				.addActionListener(new AcideDebugSQLPanelNextNodeListener());
 		// adds the next node button to the button panel
 		subButtonPanel2.add(nextNodeButton);
 		// Creates the last node button
@@ -632,25 +636,25 @@ public class AcideDebugSQLPanel extends JPanel {
 	private void popUpInit() {
 		// we create the popUp menu
 		_popUp = new JPopupMenu();
-		// Option unknow node
-		_colorNodeGray = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2322"));
-		_colorNodeGray.addActionListener(new AcideDebugSQLPanelGrayNodeListener());
-		_popUp.add(_colorNodeGray);				
 		// Option non valid node
-		_colorNodeRed = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
-		_colorNodeRed.addActionListener(new AcideDebugSQLPanelOrangeNodeListener());
-		_popUp.add(_colorNodeRed);
+		_nonvalidNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
+		_nonvalidNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());
+		_popUp.add(_nonvalidNodeItem);
 		// option valid node
-		_colorNodeGreen = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
-		_colorNodeGreen.addActionListener(new AcideDebugSQLPanelGreenNodeListener());
-		_popUp.add(_colorNodeGreen);
+		_validNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
+		_validNodeItem.addActionListener(new AcideDebugSQLPanelValidNodeListener());
+		_popUp.add(_validNodeItem);
+		// Option missing node
+		_missingNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2322"));
+		_missingNodeItem.addActionListener(new AcideDebugSQLPanelMissingNodeListener());
+		_popUp.add(_missingNodeItem);
 		// option change comun color nodes
-		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2321"));
-		_colorNode.addActionListener(new AcideDebugSQLPanelColorNodeListener());
-		_popUp.add(_colorNode);
-		_colorNode = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
-		_colorNode.addActionListener(new AcideDebugSQLPanelRedNodeListener());
-		_popUp.add(_colorNode);
+		_wrongNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
+		_wrongNodeItem.addActionListener(new AcideDebugSQLPanelWrongNodeListener());
+		_popUp.add(_wrongNodeItem);
+		//_wrongNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
+		//_wrongNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());
+		//_popUp.add(_wrongNodeItem);
 	}
 
 	public void this_mousePressed(MouseEvent e) {
@@ -721,6 +725,14 @@ public class AcideDebugSQLPanel extends JPanel {
 	private void setListeners() {
 		// Sets the ACIDE - A Configurable IDE database panel _popUp menu listener
 		_canvas.addMouseListener(new AcideDegugSQLPanelClickListener(this));
+	}
+
+	public boolean isDebuging() {
+		return debuging;
+	}
+
+	public void setDebuging(boolean debuging) {
+		this.debuging = debuging;
 	}
 
 }

@@ -6,9 +6,11 @@ import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
+import acide.gui.graphCanvas.AcideGraphCanvas;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
+import acide.process.console.AcideDatabaseManager;
 import acide.process.console.DesDatabaseManager;
 
 import javax.swing.*;
@@ -143,8 +145,10 @@ public class AcideDebugHelper {
     }
 
     public static void showView(String view){
-        AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
-
+        AcideDatabaseDataView panelDv = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        if(!info.isEmpty())
+            panelDv.build(info);
         panelDv.setState(panelDv.NORMAL);
         panelDv.setAlwaysOnTop(true);
         panelDv.setAlwaysOnTop(false);
@@ -175,6 +179,7 @@ public class AcideDebugHelper {
                 AcideDebugSQLPanel.startDebug.setEnabled(false);
 
                 AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+                AcideDebugSQLDebugWindow.getInstance().deactivateAbortButton();
                 updateDebugWindow();
             }else{
                 LinkedList<String> error = new LinkedList<>();
@@ -186,7 +191,6 @@ public class AcideDebugHelper {
         }
     }
 
-
     /**
      * Parse debug answer updating graph and check if debug must continue
      *
@@ -195,31 +199,34 @@ public class AcideDebugHelper {
      */
     private static String updateDebugState(LinkedList<String> info){
         String errorView = "";
-        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getCanvas();
-        List<Node> nodes = canvas.get_graph().get_nodes();
+        AcideGraphCanvas graphCanvas = AcideGraphCanvas.getInstance();
+        List<Node> nodes = debugCanvas.get_graph().get_nodes();
+        if (info.size()%2 ==0) {
+            for (int i = 0; i < info.size(); i++) {
+                String view = info.get(i);
+                i++;
+                String state = info.get(i);
 
-        for(String line: info){
-            String view = line.split(" ")[0];
-            String state = line.split(" ")[1];
-
-            for(Node n: nodes){
-
-                if(n.getLabel().split("/")[0].equals(view)) {
-                    canvas.setSelectedNode(n);
-
-                    if(state.equals("nonvalid"))
-                        canvas.setColorSelectedNode(Color.ORANGE);
-                    else if(state.equals("valid"))
-                        canvas.setColorSelectedNode(Color.GREEN);
-                    else{
-                        canvas.setColorSelectedNode(Color.RED);
-                        errorView = view;
+                for (Node n : nodes) {
+                    if (n.getLabel().split("/")[0].equals(view)) {
+                        debugCanvas.setSelectedNode(n);
+                        if (state.equals("nonvalid"))
+                            debugCanvas.setColorSelectedNode(Color.ORANGE);
+                        else if (state.equals("valid"))
+                            debugCanvas.setColorSelectedNode(Color.GREEN);
+                        else {
+                            debugCanvas.setColorSelectedNode(Color.RED);
+                            errorView = view;
+                            DesDatabaseManager.getInstance().stopDebug();
+                        }
                     }
                 }
             }
         }
-        AcideDebugHelper.updateCanvasDebugGraph(canvas);
+
+        AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
 
         return errorView;
     }
@@ -241,13 +248,10 @@ public class AcideDebugHelper {
         return str;
     }
 
-
     public static JScrollPane getViewTable(String view) {
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView("$des", view);
-        viewWindow.setIsHidden(true);
         viewWindow.setState(viewWindow.NORMAL);
-        viewWindow.setIsReadOnly(true);
         JScrollPane table = viewWindow.getSrollPane();
         AcideDebugSQLDebugWindow.getInstance().setJTable(viewWindow.get_jTable());
         viewWindow.closeWindow();
@@ -256,30 +260,44 @@ public class AcideDebugHelper {
 
     public static void performDebug(String action){
         LinkedList<String> consoleInfo;
-        if(!AcideDebugSQLDebugWindow.getInstance().isDebuging()){
-            AcideDebugSQLDebugWindow.getInstance().setDebuging(true);
-            if(action.equals("valid") || action.equals("nonvalid"))
-                action = "";
+        if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){
+            AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
+            AcideDebugSQLDebugWindow.getInstance().activateAbortButton();
             consoleInfo = DesDatabaseManager.getInstance().
                     startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         } else {
             consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
                     AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
         }
-
         nextMovement(consoleInfo);
     }
 
+    public static void startNodeDebug(String node, String action){
+        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
+                startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+        updateDebugState(consoleInfo);
+    }
+
+    public static void performNodeDebug(String node, String action){
+        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
+                startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+        updateDebugState(consoleInfo);
+    }
+
     private static void nextMovement(LinkedList<String> info){
-        String errorView = updateDebugState(info);
-        if(errorView.equals("")) {
-            LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
-            AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
-            String nextView = parseCurrentQuestion(currentQuestion);
-            AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
-            updateDebugWindow();
-        }else{
-            AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
+
+        // Info empty is abort
+        if(!info.isEmpty()) {
+            String errorView = updateDebugState(info);
+            if (errorView.equals("")) {
+                LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
+                AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
+                String nextView = parseCurrentQuestion(currentQuestion);
+                AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
+                updateDebugWindow();
+            } else {
+                AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
+            }
         }
     }
 
@@ -291,6 +309,7 @@ public class AcideDebugHelper {
     }
 
 
+    // Gets the view selected in the SQL Debug panel JComboBox
     public static String getSelectedViewName(){
         JComboBox viewBox = AcideMainWindow.getInstance()
                 .getDebugPanel().getDebugSQLPanel().getViewBox();
@@ -298,5 +317,58 @@ public class AcideDebugHelper {
             return "";
         // Gets the label of the selected item
         return (String) viewBox.getSelectedItem();
+    }
+
+    public static String getDataFromSelectedTuple(JTable table){
+        Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) table.getModel()).getDataVector().get(table.getSelectedRow());
+        String tuple = "";
+        for(Object value : data){
+            if(value != null){
+                if(isNumeric(value.toString()))
+                    tuple += value + ",";
+                else
+                    tuple += "'" + value.toString() + "',";
+            }
+        }
+        // Remove last comma ','
+        if(!tuple.isEmpty()){
+            tuple = tuple.substring(0, tuple.length() - 1);
+        }
+        return tuple;
+    }
+
+    public static String getUserInputTuple(String view){
+        AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+        // builds only the model
+        LinkedList<String> info = DesDatabaseManager.getInstance().getTableModel(view);
+        int size = info.size()/2;
+        for(int i = 0; i < size; i++){
+            info.add("");
+        }
+        //info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        window.build(info);
+        window.setIsReadOnly(false);
+        JScrollPane srollPane = window.getSrollPane();
+        window.closeWindow();
+        ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
+
+        int input = JOptionPane.showConfirmDialog(null, srollPane, "Input the tuple",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
+        if(input == 0)
+            return getDataFromSelectedTuple(window.getTable());
+        else
+            return "";
+    }
+
+    private static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }

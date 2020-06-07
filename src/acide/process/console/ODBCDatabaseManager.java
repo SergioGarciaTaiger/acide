@@ -400,6 +400,11 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
         return result;
 	}
 
+	public LinkedList<String> getTableModel(String table) {
+		// TODO
+		return null;
+	}
+
 	/**
 	 * Executes a command in the database connected
 	 * 
@@ -1123,6 +1128,17 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
 
 	@Override
 	public LinkedList<String> debugCurrentAnswer(String question, String answer) {
+		//TODO
+		return null;
+	}
+
+	@Override
+	public void stopDebug() {
+		//TODO
+	}
+
+	@Override
+	public LinkedList<String> getDebugStats() {
 		//TODO
 		return null;
 	}

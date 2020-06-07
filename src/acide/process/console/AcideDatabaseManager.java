@@ -188,6 +188,14 @@ public abstract class AcideDatabaseManager {
 	public abstract LinkedList<String> getSelectAll(String database, String table);
 
 	/**
+	 * Returns the model of a table
+	 *
+	 * @param String table
+	 * @return LinkedList<String>
+	 */
+	public abstract LinkedList<String> getTableModel(String table);
+
+	/**
 	 * Executes a command in the database connected
 	 *
 	 * @param String command
@@ -446,5 +454,9 @@ public abstract class AcideDatabaseManager {
 	public abstract LinkedList<String> debugCurrentQuestion();
 
 	public abstract LinkedList<String> debugCurrentAnswer(String question, String answer);
+
+	public abstract void stopDebug();
+
+	public abstract LinkedList<String> getDebugStats();
 
 }
