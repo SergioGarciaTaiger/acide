@@ -387,7 +387,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         AcideDebugSQLPanel.startDebug.setEnabled(true);
         AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
         this.setVisible(true);
-
     }
 
     public void putView(String view, JScrollPane viewTable){

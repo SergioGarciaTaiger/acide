@@ -197,36 +197,39 @@ public class AcideDebugHelper {
      * @return continueDebugging if continues debugging
      */
     private static String updateDebugState(LinkedList<String> info){
-        String errorView = "";
-        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getCanvas();
-        AcideGraphCanvas graphCanvas = AcideGraphCanvas.getInstance();
-        List<Node> nodes = debugCanvas.get_graph().get_nodes();
-        if (info.size()%2 ==0) {
-            for (int i = 0; i < info.size(); i++) {
-                String view = info.get(i);
-                i++;
-                String state = info.get(i);
+        if(info.size() > 0 && info.get(0).equals("$error")){
+            return "debugError";
+        }else {
+            String errorView = "";
+            AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
+                    .getDebugPanel().getDebugSQLPanel().getCanvas();
+            List<Node> nodes = debugCanvas.get_graph().get_nodes();
+            if (info.size() % 2 == 0) {
+                for (int i = 0; i < info.size(); i++) {
+                    String view = info.get(i);
+                    i++;
+                    String state = info.get(i);
 
-                for (Node n : nodes) {
-                    if (n.getLabel().split("/")[0].equals(view)) {
-                        debugCanvas.setSelectedNode(n);
-                        if (state.equals("nonvalid"))
-                            debugCanvas.setColorSelectedNode(Color.ORANGE);
-                        else if (state.equals("valid"))
-                            debugCanvas.setColorSelectedNode(Color.GREEN);
-                        else {
-                            debugCanvas.setColorSelectedNode(Color.RED);
-                            errorView = view;
+                    for (Node n : nodes) {
+                        if (n.getLabel().split("/")[0].equals(view)) {
+                            debugCanvas.setSelectedNode(n);
+                            if (state.equals("nonvalid"))
+                                debugCanvas.setColorSelectedNode(Color.ORANGE);
+                            else if (state.equals("valid"))
+                                debugCanvas.setColorSelectedNode(Color.GREEN);
+                            else {
+                                debugCanvas.setColorSelectedNode(Color.RED);
+                                errorView = view;
+                            }
                         }
                     }
                 }
             }
+
+            AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
+
+            return errorView;
         }
-
-        AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
-
-        return errorView;
     }
 
     /**
@@ -292,6 +295,11 @@ public class AcideDebugHelper {
                 String nextView = parseCurrentQuestion(currentQuestion);
                 AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
                 updateDebugWindow();
+            } else if (errorView.equals("debugError")) {
+                JOptionPane.showMessageDialog(null, "Error while debugging");
+                AcideDebugSQLDebugWindow.getInstance().closeWindow();
+                AcideDebugSQLPanel.startDebug.setEnabled(true);
+                AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
             } else {
                 AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
             }
