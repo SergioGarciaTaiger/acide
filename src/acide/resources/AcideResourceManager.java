@@ -85,25 +85,28 @@ public class AcideResourceManager {
 	 * </p>
 	 */
 	public AcideResourceManager(){
+		loadConfiguration();
+	}
 
+	private void loadConfiguration(){
 		try {
 
 			// Creates the file input file
 			FileInputStream configurationFile = new FileInputStream(CONFIGURATION_FILE);
-			
+
 			// Creates the temporal properties file
 			_temporalProperties = new Properties();
-			
+
 			// Loads the temporal properties from the file
 			_temporalProperties.load(configurationFile);
-			
+
 			// Closes the configuration file input stream
 			configurationFile.close();
-			
+
 			// Creates the properties hash map
 			_properties = new HashMap<Object, Object>(_temporalProperties);
 		} catch (Exception exception) {
-			
+
 			// Updates the log
 			AcideLog.getLog().error(exception.getMessage());
 			exception.printStackTrace();
@@ -221,29 +224,7 @@ public class AcideResourceManager {
 			// Stores the temporal properties file
 			_temporalProperties.store(new FileOutputStream(
 					CONFIGURATION_FILE), "ACIDE Configuration");
-			try {
-
-				// Creates the file input stream
-				FileInputStream fileInputStream = new FileInputStream(CONFIGURATION_FILE);
-				
-				// Creates a new temporal properties file
-				_temporalProperties = new Properties();
-				
-				// Loads the temporal properties from the file
-				_temporalProperties.load(fileInputStream);
-				
-				// Closes the file input stream
-				fileInputStream.close();
-				
-				// Creates the properties hash map
-				_properties = new HashMap<Object, Object>(_temporalProperties);
-
-			} catch (Exception exception) {
-				
-				// Updates the log
-				AcideLog.getLog().error(exception.getMessage());
-				exception.printStackTrace();
-			}
+			loadConfiguration();
 		} catch (Exception exception) {
 			
 			// Updates the log

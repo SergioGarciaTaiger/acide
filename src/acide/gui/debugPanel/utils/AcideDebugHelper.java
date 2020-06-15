@@ -179,7 +179,6 @@ public class AcideDebugHelper {
                 AcideDebugSQLPanel.startDebug.setEnabled(false);
 
                 AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
-                AcideDebugSQLDebugWindow.getInstance().deactivateAbortButton();
                 updateDebugWindow();
             }else{
                 LinkedList<String> error = new LinkedList<>();
@@ -219,7 +218,6 @@ public class AcideDebugHelper {
                         else {
                             debugCanvas.setColorSelectedNode(Color.RED);
                             errorView = view;
-                            DesDatabaseManager.getInstance().stopDebug();
                         }
                     }
                 }
@@ -262,7 +260,6 @@ public class AcideDebugHelper {
         LinkedList<String> consoleInfo;
         if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){
             AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
-            AcideDebugSQLDebugWindow.getInstance().activateAbortButton();
             consoleInfo = DesDatabaseManager.getInstance().
                     startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         } else {

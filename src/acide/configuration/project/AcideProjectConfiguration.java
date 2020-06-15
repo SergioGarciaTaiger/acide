@@ -2012,8 +2012,5 @@ public class AcideProjectConfiguration {
 		_position = finalPosition + 1;
 		return property;
 	}
-	
-	
-	
-	
+
 }

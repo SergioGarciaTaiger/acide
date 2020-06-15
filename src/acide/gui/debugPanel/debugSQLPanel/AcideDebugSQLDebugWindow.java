@@ -80,7 +80,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         nonValidButton = new JButton("non valid");
         missingTupleButton = new JButton("missing tuple");
         wrongTupleButton = new JButton("wrong tuple");
-        abortButton = new JButton("abort");
+        abortButton = new JButton("cancel");
 
         okButton = new JButton("OK");
         showStatsButton = new JButton("show stats");
@@ -216,7 +216,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void showWindow() {
-
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
         viewTable.setVisible(true);
@@ -225,16 +224,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setWindowConfiguration();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
+        Cursor.getDefaultCursor();
         // Displays the window
         setVisible(true);
-    }
-
-    public void activateAbortButton(){
-        abortButton.setEnabled(true);
-    }
-
-    public void deactivateAbortButton(){
-        abortButton.setEnabled(false);
     }
 
     /**
@@ -324,7 +316,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            AcideDebugHelper.performDebug("abort");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                AcideDebugHelper.performDebug("abort");
             closeWindow();
         }
     }
@@ -385,7 +378,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         String info = "Error in view '" + view + "' click below to edit that view";
         this.setView(view);
         setInfo(info);
-        deactivateAbortButton();
         viewTable.setVisible(false);
         questionLabel.setVisible(false);
         buttonPanel.setVisible(false);

@@ -1,5 +1,14 @@
 package acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration;
 
+import acide.files.AcideFileManager;
+import acide.language.AcideLanguageManager;
+import acide.resources.AcideResourceManager;
+import acide.resources.exception.MissedPropertyException;
+
+import javax.swing.*;
+import java.io.*;
+import java.util.Properties;
+
 public class AcideDebugConfiguration {
 
     /**
@@ -28,7 +37,7 @@ public class AcideDebugConfiguration {
         trust_tables = Trust_tables.YES;
         debug = Debug.FULL;
         order = Order.CARDINALITY;
-        trust_file = null;
+        trust_file = "";
         //oracle_file = null;
     }
 
@@ -49,6 +58,19 @@ public class AcideDebugConfiguration {
 
     public void saveConfiguration(AcideDebugConfiguration configuration){
         instance = configuration;
+        try {
+            String debugConfigurationPath = AcideResourceManager.getInstance().getProperty("debugConfigurationPath");
+            Properties debugProperties = new Properties();
+            debugProperties.setProperty("trust_tables", trust_tables.getValue());
+            debugProperties.setProperty("debug", debug.getValue());
+            debugProperties.setProperty("trust_file", trust_file);
+            debugProperties.setProperty("order", order.getValue());
+            debugProperties.store(new FileOutputStream(debugConfigurationPath),null);
+        } catch (MissedPropertyException | IOException e) {
+            e.printStackTrace();
+            JOptionPane.showConfirmDialog(null, AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2341"));
+        }
     }
 
     public Trust_tables getTrust_tables() {
@@ -131,5 +153,36 @@ public class AcideDebugConfiguration {
         public String getValue() {
             return value;
         }
+    }
+
+    public void load(String fileName) throws MissedPropertyException {
+//        String fileContent = AcideFileManager.getInstance().load(configuration);
+//        if(fileContent.isEmpty())
+//            throw new MissedPropertyException(AcideLanguageManager.getInstance().getLabels()
+//                    .getString("s2340"));
+//        else{
+//            fileContent = fileContent.replaceAll("\r\n", "\n");
+        try{
+            // Creates the file input file
+            FileInputStream configurationFile = new FileInputStream(fileName);
+            Properties debugProperties = new Properties();
+            debugProperties.load(configurationFile);
+
+            setProperties(debugProperties);
+
+            // Closes the configuration file input stream
+            configurationFile.close();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new MissedPropertyException(AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2340"));
+        }
+    }
+
+    private void setProperties(Properties properties){
+        setTrust_tables(properties.getProperty("trust_tables").equals(Trust_tables.NO.getValue()) ? Trust_tables.NO : Trust_tables.YES);
+        setDebug(properties.getProperty("debug").equals(Debug.PLAIN.getValue()) ? Debug.PLAIN : Debug.FULL);
+        setTrust_file(properties.getProperty("trust_file"));
+        setOrder(properties.getProperty("order").equals(Order.TOPDOWN.getValue()) ? Order.TOPDOWN : Order.CARDINALITY);
     }
 }
