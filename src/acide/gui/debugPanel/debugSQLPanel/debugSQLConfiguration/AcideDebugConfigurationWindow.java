@@ -4,6 +4,7 @@ import acide.files.AcideFileManager;
 import acide.files.utils.AcideFileOperation;
 import acide.files.utils.AcideFileTarget;
 import acide.files.utils.AcideFileType;
+import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -532,6 +533,7 @@ public class AcideDebugConfigurationWindow extends JFrame {
                     configuration.setOrder(AcideDebugConfiguration.Order.TOPDOWN);
 
                 AcideDebugConfiguration.getInstance().saveConfiguration(configuration);
+                AcideDebugSQLDebugWindow.getInstance().closeWindow();
             }
         }
     }
