@@ -30,6 +30,7 @@ public class AcideDebugSQLPanelStartDebugListener implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        AcideDebugHelper.resetColorNodes();
         AcideDebugHelper.startDebug();
     }
 }

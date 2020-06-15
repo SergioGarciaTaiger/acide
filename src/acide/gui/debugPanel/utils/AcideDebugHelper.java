@@ -3,10 +3,12 @@ package acide.gui.debugPanel.utils;
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
 import acide.gui.graphCanvas.AcideGraphCanvas;
+import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -152,6 +154,16 @@ public class AcideDebugHelper {
         panelDv.setState(panelDv.NORMAL);
         panelDv.setAlwaysOnTop(true);
         panelDv.setAlwaysOnTop(false);
+    }
+
+    public static void resetColorNodes(){
+        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        for(Node n : debugCanvas.get_graph().get_nodes()){
+            debugCanvas.setSelectedNode(n);
+            debugCanvas.setColorSelectedNode(Color.GRAY);
+        }
+        updateCanvasDebugGraph(debugCanvas);
     }
 
     public static void startDebug(){

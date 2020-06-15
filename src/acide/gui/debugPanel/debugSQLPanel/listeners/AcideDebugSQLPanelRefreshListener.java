@@ -46,6 +46,7 @@ import java.util.LinkedList;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
+import acide.gui.graphCanvas.AcideGraphCanvas;
 import acide.gui.graphCanvas.AcideGraphCanvas.CanvasPanel;
 import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.mainWindow.AcideMainWindow;
@@ -67,7 +68,6 @@ public class AcideDebugSQLPanelRefreshListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// Gets the query
 		String consult = AcideMainWindow.getInstance().getDebugPanel()
 				.getDebugSQLPanel().getQuery();
 		// Gets the trace SQL output for query
@@ -80,16 +80,16 @@ public class AcideDebugSQLPanelRefreshListener implements ActionListener {
 		// Parses the result and generates the path graph (/pdg -> /rdg v0.17)
 		final Thread t = new Thread(new AcideDebugCanvasParseTask(result.toString(),
 				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
-						.getInstance().getDebugPanel().getDebugSQLPanel()
-						.getCanvas(), AcideDebugCanvasParseTask.DESTINY_PATH,consult,false));
+				.getInstance().getDebugPanel().getDebugSQLPanel()
+				.getCanvas(), AcideDebugCanvasParseTask.DESTINY_PATH,consult,false));
 		result = new StringBuilder(AcideDebugHelper.obtainSQLResult(t, result.toString(), l, consult));
 		// Parses the result and generates the graph (/pdg -> /rdg v0.17)
 		new Thread(new AcideDebugCanvasParseTask(result.toString(),
 				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
-						.getInstance().getDebugPanel().getDebugSQLPanel()
-						.getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
+				.getInstance().getDebugPanel().getDebugSQLPanel()
+				.getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
 				.start();
-		AcideDebugSQLPanel._canvas.setZoom(1, CanvasPanel.DebugSQL);
+		AcideDebugSQLPanel._canvas.setZoom(1, AcideGraphCanvas.CanvasPanel.DebugSQL);
 	}
 
 }

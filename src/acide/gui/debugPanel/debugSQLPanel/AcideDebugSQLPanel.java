@@ -138,6 +138,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
 	private JMenuItem _missingNodeItem;
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
+	 */
+	private JMenuItem _contents;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
@@ -636,6 +641,10 @@ public class AcideDebugSQLPanel extends JPanel {
 	private void popUpInit() {
 		// we create the popUp menu
 		_popUp = new JPopupMenu();
+		// Option show contents
+		_contents = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2347"));
+		_contents.addActionListener(new AcideDebugSQLPanelShowViewListener());
+		_popUp.add(_contents);
 		// Option non valid node
 		_nonvalidNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
 		_nonvalidNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());

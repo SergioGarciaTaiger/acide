@@ -5,9 +5,13 @@ import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.language.AcideLanguageManager;
 import acide.process.console.DesDatabaseManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -216,6 +220,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void showWindow() {
+        this.setTitle("Debug execution");
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
         viewTable.setVisible(true);
@@ -332,14 +337,35 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             LinkedList<String> info = DesDatabaseManager.getInstance().getDebugStats();
-            String label = "<html>";
-            for(int i = 0; i < info.size(); i++){
-                label += info.get(i) + " ";
-                i++;
-                label += info.get(i) + "<br>";
+            if(info.size() > 0 && info.get(0).equals("$error")){
+                JOptionPane.showMessageDialog(null, "Error happened contact application owner");
+            }else {
+                String[] columnNames = {"Number", "Info"};
+                DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+                for (int i = 0; i < info.size(); i++) {
+                    Object[] row = {info.get(i),info.get(i+1)};
+                    tableModel.addRow(row);
+                    i++;
+                }
+                JTable table = new JTable(tableModel);
+                table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                final TableColumnModel columnModel = table.getColumnModel();
+                for (int column = 0; column < table.getColumnCount(); column++) {
+                    int width = 15; // Min width
+                    for (int row = 0; row < table.getRowCount(); row++) {
+                        TableCellRenderer renderer = table.getCellRenderer(row, column);
+                        Component comp = table.prepareRenderer(renderer, row, column);
+                        width = Math.max(comp.getPreferredSize().width +1 , width);
+                    }
+                    if(width > 300)
+                        width=300;
+                    columnModel.getColumn(column).setPreferredWidth(width);
+                }
+
+
+                JOptionPane.showMessageDialog(new Frame(), table, AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2343"), JOptionPane.INFORMATION_MESSAGE);
             }
-            label += "</html>";
-            JOptionPane.showMessageDialog(new Frame(), new JLabel(label));
         }
     }
 
@@ -365,7 +391,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void setInfo(String info){
-        infoReicibedLabel.setText(info);
+        String text = "<html>";
+        text += info;
+        text += "</html>";
+        infoReicibedLabel.setText(text);
         setWindowConfiguration();
     }
 
@@ -375,7 +404,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void stopDepug(String view){
-        String info = "Error in view '" + view + "' click below to edit that view";
+        String info = AcideLanguageManager.getInstance().getLabels()
+                .getString("s2345") + view + "' <br>" + AcideLanguageManager.getInstance().getLabels()
+                .getString("s2346");
+        this.setTitle(AcideLanguageManager.getInstance().getLabels()
+                .getString("s2344"));
         this.setView(view);
         setInfo(info);
         viewTable.setVisible(false);
