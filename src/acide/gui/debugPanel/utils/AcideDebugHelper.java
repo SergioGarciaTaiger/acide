@@ -319,6 +319,7 @@ public class AcideDebugHelper {
                 LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
                 AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
                 String nextView = parseCurrentQuestion(currentQuestion);
+                updateHighlight(nextView);
                 AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
                 updateDebugWindow();
             } else if (errorView.equals("debugError")) {
@@ -401,5 +402,23 @@ public class AcideDebugHelper {
             return false;
         }
         return true;
+    }
+
+    private static void updateHighlight(String view){
+        // Gets the canvas
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        // select node
+        List<Node> nodes = canvas.get_graph().get_nodes();
+        Node node = null;
+        for (Node n : nodes) {
+            if (n.getLabel().split("/")[0].equals(view))
+                node = n;
+        }
+
+        if (node != null)
+            canvas.setSelectedNode(node);
+
+        updateCanvasDebugGraph(canvas);
     }
 }
