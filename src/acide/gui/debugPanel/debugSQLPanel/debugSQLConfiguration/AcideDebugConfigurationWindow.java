@@ -55,6 +55,9 @@ public class AcideDebugConfigurationWindow extends JFrame {
     private JButton saveCondigurationButton;
     private JButton defaultConfigurationButton;
 
+    private static final ImageIcon ICON = new ImageIcon(
+            "./resources/images/icon.png");
+
     // Instance
     private static AcideDebugConfigurationWindow instance;
 
@@ -71,6 +74,8 @@ public class AcideDebugConfigurationWindow extends JFrame {
                 .getLabels().getString("s2326"));
 
         configuration = AcideDebugConfiguration.getInstance();
+
+        this.setIconImage(ICON.getImage());
 
         // Builds the window components
         buildComponents();

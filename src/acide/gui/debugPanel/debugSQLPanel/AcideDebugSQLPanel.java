@@ -699,7 +699,18 @@ public class AcideDebugSQLPanel extends JPanel {
 	}
 
 	private void showPopupMenu(MouseEvent e) {
-		if (e.isPopupTrigger()) { 
+		if (e.isPopupTrigger()) {
+			if(isDebuging()){
+				_wrongNodeItem.setEnabled(true);
+				_nonvalidNodeItem.setEnabled(true);
+				_missingNodeItem.setEnabled(true);
+				_validNodeItem.setEnabled(true);
+			}else{
+				_wrongNodeItem.setEnabled(false);
+				_nonvalidNodeItem.setEnabled(false);
+				_missingNodeItem.setEnabled(false);
+				_validNodeItem.setEnabled(false);
+			}
 			// we show the popUp in the position of mouse
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
 		}

@@ -1,6 +1,7 @@
 package acide.gui.debugPanel.utils;
 
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
+import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplaceWindow;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
@@ -168,12 +169,19 @@ public class AcideDebugHelper {
 
     public static void startDebug(){
         try {
+            // Puts the wait cursor
+            AcideDataViewReplaceWindow.getInstance().setCursor(
+                    Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             String view = getSelectedViewName();
-            if(view != null && !view.equals("          ")) {
-                // Gets the canvas
-                AcideDebugCanvas canvas = AcideMainWindow.getInstance()
-                        .getDebugPanel().getDebugSQLPanel().getCanvas();
+            // Gets the canvas
+            AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                    .getDebugPanel().getDebugSQLPanel().getCanvas();
 
+            // View in combo box not selected try selected node
+            if(view != null && !view.equals("          "))
+                view = canvas.getSelectedNode().getLabel().split("/")[0];
+
+            if(view != null && !view.equals("          ")){
                 // select node
                 List<Node> nodes = canvas.get_graph().get_nodes();
                 Node node = null;
@@ -209,6 +217,9 @@ public class AcideDebugHelper {
      * @return continueDebugging if continues debugging
      */
     private static String updateDebugState(LinkedList<String> info){
+        // Puts the wait cursor
+        AcideDataViewReplaceWindow.getInstance().setCursor(
+                Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         if(info.size() > 0 && info.get(0).equals("$error")){
             return "debugError";
         }else {
@@ -285,6 +296,9 @@ public class AcideDebugHelper {
     }
 
     public static void startNodeDebug(String node, String action){
+        // Puts the wait cursor
+        AcideDataViewReplaceWindow.getInstance().setCursor(
+                Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         updateDebugState(consoleInfo);
