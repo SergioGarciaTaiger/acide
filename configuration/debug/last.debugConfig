@@ -1,0 +1,5 @@
+#Mon Jun 15 11:13:47 CEST 2020
+order=cardinality
+debug=plain
+trust_tables=no
+trust_file=

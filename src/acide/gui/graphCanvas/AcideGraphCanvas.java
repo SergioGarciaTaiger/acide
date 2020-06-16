@@ -323,7 +323,7 @@ public class AcideGraphCanvas extends Canvas {
 			root = _graph.get_nodes().get(rootIndex);
 
 			// Aplies the layout
-			this._layout = new TreeLayout(root, TreeLayout.DIRECT_MODE);
+			this._layout = new TreeLayout(root, TreeLayout.INVERSE_MODE);
 			// updates the nodes distribution
 			_layout.calculateNodesPosition(this._graph, this._width,
 					this._height, this._nodeSize);

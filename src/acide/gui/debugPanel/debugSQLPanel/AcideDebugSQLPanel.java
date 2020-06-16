@@ -138,6 +138,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
 	private JMenuItem _missingNodeItem;
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
+	 */
+	private JMenuItem _contents;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
@@ -636,6 +641,10 @@ public class AcideDebugSQLPanel extends JPanel {
 	private void popUpInit() {
 		// we create the popUp menu
 		_popUp = new JPopupMenu();
+		// Option show contents
+		_contents = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2347"));
+		_contents.addActionListener(new AcideDebugSQLPanelShowViewListener());
+		_popUp.add(_contents);
 		// Option non valid node
 		_nonvalidNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
 		_nonvalidNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());
@@ -690,7 +699,18 @@ public class AcideDebugSQLPanel extends JPanel {
 	}
 
 	private void showPopupMenu(MouseEvent e) {
-		if (e.isPopupTrigger()) { 
+		if (e.isPopupTrigger()) {
+			if(isDebuging()){
+				_wrongNodeItem.setEnabled(true);
+				_nonvalidNodeItem.setEnabled(true);
+				_missingNodeItem.setEnabled(true);
+				_validNodeItem.setEnabled(true);
+			}else{
+				_wrongNodeItem.setEnabled(false);
+				_nonvalidNodeItem.setEnabled(false);
+				_missingNodeItem.setEnabled(false);
+				_validNodeItem.setEnabled(false);
+			}
 			// we show the popUp in the position of mouse
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
 		}

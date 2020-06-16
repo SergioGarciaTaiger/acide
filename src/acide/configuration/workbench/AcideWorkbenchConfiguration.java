@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2013  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,6 +59,7 @@ import acide.configuration.workbench.recentProjects.AcideRecentProjectsConfigura
 import acide.configuration.workbench.utils.AcideFileEditorLoader;
 import acide.files.AcideFileManager;
 import acide.files.project.AcideProjectFile;
+import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.log.AcideLog;
@@ -270,6 +271,9 @@ public class AcideWorkbenchConfiguration {
 
 		// Loads the explorer panel configuration
 		loadExplorerConfiguration();
+
+		// Loads the debug configuration
+		loadDebugConfiguration();
 
 		// If the console panel configuration was loaded successfully
 		if (consolePanelConfiguration != null)
@@ -846,6 +850,45 @@ public class AcideWorkbenchConfiguration {
 									.getString("s959"));
 		}
 	}
+
+	/**
+	 * Loads the ACIDE - A Configurable IDE debug workbench configuration.
+	 */
+	private void loadDebugConfiguration() {
+
+		// Updates the log
+		AcideLog.getLog().info(
+				AcideLanguageManager.getInstance().getLabels()
+						.getString("s2338"));
+
+		String debugConfiguration = null;
+
+		try {
+
+			// Gets the ACIDE - A Configurable IDE project configuration
+			debugConfiguration = AcideResourceManager.getInstance()
+					.getProperty("debugConfigurationPath");
+
+			// Loads the project configuration
+			AcideDebugConfiguration.getInstance().load(debugConfiguration);
+		} catch (MissedPropertyException exception) {
+
+			// Updates the log
+			AcideLog.getLog().error(exception.getMessage());
+
+			// Loads the default configuration
+			AcideDebugConfiguration.getInstance().setDefaultConfiguration();
+
+			// Displays an error message
+			JOptionPane.showMessageDialog(
+					null,
+					AcideLanguageManager.getInstance().getLabels()
+							.getString("s2339")
+							+ AcideLanguageManager.getInstance().getLabels()
+							.getString("s959"));
+		}
+	}
+
 
 	/**
 	 * Loads the ACIDE - A Configurable tool bar configuration.

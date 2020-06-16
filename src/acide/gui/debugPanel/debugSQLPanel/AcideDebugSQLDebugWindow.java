@@ -1,13 +1,18 @@
 package acide.gui.debugPanel.debugSQLPanel;
 
 import acide.gui.databasePanel.dataView.AcideDataBaseDataViewTable;
-import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
+import acide.gui.databasePanel.utils.AcideEnterTextWindow;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.listeners.AcideWindowClosingListener;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.language.AcideLanguageManager;
+import acide.process.console.AcideDatabaseManager;
 import acide.process.console.DesDatabaseManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -32,13 +37,17 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private JButton okButton;
     private JButton showStatsButton;
-    private JButton showViewButton;
+    private JButton editTableButton;
+    private JButton editViewButton;
 
     private String view;
     private String currentQuestion;
 
     private JScrollPane viewTable;
     private AcideDataBaseDataViewTable jTable;
+
+    private static final ImageIcon ICON = new ImageIcon(
+            "./resources/images/icon.png");
 
     private static AcideDebugSQLDebugWindow instance;
 
@@ -54,6 +63,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.setTitle("Debug execution");
 
         this.setView(AcideDebugHelper.getSelectedViewName());
+
+        this.setIconImage(ICON.getImage());
 
         // Builds the window components
         buildComponents();
@@ -76,15 +87,25 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         infoReicibedLabel = new JLabel();
         questionLabel = new JLabel();
 
-        validButton = new JButton("valid");
-        nonValidButton = new JButton("non valid");
-        missingTupleButton = new JButton("missing tuple");
-        wrongTupleButton = new JButton("wrong tuple");
-        abortButton = new JButton("abort");
+        validButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2348"));
+        nonValidButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2349"));
+        missingTupleButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2350"));
+        wrongTupleButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2351"));
+        abortButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2352"));
 
-        okButton = new JButton("OK");
-        showStatsButton = new JButton("show stats");
-        showViewButton = new JButton("show view");
+        okButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2353"));
+        showStatsButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2354"));
+        editTableButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2355"));
+        editViewButton = new JButton(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2360"));
 
         questionLabel.setText("");
         infoReicibedLabel.setText("");
@@ -107,7 +128,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         errorPanel.add(okButton);
         errorPanel.add(showStatsButton);
-        errorPanel.add(showViewButton);
+        errorPanel.add(editTableButton);
+        errorPanel.add(editViewButton);
     }
 
 
@@ -120,7 +142,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         okButton.addActionListener(new CloseAction());
         showStatsButton.addActionListener(new StatsAction());
-        showViewButton.addActionListener(new ShowViewAction());
+        editTableButton.addActionListener(new EditTableAction());
+        editViewButton.addActionListener(new EditViewAction());
     }
 
     private void addComponents() {
@@ -217,6 +240,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void showWindow() {
 
+        // Debug execution
+        this.setTitle(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2356"));
+
         questionLabel.setVisible(true);
         buttonPanel.setVisible(true);
         viewTable.setVisible(true);
@@ -225,16 +252,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setWindowConfiguration();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
+        Cursor.getDefaultCursor();
         // Displays the window
         setVisible(true);
-    }
-
-    public void activateAbortButton(){
-        abortButton.setEnabled(true);
-    }
-
-    public void deactivateAbortButton(){
-        abortButton.setEnabled(false);
     }
 
     /**
@@ -324,7 +344,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            AcideDebugHelper.performDebug("abort");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                AcideDebugHelper.performDebug("abort");
             closeWindow();
         }
     }
@@ -339,18 +360,56 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             LinkedList<String> info = DesDatabaseManager.getInstance().getDebugStats();
-            String label = "<html>";
-            for(int i = 0; i < info.size(); i++){
-                label += info.get(i) + " ";
-                i++;
-                label += info.get(i) + "<br>";
+            if(info.size() > 0 && info.get(0).equals("$error")){
+                JOptionPane.showMessageDialog(null, AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2357"));
+            }else {
+                String[] columnNames = {AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2358"), AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2359")};
+                DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+                for (int i = 0; i < info.size(); i++) {
+                    Object[] row = {info.get(i),info.get(i+1)};
+                    tableModel.addRow(row);
+                    i++;
+                }
+                JTable table = new JTable(tableModel);
+                table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+                final TableColumnModel columnModel = table.getColumnModel();
+                for (int column = 0; column < table.getColumnCount(); column++) {
+                    int width = 15; // Min width
+                    for (int row = 0; row < table.getRowCount(); row++) {
+                        TableCellRenderer renderer = table.getCellRenderer(row, column);
+                        Component comp = table.prepareRenderer(renderer, row, column);
+                        width = Math.max(comp.getPreferredSize().width +1 , width);
+                    }
+                    if(width > 300)
+                        width=300;
+                    columnModel.getColumn(column).setPreferredWidth(width);
+                }
+
+                JOptionPane.showMessageDialog(new Frame(), table, AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2343"), JOptionPane.INFORMATION_MESSAGE);
             }
-            label += "</html>";
-            JOptionPane.showMessageDialog(new Frame(), new JLabel(label));
         }
     }
 
-    class ShowViewAction extends AbstractAction{
+    class EditViewAction extends AbstractAction{
+
+        /**
+         * Escape key action serial version UID.
+         */
+        private static final long serialVersionUID = 1L;
+
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent) {
+            String text = AcideDatabaseManager.getInstance().getSQLText("$des", view);
+            new AcideEnterTextWindow(text, AcideLanguageManager.getInstance().getLabels().getString("s2036"), true);
+        }
+    }
+
+    class EditTableAction extends AbstractAction{
 
         /**
          * Escape key action serial version UID.
@@ -372,7 +431,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void setInfo(String info){
-        infoReicibedLabel.setText(info);
+        String text = "<html>";
+        text += info;
+        text += "</html>";
+        infoReicibedLabel.setText(text);
         setWindowConfiguration();
     }
 
@@ -382,10 +444,20 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     }
 
     public void stopDepug(String view){
-        String info = "Error in view '" + view + "' click below to edit that view";
+        String info = AcideLanguageManager.getInstance().getLabels()
+                .getString("s2345") + view + "' <br>" + AcideLanguageManager.getInstance().getLabels()
+                .getString("s2346");
+        this.setTitle(AcideLanguageManager.getInstance().getLabels()
+                .getString("s2344"));
         this.setView(view);
+        if(DesDatabaseManager.getInstance().isTable("$des", view)){
+            editTableButton.setVisible(true);
+            editViewButton.setVisible(false);
+        }else{
+            editTableButton.setVisible(false);
+            editViewButton.setVisible(true);
+        }
         setInfo(info);
-        deactivateAbortButton();
         viewTable.setVisible(false);
         questionLabel.setVisible(false);
         buttonPanel.setVisible(false);
@@ -395,7 +467,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         AcideDebugSQLPanel.startDebug.setEnabled(true);
         AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
         this.setVisible(true);
-
     }
 
     public void putView(String view, JScrollPane viewTable){

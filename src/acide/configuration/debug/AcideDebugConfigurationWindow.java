@@ -1,4 +1,4 @@
-package acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration;
+package acide.configuration.debug;
 
 import acide.files.AcideFileManager;
 import acide.files.utils.AcideFileOperation;
@@ -55,9 +55,6 @@ public class AcideDebugConfigurationWindow extends JFrame {
     private JButton saveCondigurationButton;
     private JButton defaultConfigurationButton;
 
-    private static final ImageIcon ICON = new ImageIcon(
-            "./resources/images/icon.png");
-
     // Instance
     private static AcideDebugConfigurationWindow instance;
 
@@ -74,8 +71,6 @@ public class AcideDebugConfigurationWindow extends JFrame {
                 .getLabels().getString("s2326"));
 
         configuration = AcideDebugConfiguration.getInstance();
-
-        this.setIconImage(ICON.getImage());
 
         // Builds the window components
         buildComponents();

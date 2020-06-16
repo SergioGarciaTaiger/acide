@@ -1,6 +1,5 @@
-package acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration;
+package acide.configuration.debug;
 
-import acide.files.AcideFileManager;
 import acide.language.AcideLanguageManager;
 import acide.resources.AcideResourceManager;
 import acide.resources.exception.MissedPropertyException;

@@ -1,12 +1,15 @@
 package acide.gui.debugPanel.utils;
 
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
+import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplaceWindow;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
 import acide.gui.graphCanvas.AcideGraphCanvas;
+import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -154,14 +157,31 @@ public class AcideDebugHelper {
         panelDv.setAlwaysOnTop(false);
     }
 
+    public static void resetColorNodes(){
+        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        for(Node n : debugCanvas.get_graph().get_nodes()){
+            debugCanvas.setSelectedNode(n);
+            debugCanvas.setColorSelectedNode(Color.GRAY);
+        }
+        updateCanvasDebugGraph(debugCanvas);
+    }
+
     public static void startDebug(){
         try {
+            // Puts the wait cursor
+            AcideDataViewReplaceWindow.getInstance().setCursor(
+                    Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             String view = getSelectedViewName();
-            if(view != null && !view.equals("          ")) {
-                // Gets the canvas
-                AcideDebugCanvas canvas = AcideMainWindow.getInstance()
-                        .getDebugPanel().getDebugSQLPanel().getCanvas();
+            // Gets the canvas
+            AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                    .getDebugPanel().getDebugSQLPanel().getCanvas();
 
+            // View in combo box not selected try selected node
+            if(view != null && !view.equals("          "))
+                view = canvas.getSelectedNode().getLabel().split("/")[0];
+
+            if(view != null && !view.equals("          ")){
                 // select node
                 List<Node> nodes = canvas.get_graph().get_nodes();
                 Node node = null;
@@ -179,7 +199,6 @@ public class AcideDebugHelper {
                 AcideDebugSQLPanel.startDebug.setEnabled(false);
 
                 AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
-                AcideDebugSQLDebugWindow.getInstance().deactivateAbortButton();
                 updateDebugWindow();
             }else{
                 LinkedList<String> error = new LinkedList<>();
@@ -198,37 +217,42 @@ public class AcideDebugHelper {
      * @return continueDebugging if continues debugging
      */
     private static String updateDebugState(LinkedList<String> info){
-        String errorView = "";
-        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getCanvas();
-        AcideGraphCanvas graphCanvas = AcideGraphCanvas.getInstance();
-        List<Node> nodes = debugCanvas.get_graph().get_nodes();
-        if (info.size()%2 ==0) {
-            for (int i = 0; i < info.size(); i++) {
-                String view = info.get(i);
-                i++;
-                String state = info.get(i);
+        // Puts the wait cursor
+        AcideDataViewReplaceWindow.getInstance().setCursor(
+                Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+        if(info.size() > 0 && info.get(0).equals("$error")){
+            return "debugError";
+        }else {
+            String errorView = "";
+            AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
+                    .getDebugPanel().getDebugSQLPanel().getCanvas();
+            List<Node> nodes = debugCanvas.get_graph().get_nodes();
+            if (info.size() % 2 == 0) {
+                for (int i = 0; i < info.size(); i++) {
+                    String view = info.get(i);
+                    i++;
+                    String state = info.get(i);
 
-                for (Node n : nodes) {
-                    if (n.getLabel().split("/")[0].equals(view)) {
-                        debugCanvas.setSelectedNode(n);
-                        if (state.equals("nonvalid"))
-                            debugCanvas.setColorSelectedNode(Color.ORANGE);
-                        else if (state.equals("valid"))
-                            debugCanvas.setColorSelectedNode(Color.GREEN);
-                        else {
-                            debugCanvas.setColorSelectedNode(Color.RED);
-                            errorView = view;
-                            DesDatabaseManager.getInstance().stopDebug();
+                    for (Node n : nodes) {
+                        if (n.getLabel().split("/")[0].equals(view)) {
+                            debugCanvas.setSelectedNode(n);
+                            if (state.equals("nonvalid"))
+                                debugCanvas.setColorSelectedNode(Color.ORANGE);
+                            else if (state.equals("valid"))
+                                debugCanvas.setColorSelectedNode(Color.GREEN);
+                            else {
+                                debugCanvas.setColorSelectedNode(Color.RED);
+                                errorView = view;
+                            }
                         }
                     }
                 }
             }
+
+            AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
+
+            return errorView;
         }
-
-        AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
-
-        return errorView;
     }
 
     /**
@@ -262,7 +286,6 @@ public class AcideDebugHelper {
         LinkedList<String> consoleInfo;
         if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){
             AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
-            AcideDebugSQLDebugWindow.getInstance().activateAbortButton();
             consoleInfo = DesDatabaseManager.getInstance().
                     startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         } else {
@@ -273,6 +296,9 @@ public class AcideDebugHelper {
     }
 
     public static void startNodeDebug(String node, String action){
+        // Puts the wait cursor
+        AcideDataViewReplaceWindow.getInstance().setCursor(
+                Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         updateDebugState(consoleInfo);
@@ -293,8 +319,14 @@ public class AcideDebugHelper {
                 LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
                 AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
                 String nextView = parseCurrentQuestion(currentQuestion);
+                updateHighlight(nextView);
                 AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
                 updateDebugWindow();
+            } else if (errorView.equals("debugError")) {
+                JOptionPane.showMessageDialog(null, "Error while debugging");
+                AcideDebugSQLDebugWindow.getInstance().closeWindow();
+                AcideDebugSQLPanel.startDebug.setEnabled(true);
+                AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
             } else {
                 AcideDebugSQLDebugWindow.getInstance().stopDepug(errorView);
             }
@@ -370,5 +402,23 @@ public class AcideDebugHelper {
             return false;
         }
         return true;
+    }
+
+    private static void updateHighlight(String view){
+        // Gets the canvas
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        // select node
+        List<Node> nodes = canvas.get_graph().get_nodes();
+        Node node = null;
+        for (Node n : nodes) {
+            if (n.getLabel().split("/")[0].equals(view))
+                node = n;
+        }
+
+        if (node != null)
+            canvas.setSelectedNode(node);
+
+        updateCanvasDebugGraph(canvas);
     }
 }

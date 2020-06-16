@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2013  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -450,7 +450,7 @@ public class AcideDataBasePanel extends JPanel {
 				LinkedList<String> dataBases = AcideDatabaseManager.getInstance().getDatabases();
 				
 				for(int i=0;i<dataBases.size();i++){
-					//añadimos las bases de datos
+					//aï¿½adimos las bases de datos
 					String dataBase = dataBases.get(i);
 					NodeDB Dbase = new NodeDB(dataBase,_treeModel);
 					Dbase.setAllowsChildren(false);
@@ -468,19 +468,19 @@ public class AcideDataBasePanel extends JPanel {
 				_dataView.put(AcideDatabaseManager.getInstance().currentDB(),new AcideDataBaseDataViewControl(0));
 				_constraintWindow.put(AcideDatabaseManager.getInstance().currentDB(),new AcideConstraintDefinitionWindowControl(0));
 				
-				//añadimos el nodo de tablas
+				//aï¿½adimos el nodo de tablas
 				NodeTables tablas = new NodeTables(AcideLanguageManager.getInstance().getLabels()
 						.getString("s2028"),_treeModel);
 				tablas.setAllowsChildren(false);
 				_treeModel.insertNodeInto(tablas,selectedNode,selectedNode.getChildCount());
 
-				//añadimos el nodo de vistas
+				//aï¿½adimos el nodo de vistas
 				NodeViews vistas = new NodeViews(AcideLanguageManager.getInstance().getLabels()
 						.getString("s2027"),_treeModel);
 				vistas.setAllowsChildren(false);
 				_treeModel.insertNodeInto(vistas,selectedNode,selectedNode.getChildCount());
 
-				//añadimos el nodo de las restricciones                         
+				//aï¿½adimos el nodo de las restricciones                         
 				NodeICT restricc = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 						.getString("s2029"),tipoRestriccion.Res,_treeModel);
 				restricc.setAllowsChildren(false);
@@ -532,13 +532,13 @@ public class AcideDataBasePanel extends JPanel {
 					name = sTable.toString();
 				Vector<Boolean> inforest = AcideDatabaseManager.getInstance().infoRestrictions(dataBase.toString(),name );				
 				
-				//añadimos el nodo de columnas
+				//aï¿½adimos el nodo de columnas
 				NodeColumns columnsNode = new NodeColumns(AcideLanguageManager.getInstance().getLabels()
 						.getString("s2030"),_treeModel);
 				columnsNode.setAllowsChildren(false);
 				_treeModel.insertNodeInto(columnsNode,selectedNode,selectedNode.getChildCount());
 
-				//añadimos el nodo de PK
+				//aï¿½adimos el nodo de PK
 				if(inforest.get(1)){
 					NodeICT pk = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2031"),tipoRestriccion.PK,_treeModel);
@@ -546,7 +546,7 @@ public class AcideDataBasePanel extends JPanel {
 					_treeModel.insertNodeInto(pk,selectedNode,selectedNode.getChildCount());
 				}
 				
-				//añadimos el  nodo de FK
+				//aï¿½adimos el  nodo de FK
 				if(inforest.get(3)){
 					NodeICT fk = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2032"),tipoRestriccion.FK,_treeModel);
@@ -555,7 +555,7 @@ public class AcideDataBasePanel extends JPanel {
 				}
 				
 				if(inforest.get(2)){
-					//añadimos el  nodo de CK
+					//aï¿½adimos el  nodo de CK
 					NodeICT ck = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2033"),tipoRestriccion.CK,_treeModel);
 					ck.setAllowsChildren(false);
@@ -563,7 +563,7 @@ public class AcideDataBasePanel extends JPanel {
 				}
 				
 				if(inforest.get(4)){
-					//añadimos el nodo de FD 
+					//aï¿½adimos el nodo de FD 
 					NodeICT fd = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2034"),tipoRestriccion.FD,_treeModel);
 					fd.setAllowsChildren(false);
@@ -571,7 +571,7 @@ public class AcideDataBasePanel extends JPanel {
 				}
 				
 				if(inforest.get(5)){
-					//añadimos el nodo de IC
+					//aï¿½adimos el nodo de IC
 					NodeICT ic = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2035"),tipoRestriccion.IC,_treeModel);
 					ic.setAllowsChildren(false);
@@ -579,7 +579,7 @@ public class AcideDataBasePanel extends JPanel {
 				}
 				
 				if(inforest.get(0)){
-					//añadimos el nodo de NN
+					//aï¿½adimos el nodo de NN
 					NodeICT nl = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 							.getString("s2109"), tipoRestriccion.NN,_treeModel);
 					nl.setAllowsChildren(false);
@@ -1159,7 +1159,10 @@ public class AcideDataBasePanel extends JPanel {
 						if (table.contains("("))
 							table =   table.substring(0,table.indexOf("("));
 							
-						AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, table);	
+						AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, table);
+						LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, table);
+						if(!info.isEmpty())
+							panelDv.build(info);
 	
 						panelDv.setState(panelDv.NORMAL);
 						panelDv.setAlwaysOnTop(true);
@@ -1167,15 +1170,18 @@ public class AcideDataBasePanel extends JPanel {
 					} 	
 						//Double click on node view
 					else if (selectedNode instanceof NodeView){
-						
-							String view = selectedNode.toString();
-						
-							String db = path.getParentPath().getParentPath().getLastPathComponent().toString();
-							
-							if (view.contains("("))
-								view = view.substring(0,view.indexOf("("));
-							
-							AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, view);
+
+						String view = selectedNode.toString();
+
+						String db = path.getParentPath().getParentPath().getLastPathComponent().toString();
+
+						if (view.contains("("))
+							view = view.substring(0,view.indexOf("("));
+
+						AcideDatabaseDataView panelDv  = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, view);
+						LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
+						if(!info.isEmpty())
+							panelDv.build(info);
 							
 							if (!panelDv.isReadOnly()) panelDv.setIsReadOnly(true);
 							
@@ -1272,15 +1278,15 @@ public class AcideDataBasePanel extends JPanel {
 		NodeDB Dbase = new NodeDB(nameDataBase,_treeModel);
 		_treeModel.insertNodeInto(Dbase,_basesDatos,_basesDatos.getChildCount());
 	
-		//añadimos el nodo de tablas
+		//aï¿½adimos el nodo de tablas
 		NodeTables tablas = new NodeTables(AcideLanguageManager.getInstance().getLabels().getString("s2028"),_treeModel);
 		_treeModel.insertNodeInto(tablas,Dbase,Dbase.getChildCount());
 	
-		//añadimos el nodo de vistas
+		//aï¿½adimos el nodo de vistas
 		NodeViews vistas = new NodeViews(AcideLanguageManager.getInstance().getLabels().getString("s2027"),_treeModel);
 		_treeModel.insertNodeInto(vistas,Dbase,Dbase.getChildCount());
 	
-		//añadimos el nodo de las restricciones                         
+		//aï¿½adimos el nodo de las restricciones                         
 		NodeICT restricc = new NodeICT(AcideLanguageManager.getInstance().getLabels().getString("s2029"),tipoRestriccion.Res,_treeModel);
 		_treeModel.insertNodeInto(restricc,Dbase,Dbase.getChildCount());
 	
@@ -1295,36 +1301,36 @@ public class AcideDataBasePanel extends JPanel {
 			if(name.contains("(")) 
 				name =  name.substring(0, name.indexOf("("));
 			
-			//añadimos la tabla
+			//aï¿½adimos la tabla
 			NodeTable table = new NodeTable(name,_treeModel);
 			_treeModel.insertNodeInto(table,tablas,tablas.getChildCount());
 			
-			//añadimos el nodo de columnas
+			//aï¿½adimos el nodo de columnas
 			NodeColumns columnsNode = new NodeColumns(AcideLanguageManager.getInstance().getLabels().getString("s2030"),_treeModel);
 
 			_treeModel.insertNodeInto(columnsNode,table,table.getChildCount());
 			
-			//añadimos el nodo de PK
+			//aï¿½adimos el nodo de PK
 			NodeICT pk = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2031"),tipoRestriccion.PK,_treeModel);
 			_treeModel.insertNodeInto(pk,table,table.getChildCount());
 	
-			//añadimos el  nodo de FK
+			//aï¿½adimos el  nodo de FK
 			NodeICT fk = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2032"),tipoRestriccion.FK,_treeModel);
 			_treeModel.insertNodeInto(fk,table,table.getChildCount());
 	
-			//añadimos el  nodo de CK
+			//aï¿½adimos el  nodo de CK
 			NodeICT ck = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2033"),tipoRestriccion.CK,_treeModel);
 			_treeModel.insertNodeInto(ck,table,table.getChildCount());
 	
-			//añadimos el nodo de FD 
+			//aï¿½adimos el nodo de FD 
 			NodeICT fd = new NodeICT(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2034"),tipoRestriccion.FD,_treeModel);
 			_treeModel.insertNodeInto(fd,table,table.getChildCount());
 	
-			//añadimos el nodo de IC
+			//aï¿½adimos el nodo de IC
 			NodeICT ic = new NodeICT(AcideLanguageManager.getInstance().getLabels().getString("s2035"),tipoRestriccion.IC,_treeModel);
 			_treeModel.insertNodeInto(ic,table,table.getChildCount());
 	
@@ -1399,17 +1405,17 @@ public class AcideDataBasePanel extends JPanel {
 			NodeView view = new NodeView(name,_treeModel);
 			_treeModel.insertNodeInto(view,vistas,vistas.getChildCount());
 			
-			//añadimos el nodo de las columnas
+			//aï¿½adimos el nodo de las columnas
 			NodeColumns columnsNode = new NodeColumns(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2030"),_treeModel);
 			_treeModel.insertNodeInto(columnsNode,view,view.getChildCount());
 	
-			//añadimos el nodo del SQL text
+			//aï¿½adimos el nodo del SQL text
 			DefaultMutableTreeNode SQLtextNode = new DefaultMutableTreeNode(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2036"));
 			_treeModel.insertNodeInto(SQLtextNode,view,view.getChildCount());
 	
-			//añadimos el nodo del Datalog text
+			//aï¿½adimos el nodo del Datalog text
 			DefaultMutableTreeNode DatalogtextNode = new DefaultMutableTreeNode(AcideLanguageManager.getInstance().getLabels()
 					.getString("s2037"));
 			_treeModel.insertNodeInto(DatalogtextNode,view,view.getChildCount());
