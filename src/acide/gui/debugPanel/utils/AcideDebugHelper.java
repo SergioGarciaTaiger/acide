@@ -206,6 +206,7 @@ public class AcideDebugHelper {
                 AcideDebugSQLDebugWindow.getInstance().stopDepug("asdfasd");
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
             // TODO
         }
     }

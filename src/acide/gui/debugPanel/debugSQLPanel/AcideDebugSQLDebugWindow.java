@@ -20,7 +20,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 
-public class AcideDebugSQLDebugWindow extends JFrame {
+public class AcideDebugSQLDebugWindow extends JDialog {
 
     private JPanel mainPanel;
     private JPanel buttonPanel;
@@ -248,6 +248,12 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         buttonPanel.setVisible(true);
         viewTable.setVisible(true);
         errorPanel.setVisible(false);
+
+        setLocationRelativeTo(null);
+        setResizable(true);
+
+        pack();
+        setModal(true);
 
         setWindowConfiguration();
         setAlwaysOnTop(true);
