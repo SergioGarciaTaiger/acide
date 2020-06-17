@@ -178,7 +178,7 @@ public class AcideDebugHelper {
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
 
             // View in combo box not selected try selected node
-            if(view != null && !view.equals("          "))
+            if(view == null || view.equals("          "))
                 view = canvas.getSelectedNode().getLabel().split("/")[0];
 
             if(view != null && !view.equals("          ")){

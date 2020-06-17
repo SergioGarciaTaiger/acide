@@ -1027,19 +1027,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 			LinkedList<String> info = executeCommandfinal("/show_compilations");
 
-			if (!info.isEmpty() && info.get(0).contains("is on")) {
-
-				executeCommandfinal("/show_compilations off");
-
-				result = executeCommandfinal(comandParam);
-
-				executeCommandfinal("/show_compilations on");
-
-			} else {
-
-				result = executeCommandfinal(comandParam);
-
-			}
+			result = executeCommandfinal(comandParam);
 
 			return result;
 

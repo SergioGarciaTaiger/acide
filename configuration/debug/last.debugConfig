@@ -1,5 +1,5 @@
-#Mon Jun 15 11:13:47 CEST 2020
+#Wed Jun 17 19:32:36 CEST 2020
 order=cardinality
-debug=plain
-trust_tables=no
-trust_file=
+debug=full
+trust_tables=yes
+trust_file=examples/SQLDebugger/pets_trust
