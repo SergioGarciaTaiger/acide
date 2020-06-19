@@ -363,7 +363,7 @@ public class AcideTraceSQLPanel extends JPanel {
 		// sets the text of the show rules check box
 		_showSQLMenuItem.setText(AcideLanguageManager.getInstance().getLabels()
 				.getString("s2141"));
-
+		_showSQLMenuItem.addActionListener(new AcideTraceSQLPanelShowSQLListener());
 		_showSQLMenuItem.setFont(_showSQLMenuItem.getFont().deriveFont(10f));
 		// showRulesMenuItem.addActionListener(arg0)
 		subButtonPanel2.add(_showSQLMenuItem);

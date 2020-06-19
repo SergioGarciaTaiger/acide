@@ -46,17 +46,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.JSplitPane;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 
 import acide.configuration.project.AcideProjectConfiguration;
 import acide.gui.graphCanvas.AcideGraphCanvas;
@@ -128,8 +118,14 @@ public class AcideGraphPanel extends JPanel {
 
 	// creates the refresh button
 	public static JButton refreshPDG = new JButton();
-	
-			
+
+	/**
+	 * ACIDE - A Configurable IDE graph panel graph type button group (RDG or PDG)
+	 */
+	private ButtonGroup _graphTypeGroup;
+
+	private JRadioButton _PDGButton;
+	private JRadioButton _RDGButton;
 	
 	/**
 	 * Creates a new ACIDE - A Configurable IDE graph panel.
@@ -241,10 +237,18 @@ public class AcideGraphPanel extends JPanel {
 	 * Builds the ACIDE - A Configurable IDE buttons panel for the zoom buttons
 	 */
 	public void buildButtons() {
+		// Build radio buttons
+		buildRadioButtons();
 		// Creates the button panel
 		_buttonPanel = new JPanel();
 		// sets the layout of the button
 		_buttonPanel.setLayout(new FlowLayout());
+		// add radio buttons
+		_PDGButton.setSelected(true);
+		_PDGButton.addActionListener(new AcideGraphPanelRefreshListener());
+		_RDGButton.addActionListener(new AcideGraphPanelRefreshListener());
+		_buttonPanel.add(_PDGButton);
+		_buttonPanel.add(_RDGButton);
 		// sets the icon of the button
 		refreshPDG.setIcon(REFRESH_IMAGE);
 		// sets the size of the button
@@ -469,4 +473,21 @@ public class AcideGraphPanel extends JPanel {
 		return null;
 	}
 
+	private void buildRadioButtons(){
+		_RDGButton = new JRadioButton();
+		_PDGButton = new JRadioButton();
+
+		_graphTypeGroup = new ButtonGroup();
+
+		_PDGButton.setText("PDG");
+		_RDGButton.setText("RDG");
+
+		_graphTypeGroup.add(_RDGButton);
+		_graphTypeGroup.add(_PDGButton);
+
+	}
+
+	public JRadioButton getRDG(){
+		return _RDGButton;
+	}
 }

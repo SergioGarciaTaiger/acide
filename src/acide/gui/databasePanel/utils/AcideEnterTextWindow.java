@@ -391,21 +391,26 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 					.getLabels().getString("s40"), JOptionPane.OK_CANCEL_OPTION);
 			
 			if (response == 0){
+				String database_name = "";
+				String view_name = "";
+				try {
+					TreePath path = (TreePath) AcideMainWindow.getInstance().getDataBasePanel().getTree().getSelectionPath();
 
-				TreePath path = (TreePath) AcideMainWindow.getInstance().getDataBasePanel().getTree().getSelectionPath();
+					if (path.getLastPathComponent() instanceof NodeDefinition)
+						view_name = path.getParentPath().getParentPath().getLastPathComponent().toString();
+					else
+						view_name = path.getLastPathComponent().toString();
 
-				String  view_name = "";
-				
-				if (path.getLastPathComponent() instanceof NodeDefinition)
-					view_name = path.getParentPath().getParentPath().getLastPathComponent().toString();
-				else
-					view_name = path.getLastPathComponent().toString();
+					if (view_name.contains("("))
+						view_name = view_name.substring(0, view_name.indexOf("("));
 
-				if (view_name.contains("("))
-					view_name = view_name.substring(0, view_name.indexOf("("));
-				
-				String database_name = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
-
+					database_name = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
+				}catch (Exception e){
+					// if path is null we are in debug, get view from debug panel and database is des
+					database_name = "$des";
+					view_name = AcideMainWindow.getInstance().getDebugPanel()
+							.getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
+				}
 				String text =  _text.getText();
 				text = text.replace('\n',' ');
 				text = text.substring(0, text.length()-1);
@@ -414,7 +419,8 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 				
 				if (_title.contains("SQL")){
 					AcideDatabaseManager.getInstance().dropView(database_name, view_name);
-					result = AcideDatabaseManager.getInstance().executeCommand("CREATE VIEW "+view_name+" AS " + text);
+					result = AcideDatabaseManager.getInstance()
+							.executeCommand("/tapi CREATE OR REPLACE VIEW "+view_name+" AS " + text);
 					
 				}else if (_title.contains("RA")){
 					result = AcideDatabaseManager.getInstance().executeCommand("/tapi "+ view_name + " := " + text);
@@ -423,6 +429,9 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 				boolean error = checkResult(result);
 				
 				if(error){
+					text = _prompt.replace('\n',' ');
+					AcideDatabaseManager.getInstance()
+							.executeCommand("/tapi CREATE OR REPLACE VIEW "+view_name+" AS " + text);
 					JOptionPane.showMessageDialog(null,result.toString(),"Error",JOptionPane.OK_OPTION);
 				}
 				

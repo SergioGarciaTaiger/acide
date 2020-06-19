@@ -143,6 +143,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
 	 */
 	private JMenuItem _contents;
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
+	 */
+	private JMenuItem _editView;
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
 	 */
@@ -245,6 +250,8 @@ public class AcideDebugSQLPanel extends JPanel {
 		setHighLighter(new AcideDebugPanelHighLighter());
 		//Inits the popUp panel
 		popUpInit();
+
+		_canvas.setSize(_canvas.getWidth(), _canvas.getHeight()-30);
 
 	}
 
@@ -468,7 +475,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		// sets the text of the show rules check box
 		_showSQLMenuItem.setText(AcideLanguageManager.getInstance().getLabels()
 				.getString("s2141"));
-
+		_showSQLMenuItem.addActionListener(new AcideDebugSQLPanelShowSQLListener());
 		_showSQLMenuItem.setFont(_showSQLMenuItem.getFont().deriveFont(10f));
 		// showRulesMenuItem.addActionListener(arg0)
 		subButtonPanel2.add(_showSQLMenuItem);
@@ -645,6 +652,10 @@ public class AcideDebugSQLPanel extends JPanel {
 		_contents = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2347"));
 		_contents.addActionListener(new AcideDebugSQLPanelShowViewListener());
 		_popUp.add(_contents);
+		// Option edit view
+		_editView = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2360"));
+		_editView.addActionListener(new AcideDebugSQLPanelEditViewListener());
+		_popUp.add(_editView);
 		// Option non valid node
 		_nonvalidNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
 		_nonvalidNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());
@@ -700,6 +711,11 @@ public class AcideDebugSQLPanel extends JPanel {
 
 	private void showPopupMenu(MouseEvent e) {
 		if (e.isPopupTrigger()) {
+			// if is table not show edit view
+			if(DesDatabaseManager.getInstance().isTable("$des", _canvas.getSelectedNode().getLabel().split("/")[0]))
+				_editView.setVisible(false);
+			else
+				_editView.setVisible(true);
 			if(isDebuging()){
 				_wrongNodeItem.setEnabled(true);
 				_nonvalidNodeItem.setEnabled(true);

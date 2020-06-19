@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2013  
  * Authors:
- * 		- Fernando Sáenz Pérez (Team Director).
+ * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan José Ortiz Sánchez.
- *          - Delfín Rupérez Cañas.
+ *			- Juan Josï¿½ Ortiz Sï¿½nchez.
+ *          - Delfï¿½n Rupï¿½rez Caï¿½as.
  *      - Version 0.7:
- *          - Miguel Martín Lázaro.
+ *          - Miguel Martï¿½n Lï¿½zaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gómez.
+ *      	- Javier Salcedo Gï¿½mez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiérrez García-Pardo.
- *      	- Elena Tejeiro Pérez de Ágreda.
- *      	- Andrés Vicente del Cura.
+ *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
+ *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
+ *      	- Andrï¿½s Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semíramis Gutiérrez Quintana
- *      	- Juan Jesús Marqués Ortiz
- *      	- Fernando Ordás Lorente
+ *      	- Semï¿½ramis Gutiï¿½rrez Quintana
+ *      	- Juan Jesï¿½s Marquï¿½s Ortiz
+ *      	- Fernando Ordï¿½s Lorente
  *      - Version 0.17
- *      	- Sergio Domínguez Fuentes
+ *      	- Sergio Domï¿½nguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import acide.configuration.project.AcideProjectConfiguration;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugCanvas.exceptions.AcideDebugCanvasParseInputEqualsErrorException;
+import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.debugPanel.utils.AcideDebugPanelErrorMessageDialog;
 import acide.gui.graphUtils.DirectedWeightedGraph;
 import acide.gui.graphUtils.Node;
@@ -179,39 +181,39 @@ public class AcideDebugCanvasParseTask implements Runnable {
 			}
 		}
 		// // parses the result and generates the graph
-				if (_method.equals(PARSE_TAPI_RDG)) {
-					if (_destiny.equals(DESTINY_PATH))
-						try {
-							// parses the input to obtain the graph
-							ArrayList<Node> g = AcideDebugCanvas
-									.parsePathGraphTapi(in);
-							// sets the path graph
-							_canvas.setPathGraph(g);
-							// updates the success flag
-							_success = true;
-						} catch (AcideDebugCanvasParseInputEqualsErrorException e) {
-							// sets empty graphs on the path and the main graph of the canvas
-							_canvas.set_graph(new DirectedWeightedGraph());
-							_canvas.setPathGraph(new ArrayList<Node>());
-							_canvas.repaint();
-							if(_showErrorMessage){
-							// shows the error message
-							new AcideDebugPanelErrorMessageDialog(AcideLanguageManager
-									.getInstance().getLabels().getString("s157"),
-									e.getMessage());
-							}
-							// updates the succes flag
-							_success = false;
-						}
-					if (_destiny.equals(DESTINY_MAIN)){
-						// parses the input to obtain the graph
-						_canvas.set_graph(AcideDebugCanvas.parseGraphTapi(in));
-						// sets the main graph
-						_success = true;
+		if (_method.equals(PARSE_TAPI_RDG)) {
+			if (_destiny.equals(DESTINY_PATH))
+				try {
+					// parses the input to obtain the graph
+					ArrayList<Node> g = AcideDebugCanvas
+							.parsePathGraphTapi(in);
+					// sets the path graph
+					_canvas.setPathGraph(g);
+					// updates the success flag
+					_success = true;
+				} catch (AcideDebugCanvasParseInputEqualsErrorException e) {
+					// sets empty graphs on the path and the main graph of the canvas
+					_canvas.set_graph(new DirectedWeightedGraph());
+					_canvas.setPathGraph(new ArrayList<Node>());
+					_canvas.repaint();
+					if(_showErrorMessage){
+					// shows the error message
+					new AcideDebugPanelErrorMessageDialog(AcideLanguageManager
+							.getInstance().getLabels().getString("s157"),
+							e.getMessage());
 					}
+					// updates the succes flag
+					_success = false;
 				}
-				_canvas.repaint();
-
+			if (_destiny.equals(DESTINY_MAIN)){
+				// parses the input to obtain the graph
+				_canvas.set_graph(AcideDebugCanvas.parseGraphTapi(in));
+				// sets the main graph
+				_success = true;
+			}
+		}
+		_canvas.repaint();
+		AcideDebugHelper.paintTrustedTables(_canvas);
 	}
 
 	/**

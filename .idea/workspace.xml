@@ -24,7 +24,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba1a32ba-e127-4e7f-a837-8434e318ca72" name="Default Changelist" comment="wrong and missing options first version" />
+    <list default="true" id="ba1a32ba-e127-4e7f-a837-8434e318ca72" name="Default Changelist" comment="entrega 16 junio">
+      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelEditViewListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowSQLListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/traceSQLPanel/listeners/AcideTraceSQLPanelShowSQLListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DES6.5.acideProject" beforeDir="false" afterPath="$PROJECT_DIR$/DES6.5.acideProject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/configuration.properties" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/configuration.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/debug/last.debugConfig" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/debug/last.debugConfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/workbench/configuration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/workbench/configuration.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/language/English.properties" beforeDir="false" afterPath="$PROJECT_DIR$/language/English.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/consolePanel/listeners/AcideConsolePanelPopupMenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/consolePanel/listeners/AcideConsolePanelPopupMenuListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/tasks/AcideDebugCanvasParseTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugCanvas/tasks/AcideDebugCanvasParseTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLDebugWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/AcideDebugSQLPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/debugSQLConfiguration/AcideDebugConfigurationWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/debugSQLConfiguration/AcideDebugConfigurationWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelViewBoxListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelViewBoxListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/traceSQLPanel/AcideTraceSQLPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/traceSQLPanel/AcideTraceSQLPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/acide/gui/graphPanel/AcideGraphPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/acide/gui/graphPanel/AcideGraphPanel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,19 +64,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1680" />
-    <option name="y" value="114" />
-    <option name="width" value="1680" />
-    <option name="height" value="952" />
-  </component>
   <component name="ProjectId" id="1cOX3YVhexyQSQBuZfsg8PowRsP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
@@ -104,8 +121,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.AcideMain" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -119,7 +136,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9bff6704-a247-4e48-b2c2-c49877fabd7c" name="Default Changelist" comment="" />
+      <changelist id="ba1a32ba-e127-4e7f-a837-8434e318ca72" name="Default Changelist" comment="wrong and missing options first version" />
       <created>1568278956075</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -148,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590405880926</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="entrega 16 junio">
+      <created>1592334441010</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592334441010</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -179,401 +203,133 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="wrong and missing options first version" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrong and missing options first version" />
+    <MESSAGE value="entrega 16 junio" />
+    <option name="LAST_COMMIT_MESSAGE" value="entrega 16 junio" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="715" y="222" key="#xdebugger.evaluate" timestamp="1590401665271">
+    <state x="845" y="382" key="#Notifications" timestamp="1592327726974">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="715" y="222" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1590401665271" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1590405844745">
+    <state x="845" y="382" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1592327726974" />
+    <state x="390" y="122" width="852" height="595" key="#xdebugger.evaluate" timestamp="1592571163877">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1590405844744">
+    <state x="390" y="122" width="852" height="595" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1592571163877" />
+    <state x="184" y="85" key="DiffContextDialog" timestamp="1592327800432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844744" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1590405844744">
+    <state x="184" y="85" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592327800432" />
+    <state width="1877" height="269" key="GridCell.Tab.0.bottom" timestamp="1592574179857">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844744" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1590405844745">
+    <state width="1877" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592574179857" />
+    <state width="1877" height="269" key="GridCell.Tab.0.center" timestamp="1592574179856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom" timestamp="1590405844745">
+    <state width="1877" height="269" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592574179856" />
+    <state width="1877" height="269" key="GridCell.Tab.0.left" timestamp="1592574179856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state width="1877" height="332" key="GridCell.Tab.1.center" timestamp="1590405844745">
+    <state width="1877" height="269" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592574179856" />
+    <state width="1877" height="269" key="GridCell.Tab.0.right" timestamp="1592574179856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state width="1877" height="332" key="GridCell.Tab.1.left" timestamp="1590405844745">
+    <state width="1877" height="269" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592574179856" />
+    <state width="1877" height="269" key="GridCell.Tab.1.bottom" timestamp="1592574183082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state width="1877" height="332" key="GridCell.Tab.1.right" timestamp="1590405844745">
+    <state width="1877" height="269" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592574183082" />
+    <state width="1877" height="269" key="GridCell.Tab.1.center" timestamp="1592574183082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590405844745" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1590405901383">
+    <state width="1877" height="269" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592574183082" />
+    <state width="1877" height="269" key="GridCell.Tab.1.left" timestamp="1592574183082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590405901383" />
+    <state width="1877" height="269" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592574183082" />
+    <state width="1877" height="269" key="GridCell.Tab.1.right" timestamp="1592574183082">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="269" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592574183082" />
+    <state x="570" y="376" width="882" height="265" key="MultipleFileMergeDialog" timestamp="1592327843311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="570" y="376" width="882" height="265" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592327843311" />
+    <state x="765" y="222" key="RollbackChangesDialog" timestamp="1592332265168">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="222" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592332265168" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1592334674708">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592334674708" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1592553759647">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1592553759647" />
+    <state x="777" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592420893867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1592420893867" />
+    <state x="446" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1592412578949">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="446" y="248" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1592412578949" />
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1592574170349">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592574170349" />
+    <state x="670" y="308" key="git4idea.merge.GitPullDialog" timestamp="1592327824171">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="670" y="308" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592327824171" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592574166153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1592574166153" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>626</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleProcess.java</url>
-          <line>335</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/execution/AcideProjectExecutionProcess.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/externalCommand/AcideExternalCommandProcess.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/externalCommand/AcideExternalCommandProcess.java</url>
-          <line>185</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/externaAppsToolBar/AcideExternalAppsToolBar.java</url>
-          <line>317</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideConsolePanelToolBar.java</url>
-          <line>404</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideConsolePanelToolBar.java</url>
-          <line>447</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideConsolePanelToolBar.java</url>
-          <line>491</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/toolBarPanel/consolePanelToolBar/AcideConsolePanelToolBar.java</url>
-          <line>526</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java</url>
-          <line>1848</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/listeners/AcideCompileMenuItemListener.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/listeners/AcideCompileMenuItemListener.java</url>
-          <line>151</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/grammarMenu/gui/AcideGrammarConfigurationWindow.java</url>
-          <line>275</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/utils/GoodWinRedirect.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/utils/AcideWindowsOSFileAssociation.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/utils/AcideWindowsOSFileAssociation.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/parser/AcideGrammarFileCreationProcess.java</url>
-          <line>208</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/parser/AcideGrammarFileCreationProcess.java</url>
-          <line>340</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/parser/AcideGrammarFileCreationProcess.java</url>
-          <line>457</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>553</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>578</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>613</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/console/AcideConsoleProcess.java</url>
-          <line>336</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/databasePanelMenu/listeners/AcideDesPanelMenuItemListener.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/listeners/AcideSaveProjectMenuItemListener.java</url>
-          <line>227</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/AcideProjectMenu.java</url>
-          <line>1943</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/consolePanel/AcideConsolePanel.java</url>
-          <line>1799</line>
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/AcideProjectMenu.java</url>
-          <line>2530</line>
-          <option name="timeStamp" value="80" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>260</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>593</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>605</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>615</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>625</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>637</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>567</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>657</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>667</line>
-          <option name="timeStamp" value="92" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>689</line>
-          <option name="timeStamp" value="93" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>609</line>
-          <option name="timeStamp" value="94" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>716</line>
-          <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>643</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>728</line>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>740</line>
-          <option name="timeStamp" value="98" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>664</line>
-          <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>752</line>
-          <option name="timeStamp" value="100" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>688</line>
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>773</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>783</line>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>707</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>793</line>
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>803</line>
-          <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/gui/newProjectWindow/AcideNewProjectConfigurationWindow.java</url>
-          <line>629</line>
-          <option name="timeStamp" value="108" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideExternalCommandConfigurationWindow.java</url>
-          <line>826</line>
-          <option name="timeStamp" value="109" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/configurationMenu/consoleMenu/gui/AcideConsoleConfigurationWindow.java</url>
-          <line>730</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/resources/AcideResourceManager.java</url>
-          <line>188</line>
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/resources/AcideResourceManager.java</url>
-          <line>182</line>
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/configuration/toolBar/consolePanelToolBar/AcideConsolePanelToolBarConfiguration.java</url>
-          <line>193</line>
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/databasePanel/dataView/AcideDataBaseDataViewTable.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="136" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowTableListener.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="147" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/utils/AcideDebugHelper.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="158" />
+          <line>319</line>
+          <option name="timeStamp" value="419" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/gui/newProjectWindow/AcideNewProjectConfigurationWindow.java</url>
-          <line>239</line>
-          <option name="timeStamp" value="171" />
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/traceDatalogPanel/listeners/AcideTraceDatalogPanelShowRulesListener.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="424" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/gui/newProjectWindow/AcideNewProjectConfigurationWindow.java</url>
-          <line>208</line>
-          <option name="timeStamp" value="172" />
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/traceDatalogPanel/listeners/AcideTraceDatalogPanelShowRulesListener.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="425" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/menuBar/projectMenu/gui/newProjectWindow/AcideNewProjectConfigurationWindow.java</url>
-          <line>328</line>
-          <option name="timeStamp" value="173" />
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/traceDatalogPanel/listeners/AcideTraceDatalogPanelShowRulesListener.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="426" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/gui/databasePanel/utils/AcideEnterTextWindow.java</url>
-          <line>175</line>
-          <option name="timeStamp" value="237" />
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/traceDatalogPanel/listeners/AcideTraceDatalogQueryButtonListener.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="427" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java</url>
-          <line>173</line>
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/configuration/workbench/lexiconAssigner/AcideLexiconAssignerConfiguration.java</url>
-          <line>222</line>
-          <option name="timeStamp" value="390" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/acide/process/console/DesDatabaseManager.java</url>
-          <line>2247</line>
-          <option name="timeStamp" value="396" />
+          <url>file://$PROJECT_DIR$/src/acide/gui/debugPanel/debugSQLPanel/listeners/AcideDebugSQLPanelShowSQLListener.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="435" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo typeName="acide.gui.graphUtils.DirectedWeightedGraph" fieldName="_nodes" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="masterDetails">
     <states>

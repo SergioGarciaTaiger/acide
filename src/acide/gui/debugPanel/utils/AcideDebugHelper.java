@@ -30,26 +30,32 @@ public class AcideDebugHelper {
                 .getInstance().getDebugPanel().getDebugSQLPanel()
                 .getHighLighter();
         canvas.repaint();
-        String selected = canvas.getSelectedNode().getLabel();
-
-        // Updates the highlights
-        highLighter.resetLines();
-        highLighter.unHighLight();
-        if(canvas.getSelectedNode().getNodeColor().equals(Color.GRAY))
-            highLighter.highLight(selected);
-        if (AcideMainWindow.getInstance().getDebugPanel()
-                .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
-            AcideMainWindow
-                    .getInstance()
-                    .getDebugPanel()
-                    .setCursor(
-                            Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            // Selects the node on the database panel tree
-            String query = canvas.getSelectedNode().getLabel();
-            query = query.substring(0, query.lastIndexOf("/"));
-            selectSQLTEXT(query);
-            AcideMainWindow.getInstance().getDebugPanel()
-                    .setCursor(Cursor.getDefaultCursor());
+        try {
+            if (canvas.getSelectedNode() == null)
+                canvas.setSelectedNode(canvas.getRootNode());
+            String selected = canvas.getSelectedNode().getLabel();
+            
+            // Updates the highlights
+            highLighter.resetLines();
+            highLighter.unHighLight();
+            if(canvas.getSelectedNode().getNodeColor().equals(Color.GRAY))
+                highLighter.highLight(selected);
+            if (AcideMainWindow.getInstance().getDebugPanel()
+                    .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
+                AcideMainWindow
+                        .getInstance()
+                        .getDebugPanel()
+                        .setCursor(
+                                Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                // Selects the node on the database panel tree
+                String query = canvas.getSelectedNode().getLabel();
+                query = query.substring(0, query.lastIndexOf("/"));
+                selectSQLTEXT(query);
+                AcideMainWindow.getInstance().getDebugPanel()
+                        .setCursor(Cursor.getDefaultCursor());
+            }
+        }catch (Exception e){
+            //TODO
         }
     }
 
@@ -176,7 +182,7 @@ public class AcideDebugHelper {
             // Gets the canvas
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
-
+            paintTrustedTables(canvas);
             // View in combo box not selected try selected node
             if(view == null || view.equals("          "))
                 view = canvas.getSelectedNode().getLabel().split("/")[0];
@@ -222,7 +228,8 @@ public class AcideDebugHelper {
         AcideDataViewReplaceWindow.getInstance().setCursor(
                 Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         if(info.size() > 0 && info.get(0).equals("$error")){
-            return "debugError";
+            String debugError = "debugError" + getMessageError(info);
+            return debugError;
         }else {
             String errorView = "";
             AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
@@ -277,10 +284,12 @@ public class AcideDebugHelper {
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView("$des", view);
         viewWindow.setState(viewWindow.NORMAL);
-        JScrollPane table = viewWindow.getSrollPane();
+        JScrollPane scrollPane = viewWindow.getSrollPane();
+        Dimension d = new Dimension(viewWindow.getTable().getWidth(),viewWindow.getTable().getHeight());
+        scrollPane.setSize(d);
         AcideDebugSQLDebugWindow.getInstance().setJTable(viewWindow.get_jTable());
         viewWindow.closeWindow();
-        return table;
+        return scrollPane;
     }
 
     public static void performDebug(String action){
@@ -307,7 +316,7 @@ public class AcideDebugHelper {
 
     public static void performNodeDebug(String node, String action){
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
-                startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
+                setNodeState(node, action);
         updateDebugState(consoleInfo);
     }
 
@@ -323,8 +332,9 @@ public class AcideDebugHelper {
                 updateHighlight(nextView);
                 AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
                 updateDebugWindow();
-            } else if (errorView.equals("debugError")) {
-                JOptionPane.showMessageDialog(null, "Error while debugging");
+            } else if (errorView.startsWith("debugError")) {
+                errorView = errorView.replace("debugError","");
+                JOptionPane.showMessageDialog(null, errorView);
                 AcideDebugSQLDebugWindow.getInstance().closeWindow();
                 AcideDebugSQLPanel.startDebug.setEnabled(true);
                 AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
@@ -382,9 +392,12 @@ public class AcideDebugHelper {
         window.build(info);
         window.setIsReadOnly(false);
         JScrollPane srollPane = window.getSrollPane();
+        srollPane.setPreferredSize(window.getTable().getSize());
         window.closeWindow();
         ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
-
+        Image image = icon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        icon = new ImageIcon(newimg);
         int input = JOptionPane.showConfirmDialog(null, srollPane, "Input the tuple",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
         if(input == 0)
@@ -421,5 +434,27 @@ public class AcideDebugHelper {
             canvas.setSelectedNode(node);
 
         updateCanvasDebugGraph(canvas);
+    }
+
+    private static String getMessageError(LinkedList<String> info){
+        String result = "";
+        for(String line: info){
+            if(!line.equals("$error") && !isNumeric(line))
+                result += line;
+        }
+        return result;
+    }
+
+    public static void paintTrustedTables(AcideDebugCanvas canvas){
+        if(AcideDebugConfiguration.getInstance().getTrust_tables().equals(AcideDebugConfiguration.Trust_tables.YES)) {
+            for (Node n : canvas.get_graph().get_nodes()) {
+                if (DesDatabaseManager.getInstance().isTable("$des", n.getLabel().split("/")[0])) {
+                    n.setNodeColor(Color.GREEN);
+                }
+            }
+            canvas.setSelectedNode(canvas.getRootNode());
+            canvas.setSize(canvas.getWidth(), canvas.getHeight()-30);
+            updateCanvasDebugGraph(canvas);
+        }
     }
 }

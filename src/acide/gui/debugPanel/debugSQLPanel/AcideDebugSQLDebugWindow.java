@@ -322,7 +322,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             AcideDebugHelper.performDebug("missing(" +
-                AcideDebugSQLDebugWindow.getInstance().getView() + "('" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"'))");
+                AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
         }
     }
 
@@ -474,7 +474,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.setVisible(true);
     }
 
-    public void putView(String view, JScrollPane viewTable){
+    public void  putView(String view, JScrollPane viewTable){
         try {
             if(this.view != null)
                 mainPanel.remove(this.viewTable);
@@ -486,6 +486,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setViewTable(viewTable);
         setJTable(jTable);
 
+
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(5, 5, 5, 5);
@@ -495,6 +496,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         constraints.ipadx = 250;
         constraints.ipady = 200;
 
+        this.viewTable.setPreferredSize(this.jTable.getSize());
         // Adds the view viewTable to the main panel
         mainPanel.add(this.viewTable, constraints);
     }

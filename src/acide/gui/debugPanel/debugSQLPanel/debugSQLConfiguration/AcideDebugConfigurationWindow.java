@@ -514,32 +514,27 @@ public class AcideDebugConfigurationWindow extends JFrame {
          */
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            if (JOptionPane.showConfirmDialog(null, AcideLanguageManager.getInstance().getLabels()
-                    .getString("s2342")) == JOptionPane.YES_OPTION) {
-                if (trust_tablesYesRadio.isSelected())
-                    configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.YES);
-                else
-                    configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.NO);
+            if (trust_tablesYesRadio.isSelected())
+                configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.YES);
+            else
+                configuration.setTrust_tables(AcideDebugConfiguration.Trust_tables.NO);
 
-                if (trust_fileTextField.getText() != null && !trust_fileTextField.getText().isEmpty())
-                    configuration.setTrust_file(trust_fileTextField.getText());
+            configuration.setTrust_file(trust_fileTextField.getText());
 
-                //            if(oracle_fileTextField.getText() != null && !oracle_fileTextField.getText().isEmpty())
-                //                configuration.setOracle_file(oracle_fileTextField.getText());
+            //            if(oracle_fileTextField.getText() != null && !oracle_fileTextField.getText().isEmpty())
+            //                configuration.setOracle_file(oracle_fileTextField.getText());
 
-                if (debugFullRadio.isSelected())
-                    configuration.setDebug(AcideDebugConfiguration.Debug.FULL);
-                else
-                    configuration.setDebug(AcideDebugConfiguration.Debug.PLAIN);
+            if (debugFullRadio.isSelected())
+                configuration.setDebug(AcideDebugConfiguration.Debug.FULL);
+            else
+                configuration.setDebug(AcideDebugConfiguration.Debug.PLAIN);
 
-                if (orderCardinalityRadio.isSelected())
-                    configuration.setOrder(AcideDebugConfiguration.Order.CARDINALITY);
-                else
-                    configuration.setOrder(AcideDebugConfiguration.Order.TOPDOWN);
+            if (orderCardinalityRadio.isSelected())
+                configuration.setOrder(AcideDebugConfiguration.Order.CARDINALITY);
+            else
+                configuration.setOrder(AcideDebugConfiguration.Order.TOPDOWN);
 
-                AcideDebugConfiguration.getInstance().saveConfiguration(configuration);
-                AcideDebugSQLDebugWindow.getInstance().closeWindow();
-            }
+            AcideDebugConfiguration.getInstance().saveConfiguration(configuration);
         }
     }
 

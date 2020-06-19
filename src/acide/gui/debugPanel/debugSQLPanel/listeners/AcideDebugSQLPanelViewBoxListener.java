@@ -45,6 +45,7 @@ import java.util.LinkedList;
 
 import javax.swing.JComboBox;
 
+import acide.configuration.debug.AcideDebugConfiguration;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
