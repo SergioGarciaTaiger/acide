@@ -1,15 +1,13 @@
 package acide.gui.debugPanel.utils;
 
+import acide.gui.databasePanel.AcideDataBasePanel;
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplaceWindow;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
-import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
-import acide.gui.graphCanvas.AcideGraphCanvas;
-import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
@@ -25,7 +23,7 @@ import java.util.List;
 
 public class AcideDebugHelper {
 
-    public static void updateCanvasDebugGraph(AcideDebugCanvas canvas){
+    public static void updateCanvasDebug(AcideDebugCanvas canvas){
         AcideDebugPanelHighLighter highLighter = AcideMainWindow
                 .getInstance().getDebugPanel().getDebugSQLPanel()
                 .getHighLighter();
@@ -40,22 +38,23 @@ public class AcideDebugHelper {
             highLighter.unHighLight();
             if(canvas.getSelectedNode().getNodeColor().equals(Color.GRAY))
                 highLighter.highLight(selected);
-            if (AcideMainWindow.getInstance().getDebugPanel()
-                    .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
-                AcideMainWindow
-                        .getInstance()
-                        .getDebugPanel()
-                        .setCursor(
-                                Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                // Selects the node on the database panel tree
-                String query = canvas.getSelectedNode().getLabel();
-                query = query.substring(0, query.lastIndexOf("/"));
-                selectSQLTEXT(query);
-                AcideMainWindow.getInstance().getDebugPanel()
-                        .setCursor(Cursor.getDefaultCursor());
-            }
         }catch (Exception e){
-            //TODO
+            // TODO
+        }
+            
+        if (AcideMainWindow.getInstance().getDebugPanel()
+                .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
+            AcideMainWindow
+                    .getInstance()
+                    .getDebugPanel()
+                    .setCursor(
+                            Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            // Selects the node on the database panel tree
+            String query = canvas.getSelectedNode().getLabel();
+            query = query.substring(0, query.lastIndexOf("/"));
+            selectSQLTEXT(query);
+            AcideMainWindow.getInstance().getDebugPanel()
+                    .setCursor(Cursor.getDefaultCursor());
         }
     }
 
@@ -64,12 +63,16 @@ public class AcideDebugHelper {
                 .getInstance().getDebugPanel().getTraceSQLPanel()
                 .getHighLighter();
         canvas.repaint();
-        String selected = canvas.getSelectedNode().getLabel();
+        try {
+            String selected = canvas.getSelectedNode().getLabel();
 
-        // Updates the highlights
-        highLighter.resetLines();
-        highLighter.unHighLight();
-        highLighter.highLight(selected);
+            // Updates the highlights
+            highLighter.resetLines();
+            highLighter.unHighLight();
+            highLighter.highLight(selected);
+        }catch (Exception e){
+            // TODO
+        }
         if (AcideMainWindow.getInstance().getDebugPanel()
                 .getTraceSQLPanel().getShowSQLMenuItem().isSelected()) {
             AcideMainWindow
@@ -123,8 +126,8 @@ public class AcideDebugHelper {
     }
 
     public static void selectSQLTEXT(String query) {
-        AcideTree tree = AcideMainWindow.getInstance().getDataBasePanel()
-                .getTree();
+        AcideDataBasePanel dataBasePanel = AcideMainWindow.getInstance().getDataBasePanel();
+        AcideTree tree = dataBasePanel.getTree();
         // Searches for the table/view node on the database tree
         TreePath path = TreeUtils.searchForNodeV2((TreeNode) tree.getModel()
                 .getRoot(), query, tree, new TreePath((TreeNode) tree
@@ -149,6 +152,7 @@ public class AcideDebugHelper {
                     }
                 }
             }
+            tree.scrollPathToVisible(path);
             tree.setSelectionPath(path);
         }
     }
@@ -170,7 +174,7 @@ public class AcideDebugHelper {
             debugCanvas.setSelectedNode(n);
             debugCanvas.setColorSelectedNode(Color.GRAY);
         }
-        updateCanvasDebugGraph(debugCanvas);
+        updateCanvasDebug(debugCanvas);
     }
 
     public static void startDebug(){
@@ -257,7 +261,7 @@ public class AcideDebugHelper {
                 }
             }
 
-            AcideDebugHelper.updateCanvasDebugGraph(debugCanvas);
+            AcideDebugHelper.updateCanvasDebug(debugCanvas);
 
             return errorView;
         }
@@ -433,7 +437,7 @@ public class AcideDebugHelper {
         if (node != null)
             canvas.setSelectedNode(node);
 
-        updateCanvasDebugGraph(canvas);
+        updateCanvasDebug(canvas);
     }
 
     private static String getMessageError(LinkedList<String> info){
@@ -453,8 +457,8 @@ public class AcideDebugHelper {
                 }
             }
             canvas.setSelectedNode(canvas.getRootNode());
-            canvas.setSize(canvas.getWidth(), canvas.getHeight()-30);
-            updateCanvasDebugGraph(canvas);
+            canvas.setSize(canvas.getWidth(), canvas.getHeight()-(int)(canvas.getHeight()*0.1));
+            updateCanvasDebug(canvas);
         }
     }
 }

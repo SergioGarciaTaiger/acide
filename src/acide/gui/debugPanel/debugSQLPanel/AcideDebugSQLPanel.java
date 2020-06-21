@@ -251,7 +251,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		//Inits the popUp panel
 		popUpInit();
 
-		_canvas.setSize(_canvas.getWidth(), _canvas.getHeight()-30);
+		_canvas.setSize(_canvas.getWidth(), _canvas.getHeight()-(int)(_canvas.getHeight()*0.1));
 
 	}
 
@@ -707,6 +707,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				highLighter.highLight(selected);
 			}
 		}
+		AcideDebugHelper.updateCanvasDebug(_canvas);
 	}
 
 	private void showPopupMenu(MouseEvent e) {

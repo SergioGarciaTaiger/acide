@@ -70,7 +70,7 @@ public class AcideDebugSQLPanelNextNodeListener implements ActionListener {
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
 			// Updates the selected node
 			canvas.advanceSelectedNode();
-			AcideDebugHelper.updateCanvasDebugGraph(canvas);
+			AcideDebugHelper.updateCanvasDebug(canvas);
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
 					.setCursor(Cursor.getDefaultCursor());

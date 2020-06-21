@@ -70,7 +70,7 @@ public class AcideDebugSQLPanelColorNodeListener implements ActionListener {
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
 			// Updates the selected node
 			canvas.setColorNodes(Color.GRAY);
-			AcideDebugHelper.updateCanvasDebugGraph(canvas);
+			AcideDebugHelper.updateCanvasDebug(canvas);
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
 					.setCursor(Cursor.getDefaultCursor());

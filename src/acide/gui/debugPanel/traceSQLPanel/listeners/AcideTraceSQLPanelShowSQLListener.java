@@ -3,6 +3,7 @@ package acide.gui.debugPanel.traceSQLPanel.listeners;
 import acide.gui.databasePanel.AcideDataBasePanel;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
 
 import javax.swing.*;
@@ -23,17 +24,7 @@ public class AcideTraceSQLPanelShowSQLListener implements ActionListener {
     public void actionPerformed(ActionEvent ev) {
         AcideDebugCanvas canvas = AcideMainWindow.getInstance().getDebugPanel().getTraceSQLPanel().getCanvas();
 
-        if(canvas.getSelectedNode() != null) {
-            // get name of selected node of canvas
-            String nodeName = canvas.getSelectedNode().getLabel().split("/")[0];
-
-            AcideDataBasePanel dbPanel = AcideMainWindow.getInstance().getDataBasePanel();
-            dbPanel.repaint();
-            // update database tree
-            dbPanel.updateDataBaseTree();
-            AcideTree tree = dbPanel.getTree();
-            DefaultTreeModel treeModel = dbPanel.getTreeModel();
-        }
+        AcideDebugHelper.updateCanvasTrace(canvas);
     }
 
 }
