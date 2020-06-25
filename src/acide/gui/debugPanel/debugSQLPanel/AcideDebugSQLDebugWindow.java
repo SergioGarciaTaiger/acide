@@ -295,6 +295,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             AcideDebugHelper.performDebug("valid");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
         }
     }
 
@@ -308,6 +310,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             AcideDebugHelper.performDebug("nonvalid");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
         }
     }
 
@@ -327,6 +331,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
                             .getLabels().getString("s2364") + " (" + AcideDebugHelper.getDataFromSelectedTuple(jTable) + ")");
             AcideDebugHelper.performDebug("missing(" +
                 AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
         }
     }
 
@@ -345,6 +351,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
                             .getLabels().getString("s2362") + " (" + AcideDebugHelper.getDataFromSelectedTuple(jTable) + ")");
             AcideDebugHelper.performDebug("wrong(" +
                     AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
+            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
         }
     }
 

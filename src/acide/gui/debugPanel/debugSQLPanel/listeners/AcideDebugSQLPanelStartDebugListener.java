@@ -14,6 +14,8 @@ import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.process.console.DesDatabaseManager;
 
+import javax.swing.*;
+
 /**
  * ACIDE - A Configurable IDE trace SQL color node listener.
  *
@@ -32,5 +34,6 @@ public class AcideDebugSQLPanelStartDebugListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         AcideDebugHelper.resetColorNodes();
         AcideDebugHelper.startDebug();
+        SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
     }
 }
