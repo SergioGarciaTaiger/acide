@@ -18,7 +18,7 @@ public class AcideDebugSQLPanelWrongNodeListener implements ActionListener {
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
             String view = canvas.getSelectedNode().getLabel().split("/")[0];
-            String userInput = AcideDebugHelper.getUserInputTuple(view);
+            String userInput = AcideDebugHelper.getUserInputTuple(view, "wrong");
             if(!userInput.isEmpty()) {
                 String action = "wrong(" + view + "(" + userInput +"))";
                 if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {

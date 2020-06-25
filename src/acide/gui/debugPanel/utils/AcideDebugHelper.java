@@ -41,7 +41,7 @@ public class AcideDebugHelper {
         }catch (Exception e){
             // TODO
         }
-            
+
         if (AcideMainWindow.getInstance().getDebugPanel()
                 .getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
             AcideMainWindow
@@ -88,7 +88,6 @@ public class AcideDebugHelper {
                     .setCursor(Cursor.getDefaultCursor());
         }
     }
-
 
     public static String obtainSQLResult(final Thread t, String result, LinkedList<String> l, String consult){
         t.start();
@@ -182,39 +181,18 @@ public class AcideDebugHelper {
             // Puts the wait cursor
             AcideDataViewReplaceWindow.getInstance().setCursor(
                     Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            String view = getSelectedViewName();
             // Gets the canvas
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
             paintTrustedTables(canvas);
-            // View in combo box not selected try selected node
-            if(view == null || view.equals("          "))
-                view = canvas.getSelectedNode().getLabel().split("/")[0];
+            canvas.setSelectedNode(canvas.getRootNode());
+            String view = getSelectedViewName();
+            
+            AcideDebugSQLPanel.startDebug.setEnabled(false);
 
-            if(view != null && !view.equals("          ")){
-                // select node
-                List<Node> nodes = canvas.get_graph().get_nodes();
-                Node node = null;
-                for (Node n : nodes) {
-                    if (n.getLabel().split("/")[0].equals(view))
-                        node = n;
-                }
-
-                if (node != null)
-                    canvas.setSelectedNode(node);
-
-                else
-                    throw new Exception("error while trying to retrieve node");
-
-                AcideDebugSQLPanel.startDebug.setEnabled(false);
-
-                AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
-                updateDebugWindow();
-            }else{
-                LinkedList<String> error = new LinkedList<>();
-                error.add("No view selected, please select a valid node to start");
-                AcideDebugSQLDebugWindow.getInstance().stopDepug("asdfasd");
-            }
+            AcideDebugSQLDebugWindow.getInstance().resetErrors();
+            AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+            updateDebugWindow();
         } catch (Exception ex) {
             ex.printStackTrace();
             // TODO
@@ -315,13 +293,26 @@ public class AcideDebugHelper {
                 Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
-        updateDebugState(consoleInfo);
+        //JOptionPane.showMessageDialog(null, consoleInfo);
+        checkError(updateDebugState(consoleInfo));
+
     }
 
     public static void performNodeDebug(String node, String action){
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
                 setNodeState(node, action);
-        updateDebugState(consoleInfo);
+        //JOptionPane.showMessageDialog(null, consoleInfo);
+        checkError(updateDebugState(consoleInfo));
+    }
+
+    private static void checkError(String info){
+        if (info.startsWith("debugError")) {
+            info = info.replace("debugError", "");
+            JOptionPane.showMessageDialog(null, info);
+            AcideDebugSQLDebugWindow.getInstance().closeWindow();
+            AcideDebugSQLPanel.startDebug.setEnabled(true);
+            AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
+        }
     }
 
     private static void nextMovement(LinkedList<String> info){
@@ -355,15 +346,9 @@ public class AcideDebugHelper {
         AcideDebugSQLDebugWindow.getInstance().showWindow();
     }
 
-
-    // Gets the view selected in the SQL Debug panel JComboBox
+    // Gets the view selected in the SQL Debug SQL panel canvas
     public static String getSelectedViewName(){
-        JComboBox viewBox = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getViewBox();
-        if (viewBox.getSelectedIndex() < 1)
-            return "";
-        // Gets the label of the selected item
-        return (String) viewBox.getSelectedItem();
+        return AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
     }
 
     public static String getDataFromSelectedTuple(JTable table){
@@ -384,17 +369,28 @@ public class AcideDebugHelper {
         return tuple;
     }
 
-    public static String getUserInputTuple(String view){
+    public static String getUserInputTuple(String view, String action){
         AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
-        // builds only the model
-        LinkedList<String> info = DesDatabaseManager.getInstance().getTableModel(view);
-        int size = info.size()/2;
-        for(int i = 0; i < size; i++){
-            info.add("");
+        LinkedList<String> info;
+        String title;
+        if(action.equals("missing")) {
+            // builds only the model
+            info = DesDatabaseManager.getInstance().getTableModel(view);
+            int size = info.size() / 2;
+            for (int i = 0; i < size; i++)
+                info.add("");
+            window.setIsReadOnly(false);
+            title = AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2366");
         }
-        //info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        else {
+            info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+            window.setIsReadOnly(true);
+            window.getTable().setRowSelectionAllowed(true);
+            title = AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2367");
+        }
         window.build(info);
-        window.setIsReadOnly(false);
         JScrollPane srollPane = window.getSrollPane();
         srollPane.setPreferredSize(window.getTable().getSize());
         window.closeWindow();
@@ -402,7 +398,7 @@ public class AcideDebugHelper {
         Image image = icon.getImage(); // transform it
         Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
         icon = new ImageIcon(newimg);
-        int input = JOptionPane.showConfirmDialog(null, srollPane, "Input the tuple",
+        int input = JOptionPane.showConfirmDialog(null, srollPane, title,
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
         if(input == 0)
             return getDataFromSelectedTuple(window.getTable());
@@ -456,9 +452,17 @@ public class AcideDebugHelper {
                     n.setNodeColor(Color.GREEN);
                 }
             }
-            canvas.setSelectedNode(canvas.getRootNode());
-            canvas.setSize(canvas.getWidth(), canvas.getHeight()-(int)(canvas.getHeight()*0.1));
-            updateCanvasDebug(canvas);
         }
+        canvas.setSelectedNode(canvas.getRootNode());
+        updateCanvasDebug(canvas);
+    }
+
+    public static boolean hasRedNode(AcideDebugCanvas canvas){
+        boolean hasRed = false;
+        for(Node n : canvas.get_graph().get_nodes()){
+            if(n.getNodeColor().equals(Color.RED))
+                hasRed = true;
+        }
+        return hasRed;
     }
 }

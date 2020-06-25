@@ -48,13 +48,7 @@ import java.awt.event.KeyListener;
 import java.util.LinkedList;
 import java.util.Locale;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.*;
 import javax.swing.tree.TreePath;
 
 import acide.gui.databasePanel.Nodes.NodeDefinition;
@@ -386,11 +380,12 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 						AcideLanguageManager.getInstance().getLabels().getString("s157"), JOptionPane.OK_OPTION);
 			}
 		}else{
+
 			int response = JOptionPane.showConfirmDialog(null,AcideLanguageManager.getInstance()
 					.getLabels().getString("s2182"), AcideLanguageManager.getInstance()
 					.getLabels().getString("s40"), JOptionPane.OK_CANCEL_OPTION);
 			
-			if (response == 0){
+			if (response == 0 && !_text.getText().equals(_prompt)){
 				String database_name = "";
 				String view_name = "";
 				try {
@@ -432,12 +427,23 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 					text = _prompt.replace('\n',' ');
 					AcideDatabaseManager.getInstance()
 							.executeCommand("/tapi CREATE OR REPLACE VIEW "+view_name+" AS " + text);
-					JOptionPane.showMessageDialog(null,result.toString(),"Error",JOptionPane.OK_OPTION);
+					JLabel label = new JLabel();
+					if(result.size() >= 2){
+						result.get(2).replace("(SQL)", "");
+						String[] errors = result.get(2).split("or");
+						String htmlError = "<html>";
+						for(String line : errors){
+							htmlError += line + "<br>";
+						}
+						htmlError += "</html>";
+						label.setText(htmlError);
+					}
+					JOptionPane.showMessageDialog(null,label,"Error",JOptionPane.OK_OPTION);
+				}else {
+					DataBasePanelUtils.updateDataBasePanelView();
+
+					closeWindow();
 				}
-				
-				DataBasePanelUtils.updateDataBasePanelView();
-				
-				closeWindow();
 			}
 		}
 	}

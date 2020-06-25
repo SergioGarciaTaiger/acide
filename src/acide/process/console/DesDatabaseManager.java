@@ -1021,11 +1021,9 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	 */
 	public LinkedList<String> executeCommand(String comandParam) {
 
-		LinkedList<String> result = new LinkedList<String>();
+		LinkedList<String> result = new LinkedList<>();
 
 		try {
-
-			LinkedList<String> info = executeCommandfinal("/show_compilations");
 
 			result = executeCommandfinal(comandParam);
 
@@ -1902,7 +1900,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 		String db = currentDB();
 
-		LinkedList<?> listpk = getPrimKey(database, table);
+		LinkedList<?> listPK = getPrimKey(database, table);
 
 		executeCommand("/tapi /use_db " + database);
 
@@ -1911,11 +1909,11 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 			int recordCount = getRecordCount(database, table, columnNames,
 					dataColumns.get(row));
 
-			if (!listpk.isEmpty()) { // tiene pk
+			if (!listPK.isEmpty()) { // tiene pk
 
 				String command = "/tapi delete from [" + table + "] where [";
 
-				Object[] hs = listpk.toArray();
+				Object[] hs = listPK.toArray();
 
 				String pk = ((String) hs[0]).replace("[", "");
 
@@ -1924,12 +1922,10 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 				Object[] g = pk.split(",");
 
 				for (int i = 0; i < g.length; i++) {
-
 					command += ((String) g[i]).trim() + "]="
-							+ dataColumns.get(i);
+							+ dataColumns.get(i).get(0);
 
-					if (i < columnNames.size() - 1)
-
+					if (i < hs.length - 1)
 						command += " and [";
 				}
 
@@ -1943,7 +1939,8 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 				return res;
 
-			} else {
+			}
+			else {
 
 				res = deleteRows(database, table, dataColumns.get(row),
 						columnNames); // borramos

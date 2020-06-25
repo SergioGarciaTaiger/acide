@@ -149,7 +149,7 @@ public class AcideDebugCanvasParseTask implements Runnable {
 				AcideProjectConfiguration.getInstance().setIsModified(true);
 		}
 		// // parses the result and generates the graph
-		if (_method.equals(PARSE_TAPI_PDG)) {
+		if (_method.equals(PARSE_TAPI_PDG) || _method.equals(PARSE_TAPI_RDG)) {
 			if (_destiny.equals(DESTINY_PATH))
 				try {
 					// parses the input to obtain the graph
@@ -180,39 +180,6 @@ public class AcideDebugCanvasParseTask implements Runnable {
 				_success = true;
 			}
 		}
-		// // parses the result and generates the graph
-		if (_method.equals(PARSE_TAPI_RDG)) {
-			if (_destiny.equals(DESTINY_PATH))
-				try {
-					// parses the input to obtain the graph
-					ArrayList<Node> g = AcideDebugCanvas
-							.parsePathGraphTapi(in);
-					// sets the path graph
-					_canvas.setPathGraph(g);
-					// updates the success flag
-					_success = true;
-				} catch (AcideDebugCanvasParseInputEqualsErrorException e) {
-					// sets empty graphs on the path and the main graph of the canvas
-					_canvas.set_graph(new DirectedWeightedGraph());
-					_canvas.setPathGraph(new ArrayList<Node>());
-					_canvas.repaint();
-					if(_showErrorMessage){
-					// shows the error message
-					new AcideDebugPanelErrorMessageDialog(AcideLanguageManager
-							.getInstance().getLabels().getString("s157"),
-							e.getMessage());
-					}
-					// updates the succes flag
-					_success = false;
-				}
-			if (_destiny.equals(DESTINY_MAIN)){
-				// parses the input to obtain the graph
-				_canvas.set_graph(AcideDebugCanvas.parseGraphTapi(in));
-				// sets the main graph
-				_success = true;
-			}
-		}
-		_canvas.repaint();
 		AcideDebugHelper.paintTrustedTables(_canvas);
 	}
 

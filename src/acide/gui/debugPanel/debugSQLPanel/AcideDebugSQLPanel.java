@@ -50,17 +50,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugSQLPanel.listeners.*;
@@ -393,7 +383,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				// Gets the views from the database
 				LinkedList<String> l = DesDatabaseManager.getInstance()
 						.executeCommand("/tapi /list_views");
-				ArrayList<String> views = new ArrayList<String>();
+				ArrayList<String> views = new ArrayList<>();
 				views.add("          ");
 				// Parses the output from the database
 				for (String s : l) {
@@ -682,7 +672,7 @@ public class AcideDebugSQLPanel extends JPanel {
 	}
 
 	
-	public void this_mouseReleased(MouseEvent e) {
+	public void setSelectedNode(MouseEvent e) {
 		
 		// Gets the graph of the canvas
 		DirectedWeightedGraph graph = _canvas.get_graph();
@@ -694,12 +684,11 @@ public class AcideDebugSQLPanel extends JPanel {
 					&& e.getX() <= n.getX() + (int) (_canvas.getNodeSize() * _canvas.getZoom())
 					&& e.getY() >= n.getY()
 					&& e.getY() <= n.getY() + (int) (_canvas.getNodeSize() * _canvas.getZoom())) {
-				// Shows PopUp menu
-				showPopupMenu(e);
+				_canvas.setSelectedNode(n);
 				// Gets the selected node name
 				String selected = n.getLabel();
 				// Gets the highlighter
-				AcideDebugPanelHighLighter highLighter = AcideMainWindow.getInstance().getDebugPanel().getTraceDatalogPanel().getHighLighter();
+				AcideDebugPanelHighLighter highLighter = AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().getHighLighter();
 				// Resets the highlights
 				highLighter.resetLines();
 				highLighter.unHighLight();
@@ -711,13 +700,15 @@ public class AcideDebugSQLPanel extends JPanel {
 	}
 
 	private void showPopupMenu(MouseEvent e) {
+		setSelectedNode(e);
 		if (e.isPopupTrigger()) {
 			// if is table not show edit view
 			if(DesDatabaseManager.getInstance().isTable("$des", _canvas.getSelectedNode().getLabel().split("/")[0]))
 				_editView.setVisible(false);
 			else
 				_editView.setVisible(true);
-			if(isDebuging()){
+			if((_canvas.getSelectedNode().getLabel().split("/")[0].equals(_canvas.getRootNode().getLabel()) || isDebuging()) &&
+					!AcideDebugHelper.hasRedNode(_canvas) && _canvas.getSelectedNode().getNodeColor().equals(Color.GRAY)){
 				_wrongNodeItem.setEnabled(true);
 				_nonvalidNodeItem.setEnabled(true);
 				_missingNodeItem.setEnabled(true);
@@ -747,12 +738,13 @@ public class AcideDebugSQLPanel extends JPanel {
 					view = _canvas.getSelectedNode().getLabel().split("/")[0];
 					AcideDebugHelper.showView(view);
 				}
+			}else if(SwingUtilities.isRightMouseButton(e)){
+				showPopupMenu(e);
 			}
-			adaptee.this_mousePressed(e);
 		}
 
 		public void mouseReleased(MouseEvent e) {
-			adaptee.this_mouseReleased(e);
+			adaptee.setSelectedNode(e);
 		}
 	}
 

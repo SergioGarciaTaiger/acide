@@ -1114,7 +1114,6 @@ public class AcideDataBasePanel extends JPanel {
 	 * Hides the ACIDE - A Configurable IDE data base panel
 	 */
 	public void disposeDataBasePanel() {
-
 		JSplitPane container = AcideMainWindow.getInstance().getSpecificSplitPane(_splitContainer);		
 		_size = container.getDividerLocation();
 		if (container.getLeftComponent().getClass() == this.getClass()) {
@@ -1125,7 +1124,6 @@ public class AcideDataBasePanel extends JPanel {
 				_size = 300;
 		setVisible(false);
 		AcideMainWindow.getInstance().updateVisibility();
-
 	}
 
 	public class AcideDatabasePanelClickListener extends MouseAdapter {

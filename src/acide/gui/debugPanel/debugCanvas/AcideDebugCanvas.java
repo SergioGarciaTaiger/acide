@@ -236,7 +236,7 @@ public class AcideDebugCanvas extends AcideGraphCanvas {
 		_selectedNode = rootCandiate;
 		// Aplies the layout
 		this._layout = new TreeLayout(_selectedNode, TreeLayout.INVERSE_MODE);
-		_layout.calculateNodesPosition(_graph, getWidth(), getHeight(),
+		_layout.calculateNodesPosition(_graph, getWidth(), getHeight()-20,
 				_nodeSize);
 		_enableDraw = true;
 	}

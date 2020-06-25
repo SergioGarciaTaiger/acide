@@ -724,7 +724,7 @@ public class AcideDatabaseDataView extends JFrame{
 		return result;
 	}
 
-	public JTable getTable() {
+	public AcideDataBaseDataViewTable getTable() {
 		return _jTable;
 	}
 

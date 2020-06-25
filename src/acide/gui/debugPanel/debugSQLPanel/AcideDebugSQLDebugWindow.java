@@ -42,6 +42,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private String view;
     private String currentQuestion;
+    private LinkedList<String> errors;
 
     private JScrollPane viewTable;
     private AcideDataBaseDataViewTable jTable;
@@ -65,6 +66,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.setView(AcideDebugHelper.getSelectedViewName());
 
         this.setIconImage(ICON.getImage());
+
+        errors = new LinkedList<>();
 
         // Builds the window components
         buildComponents();
@@ -131,7 +134,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         errorPanel.add(editTableButton);
         errorPanel.add(editViewButton);
     }
-
 
     private void setListeners() {
         validButton.addActionListener(new ValidNodeAction());
@@ -309,8 +311,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         }
     }
 
-
-
     class MissingTupleAction extends AbstractAction{
 
         /**
@@ -321,6 +321,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+            errors.add(AcideLanguageManager.getInstance()
+                    .getLabels().getString("s2363") + " " + AcideDebugSQLDebugWindow.getInstance().getView() + " " +
+                    AcideLanguageManager.getInstance()
+                            .getLabels().getString("s2364") + " (" + AcideDebugHelper.getDataFromSelectedTuple(jTable) + ")");
             AcideDebugHelper.performDebug("missing(" +
                 AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
         }
@@ -335,6 +339,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+            errors.add(AcideLanguageManager.getInstance()
+                    .getLabels().getString("s2361") + " " + AcideDebugSQLDebugWindow.getInstance().getView() + " " +
+                    AcideLanguageManager.getInstance()
+                            .getLabels().getString("s2362") + " (" + AcideDebugHelper.getDataFromSelectedTuple(jTable) + ")");
             AcideDebugHelper.performDebug("wrong(" +
                     AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
         }
@@ -452,6 +460,13 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         String info = AcideLanguageManager.getInstance().getLabels()
                 .getString("s2345") + view + "' <br>" + AcideLanguageManager.getInstance().getLabels()
                 .getString("s2346");
+        if(errors.size() > 0){
+            info += "<br>" + AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2365");
+            for(String line: errors){
+                info += "<br>" + " " + " " + " - " + line;
+            }
+        }
         this.setTitle(AcideLanguageManager.getInstance().getLabels()
                 .getString("s2344"));
         this.setView(view);
@@ -528,6 +543,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public JScrollPane getViewTable() {
         return viewTable;
+    }
+
+    public void resetErrors(){
+        errors = new LinkedList<>();
     }
 
 }
