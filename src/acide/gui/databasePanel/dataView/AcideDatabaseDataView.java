@@ -143,6 +143,7 @@ public class AcideDatabaseDataView extends JFrame{
 	}
 
 	public AcideDatabaseDataView(String db, String tabla){
+		setVisible(false);
 		setAlwaysOnTop(false);
 		AcideMainWindow.getInstance().setEnabled(false);
 		setIconImage(_ICON.getImage());
@@ -193,8 +194,7 @@ public class AcideDatabaseDataView extends JFrame{
 		_scrollPane.setSize(_totalColumns*20+_width, Integer.valueOf(_totalRecords)*5+_height);
 		_scrollPane.setViewportView(_jTable);
 
-		this.getContentPane().add(_scrollPane, BorderLayout.CENTER);	
-		setVisible(true);
+		this.getContentPane().add(_scrollPane, BorderLayout.CENTER);
 		setAlwaysOnTop(true);
 		
 		if(_statusBar==null){

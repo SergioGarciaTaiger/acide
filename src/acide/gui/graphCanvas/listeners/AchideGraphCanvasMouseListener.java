@@ -65,6 +65,7 @@ public class AchideGraphCanvasMouseListener extends MouseAdapter {
                                 panelDv.build(info);
                             panelDv.setAlwaysOnTop(true);
                             panelDv.setAlwaysOnTop(false);
+                            panelDv.setVisible(true);
                         }
                     }
                 }

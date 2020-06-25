@@ -1165,6 +1165,7 @@ public class AcideDataBasePanel extends JPanel {
 						panelDv.setState(panelDv.NORMAL);
 						panelDv.setAlwaysOnTop(true);
 						panelDv.setAlwaysOnTop(false);
+						panelDv.setVisible(true);
 					} 	
 						//Double click on node view
 					else if (selectedNode instanceof NodeView){
@@ -1181,93 +1182,95 @@ public class AcideDataBasePanel extends JPanel {
 						if(!info.isEmpty())
 							panelDv.build(info);
 							
-							if (!panelDv.isReadOnly()) panelDv.setIsReadOnly(true);
-							
-							panelDv.setState(panelDv.NORMAL);
-							panelDv.setAlwaysOnTop(true);
-							panelDv.setAlwaysOnTop(false);
-					
-						}else{
-			
-							if(_tree.isCollapsed(path)) _tree.expandPath(path);
-								else _tree.collapsePath(path);
-							
-							if (selectedNode instanceof NodeDefinition){
-								
-								String node = path.getParentPath().getParentPath().getLastPathComponent().toString();
-								
-								if (node.contains("("))
-									node = node.substring(0, node.indexOf("("));
-								
-								String database = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
-								
-								String text = "";
-								boolean editable;
-								
-								if (selectedNode.getParent().toString().equals(AcideLanguageManager.getInstance().getLabels().getString("s2036"))){
-									text = AcideDatabaseManager.getInstance().getSQLText(database, node);
-									editable = true;
-									new AcideEnterTextWindow(text
-											, AcideLanguageManager.getInstance().getLabels().getString("s2036"), editable);
-									
-								}else if (selectedNode.getParent().toString().equals(AcideLanguageManager.getInstance().getLabels().getString("s2288"))){
-									text = AcideDatabaseManager.getInstance().getRAText(database, node);
-									editable = true;
-									new AcideEnterTextWindow(text
-											, AcideLanguageManager.getInstance().getLabels().getString("s2288"), editable);
-								} else {
-									text = AcideDatabaseManager.getInstance().getDatalogText(database, node);
-									editable = false;
-									new AcideEnterTextWindow(text
-											, AcideLanguageManager.getInstance().getLabels().getString("s2037"), editable);
-								}
-							
-							}
-						}
-					}
-				
-					// Right button clicked then display popup
-					if(arg0.getButton()==MouseEvent.BUTTON3){
-						
-						TreePath path = _tree.getSelectionPath();
+						if (!panelDv.isReadOnly())
+							panelDv.setIsReadOnly(true);
 
-						DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path.getLastPathComponent();
-						
-						if (!(selectedNode instanceof NodeDDBB)){
-							AcideDataBaseNodes parentNode = (AcideDataBaseNodes) path.getParentPath().getLastPathComponent();
-							
-							if (parentNode instanceof NodeColumns){
-								AcideDataBaseNodes tableNode = (AcideDataBaseNodes) path.getParentPath().getParentPath().getLastPathComponent();
-								
-								if(_popUp!=null) _popUp.setVisible(false);
-								_popUp = new AcideDataBasePanelColumnsPopupMenu(tableNode,selectedNode.toString());
-								_popUp.show(arg0.getComponent(), arg0.getX(), arg0.getY() );
-							}
-						}
-						
-						_popUp = ((AcideDataBaseNodes)selectedNode).getPopUp();
-						_popUp.show(arg0.getComponent(), arg0.getX(), arg0.getY() );
-					} 
-					else {
+						panelDv.setState(panelDv.NORMAL);
+						panelDv.setAlwaysOnTop(true);
+						panelDv.setAlwaysOnTop(false);
+						panelDv.setVisible(true);
 					
-						TreePath path = _tree.getSelectionPath();
-						AcideDataBaseNodes selectedNode = (AcideDataBaseNodes) path.getLastPathComponent();
+					}else{
+			
+						if(_tree.isCollapsed(path)) _tree.expandPath(path);
+							else _tree.collapsePath(path);
+
+						if (selectedNode instanceof NodeDefinition){
+
+							String node = path.getParentPath().getParentPath().getLastPathComponent().toString();
+
+							if (node.contains("("))
+								node = node.substring(0, node.indexOf("("));
+
+							String database = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
+
+							String text = "";
+							boolean editable;
+
+							if (selectedNode.getParent().toString().equals(AcideLanguageManager.getInstance().getLabels().getString("s2036"))){
+								text = AcideDatabaseManager.getInstance().getSQLText(database, node);
+								editable = true;
+								new AcideEnterTextWindow(text
+										, AcideLanguageManager.getInstance().getLabels().getString("s2036"), editable);
+
+							}else if (selectedNode.getParent().toString().equals(AcideLanguageManager.getInstance().getLabels().getString("s2288"))){
+								text = AcideDatabaseManager.getInstance().getRAText(database, node);
+								editable = true;
+								new AcideEnterTextWindow(text
+										, AcideLanguageManager.getInstance().getLabels().getString("s2288"), editable);
+							} else {
+								text = AcideDatabaseManager.getInstance().getDatalogText(database, node);
+								editable = false;
+								new AcideEnterTextWindow(text
+										, AcideLanguageManager.getInstance().getLabels().getString("s2037"), editable);
+							}
 							
-						if (selectedNode instanceof NodeConstraint)
-								_tree.setToolTipText((String) selectedNode.getUserObject());
-						else
-								_tree.setToolTipText(null);
-							
-						if(_popUp!=null) _popUp.setVisible(false);
-						if (_tree.isSelectionEmpty()) return;
+						}
 					}
-						
-				} catch(ClassCastException cast){
-					//DefaultMutableTreeNode
-				}catch(NullPointerException cast){
-					//DefaultMutableTreeNode
 				}
+
+				// Right button clicked then display popup
+				if(arg0.getButton()==MouseEvent.BUTTON3){
+
+					TreePath path = _tree.getSelectionPath();
+
+					DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) path.getLastPathComponent();
+
+					if (!(selectedNode instanceof NodeDDBB)){
+						AcideDataBaseNodes parentNode = (AcideDataBaseNodes) path.getParentPath().getLastPathComponent();
+
+						if (parentNode instanceof NodeColumns){
+							AcideDataBaseNodes tableNode = (AcideDataBaseNodes) path.getParentPath().getParentPath().getLastPathComponent();
+
+							if(_popUp!=null) _popUp.setVisible(false);
+							_popUp = new AcideDataBasePanelColumnsPopupMenu(tableNode,selectedNode.toString());
+							_popUp.show(arg0.getComponent(), arg0.getX(), arg0.getY() );
+						}
+					}
+
+					_popUp = ((AcideDataBaseNodes)selectedNode).getPopUp();
+					_popUp.show(arg0.getComponent(), arg0.getX(), arg0.getY() );
+				}
+				else {
+
+					TreePath path = _tree.getSelectionPath();
+					AcideDataBaseNodes selectedNode = (AcideDataBaseNodes) path.getLastPathComponent();
+
+					if (selectedNode instanceof NodeConstraint)
+							_tree.setToolTipText((String) selectedNode.getUserObject());
+					else
+							_tree.setToolTipText(null);
+
+					if(_popUp!=null) _popUp.setVisible(false);
+					if (_tree.isSelectionEmpty()) return;
+				}
+
+			} catch(ClassCastException cast){
+				//DefaultMutableTreeNode
+			}catch(NullPointerException cast){
+				//DefaultMutableTreeNode
 			}
+		}
 	}
 
 	

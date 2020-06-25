@@ -164,6 +164,7 @@ public class AcideDebugHelper {
         panelDv.setState(panelDv.NORMAL);
         panelDv.setAlwaysOnTop(true);
         panelDv.setAlwaysOnTop(false);
+        panelDv.setVisible(true);
     }
 
     public static void resetColorNodes(){
@@ -187,7 +188,7 @@ public class AcideDebugHelper {
             paintTrustedTables(canvas);
             canvas.setSelectedNode(canvas.getRootNode());
             String view = getSelectedViewName();
-            
+
             AcideDebugSQLPanel.startDebug.setEnabled(false);
 
             AcideDebugSQLDebugWindow.getInstance().resetErrors();

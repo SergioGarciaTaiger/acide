@@ -370,6 +370,7 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 								dataView = AcideMainWindow.getInstance().getDataBasePanel().getDataView(_database, tableName);				;
 							}
 							dataView.build(res);
+							dataView.setVisible(true);
 						}
 					}
 					closeWindow();

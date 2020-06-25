@@ -117,19 +117,16 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 			t.start();
 			if (AcideMainWindow.getInstance().getDebugPanel()
 					.getDebugSQLPanel().getShowSQLMenuItem().isSelected()) {
-				new Thread(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							t.join();
-							// gets the label of the root node
-							String query = AcideMainWindow.getInstance()
-									.getDebugPanel().getDebugSQLPanel()
-									.getCanvas().getRootNode().getLabel();
-							AcideDebugHelper.getRoot(query);
-						} catch (Exception e) {
-							System.err.println(e);
-						}
+				new Thread(() -> {
+					try {
+						t.join();
+						// gets the label of the root node
+						String query1 = AcideMainWindow.getInstance()
+								.getDebugPanel().getDebugSQLPanel()
+								.getCanvas().getRootNode().getLabel();
+						AcideDebugHelper.getRoot(query1);
+					} catch (Exception e) {
+						System.err.println(e);
 					}
 				}).start();
 			}
