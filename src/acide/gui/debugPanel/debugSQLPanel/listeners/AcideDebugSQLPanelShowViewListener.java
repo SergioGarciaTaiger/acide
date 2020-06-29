@@ -10,12 +10,8 @@ import java.awt.event.ActionListener;
 public class AcideDebugSQLPanelShowViewListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent event) {
-        JComboBox viewBox = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getViewBox();
-        if (viewBox.getSelectedIndex() < 1)
-            return;
-        // Gets the label of the selected item
-        String view = (String) viewBox.getSelectedItem();
+        String view = AcideMainWindow.getInstance().getDebugPanel()
+                .getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
         AcideDebugHelper.showView(view);
     }
 }

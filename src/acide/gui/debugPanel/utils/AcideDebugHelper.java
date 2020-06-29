@@ -1,6 +1,7 @@
 package acide.gui.debugPanel.utils;
 
 import acide.gui.databasePanel.AcideDataBasePanel;
+import acide.gui.databasePanel.dataView.AcideDataBaseDataViewTable;
 import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplaceWindow;
 import acide.gui.databasePanel.utils.AcideTree;
@@ -13,11 +14,14 @@ import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.console.AcideDatabaseManager;
 import acide.process.console.DesDatabaseManager;
+import sun.awt.resources.awt;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 import java.util.List;
 
@@ -277,6 +281,7 @@ public class AcideDebugHelper {
 
     public static void performDebug(String action){
         LinkedList<String> consoleInfo;
+        updateHighlight(AcideDebugSQLDebugWindow.getInstance().getView());
         if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){
             AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
             consoleInfo = DesDatabaseManager.getInstance().
@@ -296,7 +301,7 @@ public class AcideDebugHelper {
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         //JOptionPane.showMessageDialog(null, consoleInfo);
         checkError(updateDebugState(consoleInfo));
-
+        highlightNext();
     }
 
     public static void performNodeDebug(String node, String action){
@@ -304,6 +309,7 @@ public class AcideDebugHelper {
                 setNodeState(node, action);
         //JOptionPane.showMessageDialog(null, consoleInfo);
         checkError(updateDebugState(consoleInfo));
+        highlightNext();
     }
 
     private static void checkError(String info){
@@ -387,7 +393,14 @@ public class AcideDebugHelper {
         else {
             info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
             window.setIsReadOnly(true);
-            window.getTable().setRowSelectionAllowed(true);
+            AcideDataBaseDataViewTable a = window.getTable();
+            a.addMouseListener(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    int fila = a.rowAtPoint(e.getPoint());
+                    a.changeSelection(fila, 1, false, false);
+                    a.changeSelection(fila, a.getColumnCount()-1, true, true);
+                }
+            });
             title = AcideLanguageManager.getInstance().getLabels()
                     .getString("s2367");
         }
@@ -465,5 +478,12 @@ public class AcideDebugHelper {
                 hasRed = true;
         }
         return hasRed;
+    }
+
+    private static void highlightNext(){
+        LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
+        AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
+        String nextView = parseCurrentQuestion(currentQuestion);
+        updateHighlight(nextView);
     }
 }

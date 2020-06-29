@@ -383,14 +383,14 @@ public class AcideDebugSQLPanel extends JPanel {
 				// Gets the views from the database
 				LinkedList<String> l = DesDatabaseManager.getInstance()
 						.executeCommand("/tapi /list_views");
-				ArrayList<String> views = new ArrayList<>();
+				ArrayList<String> views = new ArrayList<String>();
 				views.add("          ");
 				// Parses the output from the database
 				for (String s : l) {
 					// Checks if the output is an error output
 					if (s.equals("$error")) {
 						// Resets the list of views
-						views = new ArrayList<>();
+						views = new ArrayList<String>();
 						views.add(AcideLanguageManager.getInstance()
 								.getLabels().getString("s2287"));
 						break;
@@ -701,7 +701,18 @@ public class AcideDebugSQLPanel extends JPanel {
 
 	private void showPopupMenu(MouseEvent e) {
 		setSelectedNode(e);
-		if (e.isPopupTrigger()) {
+		if (SwingUtilities.isRightMouseButton(e)) {
+			_contents.setText(AcideLanguageManager.getInstance().getLabels().getString("s2347"));
+			_editView.setText(AcideLanguageManager.getInstance().getLabels().getString("s2360"));
+			_nonvalidNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2319"));
+			_validNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
+			_missingNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2322"));
+			_wrongNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
+
+			if(_canvas.getSelectedNode().getLabel().split("/")[0].equals(_canvas.getRootNode().getLabel()))
+				_validNodeItem.setVisible(false);
+			else
+				_validNodeItem.setVisible(true);
 			// if is table not show edit view
 			if(DesDatabaseManager.getInstance().isTable("$des", _canvas.getSelectedNode().getLabel().split("/")[0]))
 				_editView.setVisible(false);

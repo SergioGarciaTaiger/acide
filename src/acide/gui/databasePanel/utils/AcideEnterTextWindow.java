@@ -380,70 +380,73 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 				JOptionPane.showMessageDialog(null, AcideLanguageManager.getInstance().getLabels().getString("s2127"),
 						AcideLanguageManager.getInstance().getLabels().getString("s157"), JOptionPane.OK_OPTION);
 			}
-		}else{
+		}else {
+			if (_text.getText().equals(_prompt)) {
+				closeWindow();
+			} else{
+				int response = JOptionPane.showConfirmDialog(null, AcideLanguageManager.getInstance()
+						.getLabels().getString("s2182"), AcideLanguageManager.getInstance()
+						.getLabels().getString("s40"), JOptionPane.OK_CANCEL_OPTION);
 
-			int response = JOptionPane.showConfirmDialog(null,AcideLanguageManager.getInstance()
-					.getLabels().getString("s2182"), AcideLanguageManager.getInstance()
-					.getLabels().getString("s40"), JOptionPane.OK_CANCEL_OPTION);
-			
-			if (response == 0 && !_text.getText().equals(_prompt)){
-				String database_name = "";
-				String view_name = "";
-				try {
-					TreePath path = (TreePath) AcideMainWindow.getInstance().getDataBasePanel().getTree().getSelectionPath();
+				if (response == 0) {
+					String database_name = "";
+					String view_name = "";
+					try {
+						TreePath path = (TreePath) AcideMainWindow.getInstance().getDataBasePanel().getTree().getSelectionPath();
 
-					if (path.getLastPathComponent() instanceof NodeDefinition)
-						view_name = path.getParentPath().getParentPath().getLastPathComponent().toString();
-					else
-						view_name = path.getLastPathComponent().toString();
+						if (path.getLastPathComponent() instanceof NodeDefinition)
+							view_name = path.getParentPath().getParentPath().getLastPathComponent().toString();
+						else
+							view_name = path.getLastPathComponent().toString();
 
-					if (view_name.contains("("))
-						view_name = view_name.substring(0, view_name.indexOf("("));
+						if (view_name.contains("("))
+							view_name = view_name.substring(0, view_name.indexOf("("));
 
-					database_name = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
-				}catch (Exception e){
-					// if path is null we are in debug, get view from debug panel and database is des
-					database_name = "$des";
-					view_name = AcideMainWindow.getInstance().getDebugPanel()
-							.getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
-				}
-				String text =  _text.getText();
-				text = text.replace('\n',' ');
-				text = text.substring(0, text.length()-1);
-				
-				LinkedList<String> result = null;
-				
-				if (_title.contains("SQL")){
-					AcideDatabaseManager.getInstance().dropView(database_name, view_name);
-					result = AcideDatabaseManager.getInstance()
-							.executeCommand("/tapi CREATE OR REPLACE VIEW "+view_name+" AS " + text);
-					
-				}else if (_title.contains("RA")){
-					result = AcideDatabaseManager.getInstance().executeCommand("/tapi "+ view_name + " := " + text);
-				}
-				
-				boolean error = checkResult(result);
-				
-				if(error){
-					text = _prompt.replace('\n',' ');
-					AcideDatabaseManager.getInstance()
-							.executeCommand("/tapi CREATE OR REPLACE VIEW "+view_name+" AS " + text);
-					JLabel label = new JLabel();
-					if(result.size() >= 2){
-						result.get(2).replace("(SQL)", "");
-						String[] errors = result.get(2).split("or");
-						String htmlError = "<html>";
-						for(String line : errors){
-							htmlError += line + "<br>";
-						}
-						htmlError += "</html>";
-						label.setText(htmlError);
+						database_name = path.getParentPath().getParentPath().getParentPath().getParentPath().getLastPathComponent().toString();
+					} catch (Exception e) {
+						// if path is null we are in debug, get view from debug panel and database is des
+						database_name = "$des";
+						view_name = AcideMainWindow.getInstance().getDebugPanel()
+								.getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
 					}
-					JOptionPane.showMessageDialog(null,label,"Error",JOptionPane.OK_OPTION);
-				}else {
-					DataBasePanelUtils.updateDataBasePanelView();
+					String text = _text.getText();
+					text = text.replace('\n', ' ');
+					text = text.substring(0, text.length() - 1);
 
-					closeWindow();
+					LinkedList<String> result = null;
+
+					if (_title.contains("SQL")) {
+						AcideDatabaseManager.getInstance().dropView(database_name, view_name);
+						result = AcideDatabaseManager.getInstance()
+								.executeCommand("/tapi CREATE OR REPLACE VIEW " + view_name + " AS " + text);
+
+					} else if (_title.contains("RA")) {
+						result = AcideDatabaseManager.getInstance().executeCommand("/tapi " + view_name + " := " + text);
+					}
+
+					boolean error = checkResult(result);
+
+					if (error) {
+						text = _prompt.replace('\n', ' ');
+						AcideDatabaseManager.getInstance()
+								.executeCommand("/tapi CREATE OR REPLACE VIEW " + view_name + " AS " + text);
+						JLabel label = new JLabel();
+						if (result.size() >= 2) {
+							result.get(2).replace("(SQL)", "");
+							String[] errors = result.get(2).split("or");
+							String htmlError = "<html>";
+							for (String line : errors) {
+								htmlError += line + "<br>";
+							}
+							htmlError += "</html>";
+							label.setText(htmlError);
+						}
+						JOptionPane.showMessageDialog(null, label, "Error", JOptionPane.OK_OPTION);
+					} else {
+						DataBasePanelUtils.updateDataBasePanelView();
+
+						closeWindow();
+					}
 				}
 			}
 		}

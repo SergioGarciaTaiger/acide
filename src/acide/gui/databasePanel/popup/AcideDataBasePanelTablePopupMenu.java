@@ -4,25 +4,25 @@
  * 
  * Copyright (C) 2007-2014  
  * Authors:
- * 		- Fernando Sï¿½enz Pï¿½rez (Team Director).
+ * 		- Fernando Sáenz Pérez (Team Director).
  *      - Version from 0.1 to 0.6:
  *      	- Diego Cardiel Freire.
- *			- Juan Josï¿½ Ortiz Sï¿½nchez.
- *          - Delfï¿½n Rupï¿½rez Caï¿½as.
+ *			- Juan José Ortiz Sánchez.
+ *          - Delfín Rupérez Cañas.
  *      - Version 0.7:
- *          - Miguel Martï¿½n Lï¿½zaro.
+ *          - Miguel Martín Lázaro.
  *      - Version 0.8:
- *      	- Javier Salcedo Gï¿½mez.
+ *      	- Javier Salcedo Gómez.
  *      - Version from 0.9 to 0.11:
- *      	- Pablo Gutiï¿½rrez Garcï¿½a-Pardo.
- *      	- Elena Tejeiro Pï¿½rez de ï¿½greda.
- *      	- Andrï¿½s Vicente del Cura.
+ *      	- Pablo Gutiérrez García-Pardo.
+ *      	- Elena Tejeiro Pérez de Ágreda.
+ *      	- Andrés Vicente del Cura.
  *      - Version from 0.12 to 0.16
- *      	- Semï¿½ramis Gutiï¿½rrez Quintana
- *      	- Juan Jesï¿½s Marquï¿½s Ortiz
- *      	- Fernando Ordï¿½s Lorente
+ *      	- Semíramis Gutiérrez Quintana
+ *      	- Juan Jesús Marqués Ortiz
+ *      	- Fernando Ordás Lorente
  *      - Version 0.17
- *      	- Sergio Domï¿½nguez Fuentes
+ *      	- Sergio Domínguez Fuentes
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -224,7 +224,6 @@ public class AcideDataBasePanelTablePopupMenu extends JPopupMenu {
 				LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, table);
 				if(!info.isEmpty())
 					panelDv.build(info);
-				panelDv.setVisible(true);
 			}
 		});
 		
