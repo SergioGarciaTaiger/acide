@@ -130,6 +130,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	private JMenuItem _missingNodeItem;
 
 	/**
+	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
+	 */
+	private JMenuItem _errorNodeItem;
+
+	/**
 	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
 	 */
 	private JMenuItem _contents;
@@ -662,9 +667,11 @@ public class AcideDebugSQLPanel extends JPanel {
 		_wrongNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
 		_wrongNodeItem.addActionListener(new AcideDebugSQLPanelWrongNodeListener());
 		_popUp.add(_wrongNodeItem);
-		//_wrongNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
-		//_wrongNodeItem.addActionListener(new AcideDebugSQLPanelNonValidNodeListener());
-		//_popUp.add(_wrongNodeItem);
+
+		_errorNodeItem = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2368"));
+		_errorNodeItem.addActionListener(new AcideDebugSQLPanelShowErrorsListener());
+		_popUp.add(_errorNodeItem);
+
 	}
 
 	public void this_mousePressed(MouseEvent e) {
@@ -708,7 +715,15 @@ public class AcideDebugSQLPanel extends JPanel {
 			_validNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2320"));
 			_missingNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2322"));
 			_wrongNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
-
+			_errorNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2368"));
+			if(AcideDebugHelper.isRedNode(_canvas.getSelectedNode())){
+				if(AcideDebugSQLDebugWindow.getInstance().getErrors().size() > 0)
+					_errorNodeItem.setEnabled(true);
+				else
+					_errorNodeItem.setEnabled(false);
+			}else{
+				_errorNodeItem.setVisible(true);
+			}
 			if(_canvas.getSelectedNode().getLabel().split("/")[0].equals(_canvas.getRootNode().getLabel()))
 				_validNodeItem.setVisible(false);
 			else

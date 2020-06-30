@@ -2250,7 +2250,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	public LinkedList<String> startDebug(String view, String configuration, String option){
 		if(option.equals("valid") || option.equals("nonvalid"))
 			option = "";
-		String commandLine = "/tapi /debug_sql " + view + configuration + option;
+		String commandLine = "/tapi /debug_sql " + view + " "+ option + configuration;
 		LinkedList<String> result = executeCommand(commandLine);
 		return result;
 	}

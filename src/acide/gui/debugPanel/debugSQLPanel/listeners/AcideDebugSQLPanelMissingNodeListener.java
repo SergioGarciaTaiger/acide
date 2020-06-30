@@ -4,6 +4,7 @@ import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
+import acide.language.AcideLanguageManager;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,10 @@ public class AcideDebugSQLPanelMissingNodeListener implements ActionListener {
             String userInput = AcideDebugHelper.getUserInputTuple(view, "missing");
             if(!userInput.isEmpty()) {
                 String action = "missing(" + view + "(" + userInput +"))";
+                AcideDebugSQLDebugWindow.getInstance().addError(AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2363") + " " + view + " " +
+                        AcideLanguageManager.getInstance()
+                                .getLabels().getString("s2364") + " (" + userInput + ")");
                 if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
                     AcideDebugHelper.performNodeDebug(view, action);
                 } else {

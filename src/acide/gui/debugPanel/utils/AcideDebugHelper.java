@@ -258,11 +258,15 @@ public class AcideDebugHelper {
      */
     private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
         String str = currentQuestion.getFirst();
-        while(str.contains("(")){
-            if(str.contains(")"))
-                str = str.substring(str.indexOf("(")+1,str.indexOf(")"));
-            else
-                str = str.split("\\(")[0];
+        if(str.contains("subset")) {
+            str = str.substring(str.lastIndexOf(",") +1, str.lastIndexOf(")"));
+        }else{
+            while (str.contains("(")) {
+                if (str.contains(")"))
+                    str = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
+                else
+                    str = str.split("\\(")[0];
+            }
         }
         return str;
     }
@@ -478,6 +482,15 @@ public class AcideDebugHelper {
                 hasRed = true;
         }
         return hasRed;
+    }
+
+    public static boolean isRedNode(Node node){
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().getCanvas();
+        for(Node n : canvas.get_graph().get_nodes()){
+            if(n.getNodeColor().equals(Color.RED) && n.getLabel().equals(node.getLabel()))
+                return true;
+        }
+        return false;
     }
 
     private static void highlightNext(){

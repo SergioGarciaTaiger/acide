@@ -252,7 +252,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         errorPanel.setVisible(false);
 
         setLocationRelativeTo(null);
-        setResizable(true);
 
         pack();
 
@@ -262,6 +261,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         Cursor.getDefaultCursor();
         // Displays the window
         setVisible(true);
+        setResizable(true);
     }
 
     /**
@@ -557,4 +557,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         errors = new LinkedList<>();
     }
 
+    public void addError(String error){
+        errors.add(error);
+    }
+
+    public LinkedList<String> getErrors(){
+        return errors;
+    }
 }
