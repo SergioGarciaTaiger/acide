@@ -42,7 +42,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private String view;
     private String currentQuestion;
-    private LinkedList<String> errors;
+    private String questionType = "all";
+    private LinkedList<String> errors = new LinkedList<>();
 
     private JScrollPane viewTable;
     private AcideDataBaseDataViewTable jTable;
@@ -66,8 +67,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.setView(AcideDebugHelper.getSelectedViewName());
 
         this.setIconImage(ICON.getImage());
-
-        errors = new LinkedList<>();
 
         // Builds the window components
         buildComponents();
@@ -242,6 +241,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void showWindow() {
 
+        checkQuestionType();
+
         // Debug execution
         this.setTitle(AcideLanguageManager.getInstance()
                 .getLabels().getString("s2356"));
@@ -251,10 +252,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         viewTable.setVisible(true);
         errorPanel.setVisible(false);
 
-        setLocationRelativeTo(null);
-
-        pack();
-
         setWindowConfiguration();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
@@ -263,6 +260,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setVisible(true);
         setResizable(true);
     }
+
 
     /**
      * ACIDE - A Configurable IDE debug configuration window escape key
@@ -563,5 +561,22 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public LinkedList<String> getErrors(){
         return errors;
+    }
+
+    public void setQuestionType(String type) {
+        questionType = type;
+    }
+
+    private void checkQuestionType(){
+        if(questionType.equals("in")){
+            wrongTupleButton.setVisible(false);
+            missingTupleButton.setVisible(false);
+        }else if(questionType.equals("subset")){
+            wrongTupleButton.setVisible(true);
+            missingTupleButton.setVisible(false);
+        }else{
+            wrongTupleButton.setVisible(true);
+            missingTupleButton.setVisible(true);
+        }
     }
 }

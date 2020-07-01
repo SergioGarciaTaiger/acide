@@ -195,6 +195,7 @@ public class AcideDebugHelper {
 
             AcideDebugSQLPanel.startDebug.setEnabled(false);
 
+            AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
             AcideDebugSQLDebugWindow.getInstance().resetErrors();
             AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
             updateDebugWindow();
@@ -259,8 +260,13 @@ public class AcideDebugHelper {
     private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
         String str = currentQuestion.getFirst();
         if(str.contains("subset")) {
+            AcideDebugSQLDebugWindow.getInstance().setQuestionType("subset");
             str = str.substring(str.lastIndexOf(",") +1, str.lastIndexOf(")"));
         }else{
+            if(str.contains("in"))
+                AcideDebugSQLDebugWindow.getInstance().setQuestionType("in");
+            else
+                AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
             while (str.contains("(")) {
                 if (str.contains(")"))
                     str = str.substring(str.indexOf("(") + 1, str.indexOf(")"));
@@ -301,6 +307,8 @@ public class AcideDebugHelper {
         // Puts the wait cursor
         AcideDataViewReplaceWindow.getInstance().setCursor(
                 Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
+        AcideDebugSQLDebugWindow.getInstance().resetErrors();
         LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         //JOptionPane.showMessageDialog(null, consoleInfo);
