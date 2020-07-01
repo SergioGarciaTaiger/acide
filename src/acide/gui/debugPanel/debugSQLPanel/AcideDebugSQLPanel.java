@@ -717,12 +717,13 @@ public class AcideDebugSQLPanel extends JPanel {
 			_wrongNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2324"));
 			_errorNodeItem.setText(AcideLanguageManager.getInstance().getLabels().getString("s2368"));
 			if(AcideDebugHelper.isRedNode(_canvas.getSelectedNode())){
+				_errorNodeItem.setVisible(true);
 				if(AcideDebugSQLDebugWindow.getInstance().getErrors().size() > 0)
 					_errorNodeItem.setEnabled(true);
 				else
 					_errorNodeItem.setEnabled(false);
 			}else{
-				_errorNodeItem.setVisible(true);
+				_errorNodeItem.setVisible(false);
 			}
 			if(_canvas.getSelectedNode().getLabel().split("/")[0].equals(_canvas.getRootNode().getLabel()))
 				_validNodeItem.setVisible(false);
