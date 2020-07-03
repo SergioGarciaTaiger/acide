@@ -259,11 +259,11 @@ public class AcideDebugHelper {
      */
     private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
         String str = currentQuestion.getFirst();
-        if(str.contains("subset")) {
+        if(str.startsWith("subset(")) {
             AcideDebugSQLDebugWindow.getInstance().setQuestionType("subset");
             str = str.substring(str.lastIndexOf(",") +1, str.lastIndexOf(")"));
         }else{
-            if(str.contains("in"))
+            if(str.startsWith("in("))
                 AcideDebugSQLDebugWindow.getInstance().setQuestionType("in");
             else
                 AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
@@ -362,7 +362,6 @@ public class AcideDebugHelper {
         String view = AcideDebugSQLDebugWindow.getInstance().getView();
         AcideDebugSQLDebugWindow.getInstance().setInfo("Debugging view " + view);
         AcideDebugSQLDebugWindow.getInstance().setQuestion("Is this the expected result of this view?");
-        AcideDebugSQLDebugWindow.getInstance().showWindow();
     }
 
     // Gets the view selected in the SQL Debug SQL panel canvas
@@ -372,6 +371,10 @@ public class AcideDebugHelper {
 
     public static String getDataFromSelectedTuple(JTable table){
         Vector<?> data = (Vector<?>) ((AcideDatabaseDataView.MyTableModel) table.getModel()).getDataVector().get(table.getSelectedRow());
+        return parseTupleContent(data);
+    }
+
+    public static String parseTupleContent(Vector data){
         String tuple = "";
         for(Object value : data){
             if(value != null){
@@ -506,5 +509,10 @@ public class AcideDebugHelper {
         AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
         String nextView = parseCurrentQuestion(currentQuestion);
         updateHighlight(nextView);
+    }
+
+    public static boolean isRootView(String view){
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().getCanvas();
+        return canvas.getRootNode().getLabel().split("/")[0].equals(view);
     }
 }

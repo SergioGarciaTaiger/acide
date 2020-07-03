@@ -246,9 +246,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		//Inits the popUp panel
 		popUpInit();
 
-		_canvas.setSize(_canvas.getWidth(), _canvas.getHeight()-(int)(_canvas.getHeight()*0.1));
-
-	}
+		}
 
 	/**
 	 * Builds the buttons for the ACIDE - A Configurable IDE debug SQL panel.
@@ -766,7 +764,7 @@ public class AcideDebugSQLPanel extends JPanel {
 					AcideDebugHelper.showView(view);
 				}
 			}else if(SwingUtilities.isRightMouseButton(e)){
-				showPopupMenu(e);
+				adaptee.this_mousePressed(e);
 			}
 		}
 
