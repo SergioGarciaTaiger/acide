@@ -43,7 +43,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
-import javax.swing.JComboBox;
+import javax.swing.*;
 
 import acide.configuration.debug.AcideDebugConfiguration;
 import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
@@ -131,5 +131,9 @@ public class AcideDebugSQLPanelViewBoxListener implements ActionListener {
 				}).start();
 			}
 		}
+		SwingUtilities.invokeLater(() -> {
+			((JComboBox) ev.getSource()).setEnabled(false);
+			((JComboBox) ev.getSource()).setEnabled(true);
+		});
 	}
 }

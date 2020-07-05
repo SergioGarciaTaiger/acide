@@ -39,10 +39,7 @@
  */
 package acide.gui.debugPanel.debugSQLPanel;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
@@ -61,6 +58,7 @@ import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.console.DesDatabaseManager;
+import javafx.scene.control.Tooltip;
 
 /**
  * 
@@ -138,6 +136,11 @@ public class AcideDebugSQLPanel extends JPanel {
 	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
 	 */
 	private JMenuItem _contents;
+
+	/**
+	 * ACIDE - A Configurable IDE debug SQL panel Color Node.
+	 */
+	private JMenuItem _nodeState;
 
 	/**
 	 * ACIDE - A Configurable IDE debug SQL panel contents menuItem.
@@ -670,6 +673,8 @@ public class AcideDebugSQLPanel extends JPanel {
 		_errorNodeItem.addActionListener(new AcideDebugSQLPanelShowErrorsListener());
 		_popUp.add(_errorNodeItem);
 
+		_nodeState = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2375"));
+		_popUp.add(_nodeState);
 	}
 
 	public void this_mousePressed(MouseEvent e) {
@@ -744,8 +749,23 @@ public class AcideDebugSQLPanel extends JPanel {
 				_missingNodeItem.setEnabled(false);
 				_validNodeItem.setEnabled(false);
 			}
+
+			checkNodeState();
 			// we show the popUp in the position of mouse
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
+		}
+	}
+
+	private void checkNodeState(){
+		Color c = _canvas.getSelectedNode().getNodeColor();
+		if(c.equals(Color.RED)){
+			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2374"));
+		}else if(c.equals(Color.ORANGE)){
+			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2373"));
+		}else if(c.equals(Color.GREEN)){
+			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2372"));
+		}else{
+			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2375"));
 		}
 	}
 
@@ -771,7 +791,36 @@ public class AcideDebugSQLPanel extends JPanel {
 		public void mouseReleased(MouseEvent e) {
 			adaptee.setSelectedNode(e);
 		}
+
+		public void mouseEntered(MouseEvent e){
+			//adaptee.mouse_entered(e);
+		}
 	}
+
+	/*private void mouse_entered(MouseEvent e){
+		// Gets the graph of the canvas
+		DirectedWeightedGraph graph = _canvas.get_graph();
+		// Gets the nodes of the graph
+		ArrayList<Node> nodes = graph.get_nodes();
+		// Searches if a node has been clicked
+		for (Node n : nodes) {
+			if (e.getX() >= n.getX()
+					&& e.getX() <= n.getX() + (int) (_canvas.getNodeSize() * _canvas.getZoom())
+					&& e.getY() >= n.getY()
+					&& e.getY() <= n.getY() + (int) (_canvas.getNodeSize() * _canvas.getZoom())) {
+				Graphics g = new Gr
+				if(n.getNodeColor().equals(Color.GRAY))
+					t.setText("unknown");
+				if(n.getNodeColor().equals(Color.RED))
+					t.setText("erroneous");
+				if(n.getNodeColor().equals(Color.GREEN))
+					t.setText("valid");
+				if(n.getNodeColor().equals(Color.ORANGE))
+					t.setText("nonvalid");
+				t.
+			}
+		}
+	}*/
 
 	/**
 	 * Sets the ACIDE - A Configurable IDE database panel listeners.

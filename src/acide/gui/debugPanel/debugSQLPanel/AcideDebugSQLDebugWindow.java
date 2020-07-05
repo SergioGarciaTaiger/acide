@@ -158,6 +158,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Adds the components to the window with the layout
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 1.0;
+        constraints.weighty = 1.0;
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -546,6 +548,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.viewTable.setPreferredSize(this.jTable.getSize());
         // Adds the view viewTable to the main panel
         mainPanel.add(this.viewTable, constraints);
+
+        this.setMinimumSize(viewTable.getSize());
     }
 
     public void setViewTable(JScrollPane viewTable){
@@ -571,7 +575,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     public void setCurrentQuestion(String currentQuestion) {
         this.currentQuestion = currentQuestion;
     }
-
 
     public JScrollPane getViewTable() {
         return viewTable;
