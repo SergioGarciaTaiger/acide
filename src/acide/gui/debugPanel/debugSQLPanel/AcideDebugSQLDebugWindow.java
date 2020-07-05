@@ -441,7 +441,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             String text = AcideDatabaseManager.getInstance().getSQLText("$des", view);
-            new AcideEnterTextWindow(text, AcideLanguageManager.getInstance().getLabels().getString("s2036"), true);
+            AcideEnterTextWindow a = new AcideEnterTextWindow(text, AcideLanguageManager.getInstance().getLabels().getString("s2036"), true);
+            SwingUtilities.invokeLater(() -> stopDepug(view));
         }
     }
 

@@ -22,6 +22,7 @@ import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
 
@@ -408,7 +409,25 @@ public class AcideDebugHelper {
         else {
             info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
             window.setIsReadOnly(true);
-            AcideDataBaseDataViewTable a = window.getTable();
+            title = AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2367");
+        }
+        window.build(info);
+        JScrollPane srollPane = window.getSrollPane();
+        AcideDataBaseDataViewTable a = window.getTable();
+        srollPane.setPreferredSize(a.getSize());
+        window.closeWindow();
+        ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
+        Image image = icon.getImage(); // transform it
+        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        icon = new ImageIcon(newimg);
+        if(!action.equals("missing")){
+
+            for( MouseListener listener : a.getMouseListeners() ) {
+                a.removeMouseListener(listener);
+            }
+            a.changeSelection(1, 1, false, false);
+            a.changeSelection(1, a.getColumnCount()-1, true, true);
             a.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
                     int fila = a.rowAtPoint(e.getPoint());
@@ -416,17 +435,8 @@ public class AcideDebugHelper {
                     a.changeSelection(fila, a.getColumnCount()-1, true, true);
                 }
             });
-            title = AcideLanguageManager.getInstance().getLabels()
-                    .getString("s2367");
         }
-        window.build(info);
-        JScrollPane srollPane = window.getSrollPane();
-        srollPane.setPreferredSize(window.getTable().getSize());
-        window.closeWindow();
-        ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
-        Image image = icon.getImage(); // transform it
-        Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        icon = new ImageIcon(newimg);
+        srollPane.setPreferredSize(new Dimension(srollPane.getWidth()+200, srollPane.getHeight() + 50));
         int input = JOptionPane.showConfirmDialog(null, srollPane, title,
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
         if(input == 0)

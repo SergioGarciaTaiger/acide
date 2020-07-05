@@ -54,6 +54,8 @@ import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 
+import javax.swing.*;
+
 /**
  * ACIDE - A Configurable IDE debug canvas parse task.
  * 
@@ -175,12 +177,14 @@ public class AcideDebugCanvasParseTask implements Runnable {
 				}
 			if (_destiny.equals(DESTINY_MAIN)){
 				// parses the input to obtain the graph
-				_canvas.set_graph(AcideDebugCanvas.parseGraphTapi(in));
-				// sets the main graph
-				_success = true;
+				SwingUtilities.invokeLater(() -> {
+					_canvas.set_graph(AcideDebugCanvas.parseGraphTapi(in));
+					// sets the main graph
+					_success = true;
+					AcideDebugHelper.paintTrustedTables(_canvas);
+				});
 			}
 		}
-		AcideDebugHelper.paintTrustedTables(_canvas);
 	}
 
 	/**

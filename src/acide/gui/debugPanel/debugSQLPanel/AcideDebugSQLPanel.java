@@ -701,7 +701,7 @@ public class AcideDebugSQLPanel extends JPanel {
 				highLighter.highLight(selected);
 			}
 		}
-		AcideDebugHelper.updateCanvasDebug(_canvas);
+		SwingUtilities.invokeLater(() -> AcideDebugHelper.updateCanvasDebug(_canvas));
 	}
 
 	private void showPopupMenu(MouseEvent e) {
