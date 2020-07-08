@@ -428,8 +428,8 @@ public AcideEnterTextWindow(String prompt, String title, boolean editable, Strin
 
 					if (error) {
 						text = _prompt.replace('\n', ' ');
-						AcideDatabaseManager.getInstance()
-								.executeCommand("/tapi CREATE OR REPLACE VIEW " + view_name + " AS " + text);
+//						AcideDatabaseManager.getInstance()
+//								.executeCommand("/tapi CREATE OR REPLACE VIEW " + view_name + " AS " + text);
 						JLabel label = new JLabel();
 						if (result.size() >= 2) {
 							result.get(2).replace("(SQL)", "");

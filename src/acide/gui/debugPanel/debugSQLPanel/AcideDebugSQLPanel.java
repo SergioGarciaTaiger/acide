@@ -755,7 +755,6 @@ public class AcideDebugSQLPanel extends JPanel {
 			_popUp.show(e.getComponent(), e.getX(), e.getY());
 		}
 	}
-
 	private void checkNodeState(){
 		Color c = _canvas.getSelectedNode().getNodeColor();
 		if(c.equals(Color.RED)){

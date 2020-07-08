@@ -51,6 +51,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     private JScrollPane viewTable;
     private AcideDataBaseDataViewTable jTable;
 
+    private AcideDatabaseDataView subsetView;
+
     private static final ImageIcon ICON = new ImageIcon(
             "./resources/images/icon.png");
 
@@ -224,7 +226,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     private void setWindowConfiguration(){
         // The window is not resizable
-        setResizable(false);
+        setResizable(true);
 
         // Packs the window components
         pack();
@@ -237,7 +239,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     /**
      * Closes the ACIDE - A Configurable IDE debug configuration window.
      */
-
     public void closeWindow() {
         // Enables the main window again
         AcideMainWindow.getInstance().setEnabled(true);
@@ -271,6 +272,11 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         viewTable.setVisible(true);
         errorPanel.setVisible(false);
 
+        if(errors.size()>0)
+            errorsLabel.setVisible(true);
+        else
+            errorsLabel.setVisible(false);
+
         setWindowConfiguration();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
@@ -278,8 +284,51 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Displays the window
         setVisible(true);
         setResizable(true);
+        if(questionType.equals("subset") && subsetView!=null){
+            this.setLocation(300+subsetView.getWidth(), 300);
+        }
     }
 
+    public void stopDepug(String view){
+        String type;
+        if(DesDatabaseManager.getInstance().isTable("$des", view)){
+            editTableButton.setVisible(true);
+            editViewButton.setVisible(false);
+            type = AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2371");
+        }else{
+            editTableButton.setVisible(false);
+            editViewButton.setVisible(true);
+            type = AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2370");
+        }
+        String info = AcideLanguageManager.getInstance().getLabels()
+                .getString("s2345") + " " + type + " '" + view + "' <br>" + AcideLanguageManager.getInstance().getLabels()
+                .getString("s2346");
+        if(errors.size() > 0){
+            info += "<br>" + AcideLanguageManager.getInstance().getLabels()
+                    .getString("s2365");
+            for(String line: errors){
+                info += "<br>" + " " + " " + " - " + line;
+            }
+        }
+        this.setTitle(AcideLanguageManager.getInstance().getLabels()
+                .getString("s2344"));
+        this.setView(view);
+        setInfo(info);
+        viewTable.setVisible(false);
+        questionLabel.setVisible(false);
+        errorsLabel.setVisible(false);
+        buttonPanel.setVisible(false);
+        errorPanel.setVisible(true);
+        setWindowConfiguration();
+
+        AcideDebugSQLPanel.startDebug.setEnabled(true);
+        AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
+        this.setSize(new Dimension(350,200));
+        this.setMinimumSize(new Dimension(350,150));
+        this.setVisible(true);
+    }
 
     /**
      * ACIDE - A Configurable IDE debug configuration window escape key
@@ -484,46 +533,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setWindowConfiguration();
     }
 
-    public void stopDepug(String view){
-        String type;
-        if(DesDatabaseManager.getInstance().isTable("$des", view)){
-            editTableButton.setVisible(true);
-            editViewButton.setVisible(false);
-            type = AcideLanguageManager.getInstance().getLabels()
-                    .getString("s2371");
-        }else{
-            editTableButton.setVisible(false);
-            editViewButton.setVisible(true);
-            type = AcideLanguageManager.getInstance().getLabels()
-                    .getString("s2370");
-        }
-        String info = AcideLanguageManager.getInstance().getLabels()
-                .getString("s2345") + " " + type + " '" + view + "' <br>" + AcideLanguageManager.getInstance().getLabels()
-                .getString("s2346");
-        if(errors.size() > 0){
-            info += "<br>" + AcideLanguageManager.getInstance().getLabels()
-                    .getString("s2365");
-            for(String line: errors){
-                info += "<br>" + " " + " " + " - " + line;
-            }
-        }
-        this.setTitle(AcideLanguageManager.getInstance().getLabels()
-                .getString("s2344"));
-        this.setView(view);
-        setInfo(info);
-        viewTable.setVisible(false);
-        questionLabel.setVisible(false);
-        errorsLabel.setVisible(false);
-        buttonPanel.setVisible(false);
-        errorPanel.setVisible(true);
-        setWindowConfiguration();
-
-        AcideDebugSQLPanel.startDebug.setEnabled(true);
-        AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
-        this.setVisible(true);
-    }
-
-    public void  putView(String view, JScrollPane viewTable){
+    public void putView(String view, JScrollPane viewTable){
         try {
             if(this.view != null)
                 mainPanel.remove(this.viewTable);
@@ -540,16 +550,34 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.insets = new Insets(5, 5, 5, 5);
 
+//        DefaultTableModel a = ((AcideDatabaseDataView.MyTableModel) jTable.getModel());
+//        Vector vector = a.getDataVector();
+//        Vector emptyRow = (Vector) vector.get(0);
+//        for(int i = 0; i < emptyRow.size(); i++)
+//            if(i == 0)
+//                emptyRow.set(i, null);
+//            else
+//                emptyRow.set(i, "");
+//
+//        a.insertRow(jTable.getRowCount(), emptyRow);
+//
+//        jTable = new AcideDataBaseDataViewTable(a, jTable._dataView);
+
+        int width = (jTable.getColumnCount() - 1) * 150 + 30;
+        int height = jTable.getRowHeight() * jTable.getRowCount();
+
         constraints.gridx = 0;
         constraints.gridy = 1;
-        constraints.ipadx = 250;
-        constraints.ipady = 200;
+        constraints.ipadx = width;
+        constraints.ipady = height;
 
-        this.viewTable.setPreferredSize(this.jTable.getSize());
+
+
+        this.viewTable.setPreferredSize(new Dimension(width, height));
         // Adds the view viewTable to the main panel
         mainPanel.add(this.viewTable, constraints);
 
-        this.setMinimumSize(viewTable.getSize());
+        this.setMinimumSize(new Dimension(width + 50,height + 200));
     }
 
     public void setViewTable(JScrollPane viewTable){
@@ -665,9 +693,31 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         wrongTupleButton.setVisible(true);
         missingTupleButton.setVisible(false);
 
+        String relation = currentQuestion.substring(currentQuestion.indexOf("(") + 1, currentQuestion.indexOf(","));
+
+        subsetView = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", relation);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", relation);
+        if(!info.isEmpty())
+            subsetView.build(info);
+
+        subsetView.setAlwaysOnTop(true);
+        subsetView.setAlwaysOnTop(false);
+        subsetView.setVisible(true);
+
+        subsetView.setLocation(300, 300);
+
         validButton.setText(AcideLanguageManager.getInstance()
                 .getLabels().getString("s2348"));
         nonValidButton.setText(AcideLanguageManager.getInstance()
                 .getLabels().getString("s2349"));
+        questionLabel.setText(AcideLanguageManager.getInstance()
+                .getLabels().getString("s2378") + view + "?");
+    }
+
+    public AcideDatabaseDataView getSubsetView() {
+        return subsetView;
+    }
+    public void setSubsetView(){
+        subsetView = null;
     }
 }

@@ -172,14 +172,20 @@ public class AcideDebugHelper {
         panelDv.setVisible(true);
     }
 
+    public static void showViewSubset(String view){
+
+    }
+
     public static void resetColorNodes(){
-        AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
-                .getDebugPanel().getDebugSQLPanel().getCanvas();
-        for(Node n : debugCanvas.get_graph().get_nodes()){
-            debugCanvas.setSelectedNode(n);
-            debugCanvas.setColorSelectedNode(Color.GRAY);
+        if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+            AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()
+                    .getDebugPanel().getDebugSQLPanel().getCanvas();
+            for (Node n : debugCanvas.get_graph().get_nodes()) {
+                debugCanvas.setSelectedNode(n);
+                debugCanvas.setColorSelectedNode(Color.GRAY);
+            }
+            updateCanvasDebug(debugCanvas);
         }
-        updateCanvasDebug(debugCanvas);
     }
 
     public static void startDebug(){
@@ -191,7 +197,8 @@ public class AcideDebugHelper {
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
             paintTrustedTables(canvas);
-            canvas.setSelectedNode(canvas.getRootNode());
+            if(canvas.getSelectedNode() == null || !AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                canvas.setSelectedNode(canvas.getRootNode());
             String view = getSelectedViewName();
 
             AcideDebugSQLPanel.startDebug.setEnabled(false);
@@ -281,6 +288,16 @@ public class AcideDebugHelper {
     public static JScrollPane getViewTable(String view) {
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView("$des", view);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        if(!info.isEmpty()) {
+            for(int i = 0; i < viewWindow.getTable().getColumnCount(); i++){
+                if(i == 0)
+                    info.add("$");
+                else
+                    info.add("");
+            }
+            viewWindow.build(info);
+        }
         viewWindow.setState(viewWindow.NORMAL);
         JScrollPane scrollPane = viewWindow.getSrollPane();
         Dimension d = new Dimension(viewWindow.getTable().getWidth(),viewWindow.getTable().getHeight());
@@ -298,10 +315,14 @@ public class AcideDebugHelper {
             consoleInfo = DesDatabaseManager.getInstance().
                     startDebug(getSelectedViewName(), AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         } else {
+            if(AcideDebugSQLDebugWindow.getInstance().getSubsetView() != null){
+                AcideDebugSQLDebugWindow.getInstance().getSubsetView().closeWindow();
+                AcideDebugSQLDebugWindow.getInstance().setSubsetView();
+            }
             consoleInfo = DesDatabaseManager.getInstance().debugCurrentAnswer(
                     AcideDebugSQLDebugWindow.getInstance().getCurrentQuestion(), action);
         }
-        nextMovement(consoleInfo);
+        nextMovement(consoleInfo, false);
     }
 
     public static void startNodeDebug(String node, String action){
@@ -314,7 +335,7 @@ public class AcideDebugHelper {
                 startDebug(node, AcideDebugConfiguration.getInstance().getDebugConfiguration(), action);
         //JOptionPane.showMessageDialog(null, consoleInfo);
         checkError(updateDebugState(consoleInfo));
-        highlightNext();
+        nextMovement(consoleInfo, true);
     }
 
     public static void performNodeDebug(String node, String action){
@@ -322,7 +343,7 @@ public class AcideDebugHelper {
                 setNodeState(node, action);
         //JOptionPane.showMessageDialog(null, consoleInfo);
         checkError(updateDebugState(consoleInfo));
-        highlightNext();
+        nextMovement(consoleInfo, true);
     }
 
     private static void checkError(String info){
@@ -335,7 +356,7 @@ public class AcideDebugHelper {
         }
     }
 
-    private static void nextMovement(LinkedList<String> info){
+    private static void nextMovement(LinkedList<String> info, boolean nodeDebug){
 
         // Info empty is abort
         if(!info.isEmpty()) {
@@ -345,8 +366,10 @@ public class AcideDebugHelper {
                 AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
                 String nextView = parseCurrentQuestion(currentQuestion);
                 updateHighlight(nextView);
-                AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
-                updateDebugWindow();
+                JScrollPane s = getViewTable(nextView);
+                AcideDebugSQLDebugWindow.getInstance().putView(nextView, s);
+                if(!nodeDebug)
+                    updateDebugWindow();
             } else if (errorView.startsWith("debugError")) {
                 errorView = errorView.replace("debugError","");
                 JOptionPane.showMessageDialog(null, errorView);
@@ -361,8 +384,13 @@ public class AcideDebugHelper {
 
     public static void updateDebugWindow() {
         String view = AcideDebugSQLDebugWindow.getInstance().getView();
-        AcideDebugSQLDebugWindow.getInstance().setInfo("Debugging view " + view);
-        AcideDebugSQLDebugWindow.getInstance().setQuestion("Is this the expected result of this view?");
+        String type = DesDatabaseManager.getInstance().isTable("$des", view) ? AcideLanguageManager.getInstance().getLabels()
+                .getString("s2371") : AcideLanguageManager.getInstance().getLabels()
+                .getString("s2370");
+        AcideDebugSQLDebugWindow.getInstance().setInfo(AcideLanguageManager.getInstance().getLabels()
+                .getString("s2376") + type + " " + view);
+        AcideDebugSQLDebugWindow.getInstance().setQuestion(AcideLanguageManager.getInstance().getLabels()
+                .getString("s2377") + type +"?");
     }
 
     // Gets the view selected in the SQL Debug SQL panel canvas
@@ -415,7 +443,12 @@ public class AcideDebugHelper {
         window.build(info);
         JScrollPane srollPane = window.getSrollPane();
         AcideDataBaseDataViewTable a = window.getTable();
-        srollPane.setPreferredSize(a.getSize());
+        int width = (a.getColumnCount() - 1) * 150 + 30;
+        int height = a.getRowHeight() * a.getRowCount();
+        if(height < 80){
+            height = 80;
+        }
+        srollPane.setPreferredSize(new Dimension(width, height));
         window.closeWindow();
         ImageIcon icon = new ImageIcon("./resources/images/acideLogo.png");
         Image image = icon.getImage(); // transform it
@@ -436,7 +469,6 @@ public class AcideDebugHelper {
                 }
             });
         }
-        srollPane.setPreferredSize(new Dimension(srollPane.getWidth()+200, srollPane.getHeight() + 50));
         int input = JOptionPane.showConfirmDialog(null, srollPane, title,
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, icon);
         if(input == 0)
@@ -492,7 +524,6 @@ public class AcideDebugHelper {
                 }
             }
         }
-        canvas.setSelectedNode(canvas.getRootNode());
         updateCanvasDebug(canvas);
     }
 
