@@ -673,7 +673,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         Vector<Vector> data = ((AcideDatabaseDataView.MyTableModel) jTable.getModel()).getDataVector();
         for(int i = 0; i < data.size(); i++){
             if(AcideDebugHelper.parseTupleContent(data.get(i)).equals(tupleContent)){
-                jTable.changeSelection(i, jTable.getColumnCount(),true, true);
+                jTable.changeSelection(i, 1, false, false);
+                jTable.changeSelection(i, jTable.getColumnCount()-1, true, true);
                 break;
             }
         }
@@ -707,9 +708,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         subsetView.setLocation(300, 300);
 
         validButton.setText(AcideLanguageManager.getInstance()
-                .getLabels().getString("s2348"));
+                .getLabels().getString("s62"));
         nonValidButton.setText(AcideLanguageManager.getInstance()
-                .getLabels().getString("s2349"));
+                .getLabels().getString("s63"));
         questionLabel.setText(AcideLanguageManager.getInstance()
                 .getLabels().getString("s2378") + view + "?");
     }
