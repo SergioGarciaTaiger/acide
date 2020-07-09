@@ -277,7 +277,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         else
             errorsLabel.setVisible(false);
 
-        setWindowConfiguration();
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
         Cursor.getDefaultCursor();
@@ -287,6 +286,21 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         if(questionType.equals("subset") && subsetView!=null){
             this.setLocation(300+subsetView.getWidth(), 300);
         }
+
+        int width = (jTable.getColumnCount() - 1) * 150 + 30;
+        int height = jTable.getRowHeight() * jTable.getRowCount() + 200;
+
+        if(errors.size()>0){
+            height += 80 + (errors.size()*35);
+        }
+
+        if(width < 500)
+            width = 500;
+        if(height < 200)
+            height = 200;
+        setWindowConfiguration();
+
+        this.setSize(new Dimension(width, height));
     }
 
     public void stopDepug(String view){
@@ -320,14 +334,14 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         questionLabel.setVisible(false);
         errorsLabel.setVisible(false);
         buttonPanel.setVisible(false);
-        errorPanel.setVisible(true);
-        setWindowConfiguration();
+        errorPanel.setVisible(true);;
 
         AcideDebugSQLPanel.startDebug.setEnabled(true);
         AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
         this.setSize(new Dimension(350,200));
         this.setMinimumSize(new Dimension(350,150));
         this.setVisible(true);
+        setWindowConfiguration();
     }
 
     /**
@@ -576,8 +590,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         this.viewTable.setPreferredSize(new Dimension(width, height));
         // Adds the view viewTable to the main panel
         mainPanel.add(this.viewTable, constraints);
-
-        this.setMinimumSize(new Dimension(width + 50,height + 200));
     }
 
     public void setViewTable(JScrollPane viewTable){

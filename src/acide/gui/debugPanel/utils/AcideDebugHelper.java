@@ -172,10 +172,6 @@ public class AcideDebugHelper {
         panelDv.setVisible(true);
     }
 
-    public static void showViewSubset(String view){
-
-    }
-
     public static void resetColorNodes(){
         if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
             AcideDebugCanvas debugCanvas = AcideMainWindow.getInstance()

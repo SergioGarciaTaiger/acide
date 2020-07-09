@@ -303,7 +303,7 @@ public class AcideDatabaseDataView extends JFrame{
 		filas[fil] = _jTable.getRowCount()-numToAdd;
 		Vector<String> dataColumns = getDataColumns(filas).get(fil);
 		
-		if(!hasData(dataColumns)) return;
+		if(!hasData(dataColumns) || !isTable()) return;
 		
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		
@@ -1037,6 +1037,10 @@ public class AcideDatabaseDataView extends JFrame{
 
 	public Boolean getIsReadOnly() {
 		return _isReadOnly;
+	}
+
+	public Boolean isTable(){
+		return _isTable;
 	}
 
 	
