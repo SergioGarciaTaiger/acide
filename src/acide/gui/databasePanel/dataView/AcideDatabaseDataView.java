@@ -202,7 +202,7 @@ public class AcideDatabaseDataView extends JFrame{
 			this.getContentPane().add(_statusBar, BorderLayout.SOUTH);
 		}
 		
-		if(!_isReadOnly){
+		if(!_isReadOnly && _isTable){
 			_jTable.setSurrendersFocusOnKeystroke(true); 
 			final AcideDatabaseDataView dataView = this;
 			_jTable.getTableHeader().addMouseListener(new MouseAdapter() {

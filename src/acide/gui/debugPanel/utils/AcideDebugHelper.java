@@ -366,8 +366,7 @@ public class AcideDebugHelper {
                 AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
                 String nextView = parseCurrentQuestion(currentQuestion);
                 updateHighlight(nextView);
-                JScrollPane s = getViewTable(nextView);
-                AcideDebugSQLDebugWindow.getInstance().putView(nextView, s);
+                AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
                 if(!nodeDebug)
                     updateDebugWindow();
             } else if (errorView.startsWith("debugError")) {
