@@ -73,6 +73,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         this.setIconImage(ICON.getImage());
 
+        setLocationRelativeTo(null);
+
         // Builds the window components
         buildComponents();
 
@@ -231,9 +233,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         // Packs the window components
         pack();
 
-        // Centers the window
-        setLocationRelativeTo(null);
-
     }
 
     /**
@@ -294,8 +293,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
             height += 80 + (errors.size()*35);
         }
 
-        if(width < 500)
-            width = 500;
+        if(width < 600)
+            width = 600;
         if(height < 200)
             height = 200;
         setWindowConfiguration();
@@ -305,7 +304,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void stopDepug(String view){
         String type;
-        if(DesDatabaseManager.getInstance().isTable("$des", view)){
+        if(DesDatabaseManager.getInstance().isTable(AcideMainWindow.getInstance().getDataBasePanel().getTree()
+                .getSelectionPath().getParentPath().getParentPath().getLastPathComponent().toString(), view)){
             editTableButton.setVisible(true);
             editViewButton.setVisible(false);
             type = AcideLanguageManager.getInstance().getLabels()
@@ -405,14 +405,24 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            addError(AcideLanguageManager.getInstance()
-                    .getLabels().getString("s2363") + " " + AcideDebugSQLDebugWindow.getInstance().getView() + " " +
-                    AcideLanguageManager.getInstance()
-                            .getLabels().getString("s2364") + " (" + AcideDebugHelper.getDataFromSelectedTuple(jTable) + ")");
-            AcideDebugHelper.performDebug("missing(" +
-                AcideDebugSQLDebugWindow.getInstance().getView() + "(" + AcideDebugHelper.getDataFromSelectedTuple(jTable) +"))");
-            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
-                SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
+            jTable.changeSelection(jTable.getRowCount()-1, 1, false, false);
+            jTable.changeSelection(jTable.getRowCount()-1, jTable.getColumnCount()-1, true, true);
+            String data = AcideDebugHelper.getDataFromSelectedTuple(jTable);
+            // Check data is not null
+            String trimmedData =  data.replace("'", "").replace(",", "");
+            if(trimmedData.isEmpty()){
+                JOptionPane.showMessageDialog(null, AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2379"));
+            } else {
+                addError(AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2363") + " " + AcideDebugSQLDebugWindow.getInstance().getView() + " " +
+                        AcideLanguageManager.getInstance()
+                                .getLabels().getString("s2364") + " (" + data + ")");
+                AcideDebugHelper.performDebug("missing(" +
+                        AcideDebugSQLDebugWindow.getInstance().getView() + "(" + data + "))");
+                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                    SwingUtilities.invokeLater(() -> AcideDebugSQLDebugWindow.getInstance().showWindow());
+            }
         }
     }
 
@@ -505,7 +515,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            String text = AcideDatabaseManager.getInstance().getSQLText("$des", view);
+            String db = DesDatabaseManager.getInstance().currentDB();
+            String text = AcideDatabaseManager.getInstance().getSQLText(db, view);
             AcideEnterTextWindow a = new AcideEnterTextWindow(text, AcideLanguageManager.getInstance().getLabels().getString("s2036"), true);
             SwingUtilities.invokeLater(() -> stopDepug(view));
         }
@@ -708,8 +719,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         String relation = currentQuestion.substring(currentQuestion.indexOf("(") + 1, currentQuestion.indexOf(","));
 
-        subsetView = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", relation);
-        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", relation);
+        String db = DesDatabaseManager.getInstance().currentDB();
+        subsetView = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, relation);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, relation);
         if(!info.isEmpty())
             subsetView.build(info);
 

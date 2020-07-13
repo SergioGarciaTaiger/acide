@@ -1703,7 +1703,7 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 	public boolean isTable(String db, String tabla) {
 
-		LinkedList<String> result = executeCommand("/list_tables");
+		LinkedList<String> result = executeCommand("/tapi /list_tables");
 
 		int i = 0;
 

@@ -5,6 +5,7 @@ import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfig
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.console.AcideDatabaseManager;
+import acide.process.console.DesDatabaseManager;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +17,8 @@ public class AcideDebugSQLPanelEditViewListener implements ActionListener {
         try {
             String view = AcideMainWindow.getInstance().getDebugPanel()
                     .getDebugSQLPanel().getCanvas().getSelectedNode().getLabel().split("/")[0];
-            String text = AcideDatabaseManager.getInstance().getSQLText("$des", view);
+            String db = DesDatabaseManager.getInstance().currentDB();
+            String text = AcideDatabaseManager.getInstance().getSQLText(db, view);
             new AcideEnterTextWindow(text, AcideLanguageManager.getInstance().getLabels().getString("s2036"), true);
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()

@@ -733,7 +733,8 @@ public class AcideDebugSQLPanel extends JPanel {
 			else
 				_validNodeItem.setVisible(true);
 			// if is table not show edit view
-			if(DesDatabaseManager.getInstance().isTable("$des", _canvas.getSelectedNode().getLabel().split("/")[0]))
+			String db = DesDatabaseManager.getInstance().currentDB();
+			if(DesDatabaseManager.getInstance().isTable(db, _canvas.getSelectedNode().getLabel().split("/")[0]))
 				_editView.setVisible(false);
 			else
 				_editView.setVisible(true);

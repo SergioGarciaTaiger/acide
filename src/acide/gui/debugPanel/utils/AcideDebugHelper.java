@@ -162,8 +162,9 @@ public class AcideDebugHelper {
     }
 
     public static void showView(String view){
-        AcideDatabaseDataView panelDv = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
-        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+        String db = DesDatabaseManager.getInstance().currentDB();
+        AcideDatabaseDataView panelDv = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, view);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty())
             panelDv.build(info);
         panelDv.setState(panelDv.NORMAL);
@@ -282,9 +283,10 @@ public class AcideDebugHelper {
     }
 
     public static JScrollPane getViewTable(String view) {
+        String db = DesDatabaseManager.getInstance().currentDB();
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
-                .getDataView("$des", view);
-        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+                .getDataView(db, view);
+        LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty()) {
             for(int i = 0; i < viewWindow.getTable().getColumnCount(); i++){
                 if(i == 0)
@@ -379,7 +381,8 @@ public class AcideDebugHelper {
 
     public static void updateDebugWindow() {
         String view = AcideDebugSQLDebugWindow.getInstance().getView();
-        String type = DesDatabaseManager.getInstance().isTable("$des", view) ? AcideLanguageManager.getInstance().getLabels()
+        String db = DesDatabaseManager.getInstance().currentDB();
+        String type = DesDatabaseManager.getInstance().isTable(db, view) ? AcideLanguageManager.getInstance().getLabels()
                 .getString("s2371") : AcideLanguageManager.getInstance().getLabels()
                 .getString("s2370");
         AcideDebugSQLDebugWindow.getInstance().setInfo(AcideLanguageManager.getInstance().getLabels()
@@ -416,7 +419,8 @@ public class AcideDebugHelper {
     }
 
     public static String getUserInputTuple(String view, String action){
-        AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView("$des", view);
+        String db = DesDatabaseManager.getInstance().currentDB();
+        AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, view);
         LinkedList<String> info;
         String title;
         if(action.equals("missing")) {
@@ -430,7 +434,7 @@ public class AcideDebugHelper {
                     .getString("s2366");
         }
         else {
-            info = AcideDatabaseManager.getInstance().getSelectAll("$des", view);
+            info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
             window.setIsReadOnly(true);
             title = AcideLanguageManager.getInstance().getLabels()
                     .getString("s2367");
@@ -512,9 +516,10 @@ public class AcideDebugHelper {
     }
 
     public static void paintTrustedTables(AcideDebugCanvas canvas){
+        String db = DesDatabaseManager.getInstance().currentDB();
         if(AcideDebugConfiguration.getInstance().getTrust_tables().equals(AcideDebugConfiguration.Trust_tables.YES)) {
             for (Node n : canvas.get_graph().get_nodes()) {
-                if (DesDatabaseManager.getInstance().isTable("$des", n.getLabel().split("/")[0])) {
+                if (DesDatabaseManager.getInstance().isTable(db, n.getLabel().split("/")[0])) {
                     n.setNodeColor(Color.GREEN);
                 }
             }
@@ -538,13 +543,6 @@ public class AcideDebugHelper {
                 return true;
         }
         return false;
-    }
-
-    private static void highlightNext(){
-        LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
-        AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
-        String nextView = parseCurrentQuestion(currentQuestion);
-        updateHighlight(nextView);
     }
 
     public static boolean isRootView(String view){
