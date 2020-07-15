@@ -304,8 +304,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
     public void stopDepug(String view){
         String type;
-        if(DesDatabaseManager.getInstance().isTable(AcideMainWindow.getInstance().getDataBasePanel().getTree()
-                .getSelectionPath().getParentPath().getParentPath().getLastPathComponent().toString(), view)){
+        if(DesDatabaseManager.getInstance().isTable(DesDatabaseManager.getInstance().currentDB(), view)){
             editTableButton.setVisible(true);
             editViewButton.setVisible(false);
             type = AcideLanguageManager.getInstance().getLabels()
@@ -455,6 +454,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
+            AcideDebugHelper.refreshDebugGraph();
             if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
                 AcideDebugHelper.performDebug("abort");
             closeWindow();

@@ -41,16 +41,8 @@ package acide.gui.debugPanel.debugSQLPanel.listeners;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 
-import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
-import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.utils.AcideDebugHelper;
-import acide.gui.graphCanvas.AcideGraphCanvas;
-import acide.gui.graphCanvas.AcideGraphCanvas.CanvasPanel;
-import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
-import acide.gui.mainWindow.AcideMainWindow;
-import acide.process.console.DesDatabaseManager;
 
 /**
  * /** ACIDE - A Configurable IDE trace SQL panel refresh button listener.
@@ -68,28 +60,7 @@ public class AcideDebugSQLPanelRefreshListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String consult = AcideMainWindow.getInstance().getDebugPanel()
-				.getDebugSQLPanel().getQuery();
-		// Gets the trace SQL output for query
-		LinkedList<String> l = DesDatabaseManager.getInstance().executeCommand(
-				"/tapi /trace_sql " + consult);
-		StringBuilder result = new StringBuilder();
-		for (String s : l) {
-			result.append(s).append("\n");
-		}
-		// Parses the result and generates the path graph (/pdg -> /rdg v0.17)
-		final Thread t = new Thread(new AcideDebugCanvasParseTask(result.toString(),
-				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
-				.getInstance().getDebugPanel().getDebugSQLPanel()
-				.getCanvas(), AcideDebugCanvasParseTask.DESTINY_PATH,consult,false));
-		result = new StringBuilder(AcideDebugHelper.obtainSQLResult(t, result.toString(), l, consult));
-		// Parses the result and generates the graph (/pdg -> /rdg v0.17)
-		new Thread(new AcideDebugCanvasParseTask(result.toString(),
-				AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
-				.getInstance().getDebugPanel().getDebugSQLPanel()
-				.getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
-				.start();
-		AcideDebugSQLPanel._canvas.setZoom(1, AcideGraphCanvas.CanvasPanel.DebugSQL);
+		AcideDebugHelper.refreshDebugGraph();
 	}
 
 }

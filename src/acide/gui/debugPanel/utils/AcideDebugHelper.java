@@ -6,15 +6,17 @@ import acide.gui.databasePanel.dataView.AcideDatabaseDataView;
 import acide.gui.databasePanel.dataView.menuBar.editMenu.gui.AcideDataViewReplaceWindow;
 import acide.gui.databasePanel.utils.AcideTree;
 import acide.gui.debugPanel.debugCanvas.AcideDebugCanvas;
+import acide.gui.debugPanel.debugCanvas.tasks.AcideDebugCanvasParseTask;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLPanel;
 import acide.gui.debugPanel.debugSQLPanel.debugSQLConfiguration.AcideDebugConfiguration;
+import acide.gui.graphCanvas.AcideGraphCanvas;
+import acide.gui.graphCanvas.tasks.AcideGraphCanvasParseTask;
 import acide.gui.graphUtils.Node;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.language.AcideLanguageManager;
 import acide.process.console.AcideDatabaseManager;
 import acide.process.console.DesDatabaseManager;
-import sun.awt.resources.awt;
 
 import javax.swing.*;
 import javax.swing.tree.TreeNode;
@@ -288,11 +290,13 @@ public class AcideDebugHelper {
                 .getDataView(db, view);
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty()) {
-            for(int i = 0; i < viewWindow.getTable().getColumnCount(); i++){
-                if(i == 0)
-                    info.add("$");
-                else
-                    info.add("");
+            if(!isLastRowEmpty(viewWindow.getTable())){
+                for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
+                    if (i == 0)
+                        info.add("$");
+                    else
+                        info.add("");
+                }
             }
             viewWindow.build(info);
         }
@@ -337,11 +341,17 @@ public class AcideDebugHelper {
     }
 
     public static void performNodeDebug(String node, String action){
-        LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
-                setNodeState(node, action);
-        //JOptionPane.showMessageDialog(null, consoleInfo);
-        checkError(updateDebugState(consoleInfo));
-        nextMovement(consoleInfo, true);
+        if(isRootView(node)){
+            refreshDebugGraph();
+            performDebug("abort");
+            startNodeDebug(node, action);
+        } else {
+            LinkedList<String> consoleInfo = DesDatabaseManager.getInstance().
+                    setNodeState(node, action);
+            //JOptionPane.showMessageDialog(null, consoleInfo);
+            checkError(updateDebugState(consoleInfo));
+            nextMovement(consoleInfo, true);
+        }
     }
 
     private static void checkError(String info){
@@ -548,5 +558,39 @@ public class AcideDebugHelper {
     public static boolean isRootView(String view){
         AcideDebugCanvas canvas = AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().getCanvas();
         return canvas.getRootNode().getLabel().split("/")[0].equals(view);
+    }
+
+    public static boolean isLastRowEmpty(JTable table){
+        table.changeSelection(table.getRowCount()-1, 1, false, false);
+        table.changeSelection(table.getRowCount()-1, table.getColumnCount()-1, true, true);
+        String data = AcideDebugHelper.getDataFromSelectedTuple(table)
+                .replace("'", "").replace(",", "");
+        table.changeSelection(table.getRowCount()-1, 1, false, false);
+        return data.isEmpty();
+    }
+
+    public static void refreshDebugGraph(){
+        String consult = AcideMainWindow.getInstance().getDebugPanel()
+                .getDebugSQLPanel().getQuery();
+        // Gets the trace SQL output for query
+        LinkedList<String> l = DesDatabaseManager.getInstance().executeCommand(
+                "/tapi /trace_sql " + consult);
+        StringBuilder result = new StringBuilder();
+        for (String s : l) {
+            result.append(s).append("\n");
+        }
+        // Parses the result and generates the path graph (/pdg -> /rdg v0.17)
+        final Thread t = new Thread(new AcideDebugCanvasParseTask(result.toString(),
+                AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
+                .getInstance().getDebugPanel().getDebugSQLPanel()
+                .getCanvas(), AcideDebugCanvasParseTask.DESTINY_PATH,consult,false));
+        result = new StringBuilder(AcideDebugHelper.obtainSQLResult(t, result.toString(), l, consult));
+        // Parses the result and generates the graph (/pdg -> /rdg v0.17)
+        new Thread(new AcideDebugCanvasParseTask(result.toString(),
+                AcideGraphCanvasParseTask.PARSE_TAPI_RDG, AcideMainWindow
+                .getInstance().getDebugPanel().getDebugSQLPanel()
+                .getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
+                .start();
+        AcideDebugSQLPanel._canvas.setZoom(1, AcideGraphCanvas.CanvasPanel.DebugSQL);
     }
 }
