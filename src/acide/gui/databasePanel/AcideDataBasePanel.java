@@ -1464,6 +1464,7 @@ public class AcideDataBasePanel extends JPanel {
 	public AcideDatabaseDataView getDataView(String db, String table) {
 		AcideDatabaseDataView a =  _dataView.get(db).getDataView(db,table);
 		a.setVisible(false);
+		a.setSize(0,0);
 		return a;
 	}
 	
