@@ -25,8 +25,10 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Vector;
 
 public class AcideDebugHelper {
 
@@ -288,6 +290,7 @@ public class AcideDebugHelper {
         String db = DesDatabaseManager.getInstance().currentDB();
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView(db, view);
+        viewWindow.setLocation(AcideDebugSQLDebugWindow.getInstance().getLocation());
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
@@ -593,4 +596,5 @@ public class AcideDebugHelper {
                 .start();
         AcideDebugSQLPanel._canvas.setZoom(1, AcideGraphCanvas.CanvasPanel.DebugSQL);
     }
+
 }
