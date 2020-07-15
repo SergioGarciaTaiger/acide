@@ -917,11 +917,7 @@ public class AcideDataBasePanel extends JPanel {
 
 	/**
 	 * Builds the ACIDE - A Configurable IDE database panel tree.
-	 * 
-	 * @param node
-	 *            node to add to the tree.
-	 * @param file
-	 *            file to add.
+	 *
 	 */
 	public void buildTree() {
 
@@ -1466,7 +1462,9 @@ public class AcideDataBasePanel extends JPanel {
 	 * @return
 	 */
 	public AcideDatabaseDataView getDataView(String db, String table) {
-		return  _dataView.get(db).getDataView(db,table);
+		AcideDatabaseDataView a =  _dataView.get(db).getDataView(db,table);
+		a.setVisible(false);
+		return a;
 	}
 	
 	/**

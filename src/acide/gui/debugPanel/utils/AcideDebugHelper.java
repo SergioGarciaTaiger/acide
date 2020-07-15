@@ -290,6 +290,7 @@ public class AcideDebugHelper {
         String db = DesDatabaseManager.getInstance().currentDB();
         AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
                 .getDataView(db, view);
+        viewWindow.setVisible(false);
         viewWindow.setLocation(AcideDebugSQLDebugWindow.getInstance().getLocation());
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty()) {
