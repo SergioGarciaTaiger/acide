@@ -239,6 +239,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
      * Closes the ACIDE - A Configurable IDE debug configuration window.
      */
     public void closeWindow() {
+        AcideDebugHelper.refreshDebugGraph();
+
         // Enables the main window again
         AcideMainWindow.getInstance().setEnabled(true);
 
@@ -279,8 +281,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setAlwaysOnTop(true);
         setAlwaysOnTop(false);
         Cursor.getDefaultCursor();
-        // Displays the window
-        setVisible(true);
         setResizable(true);
         if(questionType.equals("subset") && subsetView!=null){
             this.setLocation(300+subsetView.getWidth(), 300);
@@ -300,6 +300,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         setWindowConfiguration();
 
         this.setSize(new Dimension(width, height));
+        // Displays the window
+        this.setVisible(true);
+
     }
 
     public void stopDepug(String view){
@@ -454,10 +457,9 @@ public class AcideDebugSQLDebugWindow extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
-            AcideDebugHelper.refreshDebugGraph();
+            closeWindow();
             if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
                 AcideDebugHelper.performDebug("abort");
-            closeWindow();
         }
     }
 

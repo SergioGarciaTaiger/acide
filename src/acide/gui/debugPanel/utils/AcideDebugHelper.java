@@ -191,6 +191,7 @@ public class AcideDebugHelper {
 
     public static void startDebug(){
         try {
+            AcideDebugSQLDebugWindow.getInstance().setVisible(false);
             // Puts the wait cursor
             AcideDataViewReplaceWindow.getInstance().setCursor(
                     Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -288,11 +289,11 @@ public class AcideDebugHelper {
 
     public static JScrollPane getViewTable(String view) {
         String db = DesDatabaseManager.getInstance().currentDB();
-        AcideDatabaseDataView viewWindow = AcideMainWindow.getInstance().getDataBasePanel()
-                .getDataView(db, view);
+        AcideDatabaseDataView viewWindow = new AcideDatabaseDataView(db, view);
         viewWindow.setVisible(false);
         viewWindow.setLocation(AcideDebugSQLDebugWindow.getInstance().getLocation());
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
+        viewWindow.build(info);
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
@@ -314,6 +315,7 @@ public class AcideDebugHelper {
     }
 
     public static void performDebug(String action){
+        AcideDebugSQLDebugWindow.getInstance().setVisible(false);
         LinkedList<String> consoleInfo;
         updateHighlight(AcideDebugSQLDebugWindow.getInstance().getView());
         if(!AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()){

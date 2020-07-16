@@ -113,6 +113,7 @@ import acide.gui.databasePanel.popup.AcideDataBasePanelColumnsPopupMenu;
 import acide.gui.databasePanel.utils.AcideDataBaseTreeCellRenderer;
 import acide.gui.databasePanel.utils.AcideEnterTextWindow;
 import acide.gui.databasePanel.utils.AcideTree;
+import acide.gui.debugPanel.debugSQLPanel.AcideDebugSQLDebugWindow;
 import acide.gui.mainWindow.AcideMainWindow;
 import acide.gui.menuBar.viewMenu.AcideViewMenu;
 import acide.language.AcideLanguageManager;
@@ -1463,6 +1464,7 @@ public class AcideDataBasePanel extends JPanel {
 	 */
 	public AcideDatabaseDataView getDataView(String db, String table) {
 		AcideDatabaseDataView a =  _dataView.get(db).getDataView(db,table);
+		a.setLocation(AcideDebugSQLDebugWindow.getInstance().getLocation());
 		a.setVisible(false);
 		a.setSize(0,0);
 		return a;
