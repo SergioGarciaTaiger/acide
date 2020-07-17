@@ -325,6 +325,8 @@ public class AcideGraphPanel extends JPanel {
 		// shows the componets of the panel
 		AcideMainWindow.getInstance().updateVisibility();
 
+		SwingUtilities.invokeLater(() -> AcideGraphUtil.refreshGraphPanel());
+
 	}
 
 	/**

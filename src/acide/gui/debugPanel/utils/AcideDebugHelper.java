@@ -297,7 +297,7 @@ public class AcideDebugHelper {
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
-                    if (i == 0)
+                    if (i == 0 && db.contains("$des"))
                         info.add("$");
                     else
                         info.add("");
@@ -436,7 +436,9 @@ public class AcideDebugHelper {
 
     public static String getUserInputTuple(String view, String action){
         String db = DesDatabaseManager.getInstance().currentDB();
-        AcideDatabaseDataView window = AcideMainWindow.getInstance().getDataBasePanel().getDataView(db, view);
+        AcideDatabaseDataView window = new AcideDatabaseDataView(db, view);
+        window.setVisible(false);
+        window.setLocation(AcideDebugSQLDebugWindow.getInstance().getLocation());
         LinkedList<String> info;
         String title;
         if(action.equals("missing")) {

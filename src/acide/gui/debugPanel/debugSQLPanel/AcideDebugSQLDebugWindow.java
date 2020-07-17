@@ -342,8 +342,8 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(false);
         this.setSize(new Dimension(350,200));
         this.setMinimumSize(new Dimension(350,150));
-        this.setVisible(true);
         setWindowConfiguration();
+        this.setVisible(true);
     }
 
     /**
@@ -744,6 +744,7 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     public AcideDatabaseDataView getSubsetView() {
         return subsetView;
     }
+
     public void setSubsetView(){
         subsetView = null;
     }
