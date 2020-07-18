@@ -171,7 +171,6 @@ public class AcideDebugHelper {
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         if(!info.isEmpty())
             panelDv.build(info);
-        panelDv.setState(panelDv.NORMAL);
         panelDv.setAlwaysOnTop(true);
         panelDv.setAlwaysOnTop(false);
         panelDv.setVisible(true);
@@ -296,11 +295,20 @@ public class AcideDebugHelper {
         viewWindow.build(info);
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
+                int randomNumber = 0;
+                if(!db.contains("$des")) {
+                    randomNumber = Integer.parseInt(info.getLast());
+                    info.removeLast();
+                }
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
-                    if (i == 0 && db.contains("$des"))
-                        info.add("$");
-                    else
-                        info.add("");
+                        if (i == 0)
+                            info.add("$");
+                        else
+                            info.add("");
+                    }
+                if(!db.contains("$des")) {
+                    randomNumber++;
+                    info.add(String.valueOf(randomNumber));
                 }
             }
             viewWindow.build(info);
@@ -572,7 +580,7 @@ public class AcideDebugHelper {
         table.changeSelection(table.getRowCount()-1, 1, false, false);
         table.changeSelection(table.getRowCount()-1, table.getColumnCount()-1, true, true);
         String data = AcideDebugHelper.getDataFromSelectedTuple(table)
-                .replace("'", "").replace(",", "");
+                .replace("'", "").replace(",", "") .replace(" ", "");
         table.changeSelection(table.getRowCount()-1, 1, false, false);
         return data.isEmpty();
     }
