@@ -48,6 +48,7 @@ import javax.swing.JTextPane;
 
 import acide.configuration.project.AcideProjectConfiguration;
 import acide.gui.consolePanel.AcideConsolePanel;
+import acide.gui.debugPanel.utils.AcideDebugHelper;
 import acide.gui.mainWindow.AcideMainWindow;
 
 /**
@@ -2242,10 +2243,14 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 	}*/
 
 	public LinkedList<String> startDebug(String view, String configuration, String option){
+		LinkedList<String> result = executeCommand("/tapi /debug_sql_current_question");
+		boolean debugging = !result.get(0).equals("$error");
+		if(debugging)
+			executeCommand("/tapi /debug_sql" + AcideDebugHelper.parseCurrentQuestion(result) + "abort");
 		if(option.equals("valid") || option.equals("nonvalid"))
 			option = "";
 		String commandLine = "/tapi /debug_sql " + view + " "+ option + configuration;
-		LinkedList<String> result = executeCommand(commandLine);
+		result = executeCommand(commandLine);
 		return result;
 	}
 

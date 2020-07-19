@@ -266,7 +266,7 @@ public class AcideDebugHelper {
      * @param currentQuestion
      * @return desired view
      */
-    private static String parseCurrentQuestion(LinkedList<String> currentQuestion){
+    public static String parseCurrentQuestion(LinkedList<String> currentQuestion){
         String str = currentQuestion.getFirst();
         if(str.startsWith("subset(")) {
             AcideDebugSQLDebugWindow.getInstance().setQuestionType("subset");
@@ -295,21 +295,21 @@ public class AcideDebugHelper {
         viewWindow.build(info);
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
-                int randomNumber = 0;
-                if(!db.contains("$des")) {
-                    randomNumber = Integer.parseInt(info.getLast());
-                    info.removeLast();
-                }
+//                int randomNumber = 0;
+//                if(!db.contains("$des")) {
+//                    randomNumber = Integer.parseInt(info.getLast());
+//                    info.removeLast();
+//                }
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
-                        if (i == 0)
-                            info.add("$");
-                        else
-                            info.add("");
-                    }
-                if(!db.contains("$des")) {
-                    randomNumber++;
-                    info.add(String.valueOf(randomNumber));
+                    if (i == 0)
+                        info.add("$");
+                    else
+                        info.add("");
                 }
+//                if(!db.contains("$des")) {
+//                    randomNumber++;
+//                    info.add(String.valueOf(randomNumber));
+//                }
             }
             viewWindow.build(info);
         }

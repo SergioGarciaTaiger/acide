@@ -26,7 +26,7 @@ public class AcideDebugSQLPanelWrongNodeListener implements ActionListener {
                         .getLabels().getString("s2361") + " " + view + " " +
                         AcideLanguageManager.getInstance()
                                 .getLabels().getString("s2362") + " (" + userInput + ")");
-                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
                     AcideDebugHelper.performNodeDebug(view, action);
                 } else {
                     AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);

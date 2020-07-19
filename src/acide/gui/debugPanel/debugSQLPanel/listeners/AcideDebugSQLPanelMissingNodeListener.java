@@ -26,7 +26,7 @@ public class AcideDebugSQLPanelMissingNodeListener implements ActionListener {
                         .getLabels().getString("s2363") + " " + view + " " +
                         AcideLanguageManager.getInstance()
                                 .getLabels().getString("s2364") + " (" + userInput + ")");
-                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
                     AcideDebugHelper.performNodeDebug(view, action);
                 } else {
                     AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);

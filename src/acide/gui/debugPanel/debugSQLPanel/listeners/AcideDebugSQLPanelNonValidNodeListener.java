@@ -62,11 +62,12 @@ public class AcideDebugSQLPanelNonValidNodeListener implements ActionListener {
 			// Gets the canvas
 			AcideDebugCanvas canvas = AcideMainWindow.getInstance()
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
-			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
-				AcideDebugHelper.performNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "nonvalid");
+			String view =  canvas.getSelectedNode().getLabel().split("/")[0];
+			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
+				AcideDebugHelper.performNodeDebug(view, "nonvalid");
 			}else{
 				AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
-				AcideDebugHelper.startNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "nonvalid");
+				AcideDebugHelper.startNodeDebug(view, "nonvalid");
 			}
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()

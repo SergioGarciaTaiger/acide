@@ -239,6 +239,10 @@ public class AcideDebugSQLDebugWindow extends JFrame {
      * Closes the ACIDE - A Configurable IDE debug configuration window.
      */
     public void closeWindow() {
+        if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
+            if (!DesDatabaseManager.getInstance().debugCurrentQuestion().getFirst().equals("$error"))
+                AcideDebugHelper.performDebug("abort");
+        }
         AcideDebugHelper.refreshDebugGraph();
 
         // Enables the main window again
@@ -458,8 +462,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
         @Override
         public void actionPerformed(ActionEvent actionEvent) {
             closeWindow();
-            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
-                AcideDebugHelper.performDebug("abort");
         }
     }
 
@@ -541,8 +543,6 @@ public class AcideDebugSQLDebugWindow extends JFrame {
     class WindowCloser extends WindowAdapter{
         @Override
         public void windowClosing(WindowEvent event){
-            if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
-                AcideDebugHelper.performDebug("abort");
             closeWindow();
         }
     }

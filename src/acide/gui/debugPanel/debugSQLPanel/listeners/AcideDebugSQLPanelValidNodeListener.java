@@ -68,11 +68,12 @@ public class AcideDebugSQLPanelValidNodeListener implements ActionListener {
 			// Gets the canvas
 			AcideDebugCanvas canvas = AcideMainWindow.getInstance()
 					.getDebugPanel().getDebugSQLPanel().getCanvas();
-			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging()) {
-				AcideDebugHelper.performNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "valid");
+			String view =  canvas.getSelectedNode().getLabel().split("/")[0];
+			if(AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
+				AcideDebugHelper.performNodeDebug(view, "valid");
 			}else{
 				AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
-				AcideDebugHelper.startNodeDebug(canvas.getSelectedNode().getLabel().split("/")[0], "valid");
+				AcideDebugHelper.startNodeDebug(view, "valid");
 			}
 		} catch (Exception ex) {
 			AcideMainWindow.getInstance().getDebugPanel()
