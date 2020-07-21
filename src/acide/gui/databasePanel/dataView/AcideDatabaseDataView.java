@@ -424,131 +424,71 @@ public class AcideDatabaseDataView extends JFrame{
 			i++;
 		}
 		if(rows==0) info.add("$");
-		if(_database.contains("$des")){
-			Indexinfo = info.get(index);
-			int inicio = Indexinfo.indexOf(".");
-			//añadimos las columnas
-			while(!Indexinfo.equals("$")){								  
-				String nameColumn = Indexinfo.substring(inicio+1);
-				_totalColumns++;
-				columnasN.add(nameColumn);
-				index++;
-				int a =  info.get(index).indexOf("(");
-				String tipo = "";
-				if (a > 0)
-					tipo = info.get(index).substring(0, info.get(index).indexOf("("));
-				else
-					tipo = info.get(index);
-				setType(tipo);
-				index++;
-				Indexinfo = info.get(index);
-			}
+		if(!this._database.contains("$des")){
+			info.removeFirst();
+		}
+		Indexinfo = info.get(index);
+
+		int inicio = this._database.contains("$des") ? Indexinfo.indexOf(".") : -1;
+		//añadimos las columnas
+		while(!Indexinfo.equals("$")){
+			String nameColumn = Indexinfo.substring(inicio+1);
+			_totalColumns++;
+			columnasN.add(nameColumn);
 			index++;
+			int a =  info.get(index).indexOf("(");
+			String tipo = "";
+			if (a > 0)
+				tipo = info.get(index).substring(0, info.get(index).indexOf("("));
+			else
+				tipo = info.get(index);
+			setType(tipo);
+			index++;
+			Indexinfo = info.get(index);
+		}
+		index++;
 
-			dataModel = new String[_totalColumns+1];		  
-			dataModel[0]="";		 
-			for(int h=1;h<columnasN.size()+1;h++){	
-				String c = columnasN.get(h-1);
-				dataModel[h]=c;
-			}		 
-			if(!_isReadOnly && _isTable){ 
-				data = new Object[rows+1][_totalColumns+1]; 
-				if (info.size()>0)
-					data[rows][_totalColumns] ="";
-			}
-			else{
-				data = new Object[rows][_totalColumns+1]; 
-				if(rows==0)
-					data[rows][_totalColumns] ="";
-				else
-					data[rows-1][_totalColumns] ="";
-			}
-
-			//a�adimos las filas
-			for(int row = 0; row < rows; row++) {	  	    
-				for(int column = 1; column < _totalColumns+1; column++) {
-					String infoColumn= info.get(index);    			
-					inicio=infoColumn.indexOf("'");
-					if(inicio>=0){
-						int fin = infoColumn.lastIndexOf("'");
-						infoColumn = infoColumn.substring(inicio+1,fin);
-					}
-					if(infoColumn.trim().equals("null")) infoColumn="";
-					data[row][column] = infoColumn;      
-					index++;
-				}
-				index++;
-			}	      
-			_totalRecords = String.valueOf(rows);
-			if(!_isReadOnly && _isTable)
-				if (info.size()>0)
-					for(int column=1;column<_totalColumns+1;column++)
-						data[rows][column] ="";	
+		dataModel = new String[_totalColumns+1];
+		dataModel[0]="";
+		for(int h=1;h<columnasN.size()+1;h++){
+			String c = columnasN.get(h-1);
+			dataModel[h]=c;
+		}
+		if(!_isReadOnly && _isTable){
+			data = new Object[rows+1][_totalColumns+1];
+			if (info.size()>0)
+				data[rows][_totalColumns] ="";
 		}
 		else{
-			index = _table.indexOf("(");
-			if (index >0)
-				_table=_table.substring(_table.indexOf("("),_table.length());		
-			LinkedList<String> fields = AcideDatabaseManager.getInstance().getFields(_database, _table);
-			int inicio = 0;
-			while (inicio < fields.size()){
-				String nameColumn = fields.get(inicio);
-				String type = "";
-				String name = "";
-				int index2 = nameColumn.indexOf(":");
-				if (index2 > 0){
-					name = nameColumn.substring(0, index2);
-					type = nameColumn.substring(index2+1);
-				}
-				columnasN.add(name);
-				setType(type);
-				inicio++;
-				_totalColumns++;
-			}
-			index=1;
-
-			dataModel = new String[_totalColumns+1];		  
-			dataModel[0]="";		 
-			for(int h=1;h<columnasN.size()+1;h++){	
-				String c = columnasN.get(h-1);
-				dataModel[h]=c;
-			}		 
-			
-			if(!_isReadOnly && _isTable){ 
-				  data = new Object[rows+1][_totalColumns+1]; 
-				  if (info.size()>0)
-					  data[rows][_totalColumns] ="";
-			  }
-			  else{
-				  data = new Object[rows][_totalColumns+1]; 
-				  data[rows-1][_totalColumns] ="";
-			  }
-
-			index++;
-			 for(int row = 0; row < rows; row++) {	  	    
-		    	  for(int column = 1; column < _totalColumns+1; column++) {
-		    		 
-		    		String infoColumn = "";
-
-    				infoColumn= info.get(index);    			
-    				inicio=infoColumn.indexOf("'");
-
-	    			if(inicio>=0){
-	    				int fin = infoColumn.lastIndexOf("'");
-	    				infoColumn = infoColumn.substring(inicio+1,fin);
-	    			}
-	    			if(infoColumn.trim().equals("null")) infoColumn="";
-	    				data[row][column] = infoColumn;      
-	        			index++;
-		    	  }
-		    	  index++;
-		      }	      
-		      _totalRecords = String.valueOf(rows);
-		      if(!_isReadOnly && _isTable)
-		    	  if (info.size()>0)
-				      for(int column=1;column<_totalColumns+1;column++)
-				    	  data[rows][column] ="";	
+			data = new Object[rows][_totalColumns+1];
+			if(rows==0)
+				data[rows][_totalColumns] ="";
+			else
+				data[rows-1][_totalColumns] ="";
 		}
+
+		//a�adimos las filas
+		for(int row = 0; row < rows; row++) {
+			for(int column = 1; column < _totalColumns+1; column++) {
+				String infoColumn= info.get(index);
+				inicio=infoColumn.indexOf("'");
+				if(inicio>=0){
+					int fin = infoColumn.lastIndexOf("'");
+					infoColumn = infoColumn.substring(inicio+1,fin);
+				}
+				if(infoColumn.trim().equals("null")) infoColumn="";
+				data[row][column] = infoColumn;
+				index++;
+			}
+			index++;
+		}
+		_totalRecords = String.valueOf(rows);
+		if(!_isReadOnly && _isTable)
+			if (info.size()>0)
+				for(int column=1;column<_totalColumns+1;column++)
+					data[rows][column] ="";
+
+
 
 		MyTableModel model = new  MyTableModel();
 		model.setDataVector(data,dataModel);
