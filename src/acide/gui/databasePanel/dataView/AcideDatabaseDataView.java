@@ -424,7 +424,7 @@ public class AcideDatabaseDataView extends JFrame{
 			i++;
 		}
 		if(rows==0) info.add("$");
-		if(!this._database.contains("$des")){
+		if(!this._database.contains("$des") && info.getFirst().equals("")){
 			info.removeFirst();
 		}
 		Indexinfo = info.get(index);
