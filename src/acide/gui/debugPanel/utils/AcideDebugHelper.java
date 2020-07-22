@@ -300,6 +300,8 @@ public class AcideDebugHelper {
 //                    randomNumber = Integer.parseInt(info.getLast());
 //                    info.removeLast();
 //                }
+                if(!db.contains("$des"))
+                    info.addFirst("");
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
                     if (i == 0)
                         info.add("$");
