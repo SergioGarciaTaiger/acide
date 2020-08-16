@@ -787,13 +787,10 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 
 		}
 
-		String aux = "";
 
-		while (i < ret.size() && !aux.contains("- Datalog equivalent rules:")) {
+		while (i < ret.size() && !ret.get(i).contains("- Datalog equivalent rules:")) {
 
-			result += aux;
-
-			aux = ret.get(i) + "\n";
+			result +=  ret.get(i) + "\n";
 
 			i++;
 		}

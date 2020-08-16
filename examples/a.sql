@@ -65,8 +65,8 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`ID`, `NOMBRE`, `SUELDO`) VALUES
 (1, 'Ana', 500),
-(2, 'Carmen', 300),
-(3, 'Laura', 1000),
+(2, 'Laura', 300),
+(3, 'Carmen', 300),
 (4, 'Tamara', 1300),
 (5, 'Gimena', 900),
 (6, 'Natalia', 400),
