@@ -1463,6 +1463,8 @@ public class AcideDataBasePanel extends JPanel {
 	 * @return
 	 */
 	public AcideDatabaseDataView getDataView(String db, String table) {
+		if(_dataView.get(db) == null)
+			addDatabaseToDataView(db);
 		return _dataView.get(db).getDataView(db,table);
 	}
 	
