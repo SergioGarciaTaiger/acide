@@ -190,23 +190,31 @@ public class AcideDebugHelper {
 
     public static void startDebug(){
         try {
-            AcideDebugSQLDebugWindow.getInstance().setVisible(false);
-            // Puts the wait cursor
-            AcideDataViewReplaceWindow.getInstance().setCursor(
-                    Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             // Gets the canvas
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
-            paintTrustedTables(canvas);
-            if(canvas.getSelectedNode() == null || !AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
-                canvas.setSelectedNode(canvas.getRootNode());
-            String view = getSelectedViewName();
+            if (DesDatabaseManager.getInstance().isDebugging() && hasColoredNodes(canvas)){
+                LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
+                AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
+                String nextView = parseCurrentQuestion(currentQuestion);
+                updateHighlight(nextView);
+                AcideDebugSQLDebugWindow.getInstance().putView(nextView, getViewTable(nextView));
+            }else {
+                AcideDebugSQLDebugWindow.getInstance().setVisible(false);
+                // Puts the wait cursor
+                AcideDataViewReplaceWindow.getInstance().setCursor(
+                        Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                paintTrustedTables(canvas);
+                if (canvas.getSelectedNode() == null || !AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging())
+                    canvas.setSelectedNode(canvas.getRootNode());
+                String view = getSelectedViewName();
 
-            AcideDebugSQLPanel.startDebug.setEnabled(false);
+                AcideDebugSQLPanel.startDebug.setEnabled(false);
 
-            AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
-            AcideDebugSQLDebugWindow.getInstance().resetErrors();
-            AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+                AcideDebugSQLDebugWindow.getInstance().setQuestionType("all");
+                AcideDebugSQLDebugWindow.getInstance().resetErrors();
+                AcideDebugSQLDebugWindow.getInstance().putView(view, getViewTable(view));
+            }
             updateDebugWindow();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -295,11 +303,6 @@ public class AcideDebugHelper {
         viewWindow.build(info);
         if(!info.isEmpty()) {
             if(!isLastRowEmpty(viewWindow.getTable())){
-//                int randomNumber = 0;
-//                if(!db.contains("$des")) {
-//                    randomNumber = Integer.parseInt(info.getLast());
-//                    info.removeLast();
-//                }
                 if(!db.contains("$des"))
                     info.addFirst("");
                 for (int i = 0; i < viewWindow.getTable().getColumnCount(); i++) {
@@ -308,10 +311,6 @@ public class AcideDebugHelper {
                     else
                         info.add("");
                 }
-//                if(!db.contains("$des")) {
-//                    randomNumber++;
-//                    info.add(String.valueOf(randomNumber));
-//                }
             }
             viewWindow.build(info);
         }
@@ -556,12 +555,20 @@ public class AcideDebugHelper {
     }
 
     public static boolean hasRedNode(AcideDebugCanvas canvas){
-        boolean hasRed = false;
         for(Node n : canvas.get_graph().get_nodes()){
             if(n.getNodeColor().equals(Color.RED))
-                hasRed = true;
+                return true;
         }
-        return hasRed;
+        return false;
+    }
+
+    public static boolean hasColoredNodes(AcideDebugCanvas canvas){
+        for(Node n : canvas.get_graph().get_nodes()){
+            if(n.getNodeColor().equals(Color.RED) || n.getNodeColor().equals(Color.ORANGE)
+                    || n.getNodeColor().equals(Color.GREEN))
+                return true;
+        }
+        return false;
     }
 
     public static boolean isRedNode(Node node){

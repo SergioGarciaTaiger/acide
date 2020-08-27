@@ -145,7 +145,7 @@ public class AcideDatabaseDataView extends JFrame{
 	public AcideDatabaseDataView(String db, String tabla){
 		setVisible(false);
 		setAlwaysOnTop(false);
-		AcideMainWindow.getInstance().setEnabled(false);
+		//AcideMainWindow.getInstance().setEnabled(false);
 		setIconImage(_ICON.getImage());
 
 		this._database = db;
@@ -195,7 +195,7 @@ public class AcideDatabaseDataView extends JFrame{
 		_scrollPane.setViewportView(_jTable);
 
 		this.getContentPane().add(_scrollPane, BorderLayout.CENTER);
-		setAlwaysOnTop(true);
+		//setAlwaysOnTop(true);
 		
 		if(_statusBar==null){
 			_statusBar = buildStatusBar();
@@ -315,7 +315,7 @@ public class AcideDatabaseDataView extends JFrame{
 					AcideLanguageManager.getInstance().getLabels().getString("s2130")+ _totalRecords);
 			_statusBar.validate();
 		} else {
-			this.setAlwaysOnTop(false);
+			//this.setAlwaysOnTop(false);
 			if(info.contains("Input syntax error"))
 				JOptionPane.showMessageDialog(null, AcideLanguageManager.getInstance().getLabels().getString("s2257"),
 						AcideLanguageManager.getInstance().getLabels().getString("s2040"), JOptionPane.WARNING_MESSAGE);
@@ -323,7 +323,7 @@ public class AcideDatabaseDataView extends JFrame{
 			for(int i =1; i<_columns.size(); i++){
 				_jTable.getModel().setValueAt("", _jTable.getRowCount()-1, i);	
 			}
-			this.setAlwaysOnTop(true);
+			//this.setAlwaysOnTop(true);
 		}
 		numToAdd--;
 		}
@@ -370,7 +370,7 @@ public class AcideDatabaseDataView extends JFrame{
 			}
 			refresh();
 		} else {
-			setAlwaysOnTop(false);
+			//setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null, info);
 		}
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -901,8 +901,6 @@ public class AcideDatabaseDataView extends JFrame{
 		AcideMainWindow.getInstance().setEnabled(true);	
 		dispose();
 		this.transferFocusBackward();
-		AcideMainWindow.getInstance().setAlwaysOnTop(true);
-		AcideMainWindow.getInstance().setAlwaysOnTop(false);
 	}
 
 	/**
@@ -940,7 +938,7 @@ public class AcideDatabaseDataView extends JFrame{
 			_jTable.setSelectedField(Integer.valueOf(recordIndex)-1, _jTable.getSelectedColumn());
 			_recordIndexT.setText("");
 		} else {
-			setAlwaysOnTop(false);
+			//setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null,  AcideLanguageManager.getInstance().getLabels().getString("s2134"));
 		}	
 	}
@@ -1122,7 +1120,7 @@ public class AcideDatabaseDataView extends JFrame{
 							JOptionPane.showMessageDialog(null, AcideLanguageManager.getInstance().getLabels().getString("s2257")+ res.substring(14),
 									AcideLanguageManager.getInstance().getLabels().getString("s2040"), JOptionPane.WARNING_MESSAGE);
 						else JOptionPane.showMessageDialog(null, res);						
-						AcideDatabaseDataView.this.setAlwaysOnTop(true);
+						//AcideDatabaseDataView.this.setAlwaysOnTop(true);
 						this.setValueAt(oldData.get(fila).get(col-1),fila, col);
 					}
 					else updateOldData();

@@ -459,4 +459,6 @@ public abstract class AcideDatabaseManager {
 
 	public abstract LinkedList<String> getDebugStats();
 
+	public abstract boolean isDebugging();
+
 }

@@ -2278,4 +2278,8 @@ public class DesDatabaseManager extends AcideDatabaseManager {
 		return result;
 	}
 
+	public boolean isDebugging(){
+		LinkedList<String> result = executeCommand("/tapi /debug_sql_current_question");
+		return !result.get(0).equals("$error");
+	}
 }

@@ -1142,4 +1142,9 @@ public class ODBCDatabaseManager extends AcideDatabaseManager {
 		//TODO
 		return null;
 	}
+
+	public boolean isDebugging(){
+		//TODO
+		return true;
+	}
 }
