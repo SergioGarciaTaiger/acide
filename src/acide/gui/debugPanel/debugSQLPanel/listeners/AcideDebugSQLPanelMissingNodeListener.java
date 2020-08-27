@@ -22,16 +22,16 @@ public class AcideDebugSQLPanelMissingNodeListener implements ActionListener {
             String userInput = AcideDebugHelper.getUserInputTuple(view, "missing");
             if(!userInput.isEmpty()) {
                 String action = "missing(" + view + "(" + userInput +"))";
-                AcideDebugSQLDebugWindow.getInstance().addError(AcideLanguageManager.getInstance()
-                        .getLabels().getString("s2363") + " " + view + " " +
-                        AcideLanguageManager.getInstance()
-                                .getLabels().getString("s2364") + " (" + userInput + ")");
-                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
+                if (AcideDebugHelper.isDebugging() && !AcideDebugHelper.isRootView(view)) {
                     AcideDebugHelper.performNodeDebug(view, action);
                 } else {
                     AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
                     AcideDebugHelper.startNodeDebug(view, action);
                 }
+                AcideDebugSQLDebugWindow.getInstance().addError(AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2363") + " " + view + " " +
+                        AcideLanguageManager.getInstance()
+                                .getLabels().getString("s2364") + " (" + userInput + ")");
             }
         } catch (Exception ex) {
             AcideMainWindow.getInstance().getDebugPanel()

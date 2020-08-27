@@ -193,7 +193,7 @@ public class AcideDebugHelper {
             // Gets the canvas
             AcideDebugCanvas canvas = AcideMainWindow.getInstance()
                     .getDebugPanel().getDebugSQLPanel().getCanvas();
-            if (DesDatabaseManager.getInstance().isDebugging() && hasColoredNodes(canvas)){
+            if (isDebugging()){
                 LinkedList<String> currentQuestion = DesDatabaseManager.getInstance().debugCurrentQuestion();
                 AcideDebugSQLDebugWindow.getInstance().setCurrentQuestion(currentQuestion.getFirst());
                 String nextView = parseCurrentQuestion(currentQuestion);
@@ -302,6 +302,8 @@ public class AcideDebugHelper {
         LinkedList<String> info = AcideDatabaseManager.getInstance().getSelectAll(db, view);
         viewWindow.build(info);
         if(!info.isEmpty()) {
+            if(info.getLast().equals("$"))
+                info.removeLast();
             if(!isLastRowEmpty(viewWindow.getTable())){
                 if(!db.contains("$des"))
                     info.addFirst("");
@@ -617,6 +619,12 @@ public class AcideDebugHelper {
                 .getCanvas(), AcideDebugCanvasParseTask.DESTINY_MAIN,consult,false))
                 .start();
         AcideDebugSQLPanel._canvas.setZoom(1, AcideGraphCanvas.CanvasPanel.DebugSQL);
+    }
+
+    public static boolean isDebugging(){
+        AcideDebugCanvas canvas = AcideMainWindow.getInstance()
+                .getDebugPanel().getDebugSQLPanel().getCanvas();
+        return DesDatabaseManager.getInstance().isDebugging() && hasColoredNodes(canvas);
     }
 
 }

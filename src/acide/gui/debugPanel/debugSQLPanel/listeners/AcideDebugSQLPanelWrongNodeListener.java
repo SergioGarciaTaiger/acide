@@ -22,16 +22,16 @@ public class AcideDebugSQLPanelWrongNodeListener implements ActionListener {
             String userInput = AcideDebugHelper.getUserInputTuple(view, "wrong");
             if(!userInput.isEmpty()) {
                 String action = "wrong(" + view + "(" + userInput +"))";
-                AcideDebugSQLDebugWindow.getInstance().addError(AcideLanguageManager.getInstance()
-                        .getLabels().getString("s2361") + " " + view + " " +
-                        AcideLanguageManager.getInstance()
-                                .getLabels().getString("s2362") + " (" + userInput + ")");
-                if (AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().isDebuging() && !AcideDebugHelper.isRootView(view)) {
+                if (AcideDebugHelper.isDebugging() && !AcideDebugHelper.isRootView(view)) {
                     AcideDebugHelper.performNodeDebug(view, action);
                 } else {
                     AcideMainWindow.getInstance().getDebugPanel().getDebugSQLPanel().setDebuging(true);
                     AcideDebugHelper.startNodeDebug(view, action);
                 }
+                AcideDebugSQLDebugWindow.getInstance().addError(AcideLanguageManager.getInstance()
+                        .getLabels().getString("s2361") + " " + view + " " +
+                        AcideLanguageManager.getInstance()
+                                .getLabels().getString("s2362") + " (" + userInput + ")");
             }
         } catch (Exception ex) {
             System.out.println(ex);

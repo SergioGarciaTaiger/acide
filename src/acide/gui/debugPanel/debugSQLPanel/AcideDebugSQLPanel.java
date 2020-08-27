@@ -674,6 +674,7 @@ public class AcideDebugSQLPanel extends JPanel {
 		_popUp.add(_errorNodeItem);
 
 		_nodeState = new JMenuItem(AcideLanguageManager.getInstance().getLabels().getString("s2375"));
+		_nodeState.setEnabled(false);
 		_popUp.add(_nodeState);
 	}
 
@@ -759,13 +760,13 @@ public class AcideDebugSQLPanel extends JPanel {
 	private void checkNodeState(){
 		Color c = _canvas.getSelectedNode().getNodeColor();
 		if(c.equals(Color.RED)){
-			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2374"));
+			_nodeState.setText("<html><strong>" + AcideLanguageManager.getInstance().getLabels().getString("s2374") + "</strong></htlm>");
 		}else if(c.equals(Color.ORANGE)){
-			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2373"));
+			_nodeState.setText("<html><strong>" + AcideLanguageManager.getInstance().getLabels().getString("s2373") + "</strong></htlm>");
 		}else if(c.equals(Color.GREEN)){
-			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2372"));
+			_nodeState.setText("<html><strong>" + AcideLanguageManager.getInstance().getLabels().getString("s2372") + "</strong></htlm>");
 		}else{
-			_nodeState.setText(AcideLanguageManager.getInstance().getLabels().getString("s2375"));
+			_nodeState.setText("<html><strong>" + AcideLanguageManager.getInstance().getLabels().getString("s2375") + "</strong></htlm>");
 		}
 	}
 
